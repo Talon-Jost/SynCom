@@ -1,0 +1,252 @@
+---
+title: "mada85_flux_analysis"
+author: "Talon B Jost"
+date: "2025-09-03"
+output: pdf_document
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+##analysing the data some more and making figures
+library(sybil)
+library(sybilSBML)
+library(glpkAPI)
+library(ggplot2)
+```
+
+
+#systems biology markup language interpreter
+#this is taking the metabolic reactions created by gapseq and pulling them into the environment
+#this reads the SBML files to use in constraint based modeling
+#SBML describes:
+# - Species (metabolites, proteins, RNA)
+# - Reactions (biochemical reactions or transport processes)
+# - Compartments (cytoplasm, mitochondria, etc.)
+# - Kinetic laws or constraints (reaction rates, bounds)
+# - Gene-reaction associations
+```{r}
+#what this is doing is constraint based metabolic modeling or flux balance analysis
+#flux balance analysis is the 
+model <- sybilSBML::readSBMLmod("gapseq.mada85/Mada85.xml")
+
+#check the model summary
+model
+
+#optimize the model for the entire components
+result <- optimizeProb(model)
+
+sybil::react_name(model)
+
+
+#check flux balance analysis
+# Objective value (e.g., growth rate)
+# the objective value is the value of the objective function (usually growth rate) at the optimal solution given all constraints.
+print(paste("Objective value:", result@lp_obj))
+
+
+# Convert
+flux_vector <- fluxes(result)
+
+# Convert sparse matrix to numeric vector
+# sparse vector just saves on space
+flux_vector_num <- as.numeric(flux_vector)
+
+# Now create data frame
+flux_df <- data.frame(
+  reaction = react_id(model),
+  flux = flux_vector_num
+)
+
+head(flux_df)
+
+```
+
+
+making a figure from it
+```{r}
+ggplot(flux_df, aes(x = flux)) +
+  geom_histogram(bins = 50, fill = "steelblue", color = "black") +
+  theme_minimal() +
+  labs(title = "Flux Distribution",
+       x = "Flux value",
+       y = "Number of reactions")
+
+```
+
+Reading and interpreting this figure
+1. Network sparsity and activity
+- In a metabolic network, not all reactions are active at once under a given condition (e.g., minimal medium).
+- Reactions with zero flux are inactive — the cell doesn’t need them to achieve the objective (biomass growth).
+- Only a subset of reactions carry flux — this is typical in constraint-based models.
+
+2. High flux reactions
+- Reactions at the extreme ends (high positive or negative flux) are key active pathways:
+- Positive flux → forward reaction carrying material toward biomass or product formation.
+- Negative flux → reverse reaction (if reversible).
+- These are often bottleneck or essential reactions for growth.
+
+3. Biological insight
+- The histogram tells you the network is highly selective:
+- The organism only uses a few reactions efficiently to achieve growth.
+- Many reactions are theoretically possible but not used under this condition.
+- This is a common feature of FBA because it finds one optimal flux distribution that maximizes biomass.
+
+
+Single gene knockouts doesn't really work.
+```{r}
+#single gene knockouts
+library(sybil)
+library(sybilSBML)
+
+# -----------------------------
+# Load the model
+# -----------------------------
+model <- readSBMLmod("gapseq.mada85/Mada85.xml")
+
+# -----------------------------
+# Identify biomass reaction
+# -----------------------------
+biomass_candidates <- grep("biomass|BIOMASS", react_name(model), ignore.case = TRUE)
+if(length(biomass_candidates) == 0) stop("No biomass reaction found. Please check your model.")
+biomass_rxn <- react_id(model)[biomass_candidates[1]]
+cat("Using biomass reaction:", biomass_rxn, "\n")
+
+# Set biomass as the objective
+obj_coef(model) <- rep(0, react_num(model))
+obj_coef(model)[which(react_id(model) == biomass_rxn)] <- 1
+
+# -----------------------------
+# Open exchange reactions (uptake)
+# -----------------------------
+Smat <- S(model)
+ex_idx <- which(colSums(abs(Smat) > 0) == 1)  # single metabolite reactions
+lowbnd(model)[ex_idx] <- -10  # allow uptake
+
+# -----------------------------
+# Wild-type growth
+# -----------------------------
+wt <- optimizeProb(model)
+wildtype <- wt@lp_obj
+cat("Wild-type growth:", wildtype, "\n")
+if(wildtype <= 0) warning("Wild-type growth is zero. Check biomass reaction and medium.")
+
+# -----------------------------
+# Helper functions
+# -----------------------------
+getReactionsForGene <- function(model, gene) {
+  gpr_rules <- gprRules(model)
+  gene_idx <- match(gene, allGenes(model))
+  if(is.na(gene_idx)) return(integer(0))
+  pattern <- paste0("x\\[", gene_idx, "\\]")
+  which(grepl(pattern, gpr_rules))
+}
+
+knockoutGene <- function(model, gene) {
+  rxns <- getReactionsForGene(model, gene)
+  ko_model <- model
+  if(length(rxns) > 0) {
+    lowbnd(ko_model)[rxns] <- 0
+    uppbnd(ko_model)[rxns] <- 0
+  }
+  return(ko_model)
+}
+
+# -----------------------------
+# Identify genes with at least 1 reaction
+# -----------------------------
+gene_list <- allGenes(model)
+rxn_counts <- sapply(gene_list, function(g) length(getReactionsForGene(model, g)))
+functional_genes <- gene_list[rxn_counts > 0]
+cat("Functional genes (have reactions):", length(functional_genes), "\n")
+
+# -----------------------------
+# Single-gene knockout loop
+# -----------------------------
+ko_results <- numeric(length(functional_genes))
+names(ko_results) <- functional_genes
+
+for(g in functional_genes){
+  ko_model <- knockoutGene(model, g)
+  ko_sol <- optimizeProb(ko_model)
+  ko_results[g] <- ko_sol@lp_obj
+}
+
+# -----------------------------
+# Summarize results
+# -----------------------------
+ko_df <- data.frame(
+  gene = functional_genes,
+  growth_after_KO = ko_results,
+  rel_growth = ko_results / wildtype
+)
+
+# Sort by growth after KO
+ko_df <- ko_df[order(ko_df$growth_after_KO), ]
+head(ko_df, 10)
+
+
+```
+
+```{r}
+# Load necessary libraries
+library(dplyr)
+library(readr)
+library(tidyr)
+
+setwd("~/Documents/Penn_State/Genomes/SynCom")
+
+# ------------------------------
+# Step 1: Read Prokka annotation files
+# ------------------------------
+mada85 <- read.csv("")
+mada106 <- read_csv("Janibacter_Mada106/prokka_annotations.csv")
+
+# Inspect first few rows
+head(mada85)
+head(mada106)
+
+# ------------------------------
+# Step 2: Standardize column names (optional, if needed)
+# ------------------------------
+mada85 <- mada85 %>%
+  rename(Locus = locus_tag, Gene = gene, Product = product, COG = COG)
+
+mada106 <- mada106 %>%
+  rename(Locus = locus_tag, Gene = gene, Product = product, COG = COG)
+
+# ------------------------------
+# Step 3: Identify unique and shared genes
+# ------------------------------
+# Unique to Mada85
+mada85_unique <- mada85 %>%
+  filter(!Gene %in% mada106$Gene)
+
+# Unique to Mada106
+mada106_unique <- mada106 %>%
+  filter(!Gene %in% mada85$Gene)
+
+# Shared genes
+shared_genes <- mada85 %>%
+  filter(Gene %in% mada106$Gene)
+
+# ------------------------------
+# Step 4: Optional - Combine for comparison table
+# ------------------------------
+comparison <- full_join(mada85 %>% select(Gene, Product, COG) %>% rename(Mada85_Product = Product, Mada85_COG = COG),
+                        mada106 %>% select(Gene, Product, COG) %>% rename(Mada106_Product = Product, Mada106_COG = COG),
+                        by = "Gene")
+
+# ------------------------------
+# Step 5: Save results
+# ------------------------------
+write_csv(mada85_unique, "mada85_unique_genes.csv")
+write_csv(mada106_unique, "mada106_unique_genes.csv")
+write_csv(shared_genes, "shared_genes.csv")
+write_csv(comparison, "gene_comparison_table.csv")
+```
+

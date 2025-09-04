@@ -22,11 +22,11 @@ NJKLBJNM_00740,CDS,267,whiB7,,,putative transcriptional regulator WhiB7
 NJKLBJNM_00781,CDS,708,gph_1,3.1.3.18,,Phosphoglycolate phosphatase
 NJKLBJNM_00789,CDS,882,arnC,2.4.2.53,,Undecaprenyl-phosphate 4-deoxy-4-formamido-L-arabinose transferase
 NJKLBJNM_00790,CDS,1167,wbpI_2,5.1.3.23,COG0381,"UDP-2,3-diacetamido-2,3-dideoxy-D-glucuronate 2-epimerase"
-NJKLBJNM_00791,CDS,1104,wbjC,1.1.1.367,,"UDP-2-acetamido-2,6-beta-L-arabino-hexul-4-ose reductase"
-NJKLBJNM_00792,CDS,1026,capD,5.1.3.2,COG1086,UDP-glucose 4-epimerase
-NJKLBJNM_00794,CDS,1779,fcl,1.1.1.271,,GDP-L-fucose synthase
+NJKLBJNM_00791,CDS,1104,wbjC,1.1.1.367,-,"UDP-2-acetamido-2,6-beta-L-arabino-hexul-4-ose reductase"
+NJKLBJNM_00792,CDS,1026,capD,5.1.3.2,COG1086,"UDP-glucose 4-epimerase"
+NJKLBJNM_00794,CDS,1779,fcl,1.1.1.271,,"GDP-L-fucose synthase"
 NJKLBJNM_00800,CDS,861,rmlA,2.7.7.24,COG1209,Glucose-1-phosphate thymidylyltransferase
-NJKLBJNM_00802,CDS,1002,rmlB,4.2.1.46,COG1088,"dTDP-glucose 4,6-dehydratase"
+NJKLBJNM_00802,CDS,1002,rmlB,4.2.1.46,COG1088,dTDP-glucose 4,6-dehydratase
 NJKLBJNM_00815,CDS,1206,yagA_1,,,putative protein YagA
 NJKLBJNM_00893,CDS,663,merB,4.99.1.2,,Alkylmercury lyase
 NJKLBJNM_00894,CDS,1425,merA,1.16.1.1,,Mercuric reductase
@@ -34,131 +34,131 @@ NJKLBJNM_00895,CDS,390,merR1,,,Mercuric resistance operon regulatory protein
 NJKLBJNM_00898,CDS,951,czcD_1,,COG1230,"Cadmium, cobalt and zinc/H(+)-K(+) antiporter"
 NJKLBJNM_00899,CDS,1473,ribZ,,,Riboflavin transporter RibZ
 NJKLBJNM_00902,CDS,240,mazE5,,,Antitoxin MazE5
-NJKLBJNM_00903,CDS,261,mazF5,3.1.-.-,COG2337,putative endoribonuclease MazF5
+NJKLBJNM_00903,CDS,261,mazF5,3.1.-.-,"COG2337,putative endoribonuclease MazF5"
 NJKLBJNM_00954,CDS,756,aas_1,6.2.1.20,,Bifunctional protein Aas
 NJKLBJNM_00959,CDS,1008,thiL,2.7.4.16,COG0611,Thiamine-monophosphate kinase
 NJKLBJNM_01004,CDS,945,xerC_4,,COG0582,Tyrosine recombinase XerC
 NJKLBJNM_01156,CDS,1566,hrdB,,COG0568,RNA polymerase principal sigma factor HrdB
 NJKLBJNM_01226,CDS,159,sigA,,COG0568,RNA polymerase sigma factor SigA
 NJKLBJNM_01349,CDS,876,suhB,3.1.3.25,COG0483,Inositol-1-monophosphatase SuhB
-NJKLBJNM_01351,CDS,483,dut,3.6.1.23,,"Deoxyuridine 5-triphosphate nucleotidohydrolase
-NJKLBJNM_01352	CDS	738				hypothetical protein
-NJKLBJNM_01353	CDS	369				hypothetical protein
-NJKLBJNM_01354	CDS	714				hypothetical protein
-NJKLBJNM_01355	CDS	684	trkA_1		COG0569	Trk system potassium uptake protein TrkA
-NJKLBJNM_01356	CDS	651	trkA_2		COG0569	Trk system potassium uptake protein TrkA
-NJKLBJNM_01357	CDS	1962	kimA		COG0531	Potassium transporter KimA
-NJKLBJNM_01358	CDS	1308	rlmD	2.1.1.190	COG2265	23S rRNA (uracil(1939)-C(5))-methyltransferase RlmD
-NJKLBJNM_01359	CDS	2802	acnA	4.2.1.3	COG1048	Aconitate hydratase A
-NJKLBJNM_01360	CDS	444				hypothetical protein
-NJKLBJNM_01361	CDS	1863	dxs	2.2.1.7		1-deoxy-D-xylulose-5-phosphate synthase
-NJKLBJNM_01362	CDS	1197				hypothetical protein
-NJKLBJNM_01363	CDS	735	lptB_1	3.6.3.-	COG1137	Lipopolysaccharide export system ATP-binding protein LptB
-NJKLBJNM_01364	CDS	729	livF_1		COG0410	High-affinity branched-chain amino acid transport ATP-binding protein LivF
-NJKLBJNM_01365	CDS	885	livH_1		COG0559	High-affinity branched-chain amino acid transport system permease protein LivH
-NJKLBJNM_01366	CDS	1092				hypothetical protein
-NJKLBJNM_01367	CDS	936	menH_1	4.2.99.20		2-succinyl-6-hydroxy-2,4-cyclohexadiene-1-carboxylate synthase
-NJKLBJNM_01368	CDS	1869				hypothetical protein
-NJKLBJNM_01369	CDS	783	bdhA	1.1.1.30		D-beta-hydroxybutyrate dehydrogenase
-NJKLBJNM_01370	CDS	1497				hypothetical protein
-NJKLBJNM_01371	CDS	1542	murA	2.5.1.7	COG0766	UDP-N-acetylglucosamine 1-carboxyvinyltransferase
-NJKLBJNM_01372	CDS	2073	fadJ_3		COG1024	Fatty acid oxidation complex subunit alpha
-NJKLBJNM_01373	CDS	1212	paaJ	2.3.1.174	COG0183	3-oxoadipyl-CoA/3-oxo-5,6-dehydrosuberyl-CoA thiolase
-NJKLBJNM_01374	CDS	1233	rnd	3.1.13.5	COG0349	Ribonuclease D
-NJKLBJNM_01375	CDS	639				hypothetical protein
-NJKLBJNM_01376	CDS	1044	hemE	4.1.1.37	COG0407	Uroporphyrinogen decarboxylase
-NJKLBJNM_01377	CDS	924				hypothetical protein
-NJKLBJNM_01378	CDS	1416	hemY	1.3.3.4	COG1232	Protoporphyrinogen oxidase
-NJKLBJNM_01379	CDS	720			COG3253	putative protein/MSMEI_2713
-NJKLBJNM_01380	CDS	912				hypothetical protein
-NJKLBJNM_01381	CDS	429	msrB	1.8.4.12	COG0229	Peptide methionine sulfoxide reductase MsrB
-NJKLBJNM_01382	CDS	2436				hypothetical protein
-NJKLBJNM_01383	CDS	1083	ligD_1		COG1793	Multifunctional non-homologous end joining protein LigD
-NJKLBJNM_01384	CDS	1023	ligC	6.5.1.1	COG1793	DNA ligase C1
-NJKLBJNM_01385	CDS	1161				hypothetical protein
-NJKLBJNM_01386	CDS	714				hypothetical protein
-NJKLBJNM_01387	CDS	870		2.7.4.-	COG2326	Polyphosphate:AMP/ADP phosphotransferase
-NJKLBJNM_01388	CDS	1743	aidB	1.3.99.-	COG1960	Putative acyl-CoA dehydrogenase AidB
-NJKLBJNM_01389	tRNA	74				tRNA-Gly(gcc)
-NJKLBJNM_01390	tRNA	73				tRNA-Val(gac)
-NJKLBJNM_01391	tRNA	74				tRNA-Gly(gcc)
-NJKLBJNM_01392	tRNA	72				tRNA-Cys(gca)
-NJKLBJNM_01393	tRNA	75				tRNA-Val(gac)
-NJKLBJNM_01394	CDS	540				hypothetical protein
-NJKLBJNM_01395	CDS	2382				hypothetical protein
-NJKLBJNM_01396	CDS	1362				hypothetical protein
-NJKLBJNM_01397	CDS	1392	papA2	2.3.1.-	COG1020	Trehalose-2-sulfate acyltransferase papA2
-NJKLBJNM_01398	CDS	816				hypothetical protein
-NJKLBJNM_01399	CDS	405				hypothetical protein
-NJKLBJNM_01400	CDS	1023	menF	5.4.4.2		Isochorismate synthase MenF
-NJKLBJNM_01401	CDS	849	ilvE_2	2.6.1.42	COG0115	Branched-chain-amino-acid aminotransferase
-NJKLBJNM_01402	CDS	564				hypothetical protein
-NJKLBJNM_01403	tRNA	77				tRNA-Val(cac)
-NJKLBJNM_01404	CDS	636	tag	3.2.2.20	COG2818	DNA-3-methyladenine glycosylase 1
-NJKLBJNM_01405	CDS	273				hypothetical protein
-NJKLBJNM_01406	CDS	588	ogt_2	2.1.1.63	COG0350	Methylated-DNA--protein-cysteine methyltransferase
-NJKLBJNM_01407	CDS	501	shbA			ECF RNA polymerase sigma factor ShbA
-NJKLBJNM_01408	CDS	1137	prmC_2	2.1.1.297		Release factor glutamine methyltransferase
-NJKLBJNM_01409	CDS	651				hypothetical protein
-NJKLBJNM_01410	CDS	1119	nifS	2.8.1.7	COG1104	Cysteine desulfurase NifS
-NJKLBJNM_01411	CDS	840	phzF	5.3.3.17		Trans-2,3-dihydro-3-hydroxyanthranilate isomerase
-NJKLBJNM_01412	CDS	234				hypothetical protein
-NJKLBJNM_01413	CDS	1686	ybiT		COG0488	putative ABC transporter ATP-binding protein YbiT
-NJKLBJNM_01414	CDS	1944				hypothetical protein
-NJKLBJNM_01415	CDS	1419				hypothetical protein
-NJKLBJNM_01416	CDS	1353	dapE_3	3.5.1.18		Succinyl-diaminopimelate desuccinylase
-NJKLBJNM_01417	CDS	684				putative HTH-type transcriptional regulator
-NJKLBJNM_01418	CDS	1290	fadI	2.3.1.16	COG0183	3-ketoacyl-CoA thiolase FadI
-NJKLBJNM_01419	CDS	1338	hcaB_3	1.3.1.87		3-phenylpropionate-dihydrodiol/cinnamic acid-dihydrodiol dehydrogenase
-NJKLBJNM_01420	CDS	846				hypothetical protein
-NJKLBJNM_01421	CDS	1389	bglA	3.2.1.21		Beta-glucosidase A
-NJKLBJNM_01422	CDS	1281				hypothetical protein
-NJKLBJNM_01423	CDS	366				hypothetical protein
-NJKLBJNM_01424	CDS	1227	nupX		COG1972	Putative nucleoside permease NupX
-NJKLBJNM_01425	CDS	723				hypothetical protein
-NJKLBJNM_01426	CDS	1107				hypothetical protein
-NJKLBJNM_01427	CDS	2049	thrS	6.1.1.3	COG0441	Threonine--tRNA ligase
-NJKLBJNM_01428	CDS	465				hypothetical protein
-NJKLBJNM_01429	CDS	708				hypothetical protein
-NJKLBJNM_01430	CDS	561		2.7.7.53	COG0537	AP-4-A phosphorylase
-NJKLBJNM_01431	CDS	639	pgsA2_1	2.7.8.-	COG0558	Phosphatidylinositol phosphate synthase
-NJKLBJNM_01432	CDS	948		2.3.1.265	COG1560	Phosphatidylinositol mannoside acyltransferase
-NJKLBJNM_01433	CDS	1212	pimA	2.4.1.345	COG0438	Phosphatidyl-myo-inositol mannosyltransferase
-NJKLBJNM_01434	CDS	573				hypothetical protein
-NJKLBJNM_01435	CDS	213				hypothetical protein
-NJKLBJNM_01436	CDS	1335	ptsJ		COG1167	Vitamin B6 salvage pathway transcriptional repressor PtsJ
-NJKLBJNM_01437	CDS	900	pdxS	4.3.3.6	COG0214	Pyridoxal 5-phosphate synthase subunit PdxS"
-NJKLBJNM_01438,CDS,603,pdxT,4.3.3.6,COG0311,"Pyridoxal 5-phosphate synthase subunit PdxT
-NJKLBJNM_01439	CDS	762			COG0217	putative transcriptional regulatory protein/MSMEI_2866
-NJKLBJNM_01440	CDS	534	ruvC	3.1.22.4	COG0817	Crossover junction endodeoxyribonuclease RuvC
-NJKLBJNM_01441	CDS	597	ruvA	3.6.4.12	COG0632	Holliday junction ATP-dependent DNA helicase RuvA
-NJKLBJNM_01442	CDS	1125	ruvB	3.6.4.12	COG2255	Holliday junction ATP-dependent DNA helicase RuvB
-NJKLBJNM_01443	CDS	303	yajC		COG1862	Sec translocon accessory complex subunit YajC
-NJKLBJNM_01444	CDS	1893	secD		COG0342	Protein translocase subunit SecD
-NJKLBJNM_01445	CDS	1248	secF		COG0341	Protein translocase subunit SecF
-NJKLBJNM_01446	CDS	549	apt	2.4.2.7	COG0503	Adenine phosphoribosyltransferase
-NJKLBJNM_01447	CDS	2289	relA		COG0317	Bifunctional (p)ppGpp synthase/hydrolase RelA
-NJKLBJNM_01448	CDS	1392				putative protein
-NJKLBJNM_01449	CDS	702		3.-.-.-		putative protein
-NJKLBJNM_01450	CDS	1377	hisS	6.1.1.21	COG0124	Histidine--tRNA ligase
-NJKLBJNM_01451	CDS	636				hypothetical protein
-NJKLBJNM_01452	CDS	636				hypothetical protein
-NJKLBJNM_01453	CDS	912	xerD		COG4974	Tyrosine recombinase XerD
-NJKLBJNM_01454	CDS	888			COG1192	putative protein
-NJKLBJNM_01455	CDS	966	scpA			Segregation and condensation protein A
-NJKLBJNM_01456	CDS	654	scpB		COG1386	Segregation and condensation protein B
-NJKLBJNM_01457	CDS	912		5.4.99.-	COG1187	putative RNA pseudouridine synthase
-NJKLBJNM_01458	CDS	1125				hypothetical protein
-NJKLBJNM_01459	CDS	699	cmk	2.7.4.25	COG0283	Cytidylate kinase
-NJKLBJNM_01460	CDS	1479	der		COG1160	GTPase Der
-NJKLBJNM_01461	CDS	1614	moaA			GTP 3,8-cyclase"
+NJKLBJNM_01351,CDS,483,dut,3.6.1.23,,Deoxyuridine 5-triphosphate nucleotidohydrolase
+NJKLBJNM_01352,CDS,738,,, ,hypothetical protein
+NJKLBJNM_01353,CDS,369,,, ,hypothetical protein
+NJKLBJNM_01354,CDS,714,,, ,hypothetical protein
+NJKLBJNM_01355,CDS,684,trkA_1,,COG0569,Trk system potassium uptake protein TrkA
+NJKLBJNM_01356,CDS,651,trkA_2,,COG0569,Trk system potassium uptake protein TrkA
+NJKLBJNM_01357,CDS,1962,kimA,,COG0531,Potassium transporter KimA
+NJKLBJNM_01358,CDS,1308,rlmD,2.1.1.190,COG2265,23S rRNA (uracil(1939)-C(5))-methyltransferase RlmD
+NJKLBJNM_01359,CDS,2802,acnA,4.2.1.3,COG1048,Aconitate hydratase A
+NJKLBJNM_01360,CDS,444,,, ,hypothetical protein
+NJKLBJNM_01361,CDS,1863,dxs,2.2.1.7, ,1-deoxy-D-xylulose-5-phosphate synthase
+NJKLBJNM_01362,CDS,1197,,, ,hypothetical protein
+NJKLBJNM_01363,CDS,735,lptB_1,3.6.3.-,COG1137,Lipopolysaccharide export system ATP-binding protein LptB
+NJKLBJNM_01364,CDS,729,livF_1,,COG0410,High-affinity branched-chain amino acid transport ATP-binding protein LivF
+NJKLBJNM_01365,CDS,885,livH_1,,COG0559,High-affinity branched-chain amino acid transport system permease protein LivH
+NJKLBJNM_01366,CDS,1092,,, ,hypothetical protein
+NJKLBJNM_01367,CDS,936,menH_1,4.2.99.20, ,2-succinyl-6-hydroxy-2,4-cyclohexadiene-1-carboxylate synthase
+NJKLBJNM_01368,CDS,1869,,, ,hypothetical protein
+NJKLBJNM_01369,CDS,783,bdhA,1.1.1.30, ,D-beta-hydroxybutyrate dehydrogenase
+NJKLBJNM_01370,CDS,1497,,, ,hypothetical protein
+NJKLBJNM_01371,CDS,1542,murA,2.5.1.7,COG0766,UDP-N-acetylglucosamine 1-carboxyvinyltransferase
+NJKLBJNM_01372,CDS,2073,fadJ_3,,COG1024,Fatty acid oxidation complex subunit alpha
+NJKLBJNM_01373,CDS,1212,paaJ,2.3.1.174,COG0183,3-oxoadipyl-CoA/3-oxo-5,6-dehydrosuberyl-CoA thiolase
+NJKLBJNM_01374,CDS,1233,rnd,3.1.13.5,COG0349,Ribonuclease D
+NJKLBJNM_01375,CDS,639,,, ,hypothetical protein
+NJKLBJNM_01376,CDS,1044,hemE,4.1.1.37,COG0407,Uroporphyrinogen decarboxylase
+NJKLBJNM_01377,CDS,924,,, ,hypothetical protein
+NJKLBJNM_01378,CDS,1416,hemY,1.3.3.4,COG1232,Protoporphyrinogen oxidase
+NJKLBJNM_01379,CDS,720,,,COG3253,putative protein/MSMEI_2713
+NJKLBJNM_01380,CDS,912,,, ,hypothetical protein
+NJKLBJNM_01381,CDS,429,msrB,1.8.4.12,COG0229,Peptide methionine sulfoxide reductase MsrB
+NJKLBJNM_01382,CDS,2436,,, ,hypothetical protein
+NJKLBJNM_01383,CDS,1083,ligD_1,,COG1793,Multifunctional non-homologous end joining protein LigD
+NJKLBJNM_01384,CDS,1023,ligC,6.5.1.1,COG1793,DNA ligase C1
+NJKLBJNM_01385,CDS,1161,,, ,hypothetical protein
+NJKLBJNM_01386,CDS,714,,, ,hypothetical protein
+NJKLBJNM_01387,CDS,870,,2.7.4.-,COG2326,Polyphosphate:AMP/ADP phosphotransferase
+NJKLBJNM_01388,CDS,1743,aidB,1.3.99.-,COG1960,Putative acyl-CoA dehydrogenase AidB
+NJKLBJNM_01389,tRNA,74,,, ,tRNA-Gly(gcc)
+NJKLBJNM_01390,tRNA,73,,, ,tRNA-Val(gac)
+NJKLBJNM_01391,tRNA,74,,, ,tRNA-Gly(gcc)
+NJKLBJNM_01392,tRNA,72,,, ,tRNA-Cys(gca)
+NJKLBJNM_01393,tRNA,75,,, ,tRNA-Val(gac)
+NJKLBJNM_01394,CDS,540,,, ,hypothetical protein
+NJKLBJNM_01395,CDS,2382,,, ,hypothetical protein
+NJKLBJNM_01396,CDS,1362,,, ,hypothetical protein
+NJKLBJNM_01397,CDS,1392,papA2,2.3.1.-,COG1020,Trehalose-2-sulfate acyltransferase papA2
+NJKLBJNM_01398,CDS,816,,, ,hypothetical protein
+NJKLBJNM_01399,CDS,405,,, ,hypothetical protein
+NJKLBJNM_01400,CDS,1023,menF,5.4.4.2,,Isochorismate synthase MenF
+NJKLBJNM_01401,CDS,849,ilvE_2,2.6.1.42,COG0115,Branched-chain-amino-acid aminotransferase
+NJKLBJNM_01402,CDS,564,,, ,hypothetical protein
+NJKLBJNM_01403,tRNA,77,,, ,tRNA-Val(cac)
+NJKLBJNM_01404,CDS,636,tag,3.2.2.20,COG2818,DNA-3-methyladenine glycosylase 1
+NJKLBJNM_01405,CDS,273,,, ,hypothetical protein
+NJKLBJNM_01406,CDS,588,ogt_2,2.1.1.63,COG0350,Methylated-DNA--protein-cysteine methyltransferase
+NJKLBJNM_01407,CDS,501,shbA,,,ECF RNA polymerase sigma factor ShbA
+NJKLBJNM_01408,CDS,1137,prmC_2,2.1.1.297,,Release factor glutamine methyltransferase
+NJKLBJNM_01409,CDS,651,,, ,hypothetical protein
+NJKLBJNM_01410,CDS,1119,nifS,2.8.1.7,COG1104,Cysteine desulfurase NifS
+NJKLBJNM_01411,CDS,840,phzF,5.3.3.17,,Trans-2,3-dihydro-3-hydroxyanthranilate isomerase
+NJKLBJNM_01412,CDS,234,,, ,hypothetical protein
+NJKLBJNM_01413,CDS,1686,ybiT,,COG0488,putative ABC transporter ATP-binding protein YbiT
+NJKLBJNM_01414,CDS,1944,,, ,hypothetical protein
+NJKLBJNM_01415,CDS,1419,,, ,hypothetical protein
+NJKLBJNM_01416,CDS,1353,dapE_3,3.5.1.18,,Succinyl-diaminopimelate desuccinylase
+NJKLBJNM_01417,CDS,684,,, ,putative HTH-type transcriptional regulator
+NJKLBJNM_01418,CDS,1290,fadI,2.3.1.16,COG0183,3-ketoacyl-CoA thiolase FadI
+NJKLBJNM_01419,CDS,1338,hcaB_3,1.3.1.87,,3-phenylpropionate-dihydrodiol/cinnamic acid-dihydrodiol dehydrogenase
+NJKLBJNM_01420,CDS,846,,, ,hypothetical protein
+NJKLBJNM_01421,CDS,1389,bglA,3.2.1.21,,Beta-glucosidase A
+NJKLBJNM_01422,CDS,1281,,, ,hypothetical protein
+NJKLBJNM_01423,CDS,366,,, ,hypothetical protein
+NJKLBJNM_01424,CDS,1227,nupX,,COG1972,Putative nucleoside permease NupX
+NJKLBJNM_01425,CDS,723,,, ,hypothetical protein
+NJKLBJNM_01426,CDS,1107,,, ,hypothetical protein
+NJKLBJNM_01427,CDS,2049,thrS,6.1.1.3,COG0441,Threonine--tRNA ligase
+NJKLBJNM_01428,CDS,465,,, ,hypothetical protein
+NJKLBJNM_01429,CDS,708,,, ,hypothetical protein
+NJKLBJNM_01430,CDS,561,,2.7.7.53,COG0537,AP-4-A phosphorylase
+NJKLBJNM_01431,CDS,639,pgsA2_1,2.7.8.-,COG0558,Phosphatidylinositol phosphate synthase
+NJKLBJNM_01432,CDS,948,,2.3.1.265,COG1560,Phosphatidylinositol mannoside acyltransferase
+NJKLBJNM_01433,CDS,1212,pimA,2.4.1.345,COG0438,Phosphatidyl-myo-inositol mannosyltransferase
+NJKLBJNM_01434,CDS,573,,, ,hypothetical protein
+NJKLBJNM_01435,CDS,213,,, ,hypothetical protein
+NJKLBJNM_01436,CDS,1335,ptsJ,,COG1167,Vitamin B6 salvage pathway transcriptional repressor PtsJ
+NJKLBJNM_01437,CDS,900,pdxS,4.3.3.6,COG0214,Pyridoxal 5-phosphate synthase subunit PdxS
+NJKLBJNM_01438,CDS,603,pdxT,4.3.3.6,COG0311,Pyridoxal 5-phosphate synthase subunit PdxT
+NJKLBJNM_01439,CDS,762,, ,COG0217,putative transcriptional regulatory protein/MSMEI_2866
+NJKLBJNM_01440,CDS,534,ruvC,3.1.22.4,COG0817,Crossover junction endodeoxyribonuclease RuvC
+NJKLBJNM_01441,CDS,597,ruvA,3.6.4.12,COG0632,Holliday junction ATP-dependent DNA helicase RuvA
+NJKLBJNM_01442,CDS,1125,ruvB,3.6.4.12,COG2255,Holliday junction ATP-dependent DNA helicase RuvB
+NJKLBJNM_01443,CDS,303,yajC,,COG1862,Sec translocon accessory complex subunit YajC
+NJKLBJNM_01444,CDS,1893,secD,,COG0342,Protein translocase subunit SecD
+NJKLBJNM_01445,CDS,1248,secF,,COG0341,Protein translocase subunit SecF
+NJKLBJNM_01446,CDS,549,apt,2.4.2.7,COG0503,Adenine phosphoribosyltransferase
+NJKLBJNM_01447,CDS,2289,relA,,COG0317,Bifunctional (p)ppGpp synthase/hydrolase RelA
+NJKLBJNM_01448,CDS,1392,,, ,putative protein
+NJKLBJNM_01449,CDS,702,,3.-.-.-, ,putative protein
+NJKLBJNM_01450,CDS,1377,hisS,6.1.1.21,COG0124,Histidine--tRNA ligase
+NJKLBJNM_01451,CDS,636,,, ,hypothetical protein
+NJKLBJNM_01452,CDS,636,,, ,hypothetical protein
+NJKLBJNM_01453,CDS,912,xerD,,COG4974,Tyrosine recombinase XerD
+NJKLBJNM_01454,CDS,888,, ,COG1192,putative protein
+NJKLBJNM_01455,CDS,966,scpA,,Segregation and condensation protein A
+NJKLBJNM_01456,CDS,654,scpB,,COG1386,Segregation and condensation protein B
+NJKLBJNM_01457,CDS,912,,5.4.99.-,COG1187,putative RNA pseudouridine synthase
+NJKLBJNM_01458,CDS,1125,,, ,hypothetical protein
+NJKLBJNM_01459,CDS,699,cmk,2.7.4.25,COG0283,Cytidylate kinase
+NJKLBJNM_01460,CDS,1479,der,,COG1160,GTPase Der
+NJKLBJNM_01461,CDS,1614,moaA,,,GTP 3,8-cyclase
 NJKLBJNM_01463,CDS,786,lgt_1,2.5.1.145,,Phosphatidylglycerol--prolipoprotein diacylglyceryl transferase
 NJKLBJNM_01469,CDS,780,ppgK_1,2.7.1.63,COG1940,Polyphosphate glucokinase
 NJKLBJNM_01470,CDS,627,eda,,COG0800,KHG/KDPG aldolase
 NJKLBJNM_01471,CDS,1815,edd,4.2.1.12,COG0129,Phosphogluconate dehydratase
 NJKLBJNM_01472,CDS,1458,zwf,1.1.1.49,COG0364,Glucose-6-phosphate 1-dehydrogenase
 NJKLBJNM_01473,CDS,1182,mlc,,COG1940,Protein mlc
-NJKLBJNM_01474,CDS,1695,malL_1,3.2.1.10,COG0366,"Oligo-1,6-glucosidase"
+NJKLBJNM_01474,CDS,1695,malL_1,3.2.1.10,COG0366,Oligo-1,6-glucosidase
 NJKLBJNM_01475,CDS,1014,cytR_1,,COG1609,HTH-type transcriptional repressor CytR
 NJKLBJNM_01477,CDS,279,clpP2_1,3.4.21.92,COG0740,ATP-dependent Clp protease proteolytic subunit 2
 NJKLBJNM_01478,CDS,630,clpP1_1,3.4.21.92,COG0740,ATP-dependent Clp protease proteolytic subunit 1
@@ -170,7 +170,7 @@ NJKLBJNM_01488,CDS,960,proP,,,Proline/betaine transporter
 NJKLBJNM_01490,CDS,555,yhbO,3.1.2.-,COG0693,Protein/nucleic acid deglycase 2
 NJKLBJNM_01492,CDS,390,ectC,4.2.1.108,,L-ectoine synthase
 NJKLBJNM_01493,CDS,1281,ectB,2.6.1.76,,Diaminobutyrate--2-oxoglutarate transaminase
-NJKLBJNM_01494,CDS,516,ectA,2.3.1.178,,"L-2,4-diaminobutyric acid acetyltransferase"
+NJKLBJNM_01494,CDS,516,ectA,2.3.1.178,,L-2,4-diaminobutyric acid acetyltransferase
 NJKLBJNM_01496,CDS,606,pgsA2_2,2.7.8.41,COG0558,Putative cardiolipin synthase
 NJKLBJNM_01500,CDS,390,gcvH,,COG0509,Glycine cleavage system H protein
 NJKLBJNM_01505,CDS,2928,gcvP,1.4.4.2,COG0403,putative glycine dehydrogenase (decarboxylating)
@@ -182,7 +182,7 @@ NJKLBJNM_01513,CDS,621,yciO,,COG0009,putative protein YciO
 NJKLBJNM_01514,CDS,1191,kbl,2.3.1.29,COG0156,2-amino-3-ketobutyrate coenzyme A ligase
 NJKLBJNM_01515,CDS,1041,tdh,1.1.1.103,COG1063,L-threonine 3-dehydrogenase
 NJKLBJNM_01518,CDS,1128,rlmC,2.1.1.189,COG2265,23S rRNA (uracil(747)-C(5))-methyltransferase RlmC
-NJKLBJNM_01520,CDS,1629,fadD3,6.2.1.41,COG0318,"3-[(3aS,4S,7aS)-7a-methyl-1,5-dioxo-octahydro-1H-inden-4-yl]propanoyl:CoA ligase"
+NJKLBJNM_01520,CDS,1629,fadD3,6.2.1.41,COG0318,3-[(3aS,4S,7aS)-7a-methyl-1,5-dioxo-octahydro-1H-inden-4-yl]propanoyl:CoA ligase
 NJKLBJNM_01522,CDS,1203,yfmO,,,Multidrug efflux protein YfmO
 NJKLBJNM_01524,CDS,2016,betT,,COG1292,High-affinity choline transport protein
 NJKLBJNM_01525,CDS,1761,betA,1.1.99.1,,Oxygen-dependent choline dehydrogenase
@@ -223,7 +223,7 @@ NJKLBJNM_01594,CDS,717,pspA,3.1.3.3,COG0406,Phosphoserine phosphatase 1
 NJKLBJNM_01595,CDS,1005,corA,,COG0598,Cobalt/magnesium transport protein CorA
 NJKLBJNM_01598,CDS,1350,dapE_4,3.5.1.18,,putative succinyl-diaminopimelate desuccinylase
 NJKLBJNM_01753,CDS,699,lnrK,,COG2197,Transcriptional regulatory protein LnrK
-NJKLBJNM_01818,CDS,630,COQ3,2.1.1.222,,"Ubiquinone biosynthesis O-methyltransferase, mitochondrial"
+NJKLBJNM_01818,CDS,630,COQ3,2.1.1.222,,Ubiquinone biosynthesis O-methyltransferase, mitochondrial
 NJKLBJNM_01856,CDS,969,aes_3,3.1.1.-,,Acetyl esterase
 NJKLBJNM_01857,CDS,1203,dap_2,3.4.11.19,,D-aminopeptidase
 NJKLBJNM_01884,CDS,798,btuD_10,7.6.2.8,,Vitamin B12 import ATP-binding protein BtuD
@@ -235,7 +235,7 @@ NJKLBJNM_01985,CDS,927,lnrL_2,3.6.3.-,COG1131,Linearmycin resistance ATP-binding
 NJKLBJNM_01991,CDS,879,hcaB_5,1.3.1.87,,3-phenylpropionate-dihydrodiol/cinnamic acid-dihydrodiol dehydrogenase
 NJKLBJNM_01996,CDS,303,clgR,,,Transcriptional regulator ClgR
 NJKLBJNM_01997,CDS,495,cinA,,COG1058,Putative competence-damage inducible protein
-NJKLBJNM_02025,CDS,1968,mrdA,3.4.16.4,COG0768,"Peptidoglycan D,D-transpeptidase MrdA"
+NJKLBJNM_02025,CDS,1968,mrdA,3.4.16.4,COG0768,Peptidoglycan D,D-transpeptidase MrdA
 NJKLBJNM_02053,CDS,675,clpP2_2,3.4.21.92,COG0740,ATP-dependent Clp protease proteolytic subunit 2
 NJKLBJNM_02415,CDS,303,whiB3,,,Redox-responsive transcriptional regulator WhiB3
 NJKLBJNM_02417,CDS,696,ygeA,5.1.1.10,COG1794,Broad specificity amino-acid racemase YgeA
@@ -258,7 +258,7 @@ NJKLBJNM_02439,CDS,966,coaA,2.7.1.33,COG1072,Pantothenate kinase
 NJKLBJNM_02445,CDS,951,mca_1,3.5.1.115,COG2120,Mycothiol S-conjugate amidase
 NJKLBJNM_02447,CDS,495,greA,,COG0782,Transcription elongation factor GreA
 NJKLBJNM_02449,CDS,702,msrA,1.8.4.11,COG0225,Peptide methionine sulfoxide reductase MsrA
-NJKLBJNM_02452,CDS,2013,fadH_2,1.3.1.34,COG0446,"2,4-dienoyl-CoA reductase"
+NJKLBJNM_02452,CDS,2013,fadH_2,1.3.1.34,COG0446,2,4-dienoyl-CoA reductase
 NJKLBJNM_02456,CDS,1182,metB,2.5.1.48,COG0626,Cystathionine gamma-synthase
 NJKLBJNM_02457,CDS,1383,cbs,4.2.1.22,COG0031,Putative cystathionine beta-synthase
 NJKLBJNM_02461,CDS,1002,ppx2,3.6.1.11,COG0248,Exopolyphosphatase 2
@@ -285,7 +285,7 @@ NJKLBJNM_02500,CDS,1800,metG,6.1.1.10,COG0073,Methionine--tRNA ligase
 NJKLBJNM_02506,CDS,750,frdB,1.3.5.1,COG0479,Fumarate reductase iron-sulfur subunit
 NJKLBJNM_02507,CDS,1992,frdA,1.3.5.4,,Fumarate reductase flavoprotein subunit
 NJKLBJNM_02509,CDS,690,speE,2.5.1.16,,Polyamine aminopropyltransferase
-NJKLBJNM_02510,CDS,1332,hemL,5.4.3.8,COG0001,"Glutamate-1-semialdehyde 2,1-aminomutase"
+NJKLBJNM_02510,CDS,1332,hemL,5.4.3.8,COG0001,Glutamate-1-semialdehyde 2,1-aminomutase
 NJKLBJNM_02512,CDS,924,hemB,4.2.1.24,COG0113,Delta-aminolevulinic acid dehydratase
 NJKLBJNM_02513,CDS,1638,cysG,4.99.1.4,,Siroheme synthase
 NJKLBJNM_02514,CDS,960,hemC,2.5.1.61,COG0181,Porphobilinogen deaminase
@@ -438,142 +438,142 @@ NJKLBJNM_02831,CDS,282,ricR,,COG1937,Copper-sensing transcriptional repressor Ri
 NJKLBJNM_02832,CDS,2217,copA_1,7.2.2.8,COG2217,Copper-exporting P-type ATPase
 NJKLBJNM_02834,CDS,918,yxlF,3.6.3.-,COG1131,putative ABC transporter ATP-binding protein YxlF
 NJKLBJNM_02835,CDS,699,liaR_2,,COG2197,Transcriptional regulatory protein LiaR
-NJKLBJNM_02838,CDS,810,rlmB_2,2.1.1.185,,"23S rRNA (guanosine-2-O-)-methyltransferase RlmB
-NJKLBJNM_02839	CDS	684				hypothetical protein
-NJKLBJNM_02840	CDS	1659	expZ		COG0488	Nucleotide-binding protein ExpZ
-NJKLBJNM_02841	CDS	810				hypothetical protein
-NJKLBJNM_02842	CDS	792		3.1.3.-		Putative phosphatase
-NJKLBJNM_02843	CDS	867				hypothetical protein
-NJKLBJNM_02844	CDS	555	pyrE_2	2.4.2.10	COG0461	Orotate phosphoribosyltransferase
-NJKLBJNM_02845	CDS	771				hypothetical protein
-NJKLBJNM_02846	CDS	756				hypothetical protein
-NJKLBJNM_02847	CDS	840	xthA	3.1.11.2	COG0708	Exodeoxyribonuclease III
-NJKLBJNM_02848	CDS	897	menH_4	4.2.99.20		2-succinyl-6-hydroxy-2,4-cyclohexadiene-1-carboxylate synthase
-NJKLBJNM_02849	CDS	1770	mdtD_2			Putative multidrug resistance protein MdtD
-NJKLBJNM_02850	CDS	693				hypothetical protein
-NJKLBJNM_02851	CDS	1008	kmo	1.14.13.9		Kynurenine 3-monooxygenase
-NJKLBJNM_02852	CDS	2574	clpB		COG0542	Chaperone protein ClpB
-NJKLBJNM_02853	CDS	1500	tagU_4	2.7.8.-		Polyisoprenyl-teichoic acid--peptidoglycan teichoic acid transferase TagU
-NJKLBJNM_02854	CDS	267				hypothetical protein
-NJKLBJNM_02855	CDS	462				putative protein
-NJKLBJNM_02856	CDS	1203			COG0520	putative protein
-NJKLBJNM_02857	CDS	579				hypothetical protein
-NJKLBJNM_02858	CDS	903				hypothetical protein
-NJKLBJNM_02859	CDS	456	hspR		COG0789	Putative heat shock protein HspR
-NJKLBJNM_02860	CDS	1023	dnaJ		COG0484	Chaperone protein DnaJ
-NJKLBJNM_02861	CDS	669	grpE			Protein GrpE
-NJKLBJNM_02862	CDS	1887	dnaK		COG0443	Chaperone protein DnaK
-NJKLBJNM_02863	CDS	363				hypothetical protein
-NJKLBJNM_02864	CDS	582				hypothetical protein
-NJKLBJNM_02865	CDS	708				hypothetical protein
-NJKLBJNM_02866	CDS	351				hypothetical protein
-NJKLBJNM_02867	CDS	210				hypothetical protein
-NJKLBJNM_02868	CDS	987				hypothetical protein
-NJKLBJNM_02869	CDS	2250	copA_2	7.2.2.8	COG2217	Copper-exporting P-type ATPase
-NJKLBJNM_02870	CDS	591	mug	3.2.2.28	COG3663	G/U mismatch-specific DNA glycosylase
-NJKLBJNM_02871	CDS	468				hypothetical protein
-NJKLBJNM_02872	CDS	534				hypothetical protein
-NJKLBJNM_02873	CDS	546				hypothetical protein
-NJKLBJNM_02874	CDS	747	narX		COG2180	Nitrate reductase-like protein NarX
-NJKLBJNM_02875	CDS	750				hypothetical protein
-NJKLBJNM_02876	CDS	1680	narY	1.7.5.1	COG1140	Respiratory nitrate reductase 2 beta chain
-NJKLBJNM_02877	CDS	3717	narG	1.7.5.1	COG5013	Nitrate reductase alpha subunit
-NJKLBJNM_02878	CDS	1248	narK2		COG2223	putative nitrate/nitrite transporter NarK2
-NJKLBJNM_02879	CDS	810	fabG_5	1.1.1.100		3-oxoacyl-[acyl-carrier-protein] reductase FabG
-NJKLBJNM_02880	CDS	549				hypothetical protein
-NJKLBJNM_02881	CDS	546		2.3.1.-	COG1670	Acetyltransferase
-NJKLBJNM_02882	CDS	2673				hypothetical protein
-NJKLBJNM_02883	CDS	360				hypothetical protein
-NJKLBJNM_02884	CDS	444				hypothetical protein
-NJKLBJNM_02885	CDS	891	nadK	2.7.1.23		NAD kinase
-NJKLBJNM_02886	CDS	1041				hypothetical protein
-NJKLBJNM_02887	CDS	705				hypothetical protein
-NJKLBJNM_02888	CDS	504				hypothetical protein
-NJKLBJNM_02889	CDS	723				hypothetical protein
-NJKLBJNM_02890	CDS	1206	tetA			Tetracycline resistance protein, class B
-NJKLBJNM_02891	CDS	705				hypothetical protein
-NJKLBJNM_02892	CDS	588				hypothetical protein
-NJKLBJNM_02893	CDS	768				hypothetical protein
-NJKLBJNM_02894	CDS	507				hypothetical protein
-NJKLBJNM_02895	CDS	765				hypothetical protein
-NJKLBJNM_02896	CDS	408				hypothetical protein
-NJKLBJNM_02897	CDS	1689				hypothetical protein
-NJKLBJNM_02898	CDS	756				hypothetical protein
-NJKLBJNM_02899	CDS	504				hypothetical protein
-NJKLBJNM_02900	CDS	768				hypothetical protein
-NJKLBJNM_02901	CDS	798				hypothetical protein
-NJKLBJNM_02902	CDS	1629				hypothetical protein
-NJKLBJNM_02903	CDS	876				hypothetical protein
-NJKLBJNM_02904	CDS	918				hypothetical protein
-NJKLBJNM_02905	CDS	219				hypothetical protein
-NJKLBJNM_02906	CDS	468				hypothetical protein
-NJKLBJNM_02907	CDS	438				hypothetical protein
-NJKLBJNM_02908	CDS	495				hypothetical protein
-NJKLBJNM_02909	CDS	3201				hypothetical protein
-NJKLBJNM_02910	CDS	927				hypothetical protein
-NJKLBJNM_02911	CDS	564				hypothetical protein
-NJKLBJNM_02912	CDS	2223	btuD_12	7.6.2.8		Vitamin B12 import ATP-binding protein BtuD
-NJKLBJNM_02913	CDS	645	ykoE		COG4721	Putative HMP/thiamine permease protein YkoE
-NJKLBJNM_02914	CDS	297				hypothetical protein
-NJKLBJNM_02915	CDS	978	ppsC	2.3.1.41		Phthiocerol synthesis polyketide synthase type I PpsC
-NJKLBJNM_02916	CDS	690	ytrE_2		COG1136	ABC transporter ATP-binding protein YtrE
-NJKLBJNM_02917	CDS	840	lolD	3.6.3.-	COG1136	Lipoprotein-releasing system ATP-binding protein LolD
-NJKLBJNM_02918	CDS	3045				hypothetical protein
-NJKLBJNM_02919	CDS	1665		1.3.99.-	COG3573	KsdD-like steroid dehydrogenase
-NJKLBJNM_02920	CDS	1524				hypothetical protein
-NJKLBJNM_02921	CDS	1455	gap2	1.2.1.-		Glyceraldehyde-3-phosphate dehydrogenase-like protein
-NJKLBJNM_02922	CDS	894				hypothetical protein
-NJKLBJNM_02923	CDS	1236				hypothetical protein
-NJKLBJNM_02924	CDS	243				hypothetical protein
-NJKLBJNM_02925	CDS	1314		1.3.1.-	COG3268	Putative trans-acting enoyl reductase
-NJKLBJNM_02926	CDS	1095	mshD_3	2.3.1.189		Mycothiol acetyltransferase
-NJKLBJNM_02927	CDS	810	caiD	4.2.1.149		Carnitinyl-CoA dehydratase
-NJKLBJNM_02928	CDS	810				hypothetical protein
-NJKLBJNM_02929	CDS	477				hypothetical protein
-NJKLBJNM_02930	CDS	2523				hypothetical protein
-NJKLBJNM_02931	CDS	1158	ydhP		COG2814	Inner membrane transport protein YdhP
-NJKLBJNM_02932	CDS	549				hypothetical protein
-NJKLBJNM_02933	CDS	2718	ppdK	2.7.9.1	COG0574	Pyruvate, phosphate dikinase
-NJKLBJNM_02934	CDS	225				hypothetical protein
-NJKLBJNM_02935	CDS	903	gltC_3			HTH-type transcriptional regulator GltC
-NJKLBJNM_02936	CDS	582				hypothetical protein
-NJKLBJNM_02937	CDS	411				hypothetical protein
-NJKLBJNM_02938	CDS	2103				hypothetical protein
-NJKLBJNM_02939	CDS	537				hypothetical protein
-NJKLBJNM_02940	CDS	3384				hypothetical protein
-NJKLBJNM_02941	CDS	1194	fic	2.7.7.-	COG3177	Protein adenylyltransferase SoFic
-NJKLBJNM_02942	CDS	189				hypothetical protein
-NJKLBJNM_02943	CDS	906	mrr		COG1715	Mrr restriction system protein
-NJKLBJNM_02944	CDS	744				hypothetical protein
-NJKLBJNM_02945	CDS	2109	nadE_2	6.3.5.1	COG0171	Glutamine-dependent NAD(+) synthetase
-NJKLBJNM_02946	CDS	309				hypothetical protein
-NJKLBJNM_02947	CDS	1467			COG0369	Bifunctional cytochrome P450/NADPH--P450 reductase
-NJKLBJNM_02948	CDS	1296				hypothetical protein
-NJKLBJNM_02949	CDS	1566	lcfB_7	6.2.1.3	COG0318	Long-chain-fatty-acid--CoA ligase
-NJKLBJNM_02950	CDS	1353	davT_1	2.6.1.48	COG0160	5-aminovalerate aminotransferase DavT
-NJKLBJNM_02951	CDS	831	dkgB	1.1.1.274		2,5-diketo-D-gluconic acid reductase B
-NJKLBJNM_02952	CDS	993				hypothetical protein
-NJKLBJNM_02953	CDS	852	sadH	1.-.-.-		Putative oxidoreductase SadH
-NJKLBJNM_02954	CDS	1656		1.14.13.-	COG2072	Baeyer-Villiger monooxygenase
-NJKLBJNM_02955	CDS	822	rclA		COG1249	putative pyridine nucleotide-disulfide oxidoreductase RclA
-NJKLBJNM_02956	CDS	657				hypothetical protein
-NJKLBJNM_02957	CDS	261				hypothetical protein
-NJKLBJNM_02958	CDS	462				hypothetical protein
-NJKLBJNM_02959	CDS	2601				hypothetical protein
-NJKLBJNM_02960	CDS	831			COG0596	putative protein
-NJKLBJNM_02961	CDS	429				hypothetical protein
-NJKLBJNM_02962	CDS	1680	ahpF	1.8.1.-	COG3634	Alkyl hydroperoxide reductase subunit F
-NJKLBJNM_02963	CDS	567	ahpC	1.11.1.15	COG0450	Alkyl hydroperoxide reductase C
-NJKLBJNM_02964	CDS	1164		3.4.21.-		Serine protease 1
-NJKLBJNM_02965	CDS	429				hypothetical protein
-NJKLBJNM_02966	CDS	630	dinG_2	3.1.-.-		3-5 exonuclease DinG
-NJKLBJNM_02967	CDS	1878	IMPDH_2	1.1.1.205		Inosine-5-monophosphate dehydrogenase"
+NJKLBJNM_02838,CDS,810,rlmB_2,2.1.1.185,,"23S rRNA (guanosine-2-O-)-methyltransferase RlmB"
+NJKLBJNM_02839,CDS,684,,,"hypothetical protein"
+NJKLBJNM_02840,CDS,1659,expZ,,COG0488,Nucleotide-binding protein ExpZ
+NJKLBJNM_02841,CDS,810,,,"hypothetical protein"
+NJKLBJNM_02842,CDS,792,,3.1.3.-,,Putative phosphatase
+NJKLBJNM_02843,CDS,867,,,"hypothetical protein"
+NJKLBJNM_02844,CDS,555,pyrE_2,2.4.2.10,COG0461,Orotate phosphoribosyltransferase
+NJKLBJNM_02845,CDS,771,,,"hypothetical protein"
+NJKLBJNM_02846,CDS,756,,,"hypothetical protein"
+NJKLBJNM_02847,CDS,840,xthA,3.1.11.2,COG0708,Exodeoxyribonuclease III
+NJKLBJNM_02848,CDS,897,menH_4,4.2.99.20,,2-succinyl-6-hydroxy-2,4-cyclohexadiene-1-carboxylate synthase
+NJKLBJNM_02849,CDS,1770,mdtD_2,,,"Putative multidrug resistance protein MdtD"
+NJKLBJNM_02850,CDS,693,,,"hypothetical protein"
+NJKLBJNM_02851,CDS,1008,kmo,1.14.13.9,,Kynurenine 3-monooxygenase
+NJKLBJNM_02852,CDS,2574,clpB,,COG0542,Chaperone protein ClpB
+NJKLBJNM_02853,CDS,1500,tagU_4,2.7.8.-,,Polyisoprenyl-teichoic acid--peptidoglycan teichoic acid transferase TagU
+NJKLBJNM_02854,CDS,267,,,"hypothetical protein"
+NJKLBJNM_02855,CDS,462,,,"putative protein"
+NJKLBJNM_02856,CDS,1203,, ,COG0520,putative protein
+NJKLBJNM_02857,CDS,579,,,"hypothetical protein"
+NJKLBJNM_02858,CDS,903,,,"hypothetical protein"
+NJKLBJNM_02859,CDS,456,hspR,,COG0789,Putative heat shock protein HspR
+NJKLBJNM_02860,CDS,1023,dnaJ,,COG0484,Chaperone protein DnaJ
+NJKLBJNM_02861,CDS,669,grpE,, ,Protein GrpE
+NJKLBJNM_02862,CDS,1887,dnaK,,COG0443,Chaperone protein DnaK
+NJKLBJNM_02863,CDS,363,,,"hypothetical protein"
+NJKLBJNM_02864,CDS,582,,,"hypothetical protein"
+NJKLBJNM_02865,CDS,708,,,"hypothetical protein"
+NJKLBJNM_02866,CDS,351,,,"hypothetical protein"
+NJKLBJNM_02867,CDS,210,,,"hypothetical protein"
+NJKLBJNM_02868,CDS,987,,,"hypothetical protein"
+NJKLBJNM_02869,CDS,2250,copA_2,7.2.2.8,COG2217,Copper-exporting P-type ATPase
+NJKLBJNM_02870,CDS,591,mug,3.2.2.28,COG3663,G/U mismatch-specific DNA glycosylase
+NJKLBJNM_02871,CDS,468,,,"hypothetical protein"
+NJKLBJNM_02872,CDS,534,,,"hypothetical protein"
+NJKLBJNM_02873,CDS,546,,,"hypothetical protein"
+NJKLBJNM_02874,CDS,747,narX,,COG2180,Nitrate reductase-like protein NarX
+NJKLBJNM_02875,CDS,750,,,"hypothetical protein"
+NJKLBJNM_02876,CDS,1680,narY,1.7.5.1,COG1140,Respiratory nitrate reductase 2 beta chain
+NJKLBJNM_02877,CDS,3717,narG,1.7.5.1,COG5013,Nitrate reductase alpha subunit
+NJKLBJNM_02878,CDS,1248,narK2,,COG2223,putative nitrate/nitrite transporter NarK2
+NJKLBJNM_02879,CDS,810,fabG_5,1.1.1.100,,3-oxoacyl-[acyl-carrier-protein] reductase FabG
+NJKLBJNM_02880,CDS,549,,,"hypothetical protein"
+NJKLBJNM_02881,CDS,546,,2.3.1.-,COG1670,Acetyltransferase
+NJKLBJNM_02882,CDS,2673,,,"hypothetical protein"
+NJKLBJNM_02883,CDS,360,,,"hypothetical protein"
+NJKLBJNM_02884,CDS,444,,,"hypothetical protein"
+NJKLBJNM_02885,CDS,891,nadK,2.7.1.23,,NAD kinase
+NJKLBJNM_02886,CDS,1041,,,"hypothetical protein"
+NJKLBJNM_02887,CDS,705,,,"hypothetical protein"
+NJKLBJNM_02888,CDS,504,,,"hypothetical protein"
+NJKLBJNM_02889,CDS,723,,,"hypothetical protein"
+NJKLBJNM_02890,CDS,1206,tetA,, ,Tetracycline resistance protein, class B
+NJKLBJNM_02891,CDS,705,,,"hypothetical protein"
+NJKLBJNM_02892,CDS,588,,,"hypothetical protein"
+NJKLBJNM_02893,CDS,768,,,"hypothetical protein"
+NJKLBJNM_02894,CDS,507,,,"hypothetical protein"
+NJKLBJNM_02895,CDS,765,,,"hypothetical protein"
+NJKLBJNM_02896,CDS,408,,,"hypothetical protein"
+NJKLBJNM_02897,CDS,1689,,,"hypothetical protein"
+NJKLBJNM_02898,CDS,756,,,"hypothetical protein"
+NJKLBJNM_02899,CDS,504,,,"hypothetical protein"
+NJKLBJNM_02900,CDS,768,,,"hypothetical protein"
+NJKLBJNM_02901,CDS,798,,,"hypothetical protein"
+NJKLBJNM_02902,CDS,1629,,,"hypothetical protein"
+NJKLBJNM_02903,CDS,876,,,"hypothetical protein"
+NJKLBJNM_02904,CDS,918,,,"hypothetical protein"
+NJKLBJNM_02905,CDS,219,,,"hypothetical protein"
+NJKLBJNM_02906,CDS,468,,,"hypothetical protein"
+NJKLBJNM_02907,CDS,438,,,"hypothetical protein"
+NJKLBJNM_02908,CDS,495,,,"hypothetical protein"
+NJKLBJNM_02909,CDS,3201,,,"hypothetical protein"
+NJKLBJNM_02910,CDS,927,,,"hypothetical protein"
+NJKLBJNM_02911,CDS,564,,,"hypothetical protein"
+NJKLBJNM_02912,CDS,2223,btuD_12,7.6.2.8,,Vitamin B12 import ATP-binding protein BtuD
+NJKLBJNM_02913,CDS,645,ykoE,,COG4721,Putative HMP/thiamine permease protein YkoE
+NJKLBJNM_02914,CDS,297,,,"hypothetical protein"
+NJKLBJNM_02915,CDS,978,ppsC,2.3.1.41,,Phthiocerol synthesis polyketide synthase type I PpsC
+NJKLBJNM_02916,CDS,690,ytrE_2,,COG1136,ABC transporter ATP-binding protein YtrE
+NJKLBJNM_02917,CDS,840,lolD,3.6.3.-,COG1136,Lipoprotein-releasing system ATP-binding protein LolD
+NJKLBJNM_02918,CDS,3045,,,"hypothetical protein"
+NJKLBJNM_02919,CDS,1665,,1.3.99.-,COG3573,KsdD-like steroid dehydrogenase
+NJKLBJNM_02920,CDS,1524,,,"hypothetical protein"
+NJKLBJNM_02921,CDS,1455,gap2,1.2.1.-,,Glyceraldehyde-3-phosphate dehydrogenase-like protein
+NJKLBJNM_02922,CDS,894,,,"hypothetical protein"
+NJKLBJNM_02923,CDS,1236,,,"hypothetical protein"
+NJKLBJNM_02924,CDS,243,,,"hypothetical protein"
+NJKLBJNM_02925,CDS,1314,,1.3.1.-,COG3268,Putative trans-acting enoyl reductase
+NJKLBJNM_02926,CDS,1095,mshD_3,2.3.1.189,,Mycothiol acetyltransferase
+NJKLBJNM_02927,CDS,810,caiD,4.2.1.149,,Carnitinyl-CoA dehydratase
+NJKLBJNM_02928,CDS,810,,,"hypothetical protein"
+NJKLBJNM_02929,CDS,477,,,"hypothetical protein"
+NJKLBJNM_02930,CDS,2523,,,"hypothetical protein"
+NJKLBJNM_02931,CDS,1158,ydhP,,COG2814,Inner membrane transport protein YdhP
+NJKLBJNM_02932,CDS,549,,,"hypothetical protein"
+NJKLBJNM_02933,CDS,2718,ppdK,2.7.9.1,COG0574,Pyruvate, phosphate dikinase
+NJKLBJNM_02934,CDS,225,,,"hypothetical protein"
+NJKLBJNM_02935,CDS,903,gltC_3,, ,HTH-type transcriptional regulator GltC
+NJKLBJNM_02936,CDS,582,,,"hypothetical protein"
+NJKLBJNM_02937,CDS,411,,,"hypothetical protein"
+NJKLBJNM_02938,CDS,2103,,,"hypothetical protein"
+NJKLBJNM_02939,CDS,537,,,"hypothetical protein"
+NJKLBJNM_02940,CDS,3384,,,"hypothetical protein"
+NJKLBJNM_02941,CDS,1194,fic,2.7.7.-,COG3177,Protein adenylyltransferase SoFic
+NJKLBJNM_02942,CDS,189,,,"hypothetical protein"
+NJKLBJNM_02943,CDS,906,mrr,,COG1715,Mrr restriction system protein
+NJKLBJNM_02944,CDS,744,,,"hypothetical protein"
+NJKLBJNM_02945,CDS,2109,nadE_2,6.3.5.1,COG0171,Glutamine-dependent NAD(+) synthetase
+NJKLBJNM_02946,CDS,309,,,"hypothetical protein"
+NJKLBJNM_02947,CDS,1467,, ,COG0369,Bifunctional cytochrome P450/NADPH--P450 reductase
+NJKLBJNM_02948,CDS,1296,,,"hypothetical protein"
+NJKLBJNM_02949,CDS,1566,lcfB_7,6.2.1.3,COG0318,Long-chain-fatty-acid--CoA ligase
+NJKLBJNM_02950,CDS,1353,davT_1,2.6.1.48,COG0160,5-aminovalerate aminotransferase DavT
+NJKLBJNM_02951,CDS,831,dkgB,1.1.1.274,,2,5-diketo-D-gluconic acid reductase B
+NJKLBJNM_02952,CDS,993,,,"hypothetical protein"
+NJKLBJNM_02953,CDS,852,sadH,1.-.-.-,,Putative oxidoreductase SadH
+NJKLBJNM_02954,CDS,1656,,1.14.13.-,COG2072,Baeyer-Villiger monooxygenase
+NJKLBJNM_02955,CDS,822,rclA,,COG1249,putative pyridine nucleotide-disulfide oxidoreductase RclA
+NJKLBJNM_02956,CDS,657,,,"hypothetical protein"
+NJKLBJNM_02957,CDS,261,,,"hypothetical protein"
+NJKLBJNM_02958,CDS,462,,,"hypothetical protein"
+NJKLBJNM_02959,CDS,2601,,,"hypothetical protein"
+NJKLBJNM_02960,CDS,831,, ,COG0596,putative protein
+NJKLBJNM_02961,CDS,429,,,"hypothetical protein"
+NJKLBJNM_02962,CDS,1680,ahpF,1.8.1.-,COG3634,Alkyl hydroperoxide reductase subunit F
+NJKLBJNM_02963,CDS,567,ahpC,1.11.1.15,COG0450,Alkyl hydroperoxide reductase C
+NJKLBJNM_02964,CDS,1164,,3.4.21.-,,Serine protease 1
+NJKLBJNM_02965,CDS,429,,,"hypothetical protein"
+NJKLBJNM_02966,CDS,630,dinG_2,3.1.-.-,,3-5 exonuclease DinG
+NJKLBJNM_02967,CDS,1878,IMPDH_2,1.1.1.205,,Inosine-5-monophosphate dehydrogenase
 NJKLBJNM_02968,CDS,1503,nfdA,3.5.1.91,,N-substituted formamide deformylase
-NJKLBJNM_02969,CDS,561,mtnN,3.2.2.9,,"5-methylthioadenosine/S-adenosylhomocysteine nucleosidase
-NJKLBJNM_02970	CDS	417				hypothetical protein
-NJKLBJNM_02971	CDS	1401	fumC	4.2.1.2	COG0114	Fumarate hydratase class II
-NJKLBJNM_02972	CDS	231				hypothetical protein
-NJKLBJNM_02973	CDS	576	fas6	3.2.2.-		Cytokinin riboside 5-monophosphate phosphoribohydrolase"
+NJKLBJNM_02969,CDS,561,mtnN,3.2.2.9,,"5-methylthioadenosine/S-adenosylhomocysteine nucleosidase"
+NJKLBJNM_02970,CDS,417,,,"hypothetical protein"
+NJKLBJNM_02971,CDS,1401,fumC,4.2.1.2,COG0114,Fumarate hydratase class II
+NJKLBJNM_02972,CDS,231,,,"hypothetical protein"
+NJKLBJNM_02973,CDS,576,fas6,3.2.2.-,,Cytokinin riboside 5-monophosphate phosphoribohydrolase
 NJKLBJNM_02974,CDS,1344,lgoT,,,putative L-galactonate transporter
 NJKLBJNM_02975,CDS,600,betI_4,,,HTH-type transcriptional regulator BetI
 NJKLBJNM_02977,CDS,756,fatE,7.2.2.-,COG4604,Petrobactin import ATP-binding protein FatE

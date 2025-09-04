@@ -37,15 +37,40 @@ library(sybil)
 library(sybilSBML)
 library(glpkAPI)
 library(ggplot2)
-model <- sybilSBML::readSBMLmod("Downloads/Mada106.xml")
+#systems biology markup language interpreter
+#this is taking the metabolic reactions created by gapseq and pulling them into the environment
+#this reads the SBML files to use in constraint based modeling
+#SBML describes:
+# - Species (metabolites, proteins, RNA)
+# - Reactions (biochemical reactions or transport processes)
+# - Compartments (cytoplasm, mitochondria, etc.)
+# - Kinetic laws or constraints (reaction rates, bounds)
+# - Gene-reaction associations
+
+#what this is doing is constraint based metabolic modeling or flux balance analysis
+#flux balance analysis is the 
+model <- sybilSBML::readSBMLmod("gapseq.mada85/Mada85.xml")
+
+#check the model summary
+model
+
+#optimize the model for the entire components
 result <- optimizeProb(model)
+
+sybil::react_name(model)
 
 
 #check flux balance analysis
 # Objective value (e.g., growth rate)
+# the objective value is the value of the objective function (usually growth rate) at the optimal solution given all constraints.
 print(paste("Objective value:", result@lp_obj))
 
+
+# Convert
+flux_vector <- fluxes(result)
+
 # Convert sparse matrix to numeric vector
+# sparse vector just saves on space
 flux_vector_num <- as.numeric(flux_vector)
 
 # Now create data frame

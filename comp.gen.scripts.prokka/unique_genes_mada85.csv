@@ -38,8 +38,8 @@
 "1003","LNFNCACK_01267","CDS",510,"ung_2","3.2.2.27","","Uracil-DNA glycosylase"
 "1053","LNFNCACK_01317","CDS",1041,"yqjG","1.8.5.7","COG0435","Glutathionyl-hydroquinone reductase YqjG"
 "1113","LNFNCACK_01377","CDS",876,"cysQ","3.1.3.7","","3(2),5-bisphosphate nucleotidase CysQ
-LNFNCACK_01378	CDS	300				hypothetical protein
-LNFNCACK_01379	CDS	483	dut	3.6.1.23		Deoxyuridine 5-triphosphate nucleotidohydrolase"
+,"LNFNCACK_01378",	"CDS"	300,				hypothetical protein
+,"LNFNCACK_01379",	"CDS"	483,	"dut",	3.6.1.23,		Deoxyuridine 5-triphosphate nucleotidohydrolase"
 "1117","LNFNCACK_01383","CDS",684,"trkA_1","","COG0569","Trk system potassium uptake protein TrkA"
 "1118","LNFNCACK_01384","CDS",651,"trkA_2","","COG0569","Trk system potassium uptake protein TrkA"
 "1120","LNFNCACK_01386","CDS",1203,"rlmCD","2.1.1.189","COG2265","23S rRNA (uracil-C(5))-methyltransferase RlmCD"
@@ -80,8 +80,8 @@ LNFNCACK_01379	CDS	483	dut	3.6.1.23		Deoxyuridine 5-triphosphate nucleotidohydro
 "1196","LNFNCACK_01462","CDS",639,"pgsA2_1","2.7.8.-","COG0558","Phosphatidylinositol phosphate synthase"
 "1198","LNFNCACK_01464","CDS",1212,"pimA","2.4.1.345","COG0438","Phosphatidyl-myo-inositol mannosyltransferase"
 "1201","LNFNCACK_01467","CDS",1335,"ptsJ","","COG1167","Vitamin B6 salvage pathway transcriptional repressor PtsJ"
-"1202","LNFNCACK_01468","CDS",900,"pdxS","4.3.3.6","COG0214","Pyridoxal 5-phosphate synthase subunit PdxS
-LNFNCACK_01469	CDS	603	pdxT	4.3.3.6	COG0311	Pyridoxal 5-phosphate synthase subunit PdxT"
+"1202","LNFNCACK_01468","CDS",900,"pdxS","4.3.3.6","COG0214","Pyridoxal 5-phosphate synthase subunit PdxS"
+"1203","LNFNCACK_01469","CDS",603,"pdxT","4.3.3.6","COG0311","Pyridoxal 5-phosphate synthase subunit PdxT"
 "1204","LNFNCACK_01471","CDS",534,"ruvC","3.1.22.4","COG0817","Crossover junction endodeoxyribonuclease RuvC"
 "1205","LNFNCACK_01472","CDS",597,"ruvA","3.6.4.12","COG0632","Holliday junction ATP-dependent DNA helicase RuvA"
 "1206","LNFNCACK_01473","CDS",1125,"ruvB","3.6.4.12","COG2255","Holliday junction ATP-dependent DNA helicase RuvB"
@@ -96,159 +96,159 @@ LNFNCACK_01469	CDS	603	pdxT	4.3.3.6	COG0311	Pyridoxal 5-phosphate synthase subun
 "1221","LNFNCACK_01488","CDS",654,"scpB","","COG1386","Segregation and condensation protein B"
 "1224","LNFNCACK_01491","CDS",699,"cmk_1","2.7.4.25","COG0283","Cytidylate kinase"
 "1225","LNFNCACK_01492","CDS",1479,"der","","COG1160","GTPase Der"
-"1226","LNFNCACK_01493","CDS",1614,"moaA","","","GTP 3,8-cyclase
-LNFNCACK_01494	CDS	393				hypothetical protein
-LNFNCACK_01495	CDS	786	lgt_1	2.5.1.145		Phosphatidylglycerol--prolipoprotein diacylglyceryl transferase
-LNFNCACK_01496	tRNA	75				tRNA-Pro(ggg)
-LNFNCACK_01497	CDS	771				IS481 family transposase IS3514
-LNFNCACK_01498	CDS	336			COG0640	HTH-type transcriptional regulator
-LNFNCACK_01499	CDS	435				hypothetical protein
-LNFNCACK_01500	CDS	360				hypothetical protein
-LNFNCACK_01501	CDS	348				hypothetical protein
-LNFNCACK_01502	CDS	669				hypothetical protein
-LNFNCACK_01503	CDS	189				hypothetical protein
-LNFNCACK_01504	CDS	345				hypothetical protein
-LNFNCACK_01505	CDS	780	ppgK_1	2.7.1.63	COG1940	Polyphosphate glucokinase
-LNFNCACK_01506	CDS	627	eda		COG0800	KHG/KDPG aldolase
-LNFNCACK_01507	CDS	1815	edd	4.2.1.12	COG0129	Phosphogluconate dehydratase
-LNFNCACK_01508	CDS	1458	zwf	1.1.1.49	COG0364	Glucose-6-phosphate 1-dehydrogenase
-LNFNCACK_01509	CDS	1182	mlc		COG1940	Protein mlc
-LNFNCACK_01510	CDS	1695	malL_1	3.2.1.10	COG0366	Oligo-1,6-glucosidase
-LNFNCACK_01511	CDS	1014	cytR_1		COG1609	HTH-type transcriptional repressor CytR
-LNFNCACK_01512	CDS	357				hypothetical protein
-LNFNCACK_01513	CDS	531	clpP	3.4.21.92	COG0740	ATP-dependent Clp protease proteolytic subunit
-LNFNCACK_01514	CDS	630	clpP1_1	3.4.21.92	COG0740	ATP-dependent Clp protease proteolytic subunit 1
-LNFNCACK_01515	CDS	1401				hypothetical protein
-LNFNCACK_01516	CDS	2022			COG4867	putative protein
-LNFNCACK_01517	CDS	789		4.2.1.-	COG4336	Putative hydro-lyase
-LNFNCACK_01518	CDS	900	pxpC	3.5.2.9	COG1984	5-oxoprolinase subunit C
-LNFNCACK_01519	CDS	615	pxpB	3.5.2.9	COG2049	5-oxoprolinase subunit B
-LNFNCACK_01520	CDS	768	pxpA	3.5.2.9		5-oxoprolinase subunit A
-LNFNCACK_01521	CDS	1260				hypothetical protein
-LNFNCACK_01522	CDS	681				hypothetical protein
-LNFNCACK_01523	CDS	1281	nhaA		COG3004	Na(+)/H(+) antiporter NhaA
-LNFNCACK_01524	CDS	960	proP			Proline/betaine transporter
-LNFNCACK_01525	CDS	258				hypothetical protein
-LNFNCACK_01526	CDS	555	yhbO	3.1.2.-	COG0693	Protein/nucleic acid deglycase 2
-LNFNCACK_01527	CDS	270				hypothetical protein
-LNFNCACK_01528	CDS	390	ectC	4.2.1.108		L-ectoine synthase
-LNFNCACK_01529	CDS	1281	ectB	2.6.1.76		Diaminobutyrate--2-oxoglutarate transaminase
-LNFNCACK_01530	CDS	516	ectA	2.3.1.178		L-2,4-diaminobutyric acid acetyltransferase
-LNFNCACK_01531	CDS	1128		4.4.1.13	COG1168	Putative cystathionine beta-lyase
-LNFNCACK_01532	CDS	606	pgsA2_2	2.7.8.41	COG0558	Putative cardiolipin synthase
-LNFNCACK_01533	CDS	1002				hypothetical protein
-LNFNCACK_01534	CDS	333				hypothetical protein
-LNFNCACK_01535	CDS	786				hypothetical protein
-LNFNCACK_01536	CDS	390	gcvH		COG0509	Glycine cleavage system H protein
-LNFNCACK_01537	CDS	450				hypothetical protein
-LNFNCACK_01538	CDS	705			COG0789	putative HTH-type transcriptional regulator
-LNFNCACK_01539	CDS	483			COG1259	putative protein
-LNFNCACK_01540	CDS	576			COG0789	putative HTH-type transcriptional regulator
-LNFNCACK_01541	CDS	2928	gcvP	1.4.4.2	COG0403	putative glycine dehydrogenase (decarboxylating)
-LNFNCACK_01542	CDS	3267				hypothetical protein
-LNFNCACK_01543	CDS	1182	sbcD			Nuclease SbcCD subunit D
-LNFNCACK_01544	CDS	1482	gshA	6.3.2.2		Glutamate--cysteine ligase
-LNFNCACK_01545	CDS	612	gpm2	3.1.3.2	COG0406	Acid phosphatase
-LNFNCACK_01546	CDS	456				hypothetical protein
-LNFNCACK_01547	CDS	1047	czcO_2	1.-.-.-	COG2072	putative oxidoreductase CzcO
-LNFNCACK_01548	CDS	555				hypothetical protein
-LNFNCACK_01549	CDS	621	yciO		COG0009	putative protein YciO
-LNFNCACK_01550	CDS	1191	kbl	2.3.1.29	COG0156	2-amino-3-ketobutyrate coenzyme A ligase
-LNFNCACK_01551	CDS	1041	tdh	1.1.1.103	COG1063	L-threonine 3-dehydrogenase
-LNFNCACK_01552	CDS	321				hypothetical protein
-LNFNCACK_01553	CDS	357				hypothetical protein
-LNFNCACK_01554	CDS	1128	rlmC	2.1.1.189	COG2265	23S rRNA (uracil(747)-C(5))-methyltransferase RlmC
-LNFNCACK_01555	CDS	1296				hypothetical protein
-LNFNCACK_01556	CDS	1629	fadD3	6.2.1.41	COG0318	3-[(3aS,4S,7aS)-7a-methyl-1,5-dioxo-octahydro-1H-inden-4-yl]propanoyl:CoA ligase
-LNFNCACK_01557	CDS	504				hypothetical protein
-LNFNCACK_01558	CDS	1203	yfmO			Multidrug efflux protein YfmO
-LNFNCACK_01559	CDS	450				hypothetical protein
-LNFNCACK_01560	CDS	2016	betT		COG1292	High-affinity choline transport protein
-LNFNCACK_01561	CDS	1761	betA	1.1.99.1		Oxygen-dependent choline dehydrogenase
-LNFNCACK_01562	CDS	1509	gbsA	1.2.1.8	COG1012	Betaine aldehyde dehydrogenase
-LNFNCACK_01563	CDS	588				hypothetical protein
-LNFNCACK_01564	CDS	645				hypothetical protein
-LNFNCACK_01565	CDS	738	cypM	2.1.1.301		Cypemycin N-terminal methyltransferase
-LNFNCACK_01566	CDS	2364	uvrA_1			UvrABC system protein A
-LNFNCACK_01567	CDS	564				hypothetical protein
-LNFNCACK_01568	CDS	873	hcaB_3	1.3.1.87		3-phenylpropionate-dihydrodiol/cinnamic acid-dihydrodiol dehydrogenase
-LNFNCACK_01569	CDS	1143				hypothetical protein
-LNFNCACK_01570	CDS	1137	virS			HTH-type transcriptional regulator VirS
-LNFNCACK_01571	CDS	1014			COG0861	putative membrane protein
-LNFNCACK_01572	CDS	1410				hypothetical protein
-LNFNCACK_01573	CDS	333				hypothetical protein
-LNFNCACK_01574	CDS	234			COG5450	Antitoxin VapB11
-LNFNCACK_01575	CDS	399		3.1.-.-	COG1487	Ribonuclease VapC11
-LNFNCACK_01576	CDS	894	dapA_1	4.3.3.7	COG0329	4-hydroxy-tetrahydrodipicolinate synthase
-LNFNCACK_01577	CDS	912	catM			HTH-type transcriptional regulator CatM
-LNFNCACK_01578	CDS	921	dapA_2	4.3.3.7		4-hydroxy-tetrahydrodipicolinate synthase
-LNFNCACK_01579	CDS	525				hypothetical protein
-LNFNCACK_01580	CDS	237				hypothetical protein
-LNFNCACK_01581	CDS	768				hypothetical protein
-LNFNCACK_01582	CDS	468				hypothetical protein
-LNFNCACK_01583	CDS	1086				hypothetical protein
-LNFNCACK_01584	CDS	390				hypothetical protein
-LNFNCACK_01585	CDS	483				hypothetical protein
-LNFNCACK_01586	CDS	489	lrpC		COG1522	HTH-type transcriptional regulator LrpC
-LNFNCACK_01587	CDS	768				hypothetical protein
-LNFNCACK_01588	CDS	909				hypothetical protein
-LNFNCACK_01589	CDS	447	arfB	3.1.1.29	COG1186	Peptidyl-tRNA hydrolase ArfB
-LNFNCACK_01590	CDS	1377	potE			Putrescine transporter PotE
-LNFNCACK_01591	CDS	480				hypothetical protein
-LNFNCACK_01592	CDS	582				hypothetical protein
-LNFNCACK_01593	CDS	834				hypothetical protein
-LNFNCACK_01594	CDS	1371				hypothetical protein
-LNFNCACK_01595	CDS	1359				hypothetical protein
-LNFNCACK_01596	CDS	357	rbpA_1			RNA polymerase-binding protein RbpA
-LNFNCACK_01597	CDS	456				hypothetical protein
-LNFNCACK_01598	CDS	789		2.4.1.54		Undecaprenyl-phosphate mannosyltransferase
-LNFNCACK_01599	CDS	1581	lnt	2.3.1.269	COG0815	Apolipoprotein N-acyltransferase
-LNFNCACK_01600	CDS	423	lrp		COG1522	Leucine-responsive regulatory protein
-LNFNCACK_01601	CDS	933		3.1.11.-	COG0258	5-3 exonuclease
-LNFNCACK_01602	CDS	2802	helY	3.6.4.-	COG4581	putative helicase HelY
-LNFNCACK_01603	CDS	906	dagK_2	2.7.1.107	COG1597	Diacylglycerol kinase
-LNFNCACK_01604	CDS	858	tatC		COG0805	Sec-independent protein translocase protein TatC
-LNFNCACK_01605	CDS	270	tatA			Sec-independent protein translocase protein TatA
-LNFNCACK_01606	CDS	963	pafC		COG2378	Protein PafC
-LNFNCACK_01607	CDS	990	pafB		COG2378	Protein PafB
-LNFNCACK_01608	CDS	1098				hypothetical protein
-LNFNCACK_01609	CDS	387	fkbP	5.2.1.8		FK506-binding protein
-LNFNCACK_01610	CDS	1035				hypothetical protein
-LNFNCACK_01611	CDS	1389	pafA	6.3.1.19		Pup--protein ligase
-LNFNCACK_01612	CDS	684	prcA	3.4.25.1	COG0638	Proteasome subunit alpha
-LNFNCACK_01613	CDS	831	prcB	3.4.25.1	COG0638	Proteasome subunit beta
-LNFNCACK_01614	CDS	198	pup			Prokaryotic ubiquitin-like protein Pup
-LNFNCACK_01615	CDS	1497	dop	3.4.-.-		Depupylase
-LNFNCACK_01616	CDS	546	speG	2.3.1.57	COG1670	Spermidine N(1)-acetyltransferase
-LNFNCACK_01617	CDS	954	aes_2	3.1.1.-		Acetyl esterase
-LNFNCACK_01618	CDS	1005	aes_3	3.1.1.-		Acetyl esterase
-LNFNCACK_01619	CDS	609				hypothetical protein
-LNFNCACK_01620	CDS	354				hypothetical protein
-LNFNCACK_01621	CDS	366				hypothetical protein
-LNFNCACK_01622	CDS	1659	mpa		COG0464	Proteasome-associated ATPase
-LNFNCACK_01623	CDS	1017	trmI	2.1.1.220	COG2519	tRNA (adenine(58)-N(1))-methyltransferase TrmI
-LNFNCACK_01624	CDS	1107	rip3		COG0517	Putative zinc metalloprotease Rip3
-LNFNCACK_01625	CDS	3723	metH	2.1.1.13	COG0646	Methionine synthase
-LNFNCACK_01626	CDS	837				hypothetical protein
-LNFNCACK_01627	CDS	690	gph_1	3.1.3.18		Phosphoglycolate phosphatase
-LNFNCACK_01628	CDS	858				hypothetical protein
-LNFNCACK_01629	CDS	1242	mshC	6.3.1.13	COG0215	L-cysteine:1D-myo-inositol 2-amino-2-deoxy-alpha-D-glucopyranoside ligase
-LNFNCACK_01630	CDS	789				hypothetical protein
-LNFNCACK_01631	CDS	528				hypothetical protein
-LNFNCACK_01632	CDS	717	pspA	3.1.3.3	COG0406	Phosphoserine phosphatase 1
-LNFNCACK_01633	CDS	1005	corA		COG0598	Cobalt/magnesium transport protein CorA
-LNFNCACK_01634	CDS	333				hypothetical protein
-LNFNCACK_01635	CDS	210				hypothetical protein
-LNFNCACK_01636	CDS	1350	dapE_4	3.5.1.18		putative succinyl-diaminopimelate desuccinylase
-LNFNCACK_01637	CDS	717				hypothetical protein
-LNFNCACK_01638	CDS	783				hypothetical protein
-LNFNCACK_01639	CDS	246				hypothetical protein
-LNFNCACK_01640	tRNA	87				tRNA-Leu(gag)
-LNFNCACK_01641	CDS	414				hypothetical protein
-LNFNCACK_01642	CDS	768				hypothetical protein
-LNFNCACK_01643	CDS	381				hypothetical protein
-LNFNCACK_01644	CDS	546				hypothetical protein
-LNFNCACK_01645	CDS	810	rlmB_1	2.1.1.185		23S rRNA (guanosine-2-O-)-methyltransferase RlmB"
+,"LNFNCACK_01494","CDS",393,"","","","hypothetical protein"
+,"LNFNCACK_01495","CDS",786,"lgt_1","2.5.1.145","","Phosphatidylglycerol--prolipoprotein diacylglyceryl transferase"
+,"LNFNCACK_01496","CDS",75, "tRNA","","","tRNA-Pro(ggg)"
+,"LNFNCACK_01497","CDS",771,"","","","IS481 family transposase IS3514"
+,"LNFNCACK_01498","CDS",336,"","","COG0640","HTH-type transcriptional regulator"
+,"LNFNCACK_01499","CDS",435,"","","","hypothetical protein"
+,"LNFNCACK_01500","CDS",360,"","","","hypothetical protein"
+,"LNFNCACK_01501","CDS",348,"","","","hypothetical protein"
+,"LNFNCACK_01502","CDS",669,"","","","hypothetical protein"
+,"LNFNCACK_01503","CDS",189,"","","","hypothetical protein"
+,"LNFNCACK_01504","CDS",345,"","","","hypothetical protein"
+,"LNFNCACK_01505","CDS",780,"ppgK_1","2.7.1.63","COG1940","Polyphosphate glucokinase"
+,"LNFNCACK_01506","CDS",627,"eda","","COG0800","KHG/KDPG aldolase"
+,"LNFNCACK_01507","CDS",1815,"edd","4.2.1.12","COG0129","Phosphogluconate dehydratase"
+,"LNFNCACK_01508","CDS",1458,"zwf","1.1.1.49","COG0364","Glucose-6-phosphate 1-dehydrogenase"
+,"LNFNCACK_01509","CDS",1182,"mlc","","COG1940","Protein mlc"
+,"LNFNCACK_01510","CDS",1695,"malL_1","3.2.1.10","COG0366","Oligo-1,6-glucosidase"
+,"LNFNCACK_01511","CDS",1014,"cytR_1","","COG1609","HTH-type transcriptional repressor CytR"
+,"LNFNCACK_01512","CDS",357,"","","","hypothetical protein"
+,"LNFNCACK_01513","CDS",531,"clpP","3.4.21.92","COG0740","ATP-dependent Clp protease proteolytic subunit"
+,"LNFNCACK_01514","CDS",630,"clpP1_1","3.4.21.92","COG0740","ATP-dependent Clp protease proteolytic subunit 1"
+,"LNFNCACK_01515","CDS",1401,"","","","hypothetical protein"
+,"LNFNCACK_01516","CDS",2022,"","","COG4867","putative protein"
+,"LNFNCACK_01517","CDS",789,"","4.2.1.-","COG4336","Putative hydro-lyase"
+,"LNFNCACK_01518","CDS",900,"pxpC","3.5.2.9","COG1984","5-oxoprolinase subunit C"
+,"LNFNCACK_01519","CDS",615,"pxpB","3.5.2.9","COG2049","5-oxoprolinase subunit B"
+,"LNFNCACK_01520","CDS",768,"pxpA","3.5.2.9","","5-oxoprolinase subunit A"
+,"LNFNCACK_01521","CDS",1260,"","","","hypothetical protein"
+,"LNFNCACK_01522","CDS",681,"","","","hypothetical protein"
+,"LNFNCACK_01523","CDS",1281,"nhaA","","COG3004","Na(+)/H(+) antiporter NhaA"
+,"LNFNCACK_01524","CDS",960,"proP","","","Proline/betaine transporter"
+,"LNFNCACK_01525","CDS",258,"","","","hypothetical protein"
+,"LNFNCACK_01526","CDS",555,"yhbO","3.1.2.-","COG0693","Protein/nucleic acid deglycase 2"
+,"LNFNCACK_01527","CDS",270,"","","","hypothetical protein"
+,"LNFNCACK_01528","CDS",390,"ectC","4.2.1.108","","L-ectoine synthase"
+,"LNFNCACK_01529","CDS",1281,"ectB","2.6.1.76","","Diaminobutyrate--2-oxoglutarate transaminase"
+,"LNFNCACK_01530","CDS",516,"ectA","2.3.1.178","","L-2,4-diaminobutyric acid acetyltransferase"
+,"LNFNCACK_01531","CDS",1128,"","4.4.1.13","COG1168","Putative cystathionine beta-lyase"
+,"LNFNCACK_01532","CDS",606,"pgsA2_2","2.7.8.41","COG0558","Putative cardiolipin synthase"
+,"LNFNCACK_01533","CDS",1002,"","","","hypothetical protein"
+,"LNFNCACK_01534","CDS",333,"","","","hypothetical protein"
+,"LNFNCACK_01535","CDS",786,"","","","hypothetical protein"
+,"LNFNCACK_01536","CDS",390,"gcvH","","COG0509","Glycine cleavage system H protein"
+,"LNFNCACK_01537","CDS",450,"","","","hypothetical protein"
+,"LNFNCACK_01538","CDS",705,"","","COG0789","putative HTH-type transcriptional regulator"
+,"LNFNCACK_01539","CDS",483,"","","COG1259","putative protein"
+,"LNFNCACK_01540","CDS",576,"","","COG0789","putative HTH-type transcriptional regulator"
+,"LNFNCACK_01541","CDS",2928,"gcvP","1.4.4.2","COG0403","putative glycine dehydrogenase (decarboxylating)"
+,"LNFNCACK_01542","CDS",3267,"","","","hypothetical protein"
+,"LNFNCACK_01543","CDS",1182,"sbcD","","","Nuclease SbcCD subunit D"
+,"LNFNCACK_01544","CDS",1482,"gshA","6.3.2.2","","Glutamate--cysteine ligase"
+,"LNFNCACK_01545","CDS",612,"gpm2","3.1.3.2","COG0406","Acid phosphatase"
+,"LNFNCACK_01546","CDS",456,"","","","hypothetical protein"
+,"LNFNCACK_01547","CDS",1047,"czcO_2","1.-.-.-","COG2072","putative oxidoreductase CzcO"
+,"LNFNCACK_01548","CDS",555,"","","","hypothetical protein"
+,"LNFNCACK_01549","CDS",621,"yciO","","COG0009","putative protein YciO"
+,"LNFNCACK_01550","CDS",1191,"kbl","2.3.1.29","COG0156","2-amino-3-ketobutyrate coenzyme A ligase"
+,"LNFNCACK_01551","CDS",1041,"tdh","1.1.1.103","COG1063","L-threonine 3-dehydrogenase"
+,"LNFNCACK_01552","CDS",321,"","","","hypothetical protein"
+,"LNFNCACK_01553","CDS",357,"","","","hypothetical protein"
+,"LNFNCACK_01554","CDS",1128,"rlmC","2.1.1.189","COG2265","23S rRNA (uracil(747)-C(5))-methyltransferase RlmC"
+,"LNFNCACK_01555","CDS",1296,"","","","hypothetical protein"
+,"LNFNCACK_01556","CDS",1629,"fadD3","6.2.1.41","COG0318","3-[(3aS,4S,7aS)-7a-methyl-1,5-dioxo-octahydro-1H-inden-4-yl]propanoyl:CoA ligase"
+,"LNFNCACK_01557","CDS",504,"","","","hypothetical protein"
+,"LNFNCACK_01558","CDS",1203,"yfmO","","","Multidrug efflux protein YfmO"
+,"LNFNCACK_01559","CDS",450,"","","","hypothetical protein"
+,"LNFNCACK_01560","CDS",2016,"betT","","COG1292","High-affinity choline transport protein"
+,"LNFNCACK_01561","CDS",1761,"betA","1.1.99.1","","Oxygen-dependent choline dehydrogenase"
+,"LNFNCACK_01562","CDS",1509,"gbsA","1.2.1.8","COG1012","Betaine aldehyde dehydrogenase"
+,"LNFNCACK_01563","CDS",588,"","","","hypothetical protein"
+,"LNFNCACK_01564","CDS",645,"","","","hypothetical protein"
+,"LNFNCACK_01565","CDS",738,"cypM","2.1.1.301","","Cypemycin N-terminal methyltransferase"
+,"LNFNCACK_01566","CDS",2364,"uvrA_1","","","UvrABC system protein A"
+,"LNFNCACK_01567","CDS",564,"","","","hypothetical protein"
+,"LNFNCACK_01568","CDS",873,"hcaB_3","1.3.1.87","","3-phenylpropionate-dihydrodiol/cinnamic acid-dihydrodiol dehydrogenase"
+,"LNFNCACK_01569","CDS",1143,"","","","hypothetical protein"
+,"LNFNCACK_01570","CDS",1137,"virS","","","HTH-type transcriptional regulator VirS"
+,"LNFNCACK_01571","CDS",1014,"","","COG0861","putative membrane protein"
+,"LNFNCACK_01572","CDS",1410,"","","","hypothetical protein"
+,"LNFNCACK_01573","CDS",333,"","","","hypothetical protein"
+,"LNFNCACK_01574","CDS",234,"","","COG5450","Antitoxin VapB11"
+,"LNFNCACK_01575","CDS",399,"","3.1.-.-","COG1487","Ribonuclease VapC11"
+,"LNFNCACK_01576","CDS",894,"dapA_1","4.3.3.7","COG0329","4-hydroxy-tetrahydrodipicolinate synthase"
+,"LNFNCACK_01577","CDS",912,"catM","","","HTH-type transcriptional regulator CatM"
+,"LNFNCACK_01578","CDS",921,"dapA_2","4.3.3.7","","4-hydroxy-tetrahydrodipicolinate synthase"
+,"LNFNCACK_01579","CDS",525,"","","","hypothetical protein"
+,"LNFNCACK_01580","CDS",237,"","","","hypothetical protein"
+,"LNFNCACK_01581","CDS",768,"","","","hypothetical protein"
+,"LNFNCACK_01582","CDS",468,"","","","hypothetical protein"
+,"LNFNCACK_01583","CDS",1086,"","","","hypothetical protein"
+,"LNFNCACK_01584","CDS",390,"","","","hypothetical protein"
+,"LNFNCACK_01585","CDS",483,"","","","hypothetical protein"
+,"LNFNCACK_01586","CDS",489,"lrpC","","COG1522","HTH-type transcriptional regulator LrpC"
+,"LNFNCACK_01587","CDS",768,"","","","hypothetical protein"
+,"LNFNCACK_01588","CDS",909,"","","","hypothetical protein"
+,"LNFNCACK_01589","CDS",447,"arfB","3.1.1.29","COG1186","Peptidyl-tRNA hydrolase ArfB"
+,"LNFNCACK_01590","CDS",1377,"potE","","","Putrescine transporter PotE"
+,"LNFNCACK_01591","CDS",480,"","","","hypothetical protein"
+,"LNFNCACK_01592","CDS",582,"","","","hypothetical protein"
+,"LNFNCACK_01593","CDS",834,"","","","hypothetical protein"
+,"LNFNCACK_01594","CDS",1371,"","","","hypothetical protein"
+,"LNFNCACK_01595","CDS",1359,"","","","hypothetical protein"
+,"LNFNCACK_01596","CDS",357,"rbpA_1","","","RNA polymerase-binding protein RbpA"
+,"LNFNCACK_01597","CDS",456,"","","","hypothetical protein"
+,"LNFNCACK_01598","CDS",789,"","2.4.1.54","","Undecaprenyl-phosphate mannosyltransferase"
+,"LNFNCACK_01599","CDS",1581,"lnt","2.3.1.269","COG0815","Apolipoprotein N-acyltransferase"
+,"LNFNCACK_01600","CDS",423,"lrp","","COG1522","Leucine-responsive regulatory protein"
+,"LNFNCACK_01601","CDS",933,"","3.1.11.-","COG0258","5-3 exonuclease"
+,"LNFNCACK_01602","CDS",2802,"helY","3.6.4.-","COG4581","putative helicase HelY"
+,"LNFNCACK_01603","CDS",906,"dagK_2","2.7.1.107","COG1597","Diacylglycerol kinase"
+,"LNFNCACK_01604","CDS",858,"tatC","","COG0805","Sec-independent protein translocase protein TatC"
+,"LNFNCACK_01605","CDS",270,"tatA","","","Sec-independent protein translocase protein TatA"
+,"LNFNCACK_01606","CDS",963,"pafC","","COG2378","Protein PafC"
+,"LNFNCACK_01607","CDS",990,"pafB","","COG2378","Protein PafB"
+,"LNFNCACK_01608","CDS",1098,"","","","hypothetical protein"
+,"LNFNCACK_01609","CDS",387,"fkbP","5.2.1.8","","FK506-binding protein"
+,"LNFNCACK_01610","CDS",1035,"","","","hypothetical protein"
+,"LNFNCACK_01611","CDS",1389,"pafA","6.3.1.19","","Pup--protein ligase"
+,"LNFNCACK_01612","CDS",684,"prcA","3.4.25.1","COG0638","Proteasome subunit alpha"
+,"LNFNCACK_01613","CDS",831,"prcB","3.4.25.1","COG0638","Proteasome subunit beta"
+,"LNFNCACK_01614","CDS",198,"pup","","","Prokaryotic ubiquitin-like protein Pup"
+,"LNFNCACK_01615","CDS",1497,"dop","3.4.-.-","","Depupylase"
+,"LNFNCACK_01616","CDS",546,"speG","2.3.1.57","COG1670","Spermidine N(1)-acetyltransferase"
+,"LNFNCACK_01617","CDS",954,"aes_2","3.1.1.-","","Acetyl esterase"
+,"LNFNCACK_01618","CDS",1005,"aes_3","3.1.1.-","","Acetyl esterase"
+,"LNFNCACK_01619","CDS",609,"","","","hypothetical protein"
+,"LNFNCACK_01620","CDS",354,"","","","hypothetical protein"
+,"LNFNCACK_01621","CDS",366,"","","","hypothetical protein"
+,"LNFNCACK_01622","CDS",1659,"mpa","","COG0464","Proteasome-associated ATPase"
+,"LNFNCACK_01623","CDS",1017,"trmI","2.1.1.220","COG2519","tRNA (adenine(58)-N(1))-methyltransferase TrmI"
+,"LNFNCACK_01624","CDS",1107,"rip3","","COG0517","Putative zinc metalloprotease Rip3"
+,"LNFNCACK_01625","CDS",3723,"metH","2.1.1.13","COG0646","Methionine synthase"
+,"LNFNCACK_01626","CDS",837,"","","","hypothetical protein"
+,"LNFNCACK_01627","CDS",690,"gph_1","3.1.3.18","","Phosphoglycolate phosphatase"
+,"LNFNCACK_01628","CDS",858,"","","","hypothetical protein"
+,"LNFNCACK_01629","CDS",1242,"mshC","6.3.1.13","COG0215","L-cysteine:1D-myo-inositol 2-amino-2-deoxy-alpha-D-glucopyranoside ligase"
+,"LNFNCACK_01630","CDS",789,"","","","hypothetical protein"
+,"LNFNCACK_01631","CDS",528,"","","","hypothetical protein"
+,"LNFNCACK_01632","CDS",717,"pspA","3.1.3.3","COG0406","Phosphoserine phosphatase 1"
+,"LNFNCACK_01633","CDS",1005,"corA","","COG0598","Cobalt/magnesium transport protein CorA"
+,"LNFNCACK_01634","CDS",333,"","","","hypothetical protein"
+,"LNFNCACK_01635","CDS",210,"","","","hypothetical protein"
+,"LNFNCACK_01636","CDS",1350,"dapE_4","3.5.1.18","","putative succinyl-diaminopimelate desuccinylase"
+,"LNFNCACK_01637","CDS",717,"","","","hypothetical protein"
+,"LNFNCACK_01638","CDS",783,"","","","hypothetical protein"
+,"LNFNCACK_01639","CDS",246,"","","","hypothetical protein"
+,"LNFNCACK_01640","tRNA",87,"","","","tRNA-Leu(gag)"
+,"LNFNCACK_01641","CDS",414,"","","","hypothetical protein"
+,"LNFNCACK_01642","CDS",768,"","","","hypothetical protein"
+,"LNFNCACK_01643","CDS",381,"","","","hypothetical protein"
+,"LNFNCACK_01644","CDS",546,"","","","hypothetical protein"
+,"LNFNCACK_01645","CDS",810,"rlmB_1","2.1.1.185","","23S rRNA (guanosine-2-O-)-methyltransferase RlmB"
+,"LNFNCACK_01645","CDS",810,"rlmB_1","2.1.1.185","","23S rRNA (guanosine-2-O-)-methyltransferase RlmB"
 "1323","LNFNCACK_01742","CDS",1089,"mshA_8","2.4.1.250","","D-inositol-3-phosphate glycosyltransferase"
 "1351","LNFNCACK_01770","CDS",549,"cmk_2","2.7.4.25","","Cytidylate kinase"
 "1380","LNFNCACK_01806","CDS",699,"degU_3","","COG2197","Transcriptional regulatory protein DegU"
@@ -389,464 +389,464 @@ LNFNCACK_01645	CDS	810	rlmB_1	2.1.1.185		23S rRNA (guanosine-2-O-)-methyltransfe
 "2007","LNFNCACK_02473","CDS",1785,"choD","1.1.3.6","COG2303","Cholesterol oxidase"
 "2008","LNFNCACK_02474","CDS",1680,"gabD2","1.2.1.79","COG1012","Putative succinate-semialdehyde dehydrogenase [NADP(+)] 2"
 "2010","LNFNCACK_02476","CDS",1665,"hsrA_1","","","putative transport protein HsrA"
-"2017","LNFNCACK_02483","CDS",1542,"guaB","1.1.1.205","COG0516","Inosine-5-monophosphate dehydrogenase
-LNFNCACK_02484	CDS	303	whiB3			Redox-responsive transcriptional regulator WhiB3
-LNFNCACK_02485	CDS	246				hypothetical protein
-LNFNCACK_02486	CDS	696	ygeA	5.1.1.10	COG1794	Broad specificity amino-acid racemase YgeA
-LNFNCACK_02487	CDS	1197	serA	1.1.1.95	COG0111	D-3-phosphoglycerate dehydrogenase
-LNFNCACK_02488	CDS	1479				hypothetical protein
-LNFNCACK_02489	CDS	705	ytrE_1		COG1136	ABC transporter ATP-binding protein YtrE
-LNFNCACK_02490	CDS	534				hypothetical protein
-LNFNCACK_02491	CDS	1602	groL1_2			60 kDa chaperonin 1
-LNFNCACK_02492	CDS	297	groS		COG0234	10 kDa chaperonin
-LNFNCACK_02493	CDS	1248				hypothetical protein
-LNFNCACK_02494	CDS	1272	nagZ_2	3.2.1.52		Beta-hexosaminidase
-LNFNCACK_02495	CDS	990				hypothetical protein
-LNFNCACK_02496	CDS	1080	tsaD	2.3.1.234	COG0533	tRNA N6-adenosine threonylcarbamoyltransferase
-LNFNCACK_02497	CDS	480	rimI	2.3.1.255	COG0456	N-alpha-acetyltransferase RimI
-LNFNCACK_02498	CDS	786	tsaB		COG1214	tRNA threonylcarbamoyladenosine biosynthesis protein TsaB
-LNFNCACK_02499	CDS	516				hypothetical protein
-LNFNCACK_02500	CDS	1179	rutD	3.5.1.-		Putative aminoacrylate hydrolase RutD
-LNFNCACK_02501	CDS	1209	alr	5.1.1.1	COG0787	Alanine racemase
-LNFNCACK_02502	CDS	1044	gpr_3	1.1.1.-	COG0667	L-glyceraldehyde 3-phosphate reductase
-LNFNCACK_02503	CDS	615				hypothetical protein
-LNFNCACK_02504	CDS	549	psaB	1.97.1.12		Photosystem I P700 chlorophyll a apoprotein A2
-LNFNCACK_02505	CDS	1470	nnr		COG0062	Bifunctional NAD(P)H-hydrate repair enzyme Nnr
-LNFNCACK_02506	CDS	354	acpS_2	2.7.8.7		Holo-[acyl-carrier-protein] synthase
-LNFNCACK_02507	CDS	1860	glmS_1	2.6.1.16	COG0449	Glutamine--fructose-6-phosphate aminotransferase [isomerizing]
-LNFNCACK_02508	CDS	966	coaA	2.7.1.33	COG1072	Pantothenate kinase
-LNFNCACK_02509	CDS	777				hypothetical protein
-LNFNCACK_02510	CDS	1383				hypothetical protein
-LNFNCACK_02511	CDS	756		2.5.1.68	COG0020	(2Z,6E)-farnesyl diphosphate synthase
-LNFNCACK_02512	CDS	714				hypothetical protein
-LNFNCACK_02513	CDS	279				hypothetical protein
-LNFNCACK_02514	CDS	951	mca_1	3.5.1.115	COG2120	Mycothiol S-conjugate amidase
-LNFNCACK_02515	CDS	426				hypothetical protein
-LNFNCACK_02516	CDS	495	greA		COG0782	Transcription elongation factor GreA
-LNFNCACK_02517	CDS	825				hypothetical protein
-LNFNCACK_02518	CDS	702	msrA	1.8.4.11	COG0225	Peptide methionine sulfoxide reductase MsrA
-LNFNCACK_02519	CDS	477				hypothetical protein
-LNFNCACK_02520	CDS	468				hypothetical protein
-LNFNCACK_02521	CDS	2013	fadH_2	1.3.1.34	COG0446	2,4-dienoyl-CoA reductase
-LNFNCACK_02522	CDS	996				hypothetical protein
-LNFNCACK_02523	CDS	258				hypothetical protein
-LNFNCACK_02524	CDS	981				hypothetical protein
-LNFNCACK_02525	CDS	1182	metB	2.5.1.48	COG0626	Cystathionine gamma-synthase
-LNFNCACK_02526	CDS	1383	cbs	4.2.1.22	COG0031	Putative cystathionine beta-synthase
-LNFNCACK_02527	CDS	765			COG2375	putative protein
-LNFNCACK_02528	tRNA	79				tRNA-Leu(taa)
-LNFNCACK_02529	CDS	621				hypothetical protein
-LNFNCACK_02530	CDS	1002	ppx2	3.6.1.11	COG0248	Exopolyphosphatase 2
-LNFNCACK_02531	CDS	537				hypothetical protein
-LNFNCACK_02532	CDS	537	ftsL			Cell division protein FtsL
-LNFNCACK_02533	CDS	1281	eno	4.2.1.11	COG0148	Enolase
-LNFNCACK_02534	CDS	1116				hypothetical protein
-LNFNCACK_02535	CDS	807				hypothetical protein
-LNFNCACK_02536	CDS	570				hypothetical protein
-LNFNCACK_02537	CDS	3666	mfd	3.6.4.-	COG1197	Transcription-repair-coupling factor
-LNFNCACK_02538	CDS	2016				hypothetical protein
-LNFNCACK_02539	CDS	717			COG1842	Phage shock protein A 
-LNFNCACK_02540	CDS	186				hypothetical protein
-LNFNCACK_02541	CDS	165				hypothetical protein
-LNFNCACK_02542	CDS	591	pth	3.1.1.29	COG0193	Peptidyl-tRNA hydrolase
-LNFNCACK_02543	CDS	1446				hypothetical protein
-LNFNCACK_02544	CDS	681	rplY		COG1825	50S ribosomal protein L25
-LNFNCACK_02545	CDS	1032				hypothetical protein
-LNFNCACK_02546	CDS	555				hypothetical protein
-LNFNCACK_02547	CDS	972	prs	2.7.6.1	COG0462	Ribose-phosphate pyrophosphokinase
-LNFNCACK_02548	CDS	1491	glmU		COG1207	Bifunctional protein GlmU
-LNFNCACK_02549	CDS	1683	ptsI	2.7.3.9	COG1080	Phosphoenolpyruvate-protein phosphotransferase
-LNFNCACK_02550	CDS	270	ptsH			Phosphocarrier protein HPr
-LNFNCACK_02551	CDS	456	ptsG	2.7.1.199		PTS system glucose-specific EIICBA component
-LNFNCACK_02552	CDS	234	nagF	2.7.1.193	COG1264	PTS system N-acetylglucosamine-specific EIIB component
-LNFNCACK_02553	CDS	1059	glmS_2	2.6.1.16	COG0449	Glutamine--fructose-6-phosphate aminotransferase [isomerizing]
-LNFNCACK_02554	CDS	753	nagR_2		COG2188	HTH-type transcriptional repressor NagR
-LNFNCACK_02555	CDS	1260	nagE2		COG1263	PTS system N-acetylglucosamine-specific EIIC component
-LNFNCACK_02556	CDS	1161	agaA	3.5.1.-	COG1820	N-acetylgalactosamine-6-phosphate deacetylase
-LNFNCACK_02557	CDS	981	pip	3.4.11.5		Proline iminopeptidase
-LNFNCACK_02558	CDS	678		5.4.2.12	COG0406	PE-PGRS family protein PE_PGRS11
-LNFNCACK_02559	CDS	966				hypothetical protein
-LNFNCACK_02560	CDS	567				hypothetical protein
-LNFNCACK_02561	CDS	630				hypothetical protein
-LNFNCACK_02562	CDS	1380				hypothetical protein
-LNFNCACK_02563	CDS	1500				hypothetical protein
-LNFNCACK_02564	CDS	576	chrR	1.6.5.2	COG0431	Quinone reductase
-LNFNCACK_02565	tRNA	81				tRNA-Gln(ttg)
-LNFNCACK_02566	CDS	600	fabR			HTH-type transcriptional repressor FabR
-LNFNCACK_02567	CDS	798	tam	2.1.1.144	COG4106	putative trans-aconitate 2-methyltransferase
-LNFNCACK_02568	CDS	507				hypothetical protein
-LNFNCACK_02569	CDS	1824	yheS_2		COG0488	putative ABC transporter ATP-binding protein YheS
-LNFNCACK_02570	CDS	939	ispE	2.7.1.148	COG1947	4-diphosphocytidyl-2-C-methyl-D-erythritol kinase
-LNFNCACK_02571	CDS	894	ksgA	2.1.1.182	COG0030	Ribosomal RNA small subunit methyltransferase A
-LNFNCACK_02572	CDS	1248	rpf2	3.-.-.-	COG3583	Resuscitation-promoting factor Rpf2
-LNFNCACK_02573	CDS	885	dtd3	3.1.1.96		D-aminoacyl-tRNA deacylase
-LNFNCACK_02574	CDS	1800	metG	6.1.1.10	COG0073	Methionine--tRNA ligase
-LNFNCACK_02575	CDS	597				hypothetical protein
-LNFNCACK_02576	CDS	591				hypothetical protein
-LNFNCACK_02577	CDS	183				hypothetical protein
-LNFNCACK_02578	CDS	768				hypothetical protein
-LNFNCACK_02579	CDS	903				hypothetical protein
-LNFNCACK_02580	CDS	750	frdB	1.3.5.1	COG0479	Fumarate reductase iron-sulfur subunit
-LNFNCACK_02581	CDS	1992	frdA	1.3.5.4		Fumarate reductase flavoprotein subunit
-LNFNCACK_02582	CDS	747				hypothetical protein
-LNFNCACK_02583	CDS	690	speE	2.5.1.16		Polyamine aminopropyltransferase
-LNFNCACK_02584	CDS	1332	hemL	5.4.3.8	COG0001	Glutamate-1-semialdehyde 2,1-aminomutase
-LNFNCACK_02585	CDS	480				hypothetical protein
-LNFNCACK_02586	CDS	924	hemB	4.2.1.24	COG0113	Delta-aminolevulinic acid dehydratase
-LNFNCACK_02587	CDS	1638	cysG	4.99.1.4		Siroheme synthase
-LNFNCACK_02588	CDS	960	hemC	2.5.1.61	COG0181	Porphobilinogen deaminase
-LNFNCACK_02589	CDS	1275	hemA	1.2.1.70	COG0373	Glutamyl-tRNA reductase
-LNFNCACK_02590	CDS	684	rex		COG2344	Redox-sensing transcriptional repressor Rex
-LNFNCACK_02591	CDS	249			COG0526	putative protein
-LNFNCACK_02592	CDS	1503				hypothetical protein
-LNFNCACK_02593	CDS	1053			COG0451	putative protein
-LNFNCACK_02594	CDS	99				hypothetical protein
-LNFNCACK_02595	CDS	198				Putative DNA-binding proteinA
-LNFNCACK_02596	CDS	1227	acuC			Acetoin utilization protein AcuC
-LNFNCACK_02597	CDS	660	ktrA		COG0569	Ktr system potassium uptake protein A
-LNFNCACK_02598	CDS	519				hypothetical protein
-LNFNCACK_02599	CDS	504				hypothetical protein
-LNFNCACK_02600	CDS	789	proC	1.5.1.2	COG0345	Pyrroline-5-carboxylate reductase
-LNFNCACK_02601	CDS	945	fadM	1.5.5.2	COG0506	Proline dehydrogenase 1
-LNFNCACK_02602	CDS	921	yegS_2	2.7.1.-		lipid kinase YegS
-LNFNCACK_02603	CDS	735				hypothetical protein
-LNFNCACK_02604	CDS	723	rbbA		COG0842	Ribosome-associated ATPase
-LNFNCACK_02605	CDS	585	betI_3			HTH-type transcriptional regulator BetI
-LNFNCACK_02606	CDS	855			COG1082	putative protein
-LNFNCACK_02607	CDS	927	ppx1	3.6.1.11	COG0248	Exopolyphosphatase 1
-LNFNCACK_02608	CDS	834				putative protein
-LNFNCACK_02609	CDS	1419		1.-.-.-	COG0277	putative FAD-linked oxidoreductase
-LNFNCACK_02610	CDS	1398	radA	3.6.4.-	COG1066	DNA repair protein RadA
-LNFNCACK_02611	CDS	1077	disA	2.7.7.85	COG1623	DNA integrity scanning protein DisA
-LNFNCACK_02612	CDS	1296				hypothetical protein
-LNFNCACK_02613	CDS	882	mutY	3.2.2.31	COG1194	Adenine DNA glycosylase
-LNFNCACK_02614	CDS	498	argA	2.3.1.1	COG1246	Amino-acid acetyltransferase
-LNFNCACK_02615	CDS	1425				hypothetical protein
-LNFNCACK_02616	CDS	669				hypothetical protein
-LNFNCACK_02617	CDS	681			COG0627	putative protein
-LNFNCACK_02618	CDS	369				hypothetical protein
-LNFNCACK_02619	CDS	537				hypothetical protein
-LNFNCACK_02620	CDS	591				hypothetical protein
-LNFNCACK_02621	CDS	2520	clpC1		COG0542	ATP-dependent Clp protease ATP-binding subunit ClpC1
-LNFNCACK_02622	CDS	306	mhuD	1.14.99.57	COG2329	Heme oxygenase (mycobilin-producing)
-LNFNCACK_02623	CDS	573				hypothetical protein
-LNFNCACK_02624	CDS	585				hypothetical protein
-LNFNCACK_02625	CDS	624				hypothetical protein
-LNFNCACK_02626	CDS	471				hypothetical protein
-LNFNCACK_02627	CDS	825	nei1	3.2.2.-	COG0266	Endonuclease 8 1
-LNFNCACK_02628	CDS	933	ku		COG1273	Non-homologous end joining protein Ku
-LNFNCACK_02629	CDS	906				hypothetical protein
-LNFNCACK_02630	CDS	1212	lhgD	1.1.5.-	COG0579	L-2-hydroxyglutarate dehydrogenase
-LNFNCACK_02631	CDS	1131	uctC	2.8.3.19		Acetyl-CoA:oxalate CoA-transferase
-LNFNCACK_02632	CDS	1176	acdA_2	1.3.99.-	COG1960	Acyl-CoA dehydrogenase
-LNFNCACK_02633	CDS	987				hypothetical protein
-LNFNCACK_02634	CDS	2163				hypothetical protein
-LNFNCACK_02635	CDS	660	cseB		COG0745	Transcriptional regulatory protein CseB
-LNFNCACK_02636	CDS	1374				hypothetical protein
-LNFNCACK_02637	CDS	972				hypothetical protein
-LNFNCACK_02638	CDS	936	ligD_3		COG1793	Multifunctional non-homologous end joining protein LigD
-LNFNCACK_02639	CDS	888	ligD_4		COG1793	Multifunctional non-homologous end joining protein LigD
-LNFNCACK_02640	CDS	687				hypothetical protein
-LNFNCACK_02641	CDS	927	araD	4.2.1.43		L-2-keto-3-deoxyarabonate dehydratase
-LNFNCACK_02642	CDS	789	fabG_4	1.1.1.100		3-oxoacyl-[acyl-carrier-protein] reductase FabG
-LNFNCACK_02643	CDS	789				hypothetical protein
-LNFNCACK_02644	CDS	591				hypothetical protein
-LNFNCACK_02645	CDS	381	lsr2			Nucleoid-associated protein Lsr2
-LNFNCACK_02646	CDS	207				hypothetical protein
-LNFNCACK_02647	CDS	1503	lysS1	6.1.1.6	COG1190	Lysine--tRNA ligase 1
-LNFNCACK_02648	CDS	1356				hypothetical protein
-LNFNCACK_02649	CDS	624	skfE	7.3.2.3	COG1131	SkfA peptide export ATP-binding protein SkfE
-LNFNCACK_02650	CDS	885	nadC	2.4.2.19	COG0157	Nicotinate-nucleotide pyrophosphorylase [carboxylating]
-LNFNCACK_02651	CDS	1737	nadB	1.4.3.16	COG0029	L-aspartate oxidase
-LNFNCACK_02652	CDS	441	panD	4.1.1.11	COG0853	Aspartate 1-decarboxylase
-LNFNCACK_02653	CDS	885	panC	6.3.2.1	COG0414	Pantothenate synthetase
-LNFNCACK_02654	CDS	954				hypothetical protein
-LNFNCACK_02655	CDS	939				hypothetical protein
-LNFNCACK_02656	CDS	231				hypothetical protein
-LNFNCACK_02657	CDS	1275				hypothetical protein
-LNFNCACK_02658	CDS	1182	nqo4	7.1.1.-	COG0649	NADH-quinone oxidoreductase subunit 4
-LNFNCACK_02659	CDS	900				hypothetical protein
-LNFNCACK_02660	CDS	1410				hypothetical protein
-LNFNCACK_02661	CDS	792				hypothetical protein
-LNFNCACK_02662	CDS	474				hypothetical protein
-LNFNCACK_02663	CDS	855	sulD		COG0801	Bifunctional folate synthesis protein
-LNFNCACK_02664	CDS	855	folP1	2.5.1.15	COG0294	Dihydropteroate synthase
-LNFNCACK_02665	CDS	576	folE	3.5.4.16	COG0302	GTP cyclohydrolase 1
-LNFNCACK_02666	CDS	2145	ftsH	3.4.24.-	COG0465	ATP-dependent zinc metalloprotease FtsH
-LNFNCACK_02667	CDS	552	hpt	2.4.2.8		Hypoxanthine-guanine phosphoribosyltransferase
-LNFNCACK_02668	CDS	1005	tilS	6.3.4.19	COG0037	tRNA(Ile)-lysidine synthase
-LNFNCACK_02669	CDS	1044				hypothetical protein
-LNFNCACK_02670	CDS	1395		3.4.16.-	COG2027	Carboxypeptidase
-LNFNCACK_02671	CDS	633	ppa	3.6.1.1		Inorganic pyrophosphatase
-LNFNCACK_02672	CDS	450				hypothetical protein
-LNFNCACK_02673	CDS	894	ephA_1	3.3.2.10		Epoxide hydrolase A
-LNFNCACK_02674	CDS	420				hypothetical protein
-LNFNCACK_02675	tRNA	77				tRNA-Thr(cgt)
-LNFNCACK_02676	CDS	1086	xerC_4			Tyrosine recombinase XerC
-LNFNCACK_02677	CDS	204				hypothetical protein
-LNFNCACK_02678	CDS	1497				hypothetical protein
-LNFNCACK_02679	CDS	264				hypothetical protein
-LNFNCACK_02680	CDS	315	whiB_3			Transcriptional regulator WhiB
-LNFNCACK_02681	CDS	1596				hypothetical protein
-LNFNCACK_02682	CDS	438				hypothetical protein
-LNFNCACK_02683	CDS	822				hypothetical protein
-LNFNCACK_02684	CDS	849				hypothetical protein
-LNFNCACK_02685	CDS	3069				hypothetical protein
-LNFNCACK_02686	CDS	333				hypothetical protein
-LNFNCACK_02687	CDS	261				hypothetical protein
-LNFNCACK_02688	CDS	1065				hypothetical protein
-LNFNCACK_02689	CDS	525				hypothetical protein
-LNFNCACK_02690	CDS	2013				hypothetical protein
-LNFNCACK_02691	CDS	2640				hypothetical protein
-LNFNCACK_02692	CDS	339				hypothetical protein
-LNFNCACK_02693	CDS	276				hypothetical protein
-LNFNCACK_02694	CDS	438	pipB2		COG1357	Secreted effector protein PipB2
-LNFNCACK_02695	CDS	690				hypothetical protein
-LNFNCACK_02696	CDS	141				hypothetical protein
-LNFNCACK_02697	CDS	1440				hypothetical protein
-LNFNCACK_02698	CDS	1536	caeA	3.1.1.-		Carboxylesterase A
-LNFNCACK_02699	CDS	1170				hypothetical protein
-LNFNCACK_02700	CDS	618	tmk	2.7.4.9		Thymidylate kinase
-LNFNCACK_02701	CDS	642	opuBB_1		COG1174	Choline transport system permease protein OpuBB
-LNFNCACK_02702	CDS	1200	opuBA		COG1125	Choline transport ATP-binding protein OpuBA
-LNFNCACK_02703	CDS	780	opuBB_2		COG1174	Choline transport system permease protein OpuBB
-LNFNCACK_02704	CDS	1008	osmX_1		COG1732	Osmoprotectant-binding protein OsmX
-LNFNCACK_02705	CDS	1341	dap_2	3.4.11.19		D-aminopeptidase
-LNFNCACK_02706	CDS	1569	lcfB_5	6.2.1.3	COG0318	Long-chain-fatty-acid--CoA ligase
-LNFNCACK_02707	CDS	453				hypothetical protein
-LNFNCACK_02708	CDS	2790	topA	5.6.2.1	COG0550	DNA topoisomerase 1
-LNFNCACK_02709	CDS	786	ygiD	1.13.11.29	COG3384	4,5-DOPA dioxygenase extradiol
-LNFNCACK_02710	CDS	393				hypothetical protein
-LNFNCACK_02711	CDS	1512	prmC_3	2.1.1.297		Release factor glutamine methyltransferase
-LNFNCACK_02712	CDS	2337	hppA	7.1.3.1	COG3808	K(+)-insensitive pyrophosphate-energized proton pump
-LNFNCACK_02713	CDS	993		1.17.1.9		Formate dehydrogenase, mitochondrial
-LNFNCACK_02714	CDS	354	rsbV		COG1366	Anti-sigma-B factor antagonist
-LNFNCACK_02715	CDS	2322				hypothetical protein
-LNFNCACK_02716	CDS	555				hypothetical protein
-LNFNCACK_02717	CDS	387				hypothetical protein
-LNFNCACK_02718	CDS	381				hypothetical protein
-LNFNCACK_02719	CDS	333				hypothetical protein
-LNFNCACK_02720	CDS	192				hypothetical protein
-LNFNCACK_02721	CDS	552				hypothetical protein
-LNFNCACK_02722	CDS	555				hypothetical protein
-LNFNCACK_02723	CDS	702				hypothetical protein
-LNFNCACK_02724	CDS	1038			COG4962	Putative conjugal transfer protein
-LNFNCACK_02725	CDS	717				hypothetical protein
-LNFNCACK_02726	CDS	858				hypothetical protein
-LNFNCACK_02727	CDS	1200	ypdA	2.7.13.3	COG3275	Sensor histidine kinase YpdA
-LNFNCACK_02728	CDS	765	lytR		COG3279	Sensory transduction protein LytR
-LNFNCACK_02729	CDS	372				hypothetical protein
-LNFNCACK_02730	CDS	1515	actP		COG4147	Cation/acetate symporter ActP
-LNFNCACK_02731	CDS	348				hypothetical protein
-LNFNCACK_02732	CDS	1611	mctC		COG4147	Monocarboxylic acid transporter
-LNFNCACK_02733	CDS	1062	bioB	2.8.1.6		Biotin synthase
-LNFNCACK_02734	CDS	621	bioN_2		COG0619	Energy-coupling factor transporter transmembrane protein BioN
-LNFNCACK_02735	CDS	702	bioM_2	3.6.3.-	COG1122	Biotin transport ATP-binding protein BioM
-LNFNCACK_02736	CDS	603	bioY_2		COG1268	Biotin transporter BioY
-LNFNCACK_02737	CDS	588	tetR			Tetracycline repressor protein class A from transposon 1721
-LNFNCACK_02738	CDS	918	pacX	1.14.16.7		Phenylalanine 3-hydroxylase
-LNFNCACK_02739	CDS	1932	acsA	6.2.1.1	COG0365	Acetyl-coenzyme A synthetase
-LNFNCACK_02740	rRNA	108				5S ribosomal RNA
-LNFNCACK_02741	rRNA	3108				23S ribosomal RNA
-LNFNCACK_02742	rRNA	1520				16S ribosomal RNA
-LNFNCACK_02743	CDS	816	ugpQ	3.1.4.46	COG0584	Glycerophosphodiester phosphodiesterase, cytoplasmic
-LNFNCACK_02744	CDS	459				hypothetical protein
-LNFNCACK_02745	CDS	825	ephA_2	3.3.2.10		Epoxide hydrolase A
-LNFNCACK_02746	CDS	684	nudL	3.6.1.-		putative Nudix hydrolase NudL
-LNFNCACK_02747	CDS	669	pdg			Ultraviolet N-glycosylase/AP lyase
-LNFNCACK_02748	CDS	678	crp		COG0664	CRP-like cAMP-activated global transcriptional regulator
-LNFNCACK_02749	CDS	810	gloB_1	3.1.2.6		Hydroxyacylglutathione hydrolase
-LNFNCACK_02750	CDS	837				hypothetical protein
-LNFNCACK_02751	CDS	465				hypothetical protein
-LNFNCACK_02752	CDS	156				hypothetical protein
-LNFNCACK_02753	CDS	996			COG0003	Putative ATPase
-LNFNCACK_02754	CDS	1149				hypothetical protein
-LNFNCACK_02755	CDS	2595	mtgA	2.4.1.129		Biosynthetic peptidoglycan transglycosylase
-LNFNCACK_02756	CDS	486	yqeY		COG1610	putative protein YqeY
-LNFNCACK_02757	CDS	948	ypbG		COG1408	putative protein YpbG
-LNFNCACK_02758	CDS	501				hypothetical protein
-LNFNCACK_02759	tRNA	76				tRNA-Pro(cgg)
-LNFNCACK_02760	CDS	126				hypothetical protein
-LNFNCACK_02761	CDS	426				hypothetical protein
-LNFNCACK_02762	CDS	636	rspR		COG1802	HTH-type transcriptional repressor RspR
-LNFNCACK_02763	CDS	366				hypothetical protein
-LNFNCACK_02764	CDS	735		4.2.1.17		putative enoyl-CoA hydratase echA14
-LNFNCACK_02765	CDS	1200	pfp	2.7.1.90	COG0205	Pyrophosphate--fructose 6-phosphate 1-phosphotransferase
-LNFNCACK_02766	CDS	924				hypothetical protein
-LNFNCACK_02767	CDS	1074	asd_2	1.2.1.11	COG0136	Aspartate-semialdehyde dehydrogenase
-LNFNCACK_02768	CDS	1275	ask	2.7.2.4	COG0527	Aspartokinase
-LNFNCACK_02769	CDS	912	btuD_10	7.6.2.8		Vitamin B12 import ATP-binding protein BtuD
-LNFNCACK_02770	CDS	1032				hypothetical protein
-LNFNCACK_02771	CDS	555				hypothetical protein
-LNFNCACK_02772	CDS	600	recR		COG0353	Recombination protein RecR
-LNFNCACK_02773	CDS	2208				hypothetical protein
-LNFNCACK_02774	CDS	570				hypothetical protein
-LNFNCACK_02775	CDS	1494				hypothetical protein
-LNFNCACK_02776	tRNA	88				tRNA-Ser(gga)
-LNFNCACK_02777	CDS	468				hypothetical protein
-LNFNCACK_02778	CDS	1560				hypothetical protein
-LNFNCACK_02779	CDS	300				hypothetical protein
-LNFNCACK_02780	CDS	501				hypothetical protein
-LNFNCACK_02781	CDS	360				hypothetical protein
-LNFNCACK_02782	tRNA	90				tRNA-Ser(cga)
-LNFNCACK_02783	CDS	447	tadA	3.5.4.33	COG0590	tRNA-specific adenosine deaminase
-LNFNCACK_02784	CDS	639	upp	2.4.2.9		Uracil phosphoribosyltransferase
-LNFNCACK_02785	CDS	174				hypothetical protein
-LNFNCACK_02786	CDS	753				hypothetical protein
-LNFNCACK_02787	CDS	963				hypothetical protein
-LNFNCACK_02788	CDS	336			COG1695	Transcriptional regulator
-LNFNCACK_02789	CDS	1449	pntB	7.1.1.1	COG1282	NAD(P) transhydrogenase subunit beta
-LNFNCACK_02790	CDS	1542	pntA	7.1.1.1	COG3288	NAD(P) transhydrogenase subunit alpha
-LNFNCACK_02791	CDS	141				hypothetical protein
-LNFNCACK_02792	CDS	1668	ilvG	2.2.1.6	COG0028	Acetolactate synthase large subunit IlvG
-LNFNCACK_02793	CDS	1428	iscS_3	2.8.1.7		Cysteine desulfurase IscS
-LNFNCACK_02794	CDS	1341	yagG		COG2211	Putative glycoside/cation symporter YagG
-LNFNCACK_02795	CDS	345				hypothetical protein
-LNFNCACK_02796	CDS	198				hypothetical protein
-LNFNCACK_02797	CDS	1317				hypothetical protein
-LNFNCACK_02798	CDS	702	yxlF_1	3.6.3.-	COG1131	putative ABC transporter ATP-binding protein YxlF
-LNFNCACK_02799	CDS	225				hypothetical protein
-LNFNCACK_02800	CDS	1218	aspC	2.6.1.1	COG0436	putative aspartate aminotransferase
-LNFNCACK_02801	CDS	447	crcB_1			Putative fluoride ion transporter CrcB
-LNFNCACK_02802	CDS	357	crcB_2			Putative fluoride ion transporter CrcB
-LNFNCACK_02803	CDS	597	sodF1	1.15.1.1	COG0605	Superoxide dismutase [Fe-Zn] 1
-LNFNCACK_02804	CDS	498				hypothetical protein
-LNFNCACK_02805	CDS	3252	icmF_2		COG1703	Fused isobutyryl-CoA mutase
-LNFNCACK_02806	CDS	366	yidH		COG2149	Inner membrane protein YidH
-LNFNCACK_02807	CDS	318				hypothetical protein
-LNFNCACK_02808	CDS	759	btuF			Vitamin B12-binding protein
-LNFNCACK_02809	CDS	1749				hypothetical protein
-LNFNCACK_02810	CDS	795			COG1192	putative protein
-LNFNCACK_02811	CDS	1266	caiA	1.3.8.13		Crotonobetainyl-CoA reductase
-LNFNCACK_02812	CDS	1326	acrC_1	1.3.1.95		Acryloyl-CoA reductase (NADH)
-LNFNCACK_02813	CDS	1839	pckG	4.1.1.32	COG1274	Phosphoenolpyruvate carboxykinase [GTP]
-LNFNCACK_02814	CDS	501			COG1733	putative HTH-type transcriptional regulator
-LNFNCACK_02815	CDS	513				hypothetical protein
-LNFNCACK_02816	CDS	1176	entS_3			Enterobactin exporter EntS
-LNFNCACK_02817	CDS	231				hypothetical protein
-LNFNCACK_02818	CDS	1539				hypothetical protein
-LNFNCACK_02819	CDS	189				hypothetical protein
-LNFNCACK_02820	CDS	1131	xerC_5			Tyrosine recombinase XerC
-LNFNCACK_02821	tRNA	74				tRNA-Arg(acg)
-LNFNCACK_02822	CDS	411				hypothetical protein
-LNFNCACK_02823	CDS	732	tcrX_2		COG0745	putative transcriptional regulatory protein TcrX
-LNFNCACK_02824	CDS	1470	tcrY_2	2.7.13.3		putative sensor histidine kinase TcrY
-LNFNCACK_02825	CDS	2046	arnT	2.4.2.43		Undecaprenyl phosphate-alpha-4-amino-4-deoxy-L-arabinose arabinosyl transferase
-LNFNCACK_02826	CDS	1257				hypothetical protein
-LNFNCACK_02827	CDS	717				hypothetical protein
-LNFNCACK_02828	tRNA	93				tRNA-Ser(gct)
-LNFNCACK_02829	CDS	1455	tagU_3	2.7.8.-		Polyisoprenyl-teichoic acid--peptidoglycan teichoic acid transferase TagU
-LNFNCACK_02830	CDS	204			COG1278	Cold shock-like protein 7.0
-LNFNCACK_02831	CDS	441	aroQ	4.2.1.10	COG0757	3-dehydroquinate dehydratase
-LNFNCACK_02832	tRNA	89				tRNA-Ser(tga)
-LNFNCACK_02833	CDS	342				hypothetical protein
-LNFNCACK_02834	CDS	600	cysE	2.3.1.30	COG1045	Serine acetyltransferase
-LNFNCACK_02835	CDS	927	cysK1	2.5.1.47	COG0031	O-acetylserine sulfhydrylase
-LNFNCACK_02836	CDS	3828				hypothetical protein
-LNFNCACK_02837	CDS	942	osmX_2		COG1732	Osmoprotectant-binding protein OsmX
-LNFNCACK_02838	CDS	729	opuCB		COG1174	Glycine betaine/carnitine/choline transport system permease protein OpuCB
-LNFNCACK_02839	CDS	651	opuCD		COG1174	Glycine betaine/carnitine/choline transport system permease protein OpuCD
-LNFNCACK_02840	CDS	1119	osmV	3.6.3.-	COG1125	Osmoprotectant import ATP-binding protein OsmV
-LNFNCACK_02841	CDS	1035	menB_3	4.1.3.36		1,4-dihydroxy-2-naphthoyl-CoA synthase
-LNFNCACK_02842	CDS	1020	cytR_2		COG1609	HTH-type transcriptional repressor CytR
-LNFNCACK_02843	CDS	1380	dasA		COG1653	Diacetylchitobiose binding protein DasA
-LNFNCACK_02844	CDS	1008				hypothetical protein
-LNFNCACK_02845	CDS	852	sugB_2		COG0395	Trehalose transport system permease protein SugB
-LNFNCACK_02846	CDS	1095	msiK	7.5.2.-	COG3839	Diacetylchitobiose uptake system ATP-binding protein MsiK
-LNFNCACK_02847	CDS	699				hypothetical protein
-LNFNCACK_02848	CDS	579	sigW_2		COG1595	ECF RNA polymerase sigma factor SigW
-LNFNCACK_02849	CDS	966				hypothetical protein
-LNFNCACK_02850	CDS	1527	amiC	3.5.1.4	COG0154	Putative amidase AmiC
-LNFNCACK_02851	CDS	576	dcd	3.5.4.30	COG0717	dCTP deaminase, dUMP-forming
-LNFNCACK_02852	CDS	705				hypothetical protein
-LNFNCACK_02853	CDS	567	sigM_2		COG1595	ECF RNA polymerase sigma factor SigM
-LNFNCACK_02854	tRNA	72				tRNA-Gly(ccc)
-LNFNCACK_02855	CDS	1386				hypothetical protein
-LNFNCACK_02856	CDS	507				hypothetical protein
-LNFNCACK_02857	CDS	597				hypothetical protein
-LNFNCACK_02858	CDS	789				hypothetical protein
-LNFNCACK_02859	CDS	537				hypothetical protein
-LNFNCACK_02860	CDS	870				hypothetical protein
-LNFNCACK_02861	CDS	1872	dmdC	1.3.8.-	COG1960	3-methylmercaptopropionyl-CoA dehydrogenase
-LNFNCACK_02862	CDS	204				hypothetical protein
-LNFNCACK_02863	CDS	201				hypothetical protein
-LNFNCACK_02864	CDS	750				hypothetical protein
-LNFNCACK_02865	CDS	2061				hypothetical protein
-LNFNCACK_02866	CDS	447				hypothetical protein
-LNFNCACK_02867	CDS	1965				hypothetical protein
-LNFNCACK_02868	tRNA	91				tRNA-Arg(cct)
-LNFNCACK_02869	CDS	990	bkdB	1.2.4.4	COG0022	3-methyl-2-oxobutanoate dehydrogenase subunit beta
-LNFNCACK_02870	CDS	1242	bkdA	1.2.4.4	COG1071	3-methyl-2-oxobutanoate dehydrogenase subunit alpha
-LNFNCACK_02871	CDS	1080	pat	2.6.1.-	COG0079	Putative phenylalanine aminotransferase
-LNFNCACK_02872	CDS	939				hypothetical protein
-LNFNCACK_02873	CDS	429				hypothetical protein
-LNFNCACK_02874	CDS	1773				hypothetical protein
-LNFNCACK_02875	CDS	894	mltF_2	4.2.2.-		Membrane-bound lytic murein transglycosylase F
-LNFNCACK_02876	CDS	1017				hypothetical protein
-LNFNCACK_02877	CDS	807	tcyC_2	3.6.3.-	COG1126	L-cystine import ATP-binding protein TcyC
-LNFNCACK_02878	CDS	1824		1.18.1.2		Ferredoxin--NADP reductase
-LNFNCACK_02879	CDS	1239				hypothetical protein
-LNFNCACK_02880	CDS	1272	entS_4		COG0477	Enterobactin exporter EntS
-LNFNCACK_02881	CDS	1581	phoD_2	3.1.3.1	COG3540	Alkaline phosphatase D
-LNFNCACK_02882	CDS	1440	cydA	1.10.3.-	COG1271	Cytochrome bd ubiquinol oxidase subunit 1
-LNFNCACK_02883	CDS	1125	cydB	7.1.1.7	COG1294	Cytochrome bd-I ubiquinol oxidase subunit 2
-LNFNCACK_02884	CDS	1665	cydD		COG4988	ATP-binding/permease protein CydD
-LNFNCACK_02885	CDS	1692			COG1132	putative ABC transporter ATP-binding/permease protein
-LNFNCACK_02886	CDS	429	blaI		COG3682	Transcriptional regulator BlaI
-LNFNCACK_02887	CDS	849				hypothetical protein
-LNFNCACK_02888	CDS	630				hypothetical protein
-LNFNCACK_02889	CDS	726				hypothetical protein
-LNFNCACK_02890	CDS	381				hypothetical protein
-LNFNCACK_02891	CDS	561				hypothetical protein
-LNFNCACK_02892	CDS	273				hypothetical protein
-LNFNCACK_02893	CDS	477				hypothetical protein
-LNFNCACK_02894	CDS	162				hypothetical protein
-LNFNCACK_02895	CDS	168				hypothetical protein
-LNFNCACK_02896	CDS	585				hypothetical protein
-LNFNCACK_02897	CDS	2316	ydfJ		COG2409	Membrane protein YdfJ
-LNFNCACK_02898	CDS	240				hypothetical protein
-LNFNCACK_02899	CDS	1023				hypothetical protein
-LNFNCACK_02900	CDS	723	bioD	6.3.3.3		ATP-dependent dethiobiotin synthetase BioD
-LNFNCACK_02901	CDS	498	ptpA	3.1.3.48	COG0394	putative low molecular weight protein-tyrosine-phosphatase
-LNFNCACK_02902	CDS	645				hypothetical protein
-LNFNCACK_02903	CDS	1410	purB	4.3.2.2	COG0015	Adenylosuccinate lyase
-LNFNCACK_02904	CDS	2112	apeX_2		COG2409	Apo-petrobactin exporter
-LNFNCACK_02905	CDS	1074				hypothetical protein
-LNFNCACK_02906	CDS	501				hypothetical protein
-LNFNCACK_02907	CDS	1071				hypothetical protein
-LNFNCACK_02908	CDS	855				hypothetical protein
-LNFNCACK_02909	CDS	366				hypothetical protein
-LNFNCACK_02910	CDS	840	arsM	2.1.1.137		Arsenite methyltransferase
-LNFNCACK_02911	CDS	1083	acr3_2		COG0798	Arsenical-resistance protein Acr3
-LNFNCACK_02912	CDS	402	arsC1_3	2.8.4.2	COG0394	Arsenate-mycothiol transferase ArsC1
-LNFNCACK_02913	CDS	537				hypothetical protein
-LNFNCACK_02914	CDS	1209				hypothetical protein
-LNFNCACK_02915	CDS	1656	pgm	5.4.2.2	COG0033	Phosphoglucomutase
-LNFNCACK_02916	CDS	108				hypothetical protein
-LNFNCACK_02917	CDS	297				hypothetical protein
-LNFNCACK_02918	CDS	1263	mftC	2.-.-.-	COG0535	Putative mycofactocin radical SAM maturase MftC
-LNFNCACK_02919	CDS	1251	mftD	1.-.-.-	COG1304	Putative mycofactocin system heme/flavin oxidoreductase MftD
-LNFNCACK_02920	CDS	714	mftE	3.5.-.-	COG1402	Putative mycofactocin system creatinine amidohydrolase family protein MftE
-LNFNCACK_02921	CDS	786		1.-.-.-	COG1028	putative NAD-dependent oxidoreductase
-LNFNCACK_02922	CDS	1386	mftF	2.-.-.-	COG0463	Putative mycofactocin biosynthesis glycosyltransferase MftF
-LNFNCACK_02923	CDS	1293	mno	1.1.99.37		Methanol:N,N-dimethyl-4-nitrosoaniline oxidoreductase
-LNFNCACK_02924	CDS	1191				hypothetical protein
-LNFNCACK_02925	CDS	1530				hypothetical protein
-LNFNCACK_02926	CDS	918				hypothetical protein
-LNFNCACK_02927	CDS	669	devR		COG2197	DNA-binding transcriptional activator DevR/DosR
-LNFNCACK_02928	CDS	1401				hypothetical protein
-LNFNCACK_02929	CDS	1170	dhaT	1.1.1.202	COG1454	1,3-propanediol dehydrogenase
-LNFNCACK_02930	CDS	1524	adh	1.2.1.3	COG1012	Aldehyde dehydrogenase
-LNFNCACK_02931	CDS	375				hypothetical protein
-LNFNCACK_02932	CDS	1311	ilvA	4.3.1.19	COG1171	L-threonine dehydratase biosynthetic IlvA
-LNFNCACK_02933	CDS	282	ricR		COG1937	Copper-sensing transcriptional repressor RicR
-LNFNCACK_02934	CDS	2217	copA_1	7.2.2.8	COG2217	Copper-exporting P-type ATPase
-LNFNCACK_02935	CDS	1227				hypothetical protein
-LNFNCACK_02936	CDS	918	yxlF_2	3.6.3.-	COG1131	putative ABC transporter ATP-binding protein YxlF
-LNFNCACK_02937	CDS	696	liaR_2		COG2197	Transcriptional regulatory protein LiaR
-LNFNCACK_02938	CDS	1311				hypothetical protein
-LNFNCACK_02939	CDS	642				hypothetical protein
-LNFNCACK_02940	CDS	810	nshR	2.1.1.230		23S rRNA (adenosine(1067)-2-O)-methyltransferase"
+"2017","LNFNCACK_02483","CDS",1542,"guaB","1.1.1.205","COG0516","Inosine-5-monophosphate dehydrogenase"
+,"LNFNCACK_02484","CDS",303,"whiB3","","","Redox-responsive transcriptional regulator WhiB3"
+,"LNFNCACK_02485","CDS",246,"","","","hypothetical protein"
+,"LNFNCACK_02486","CDS",696,"ygeA","5.1.1.10","COG1794","Broad specificity amino-acid racemase YgeA"
+,"LNFNCACK_02487","CDS",1197,"serA","1.1.1.95","COG0111","D-3-phosphoglycerate dehydrogenase"
+,"LNFNCACK_02488","CDS",1479,"","","","hypothetical protein"
+,"LNFNCACK_02489","CDS",705,"ytrE_1","","COG1136","ABC transporter ATP-binding protein YtrE"
+,"LNFNCACK_02490","CDS",534,"","","","hypothetical protein"
+,"LNFNCACK_02491","CDS",1602,"groL1_2","","","60 kDa chaperonin 1"
+,"LNFNCACK_02492","CDS",297,"groS","","COG0234","10 kDa chaperonin"
+,"LNFNCACK_02493","CDS",1248,"","","","hypothetical protein"
+,"LNFNCACK_02494","CDS",1272,"nagZ_2","3.2.1.52","","Beta-hexosaminidase"
+,"LNFNCACK_02495","CDS",990,"","","","hypothetical protein"
+,"LNFNCACK_02496","CDS",1080,"tsaD","2.3.1.234","COG0533","tRNA N6-adenosine threonylcarbamoyltransferase"
+,"LNFNCACK_02497","CDS",480,"rimI","2.3.1.255","COG0456","N-alpha-acetyltransferase RimI"
+,"LNFNCACK_02498","CDS",786,"tsaB","","COG1214","tRNA threonylcarbamoyladenosine biosynthesis protein TsaB"
+,"LNFNCACK_02499","CDS",516,"","","","hypothetical protein"
+,"LNFNCACK_02500","CDS",1179,"rutD","3.5.1.-","","Putative aminoacrylate hydrolase RutD"
+,"LNFNCACK_02501","CDS",1209,"alr","5.1.1.1","COG0787","Alanine racemase"
+,"LNFNCACK_02502","CDS",1044,"gpr_3","1.1.1.-","COG0667","L-glyceraldehyde 3-phosphate reductase"
+,"LNFNCACK_02503","CDS",615,"","","","hypothetical protein"
+,"LNFNCACK_02504","CDS",549,"psaB","1.97.1.12","","Photosystem I P700 chlorophyll a apoprotein A2"
+,"LNFNCACK_02505","CDS",1470,"nnr","","COG0062","Bifunctional NAD(P)H-hydrate repair enzyme Nnr"
+,"LNFNCACK_02506","CDS",354,"acpS_2","2.7.8.7","","Holo-[acyl-carrier-protein] synthase"
+,"LNFNCACK_02507","CDS",1860,"glmS_1","2.6.1.16","COG0449","Glutamine--fructose-6-phosphate aminotransferase [isomerizing]"
+,"LNFNCACK_02508","CDS",966,"coaA","2.7.1.33","COG1072","Pantothenate kinase"
+,"LNFNCACK_02509","CDS",777,"","","","hypothetical protein"
+,"LNFNCACK_02510","CDS",1383,"","","","hypothetical protein"
+,"LNFNCACK_02511","CDS",756,"","2.5.1.68","COG0020","(2Z,6E)-farnesyl diphosphate synthase"
+,"LNFNCACK_02512","CDS",714,"","","","hypothetical protein"
+,"LNFNCACK_02513","CDS",279,"","","","hypothetical protein"
+,"LNFNCACK_02514","CDS",951,"mca_1","3.5.1.115","COG2120","Mycothiol S-conjugate amidase"
+,"LNFNCACK_02515","CDS",426,"","","","hypothetical protein"
+,"LNFNCACK_02516","CDS",495,"greA","","COG0782","Transcription elongation factor GreA"
+,"LNFNCACK_02517","CDS",825,"","","","hypothetical protein"
+,"LNFNCACK_02518","CDS",702,"msrA","1.8.4.11","COG0225","Peptide methionine sulfoxide reductase MsrA"
+,"LNFNCACK_02519","CDS",477,"","","","hypothetical protein"
+,"LNFNCACK_02520","CDS",468,"","","","hypothetical protein"
+,"LNFNCACK_02521","CDS",2013,"fadH_2","1.3.1.34","COG0446","2,4-dienoyl-CoA reductase"
+,"LNFNCACK_02522","CDS",996,"","","","hypothetical protein"
+,"LNFNCACK_02523","CDS",258,"","","","hypothetical protein"
+,"LNFNCACK_02524","CDS",981,"","","","hypothetical protein"
+,"LNFNCACK_02525","CDS",1182,"metB","2.5.1.48","COG0626","Cystathionine gamma-synthase"
+,"LNFNCACK_02526","CDS",1383,"cbs","4.2.1.22","COG0031","Putative cystathionine beta-synthase"
+,"LNFNCACK_02527","CDS",1410,"","","","hypothetical protein"
+,"LNFNCACK_02528","CDS",1233,"cysE_2","2.3.1.30","COG0316","Serine acetyltransferase"
+,"LNFNCACK_02529","CDS",582,"","","","hypothetical protein"
+,"LNFNCACK_02530","CDS",678,"dapD_1","2.3.1.117","COG0328","Tetrahydrodipicolinate N-succinyltransferase"
+,"LNFNCACK_02531","CDS",1143,"dapC_1","2.3.1.117","COG0327","N-succinyl-diaminopimelate aminotransferase"
+,"LNFNCACK_02532","CDS",1503,"dapB_2","1.3.1.26","COG0326","Dihydrodipicolinate reductase"
+,"LNFNCACK_02533","CDS",615,"","","","hypothetical protein"
+,"LNFNCACK_02534","CDS",738,"thrB_1","2.7.1.39","COG0170","Homoserine kinase"
+,"LNFNCACK_02535","CDS",1149,"thrC","4.2.1.39","COG0170","Threonine synthase"
+,"LNFNCACK_02536","CDS",999,"","","","hypothetical protein"
+,"LNFNCACK_02537","CDS",486,"metK","2.5.1.6","COG0173","S-adenosylmethionine synthetase"
+,"LNFNCACK_02538","CDS",1233,"","","","hypothetical protein"
+,"LNFNCACK_02539","CDS",615,"cysK","2.5.1.47","COG0220","Cysteine synthase"
+,"LNFNCACK_02540","CDS",357,"","","","hypothetical protein"
+,"LNFNCACK_02541","CDS",888,"gltB","1.4.1.13","COG1234","Glutamate synthase large subunit"
+,"LNFNCACK_02542","CDS",780,"gltD","1.4.1.13","COG1235","Glutamate synthase small subunit"
+,"LNFNCACK_02543","CDS",666,"","","","hypothetical protein"
+,"LNFNCACK_02544","CDS",1290,"glnA","6.3.1.2","COG0174","Glutamine synthetase"
+,"LNFNCACK_02545","CDS",702,"","","","hypothetical protein"
+,"LNFNCACK_02546","CDS",1563,"ilvB_1","2.2.1.6","COG0336","Acetolactate synthase large subunit"
+,"LNFNCACK_02547","CDS",384,"ilvN_1","2.2.1.6","COG0337","Acetolactate synthase small subunit"
+,"LNFNCACK_02548","CDS",1173,"ilvC","1.1.1.86","COG0338","Ketol-acid reductoisomerase"
+,"LNFNCACK_02549","CDS",996,"ilvD","4.2.1.9","COG0339","Dihydroxy-acid dehydratase"
+,"LNFNCACK_02550","CDS",816,"ilvE","2.6.1.42","COG0340","Branched-chain amino acid aminotransferase"
+,"LNFNCACK_02551","CDS",456,"ptsG","2.7.1.199","","PTS system glucose-specific EIICBA component"
+,"LNFNCACK_02552","CDS",234,"nagF","2.7.1.193","COG1264","PTS system N-acetylglucosamine-specific EIIB component"
+,"LNFNCACK_02553","CDS",1059,"glmS_2","2.6.1.16","COG0449","Glutamine--fructose-6-phosphate aminotransferase [isomerizing]"
+,"LNFNCACK_02554","CDS",753,"nagR_2","","COG2188","HTH-type transcriptional repressor NagR"
+,"LNFNCACK_02555","CDS",1260,"nagE2","","COG1263","PTS system N-acetylglucosamine-specific EIIC component"
+,"LNFNCACK_02556","CDS",1161,"agaA","3.5.1.-","COG1820","N-acetylgalactosamine-6-phosphate deacetylase"
+,"LNFNCACK_02557","CDS",981,"pip","3.4.11.5","","Proline iminopeptidase"
+,"LNFNCACK_02558","CDS",678,"","5.4.2.12","COG0406","PE-PGRS family protein PE_PGRS11"
+,"LNFNCACK_02559","CDS",966,"","","","hypothetical protein"
+,"LNFNCACK_02560","CDS",567,"","","","hypothetical protein"
+,"LNFNCACK_02561","CDS",630,"","","","hypothetical protein"
+,"LNFNCACK_02562","CDS",1380,"","","","hypothetical protein"
+,"LNFNCACK_02563","CDS",1500,"","","","hypothetical protein"
+,"LNFNCACK_02564","CDS",576,"chrR","1.6.5.2","COG0431","Quinone reductase"
+,"LNFNCACK_02565","tRNA",81,"","","","tRNA-Gln(ttg)"
+,"LNFNCACK_02566","CDS",600,"fabR","","","HTH-type transcriptional repressor FabR"
+,"LNFNCACK_02567","CDS",798,"tam","2.1.1.144","COG4106","putative trans-aconitate 2-methyltransferase"
+,"LNFNCACK_02568","CDS",507,"","","","hypothetical protein"
+,"LNFNCACK_02569","CDS",1824,"yheS_2","","COG0488","putative ABC transporter ATP-binding protein YheS"
+,"LNFNCACK_02570","CDS",939,"ispE","2.7.1.148","COG1947","4-diphosphocytidyl-2-C-methyl-D-erythritol kinase"
+,"LNFNCACK_02571","CDS",894,"ksgA","2.1.1.182","COG0030","Ribosomal RNA small subunit methyltransferase A"
+,"LNFNCACK_02572","CDS",1248,"rpf2","3.-.-.-","COG3583","Resuscitation-promoting factor Rpf2"
+,"LNFNCACK_02573","CDS",885,"dtd3","3.1.1.96","","D-aminoacyl-tRNA deacylase"
+,"LNFNCACK_02574","CDS",1800,"metG","6.1.1.10","COG0073","Methionine--tRNA ligase"
+,"LNFNCACK_02575","CDS",597,"","","","hypothetical protein"
+,"LNFNCACK_02576","CDS",591,"","","","hypothetical protein"
+,"LNFNCACK_02577","CDS",183,"","","","hypothetical protein"
+,"LNFNCACK_02578","CDS",768,"","","","hypothetical protein"
+,"LNFNCACK_02579","CDS",903,"","","","hypothetical protein"
+,"LNFNCACK_02580","CDS",1053,"","","","hypothetical protein"
+,"LNFNCACK_02581","CDS",702,"","","","hypothetical protein"
+,"LNFNCACK_02582","CDS",627,"dapB_2","1.1.1.103","COG0329","Dihydrodipicolinate reductase"
+,"LNFNCACK_02583","CDS",678,"dapD_2","2.3.1.117","COG0826","Tetrahydrodipicolinate N-succinyltransferase"
+,"LNFNCACK_02584","CDS",753,"dapC_2","2.3.1.117","COG0826","N-succinyl-diaminopimelate aminotransferase"
+,"LNFNCACK_02585","CDS",762,"dapA_3","4.3.3.7","","4-hydroxy-tetrahydrodipicolinate synthase"
+,"LNFNCACK_02586","CDS",678,"dapE_2","3.5.1.18","","Succinyl-diaminopimelate desuccinylase"
+,"LNFNCACK_02587","CDS",561,"dapF_2","5.1.1.7","","Diaminopimelate epimerase"
+,"LNFNCACK_02588","CDS",567,"lysA_2","4.3.2.4","COG1234","Diaminopimelate decarboxylase"
+,"LNFNCACK_02589","CDS",1050,"murC","6.3.2.8","COG0098","UDP-N-acetylmuramate--L-alanine ligase"
+,"LNFNCACK_02590","CDS",1083,"murD","6.3.2.9","COG0098","UDP-N-acetylmuramoyl-L-alanine--D-glutamate ligase"
+,"LNFNCACK_02591","CDS",1161,"murE","6.3.2.13","COG0098","UDP-N-acetylmuramoyl-tripeptide--D-alanyl-D-alanine ligase"
+,"LNFNCACK_02592","CDS",918,"murF","6.3.2.10","COG0098","UDP-N-acetylmuramoyl-pentapeptide synthase"
+,"LNFNCACK_02593","CDS",1002,"murG","2.4.1.227","COG0099","Undecaprenyl-phosphate N-acetylglucosaminyltransferase"
+,"LNFNCACK_02594","CDS",1053,"murA","2.5.1.7","COG0099","UDP-N-acetylglucosamine enolpyruvyl transferase"
+,"LNFNCACK_02595","CDS",1062,"murB","1.3.1.98","COG0099","UDP-N-acetylenolpyruvylglucosamine reductase"
+,"LNFNCACK_02596","CDS",762,"murI","5.1.1.17","COG0038","Glutamate racemase"
+,"LNFNCACK_02597","CDS",819,"ddl","6.3.2.4","COG0098","D-alanine--D-alanine ligase"
+,"LNFNCACK_02598","CDS",987,"ponA","2.4.1.129","","Penicillin-binding protein 1A"
+,"LNFNCACK_02599","CDS",1044,"pbp2","2.4.1.129","","Penicillin-binding protein 2"
+,"LNFNCACK_02600","CDS",879,"ftsI","","COG0346","Cell division protein FtsI"
+,"LNFNCACK_02601","CDS",1050,"ftsW","","COG0346","Cell division protein FtsW"
+,"LNFNCACK_02602","CDS",984,"ftsZ","","COG0346","Cell division protein FtsZ"
+,"LNFNCACK_02603","CDS",1020,"zipA","","COG0346","Cell division protein ZipA"
+,"LNFNCACK_02604","CDS",1110,"minC","","COG0346","Cell division inhibitor MinC"
+,"LNFNCACK_02605","CDS",975,"minD","","COG0346","Cell division protein MinD"
+,"LNFNCACK_02606","CDS",1053,"minE","","COG0346","Cell division protein MinE"
+,"LNFNCACK_02607","CDS",1170,"ftsA","","COG0346","Cell division protein FtsA"
+,"LNFNCACK_02608","CDS",1113,"ftsK","","COG0346","Cell division protein FtsK"
+,"LNFNCACK_02609","CDS",987,"ftsQ","","COG0346","Cell division protein FtsQ"
+,"LNFNCACK_02610","CDS",960,"ftsL","","COG0346","Cell division protein FtsL"
+,"LNFNCACK_02611","CDS",1020,"ftsB","","COG0346","Cell division protein FtsB"
+,"LNFNCACK_02612","CDS",1134,"ftsN","","COG0346","Cell division protein FtsN"
+,"LNFNCACK_02613","CDS",1089,"mraY","2.7.8.13","COG0099","Phospho-N-acetylmuramoyl-pentapeptide-transferase"
+,"LNFNCACK_02614","CDS",1140,"murJ","","COG0099","Lipid II flippase MurJ"
+,"LNFNCACK_02615","CDS",1035,"rodA","","COG0346","Shape-determining protein RodA"
+,"LNFNCACK_02616","CDS",978,"pbpA","","COG0346","Penicillin-binding protein A"
+,"LNFNCACK_02617","CDS",1116,"mreB","","COG3405","Actin-like protein MreB"
+,"LNFNCACK_02618","CDS",1020,"mreC","","COG3405","Rod shape-determining protein MreC"
+,"LNFNCACK_02619","CDS",1044,"mreD","","COG3405","Rod shape-determining protein MreD"
+,"LNFNCACK_02620","CDS",975,"rodZ","","COG3405","Rod shape-determining protein RodZ"
+,"LNFNCACK_02621","CDS",1110,"murC","2.3.1.129","COG0099","UDP-N-acetylmuramate--L-alanine ligase"
+,"LNFNCACK_02622","CDS",1023,"murD","2.3.2.15","COG0099","UDP-N-acetylmuramoyl-L-alanine--D-glutamate ligase"
+,"LNFNCACK_02623","CDS",1050,"murE","2.3.2.13","COG0099","UDP-N-acetylmuramoyl-tripeptide--L-lysine ligase"
+,"LNFNCACK_02624","CDS",1089,"murF","2.3.2.10","COG0099","UDP-N-acetylmuramoyl-pentapeptide synthase"
+,"LNFNCACK_02625","CDS",960,"murG","2.4.1.227","COG0099","UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) transferase"
+,"LNFNCACK_02626","CDS",1116,"murB","1.3.1.98","COG0099","UDP-N-acetylenolpyruvoylglucosamine reductase"
+,"LNFNCACK_02627","CDS",1020,"murA","2.5.1.7","COG0099","UDP-N-acetylglucosamine 1-carboxyvinyltransferase"
+,"LNFNCACK_02628","CDS",987,"ddlA","6.3.2.4","COG0099","D-alanine--D-alanine ligase"
+,"LNFNCACK_02629","CDS",1044,"ponA","3.4.11.3","COG0346","Penicillin-binding protein 1A"
+,"LNFNCACK_02630","CDS",1110,"pbp2","3.4.11.3","COG0346","Penicillin-binding protein 2"
+,"LNFNCACK_02631","CDS",1023,"dacB","3.4.19.12","COG0346","D-alanyl-D-alanine carboxypeptidase"
+,"LNFNCACK_02632","CDS",1050,"ampC","3.4.21.-","COG0346","Beta-lactamase AmpC"
+,"LNFNCACK_02633","CDS",1089,"lpoA","","COG0346","Lipopolysaccharide assembly protein LpoA"
+,"LNFNCACK_02634","CDS",960,"lpoB","","COG0346","Lipopolysaccharide assembly protein LpoB"
+,"LNFNCACK_02635","CDS",660,"cseB","","COG0745","Transcriptional regulatory protein CseB"
+,"LNFNCACK_02636","CDS",1374,"","","","hypothetical protein"
+,"LNFNCACK_02637","CDS",972,"","","","hypothetical protein"
+,"LNFNCACK_02638","CDS",936,"ligD_3","","COG1793","Multifunctional non-homologous end joining protein LigD"
+,"LNFNCACK_02639","CDS",888,"ligD_4","","COG1793","Multifunctional non-homologous end joining protein LigD"
+,"LNFNCACK_02640","CDS",687,"","","","hypothetical protein"
+,"LNFNCACK_02641","CDS",927,"araD","4.2.1.43","","L-2-keto-3-deoxyarabonate dehydratase"
+,"LNFNCACK_02642","CDS",789,"fabG_4","1.1.1.100","","3-oxoacyl-[acyl-carrier-protein] reductase FabG"
+,"LNFNCACK_02643","CDS",789,"","","","hypothetical protein"
+,"LNFNCACK_02644","CDS",591,"","","","hypothetical protein"
+,"LNFNCACK_02645","CDS",381,"lsr2","","","Nucleoid-associated protein Lsr2"
+,"LNFNCACK_02646","CDS",207,"","","","hypothetical protein"
+,"LNFNCACK_02647","CDS",1503,"lysS1","6.1.1.6","COG1190","Lysine--tRNA ligase 1"
+,"LNFNCACK_02648","CDS",1356,"","","","hypothetical protein"
+,"LNFNCACK_02649","CDS",624,"skfE","7.3.2.3","COG1131","SkfA peptide export ATP-binding protein SkfE"
+,"LNFNCACK_02650","CDS",885,"nadC","2.4.2.19","COG0157","Nicotinate-nucleotide pyrophosphorylase [carboxylating]"
+,"LNFNCACK_02651","CDS","1737","nadB","1.4.3.16","COG0029","L-aspartate oxidase"
+,"LNFNCACK_02652","CDS","441","panD","4.1.1.11","COG0853","Aspartate 1-decarboxylase"
+,"LNFNCACK_02653","CDS","885","panC","6.3.2.1","COG0414","Pantothenate synthetase"
+,"LNFNCACK_02654","CDS","954","","","","hypothetical protein"
+,"LNFNCACK_02655","CDS","939","","","","hypothetical protein"
+,"LNFNCACK_02656","CDS","231","","","","hypothetical protein"
+,"LNFNCACK_02657","CDS","1275","","","","hypothetical protein"
+,"LNFNCACK_02658","CDS","1182","nqo4","7.1.1.-","COG0649","NADH-quinone oxidoreductase subunit 4"
+,"LNFNCACK_02659","CDS","900","","","","hypothetical protein"
+,"LNFNCACK_02660","CDS","1410","","","","hypothetical protein"
+,"LNFNCACK_02661","CDS","792","","","","hypothetical protein"
+,"LNFNCACK_02662","CDS","474","","","","hypothetical protein"
+,"LNFNCACK_02663","CDS","855","sulD","","COG0801","Bifunctional folate synthesis protein"
+,"LNFNCACK_02664","CDS","855","folP1","2.5.1.15","COG0294","Dihydropteroate synthase"
+,"LNFNCACK_02665","CDS","576","folE","3.5.4.16","COG0302","GTP cyclohydrolase 1"
+,"LNFNCACK_02666","CDS","2145","ftsH","3.4.24.-","COG0465","ATP-dependent zinc metalloprotease FtsH"
+,"LNFNCACK_02667","CDS","552","hpt","2.4.2.8","","Hypoxanthine-guanine phosphoribosyltransferase"
+,"LNFNCACK_02668","CDS","1005","tilS","6.3.4.19","COG0037","tRNA(Ile)-lysidine synthase"
+,"LNFNCACK_02669","CDS","1044","","","","hypothetical protein"
+,"LNFNCACK_02670","CDS","1395","","3.4.16.-","COG2027","Carboxypeptidase"
+,"LNFNCACK_02671","CDS","633","ppa","3.6.1.1","","Inorganic pyrophosphatase"
+,"LNFNCACK_02672","CDS","450","","","","hypothetical protein"
+,"LNFNCACK_02673","CDS","894","ephA_1","3.3.2.10","","Epoxide hydrolase A"
+,"LNFNCACK_02674","CDS","420","","","","hypothetical protein"
+,"LNFNCACK_02675","tRNA","77","","","","tRNA-Thr(cgt)"
+,"LNFNCACK_02676","CDS","1086","xerC_4","","","Tyrosine recombinase XerC"
+,"LNFNCACK_02677","CDS","204","","","","hypothetical protein"
+,"LNFNCACK_02678","CDS","1497","","","","hypothetical protein"
+,"LNFNCACK_02679","CDS","264","","","","hypothetical protein"
+,"LNFNCACK_02680","CDS","315","whiB_3","","","Transcriptional regulator WhiB"
+,"LNFNCACK_02681","CDS","1596","","","","hypothetical protein"
+,"LNFNCACK_02682","CDS","438","","","","hypothetical protein"
+,"LNFNCACK_02683","CDS","822","","","","hypothetical protein"
+,"LNFNCACK_02684","CDS","849","","","","hypothetical protein"
+,"LNFNCACK_02685","CDS","3069","","","","hypothetical protein"
+,"LNFNCACK_02686","CDS","333","","","","hypothetical protein"
+,"LNFNCACK_02687","CDS","261","","","","hypothetical protein"
+,"LNFNCACK_02688","CDS","1065","","","","hypothetical protein"
+,"LNFNCACK_02689","CDS","525","","","","hypothetical protein"
+,"LNFNCACK_02690","CDS","2013","","","","hypothetical protein"
+,"LNFNCACK_02691","CDS","2640","","","","hypothetical protein"
+,"LNFNCACK_02692","CDS","339","","","","hypothetical protein"
+,"LNFNCACK_02693","CDS","276","","","","hypothetical protein"
+,"LNFNCACK_02694","CDS","438","pipB2","","COG1357","Secreted effector protein PipB2"
+,"LNFNCACK_02695","CDS","690","","","","hypothetical protein"
+,"LNFNCACK_02696","CDS","141","","","","hypothetical protein"
+,"LNFNCACK_02697","CDS","1440","","","","hypothetical protein"
+,"LNFNCACK_02698","CDS","1536","caeA","3.1.1.-","","Carboxylesterase A"
+,"LNFNCACK_02699","CDS","1170","","","","hypothetical protein"
+,"LNFNCACK_02700","CDS","618","tmk","2.7.4.9","","Thymidylate kinase"
+,"LNFNCACK_02701","CDS","642","opuBB_1","","COG1174","Choline transport system permease protein OpuBB"
+,"LNFNCACK_02702","CDS","1200","opuBA","","COG1125","Choline transport ATP-binding protein OpuBA"
+,"LNFNCACK_02703","CDS","780","opuBB_2","","COG1174","Choline transport system permease protein OpuBB"
+,"LNFNCACK_02704","CDS","1008","osmX_1","","COG1732","Osmoprotectant-binding protein OsmX"
+,"LNFNCACK_02705","CDS","1341","dap_2","3.4.11.19","","D-aminopeptidase"
+,"LNFNCACK_02706","CDS","1569","lcfB_5","6.2.1.3","COG0318","Long-chain-fatty-acid--CoA ligase"
+,"LNFNCACK_02707","CDS","453","","","","hypothetical protein"
+,"LNFNCACK_02708","CDS","2790","topA","5.6.2.1","COG0550","DNA topoisomerase 1"
+,"LNFNCACK_02709","CDS","786","ygiD","1.13.11.29","COG3384","4,5-DOPA dioxygenase extradiol"
+,"LNFNCACK_02710","CDS","393","","","","hypothetical protein"
+,"LNFNCACK_02711","CDS","1512","prmC_3","2.1.1.297","","Release factor glutamine methyltransferase"
+,"LNFNCACK_02712","CDS","2337","hppA","7.1.3.1","COG3808","K(+)-insensitive pyrophosphate-energized proton pump"
+,"LNFNCACK_02713","CDS","993","","1.17.1.9","","Formate dehydrogenase, mitochondrial"
+,"LNFNCACK_02714","CDS","354","rsbV","","COG1366","Anti-sigma-B factor antagonist"
+,"LNFNCACK_02715","CDS","2322","","","","hypothetical protein"
+,"LNFNCACK_02716","CDS","555","","","","hypothetical protein"
+,"LNFNCACK_02717","CDS","387","","","","hypothetical protein"
+,"LNFNCACK_02718","CDS","381","","","","hypothetical protein"
+,"LNFNCACK_02719","CDS","333","","","","hypothetical protein"
+,"LNFNCACK_02720","CDS","192","","","","hypothetical protein"
+,"LNFNCACK_02721","CDS","552","","","","hypothetical protein"
+,"LNFNCACK_02722","CDS","555","","","","hypothetical protein"
+,"LNFNCACK_02723","CDS","702","","","","hypothetical protein"
+,"LNFNCACK_02724","CDS","1038","","","COG4962","Putative conjugal transfer protein"
+,"LNFNCACK_02725","CDS","717","","","","hypothetical protein"
+,"LNFNCACK_02726","CDS","858","","","","hypothetical protein"
+,"LNFNCACK_02727","CDS","1200","ypdA","2.7.13.3","COG3275","Sensor histidine kinase YpdA"
+,"LNFNCACK_02728","CDS","765","lytR","","COG3279","Sensory transduction protein LytR"
+,"LNFNCACK_02729","CDS","372","","","","hypothetical protein"
+,"LNFNCACK_02730","CDS","1515","actP","","COG4147","Cation/acetate symporter ActP"
+,"LNFNCACK_02731","CDS","348","","","","hypothetical protein"
+,"LNFNCACK_02732","CDS","1611","mctC","","COG4147","Monocarboxylic acid transporter"
+,"LNFNCACK_02733","CDS","1062","bioB","2.8.1.6","","Biotin synthase"
+,"LNFNCACK_02734","CDS","621","bioN_2","","COG0619","Energy-coupling factor transporter transmembrane protein BioN"
+,"LNFNCACK_02735","CDS","702","bioM_2","3.6.3.-","COG1122","Biotin transport ATP-binding protein BioM"
+,"LNFNCACK_02736","CDS","603","bioY_2","","COG1268","Biotin transporter BioY"
+,"LNFNCACK_02737","CDS","588","tetR","","","Tetracycline repressor protein class A from transposon 1721"
+,"LNFNCACK_02738","CDS","918","pacX","1.14.16.7","","Phenylalanine 3-hydroxylase"
+,"LNFNCACK_02739","CDS","1932","acsA","6.2.1.1","COG0365","Acetyl-coenzyme A synthetase"
+,"LNFNCACK_02740","rRNA","108","","","","5S ribosomal RNA"
+,"LNFNCACK_02741","rRNA","3108","","","","23S ribosomal RNA"
+,"LNFNCACK_02742","rRNA","1520","","","","16S ribosomal RNA"
+,"LNFNCACK_02743","CDS","816","ugpQ","3.1.4.46","COG0584","Glycerophosphodiester phosphodiesterase, cytoplasmic"
+,"LNFNCACK_02744","CDS","459","","","","hypothetical protein"
+,"LNFNCACK_02745","CDS","825","ephA_2","3.3.2.10","","Epoxide hydrolase A"
+,"LNFNCACK_02746","CDS","684","nudL","3.6.1.-","","putative Nudix hydrolase NudL"
+,"LNFNCACK_02747","CDS","669","pdg","","","Ultraviolet N-glycosylase/AP lyase"
+,"LNFNCACK_02748","CDS","678","crp","","COG0664","CRP-like cAMP-activated global transcriptional regulator"
+,"LNFNCACK_02749","CDS","810","gloB_1","3.1.2.6","","Hydroxyacylglutathione hydrolase"
+,"LNFNCACK_02750","CDS","837","","","","hypothetical protein"
+,"LNFNCACK_02751","CDS","465","","","","hypothetical protein"
+,"LNFNCACK_02752","CDS","156","","","","hypothetical protein"
+,"LNFNCACK_02753","CDS","996","","","COG0003","Putative ATPase"
+,"LNFNCACK_02754","CDS","1149","","","","hypothetical protein"
+,"LNFNCACK_02755","CDS","2595","mtgA","2.4.1.129","","Biosynthetic peptidoglycan transglycosylase"
+,"LNFNCACK_02756","CDS","486","yqeY","","COG1610","putative protein YqeY"
+,"LNFNCACK_02757","CDS","948","ypbG","","COG1408","putative protein YpbG"
+,"LNFNCACK_02758","CDS","501","","","","hypothetical protein"
+,"LNFNCACK_02759","tRNA","76","","","","tRNA-Pro(cgg)"
+,"LNFNCACK_02760","CDS","126","","","","hypothetical protein"
+,"LNFNCACK_02761","CDS","426","","","","hypothetical protein"
+,"LNFNCACK_02762","CDS","636","rspR","","COG1802","HTH-type transcriptional repressor RspR"
+,"LNFNCACK_02763","CDS","366","","","","hypothetical protein"
+,"LNFNCACK_02764","CDS","735","","4.2.1.17","","putative enoyl-CoA hydratase echA14"
+,"LNFNCACK_02765","CDS","1200","pfp","2.7.1.90","COG0205","Pyrophosphate--fructose 6-phosphate 1-phosphotransferase"
+,"LNFNCACK_02766","CDS","924","","","","hypothetical protein"
+,"LNFNCACK_02767","CDS","1074","asd_2","1.2.1.11","COG0136","Aspartate-semialdehyde dehydrogenase"
+,"LNFNCACK_02768","CDS","1275","ask","2.7.2.4","COG0527","Aspartokinase"
+,"LNFNCACK_02769","CDS","912","btuD_10","7.6.2.8","","Vitamin B12 import ATP-binding protein BtuD"
+,"LNFNCACK_02770","CDS","1032","","","","hypothetical protein"
+,"LNFNCACK_02771","CDS","555","","","","hypothetical protein"
+,"LNFNCACK_02772","CDS","600","recR","","COG0353","Recombination protein RecR"
+,"LNFNCACK_02773","CDS","2208","","","","hypothetical protein"
+,"LNFNCACK_02774","CDS","570","","","","hypothetical protein"
+,"LNFNCACK_02775","CDS","1494","","","","hypothetical protein"
+,"LNFNCACK_02776","tRNA","88","","","","tRNA-Ser(gga)"
+,"LNFNCACK_02777","CDS","468","","","","hypothetical protein"
+,"LNFNCACK_02778","CDS","1560","","","","hypothetical protein"
+,"LNFNCACK_02779","CDS","300","","","","hypothetical protein"
+,"LNFNCACK_02780","CDS","501","","","","hypothetical protein"
+,"LNFNCACK_02781","CDS","360","","","","hypothetical protein"
+,"LNFNCACK_02782","tRNA","90","","","","tRNA-Ser(cga)"
+,"LNFNCACK_02783","CDS","447","tadA","3.5.4.33","COG0590","tRNA-specific adenosine deaminase"
+,"LNFNCACK_02784","CDS","639","upp","2.4.2.9","","Uracil phosphoribosyltransferase"
+,"LNFNCACK_02785","CDS","174","","","","hypothetical protein"
+,"LNFNCACK_02786","CDS","753","","","","hypothetical protein"
+,"LNFNCACK_02787","CDS","963","","","","hypothetical protein"
+,"LNFNCACK_02788","CDS","336","","","COG1695","Transcriptional regulator"
+,"LNFNCACK_02789","CDS","1449","pntB","7.1.1.1","COG1282","NAD(P) transhydrogenase subunit beta"
+,"LNFNCACK_02790","CDS","1542","pntA","7.1.1.1","COG3288","NAD(P) transhydrogenase subunit alpha"
+,"LNFNCACK_02791","CDS","141","","","","hypothetical protein"
+,"LNFNCACK_02792","CDS","1668","ilvG","2.2.1.6","COG0028","Acetolactate synthase large subunit IlvG"
+,"LNFNCACK_02793","CDS","1428","iscS_3","2.8.1.7","","Cysteine desulfurase IscS"
+,"LNFNCACK_02794","CDS","1548","gltB","1.4.1.13","COG0061","Glutamate synthase large subunit"
+,"LNFNCACK_02795","CDS","1386","gltD","1.4.1.13","COG0062","Glutamate synthase small subunit"
+,"LNFNCACK_02796","CDS","735","","","","hypothetical protein"
+,"LNFNCACK_02797","CDS","1713","aceE","1.2.4.1","COG0024","Pyruvate dehydrogenase E1 component"
+,"LNFNCACK_02798","CDS","1476","aceF","2.3.1.12","COG0025","Pyruvate dehydrogenase E2 component (dihydrolipoamide acetyltransferase)"
+,"LNFNCACK_02799","CDS","1131","lpd","1.8.1.4","COG1249","Dihydrolipoamide dehydrogenase"
+,"LNFNCACK_02800","CDS","678","","","","hypothetical protein"
+,"LNFNCACK_02801","CDS","609","yajO","5.1.99.6","COG0171","Putative oxidoreductase YajO"
+,"LNFNCACK_02802","CDS","882","","","","hypothetical protein"
+,"LNFNCACK_02803","CDS","321","","","","hypothetical protein"
+,"LNFNCACK_02804","CDS","1422","rpoB","2.7.7.6","COG0085","DNA-directed RNA polymerase subunit beta"
+,"LNFNCACK_02805","CDS","1005","rpoC","2.7.7.6","COG0086","DNA-directed RNA polymerase subunit beta′"
+,"LNFNCACK_02806","CDS","339","","","","hypothetical protein"
+,"LNFNCACK_02807","CDS","786","","","","hypothetical protein"
+,"LNFNCACK_02808","CDS","543","","","","hypothetical protein"
+,"LNFNCACK_02809","CDS","768","","","","hypothetical protein"
+,"LNFNCACK_02810","CDS","1080","pyrG","6.3.4.13","COG0504","CTP synthase"
+,"LNFNCACK_02811","CDS","1239","pyrE","2.4.2.10","COG0461","Orotate phosphoribosyltransferase"
+,"LNFNCACK_02812","CDS","681","pyrF","4.1.1.23","COG0167","Orotidine-5'-phosphate decarboxylase"
+,"LNFNCACK_02813","CDS","1032","","","","hypothetical protein"
+,"LNFNCACK_02814","CDS","654","","","","hypothetical protein"
+,"LNFNCACK_02815","CDS","1470","thyA","2.1.1.45","COG0207","Thymidylate synthase"
+,"LNFNCACK_02816","CDS","900","","","","hypothetical protein"
+,"LNFNCACK_02817","CDS","699","","","","hypothetical protein"
+,"LNFNCACK_02818","CDS","1281","prsA","2.7.6.1","COG0462","Phosphoribosyl pyrophosphate synthetase"
+,"LNFNCACK_02819","CDS","888","purF","2.5.1.16","COG0046","Amidophosphoribosyltransferase"
+,"LNFNCACK_02820","CDS","846","","","","hypothetical protein"
+,"LNFNCACK_02821","CDS","570","","","","hypothetical protein"
+,"LNFNCACK_02822","CDS","1230","purM","6.3.3.1","COG0159","Phosphoribosylformylglycinamidine cyclo-ligase"
+,"LNFNCACK_02823","CDS","1071","purN","2.1.2.3","COG0040","Phosphoribosylglycinamide formyltransferase"
+,"LNFNCACK_02824","CDS","750","purH","2.1.2.3","COG0139","Phosphoribosylaminoimidazolecarboxamide formyltransferase"
+,"LNFNCACK_02825","CDS","1002","purH","3.5.4.10","COG0139","IMP cyclohydrolase"
+,"LNFNCACK_02826","CDS","681","purC","6.3.3.1","COG0041","Phosphoribosylaminoimidazole-succinocarboxamide synthase"
+,"LNFNCACK_02827","CDS","1455","purL","6.3.5.3","COG0045","Phosphoribosylformylglycinamidine synthase"
+,"LNFNCACK_02828","CDS","1227","purQ","6.3.5.3","COG0044","Phosphoribosylformylglycinamidine synthase subunit PurQ"
+,"LNFNCACK_02829","CDS","1179","","","","hypothetical protein"
+,"LNFNCACK_02830","CDS","903","purB","4.3.2.2","COG0150","Adenylosuccinate lyase"
+,"LNFNCACK_02831","CDS","1068","purA","6.3.4.4","COG0019","Adenylosuccinate synthetase"
+,"LNFNCACK_02832","CDS","1236","purK","6.3.5.3","COG0043","N5-carboxyaminoimidazole ribonucleotide synthase"
+,"LNFNCACK_02833","CDS","1035","purE","5.4.99.18","COG0008","Phosphoribosylaminoimidazole carboxylase catalytic subunit"
+,"LNFNCACK_02834","CDS","1086","purC_2","6.3.2.6","COG0042","Phosphoribosylaminoimidazole-succinocarboxamide synthase"
+,"LNFNCACK_02835","CDS","654","purD","6.3.4.13","COG0043","Phosphoribosylamine--glycine ligase"
+,"LNFNCACK_02836","CDS","879","purG","6.3.5.3","COG0044","Phosphoribosylformylglycinamidine synthase subunit PurL"
+,"LNFNCACK_02837","CDS","1071","purH_2","3.5.4.10","COG0139","IMP cyclohydrolase"
+,"LNFNCACK_02838","CDS","957","purM_2","6.3.3.1","COG0159","Phosphoribosylformylglycinamidine cyclo-ligase"
+,"LNFNCACK_02839","CDS","1131","purL_2","6.3.5.3","COG0045","Phosphoribosylformylglycinamidine synthase"
+,"LNFNCACK_02840","CDS","1152","purQ_2","6.3.5.3","COG0044","Phosphoribosylformylglycinamidine synthase subunit PurQ"
+,"LNFNCACK_02841","CDS","1005","purS","6.3.5.3","COG0047","Phosphoribosylformylglycinamidine synthase subunit PurS"
+,"LNFNCACK_02842","CDS","885","","","","hypothetical protein"
+,"LNFNCACK_02843","CDS","1266","guaA","6.3.4.2","COG0517","GMP synthase [glutamine-hydrolyzing]"
+,"LNFNCACK_02844","CDS","1362","","","","hypothetical protein"
+,"LNFNCACK_02845","CDS","930","","","","hypothetical protein"
+,"LNFNCACK_02846","CDS","1503","pyrB","2.1.3.2","COG0157","Aspartate carbamoyltransferase catalytic subunit"
+,"LNFNCACK_02847","CDS","828","pyrC","5.3.1.24","COG0127","Dihydroorotase"
+,"LNFNCACK_02848","CDS","870","pyrD","1.3.3.1","COG0168","Dihydroorotate dehydrogenase"
+,"LNFNCACK_02849","CDS","945","","","","hypothetical protein"
+,"LNFNCACK_02850","CDS","1089","carB","6.3.4.16","COG0028","Carbamoyl-phosphate synthase large subunit"
+,"LNFNCACK_02851","CDS","993","carA","6.3.5.5","COG0029","Carbamoyl-phosphate synthase small subunit"
+,"LNFNCACK_02852","CDS","1230","","","","hypothetical protein"
+,"LNFNCACK_02853","CDS","1377","argF","2.1.3.3","COG0074","Ornithine carbamoyltransferase"
+,"LNFNCACK_02854","CDS","1239","argG","6.3.4.5","COG0017","Argininosuccinate synthase"
+,"LNFNCACK_02855","CDS","1122","argH","4.3.2.1","COG0164","Argininosuccinate lyase"
+,"LNFNCACK_02856","CDS","1302","argB","2.7.2.8","COG0548","Acetylglutamate kinase"
+,"LNFNCACK_02857","CDS","1161","argC","1.2.1.38","COG0010","N-acetyl-gamma-glutamyl-phosphate reductase"
+,"LNFNCACK_02858","CDS","969","argD","2.6.1.11","COG0078","Acetylornithine aminotransferase"
+,"LNFNCACK_02859","CDS","951","argE","3.5.1.16","COG0013","Acetylornithine deacetylase"
+,"LNFNCACK_02860","CDS","855","argJ","2.3.1.35","COG0174","Ornithine acetyltransferase"
+,"LNFNCACK_02861","CDS","735","","","","hypothetical protein"
+,"LNFNCACK_02862","CDS","1476","","","","hypothetical protein"
+,"LNFNCACK_02863","CDS","774","","","","hypothetical protein"
+,"LNFNCACK_02864","CDS","999","argR","","COG1438","Arginine pathway regulatory protein ArgR"
+,"LNFNCACK_02865","CDS","933","","","","hypothetical protein"
+,"LNFNCACK_02866","CDS","1068","","","","hypothetical protein"
+,"LNFNCACK_02867","CDS","1002","hisA","5.3.1.16","COG0107","Phosphoribosylformimino-5-aminoimidazole carboxamide ribotide isomerase"
+,"LNFNCACK_02868","CDS","1110","hisB","4.2.1.19","COG0141","Imidazoleglycerol-phosphate dehydratase"
+,"LNFNCACK_02869","CDS","900","hisC","2.6.1.9","COG0118","Histidinol-phosphate aminotransferase"
+,"LNFNCACK_02870","CDS","1263","hisD","1.1.1.23","COG0131","Histidinol dehydrogenase"
+,"LNFNCACK_02871","CDS","1038","hisE","3.6.1.31","COG0142","Phosphoribosyl-ATP pyrophosphohydrolase"
+,"LNFNCACK_02872","CDS","1281","hisF","4.1.3.-","COG0119","Imidazole glycerol phosphate synthase subunit HisF"
+,"LNFNCACK_02873","CDS","1404","hisH","4.3.2.10","COG0132","Imidazole glycerol phosphate synthase subunit HisH"
+,"LNFNCACK_02874","CDS","1239","hisI","2.4.2.-","COG0130","Phosphoribosyl-AMP cyclohydrolase"
+,"LNFNCACK_02875","CDS","1272","hisG","2.4.2.17","COG0046","ATP phosphoribosyltransferase"
+,"LNFNCACK_02876","CDS","1455","","","","hypothetical protein"
+,"LNFNCACK_02877","CDS","987","","","","hypothetical protein"
+,"LNFNCACK_02878","CDS","1140","leuA","2.3.3.13","COG0065","2-isopropylmalate synthase"
+,"LNFNCACK_02879","CDS","1281","leuB","4.2.1.33","COG0066","3-isopropylmalate dehydrogenase"
+,"LNFNCACK_02880","CDS","1371","leuC","4.2.1.9","COG0067","3-isopropylmalate dehydratase large subunit"
+,"LNFNCACK_02881","CDS","1398","leuD","4.2.1.9","COG0068","3-isopropylmalate dehydratase small subunit"
+,"LNFNCACK_02882","CDS","1155","","","","hypothetical protein"
+,"LNFNCACK_02883","CDS","1239","ilvE","2.6.1.42","COG0112","Branched-chain-amino-acid aminotransferase"
+,"LNFNCACK_02884","CDS","1221","ilvD","4.2.1.9","COG0030","Dihydroxy-acid dehydratase"
+,"LNFNCACK_02885","CDS","1215","ilvC","1.1.1.86","COG0031","Ketol-acid reductoisomerase"
+,"LNFNCACK_02886","CDS","1275","ilvA","4.3.1.19","COG0041","Threonine dehydratase"
+,"LNFNCACK_02887","CDS","1260","","","","hypothetical protein"
+,"LNFNCACK_02888","CDS","1161","","","","hypothetical protein"
+,"LNFNCACK_02889","CDS","1230","","","","hypothetical protein"
+,"LNFNCACK_02890","CDS","1371","","","","hypothetical protein"
+,"LNFNCACK_02891","CDS","951","trpE","4.1.3.27","COG0134","Anthranilate synthase component I"
+,"LNFNCACK_02892","CDS","1068","trpG","4.1.3.27","COG0144","Anthranilate synthase component II"
+,"LNFNCACK_02893","CDS","1245","trpC","5.3.1.24","COG0145","Indole-3-glycerol phosphate synthase"
+,"LNFNCACK_02894","CDS","1299","trpF","5.3.1.24","COG0136","N-(5-phosphoribosyl)anthranilate isomerase"
+,"LNFNCACK_02895","CDS","1428","trpD","2.4.2.18","COG0137","Anthranilate phosphoribosyltransferase"
+,"LNFNCACK_02896","CDS","1542","trpB","4.2.1.20","COG0135","Tryptophan synthase beta chain"
+,"LNFNCACK_02897","CDS","1434","trpA","4.2.1.20","COG0143","Tryptophan synthase alpha chain"
+,"LNFNCACK_02898","CDS","1224","","","","hypothetical protein"
+,"LNFNCACK_02899","CDS","1095","","","","hypothetical protein"
+,"LNFNCACK_02900","CDS","987","","","","hypothetical protein"
+,"LNFNCACK_02901","CDS","1119","metE","2.1.1.14","COG0620","5-methyltetrahydropteroyltriglutamate--homocysteine methyltransferase"
+,"LNFNCACK_02902","CDS","1056","metH","2.1.1.13","COG1410","Methionine synthase"
+,"LNFNCACK_02903","CDS","1329","","","","hypothetical protein"
+,"LNFNCACK_02904","CDS","1290","","","","hypothetical protein"
+,"LNFNCACK_02905","CDS","1413","cysK","2.5.1.47","COG0031","Cysteine synthase"
+,"LNFNCACK_02906","CDS","1245","","","","hypothetical protein"
+,"LNFNCACK_02907","CDS","1344","","","","hypothetical protein"
+,"LNFNCACK_02908","CDS","1251","cysH","1.8.4.8","COG0175","Phosphoadenosine phosphosulfate reductase"
+,"LNFNCACK_02909","CDS","1278","cysI","1.8.99.1","COG0174","Sulfite reductase, hemoprotein subunit"
+,"LNFNCACK_02910","CDS","1293","cysJ","1.8.99.1","COG0369","Sulfite reductase, flavoprotein subunit"
+,"LNFNCACK_02911","CDS","1407","cysN","2.7.7.4","COG0368","ATP adenylyltransferase subunit CysN"
+,"LNFNCACK_02912","CDS","1227","cysD","2.7.7.4","COG0314","ATP adenylyltransferase subunit CysD"
+,"LNFNCACK_02913","CDS","1365","","","","hypothetical protein"
+,"LNFNCACK_02914","CDS","1314","","","","hypothetical protein"
+,"LNFNCACK_02915","CDS","1116","","","","hypothetical protein"
+,"LNFNCACK_02916","CDS","1089","","","","hypothetical protein"
+,"LNFNCACK_02917","CDS","1188","serA","1.1.1.95","COG0111","D-3-phosphoglycerate dehydrogenase"
+,"LNFNCACK_02918","CDS","1206","serB","3.1.3.3","COG0110","Phosphoserine phosphatase"
+,"LNFNCACK_02919","CDS","1137","serC","2.6.1.52","COG0075","Phosphoserine aminotransferase"
+,"LNFNCACK_02920","CDS","1155","","","","hypothetical protein"
+,"LNFNCACK_02921","CDS","1263","","","","hypothetical protein"
+,"LNFNCACK_02922","CDS","1359","glyA","2.1.2.1","COG0112","Serine hydroxymethyltransferase"
+,"LNFNCACK_02923","CDS","1245","gcvT","2.1.2.10","COG0077","Glycine cleavage system T protein"
+,"LNFNCACK_02924","CDS","1272","gcvH","1.8.1.4","COG0403","Glycine cleavage system H protein"
+,"LNFNCACK_02925","CDS","1386","gcvP","1.4.4.2","COG0404","Glycine dehydrogenase (decarboxylating)"
+,"LNFNCACK_02926","CDS","1221","","","","hypothetical protein"
+,"LNFNCACK_02927","CDS","1080","","","","hypothetical protein"
+,"LNFNCACK_02928","CDS","1212","purF","2.5.1.61","COG0040","Amidophosphoribosyltransferase"
+,"LNFNCACK_02929","CDS","1197","purD","6.3.4.13","COG0041","Phosphoribosylamine--glycine ligase"
+,"LNFNCACK_02930","CDS","1305","purN","2.1.2.2","COG0042","Phosphoribosylglycinamide formyltransferase"
+,"LNFNCACK_02931","CDS","1242","purM","6.3.3.1","COG0043","Phosphoribosylformylglycinamidine cyclo-ligase"
+,"LNFNCACK_02932","CDS","1323","purK","6.3.3.1","COG0044","Phosphoribosylaminoimidazole carboxylase ATPase subunit"
+,"LNFNCACK_02933","CDS","1404","purE","4.1.1.21","COG0045","Phosphoribosylaminoimidazole carboxylase catalytic subunit"
+,"LNFNCACK_02934","CDS","1290","purC","6.3.2.6","COG0046","Phosphoribosylaminoimidazole-succinocarboxamide synthase"
+,"LNFNCACK_02935","CDS","1227","purB","4.3.2.2","COG0047","Adenylosuccinate lyase"
+,"LNFNCACK_02936","CDS","1284","purA","6.3.4.4","COG0048","Adenylosuccinate synthase"
+,"LNFNCACK_02937","CDS","1359","purL","6.3.5.3","COG0049","Phosphoribosylformylglycinamidine synthase"
+,"LNFNCACK_02938","CDS","1266","purQ","6.3.5.3","COG0050","Phosphoribosylformylglycinamidine synthase II subunit"
+,"LNFNCACK_02939","CDS","1383","purS","6.3.3.1","COG0051","Phosphoribosylformylglycinamidine cyclo-ligase subunit"
+,"LNFNCACK_02940","CDS","1215","purH","2.1.2.3","COG0052","Bifunctional purine biosynthesis protein PurH"
 "2019","LNFNCACK_02942","CDS",1695,"expZ","","COG0488","Nucleotide-binding protein ExpZ"
 "2023","LNFNCACK_02946","CDS",555,"pyrE","2.4.2.10","COG0461","Orotate phosphoribosyltransferase"
 "2026","LNFNCACK_02949","CDS",813,"xthA","3.1.11.2","COG0708","Exodeoxyribonuclease III"
@@ -888,242 +888,241 @@ LNFNCACK_02940	CDS	810	nshR	2.1.1.230		23S rRNA (adenosine(1067)-2-O)-methyltran
 "2139","LNFNCACK_03062","CDS",1680,"ahpF","1.8.1.-","COG3634","Alkyl hydroperoxide reductase subunit F"
 "2140","LNFNCACK_03063","CDS",567,"ahpC","1.11.1.15","COG0450","Alkyl hydroperoxide reductase C"
 "2143","LNFNCACK_03066","CDS",630,"dinG_2","3.1.-.-","","3-5 exonuclease DinG"
-"2144","LNFNCACK_03067","CDS",1878,"IMPDH_2","1.1.1.205","","Inosine-5-monophosphate dehydrogenase
-LNFNCACK_03068	CDS	1503	nfdA	3.5.1.91		N-substituted formamide deformylase
-LNFNCACK_03069	CDS	561	mtnN	3.2.2.9		5-methylthioadenosine/S-adenosylhomocysteine nucleosidase"
+"2144","LNFNCACK_03067","CDS","1878","IMPDH_2","1.1.1.205","","Inosine-5-monophosphate dehydrogenase"
+"2145","LNFNCACK_03068","CDS","1503","nfdA","3.5.1.91","","N-substituted formamide deformylase"
+"2146","LNFNCACK_03069","CDS","561","mtnN","3.2.2.9","","5-methylthioadenosine/S-adenosylhomocysteine nucleosidase"
 "2146","LNFNCACK_03071","CDS",1401,"fumC","4.2.1.2","COG0114","Fumarate hydratase class II"
-"2148","LNFNCACK_03073","CDS",576,"fas6","3.2.2.-","","Cytokinin riboside 5-monophosphate phosphoribohydrolase
-LNFNCACK_03074	CDS	1344	lgoT			putative L-galactonate transporter
-LNFNCACK_03075	CDS	600	betI_4			HTH-type transcriptional regulator BetI
-LNFNCACK_03076	CDS	1182				hypothetical protein
-LNFNCACK_03077	CDS	756	fatE	7.2.2.-	COG4604	Petrobactin import ATP-binding protein FatE
-LNFNCACK_03078	CDS	1068	fatC		COG4605	Petrobactin import system permease protein FatC
-LNFNCACK_03079	CDS	906	fatD		COG4606	Petrobactin import system permease protein FatD
-LNFNCACK_03080	CDS	975	yclQ		COG4607	Petrobactin-binding protein YclQ
-LNFNCACK_03081	CDS	801				hypothetical protein
-LNFNCACK_03082	CDS	804	mca_2	3.5.1.115	COG2120	Mycothiol S-conjugate amidase
-LNFNCACK_03083	CDS	183				hypothetical protein
-LNFNCACK_03084	CDS	525	bfrB	1.16.3.1	COG1528	Ferritin BfrB
-LNFNCACK_03085	CDS	654	hxpA	3.1.3.22	COG0637	Hexitol phosphatase A
-LNFNCACK_03086	CDS	1611				hypothetical protein
-LNFNCACK_03087	CDS	573	napA	1.9.6.1		Periplasmic nitrate reductase
-LNFNCACK_03088	CDS	2691	fdnG-3	1.17.2.3	COG0243	Formate dehydrogenase 2 subunit alpha (cytochrome c-553)
-LNFNCACK_03089	CDS	1137	rsxB	7.-.-.-		Ion-translocating oxidoreductase complex subunit B
-LNFNCACK_03090	CDS	1167				hypothetical protein
-LNFNCACK_03091	CDS	1290				L-lactate transporter
-LNFNCACK_03092	CDS	393				hypothetical protein
-LNFNCACK_03093	CDS	1002	selD	2.7.9.3	COG0709	Selenide, water dikinase
-LNFNCACK_03094	CDS	348	mazF9	3.1.-.-	COG2337	Endoribonuclease MazF9
-LNFNCACK_03095	CDS	231	mazE9			Antitoxin MazE9
-LNFNCACK_03096	tRNA	96				tRNA-SeC(tca)
-LNFNCACK_03097	CDS	1353	selA	2.9.1.1		L-seryl-tRNA(Sec) selenium transferase
-LNFNCACK_03098	CDS	1863	tuf_2			Elongation factor Tu
-LNFNCACK_03099	CDS	702				hypothetical protein
-LNFNCACK_03100	CDS	654				putative HTH-type transcriptional regulator
-LNFNCACK_03101	CDS	726				hypothetical protein
-LNFNCACK_03102	CDS	891	ppk2B	2.7.4.1	COG2326	Polyphosphate kinase PPK2B
-LNFNCACK_03103	CDS	663				hypothetical protein
-LNFNCACK_03104	CDS	1461	selO	2.7.7.-	COG0397	Protein adenylyltransferase SelO
-LNFNCACK_03105	CDS	510	ybaK	4.2.-.-	COG2606	Cys-tRNA(Pro)/Cys-tRNA(Cys) deacylase YbaK
-LNFNCACK_03106	CDS	333				hypothetical protein
-LNFNCACK_03107	CDS	417	rhaS			HTH-type transcriptional activator RhaS
-LNFNCACK_03108	CDS	450				hypothetical protein
-LNFNCACK_03109	CDS	1485	sad_2	1.2.1.16		Succinate-semialdehyde dehydrogenase
-LNFNCACK_03110	CDS	1242	davT_2	2.6.1.48	COG0160	5-aminovalerate aminotransferase DavT
-LNFNCACK_03111	CDS	495				hypothetical protein
-LNFNCACK_03112	CDS	624	mhqD	3.1.-.-	COG0400	Putative hydrolase MhqD
-LNFNCACK_03113	CDS	1371	aam	3.5.1.13	COG0154	Acylamidase
-LNFNCACK_03114	CDS	990	ghrA_2	1.1.1.81		Glyoxylate/hydroxypyruvate reductase A
-LNFNCACK_03115	CDS	747	maiA_1	5.2.1.1	COG3473	Maleate isomerase
-LNFNCACK_03116	CDS	765	maiA_2	5.2.1.1		Maleate isomerase
-LNFNCACK_03117	CDS	678	lutR_2		COG2186	HTH-type transcriptional regulator LutR
-LNFNCACK_03118	CDS	1206	gdhA	1.4.1.3	COG0334	Glutamate dehydrogenase
-LNFNCACK_03119	CDS	942	benM			HTH-type transcriptional regulator BenM
-LNFNCACK_03120	CDS	591				hypothetical protein
-LNFNCACK_03121	CDS	318				hypothetical protein
-LNFNCACK_03122	CDS	930		3.1.1.23	COG2267	Monoacylglycerol lipase
-LNFNCACK_03123	CDS	639				hypothetical protein
-LNFNCACK_03124	CDS	633				hypothetical protein
-LNFNCACK_03125	CDS	981	thadh	4.3.1.16		L-threo-3-hydroxyaspartate ammonia-lyase
-LNFNCACK_03126	CDS	216				hypothetical protein
-LNFNCACK_03127	CDS	531				hypothetical protein
-LNFNCACK_03128	CDS	552				hypothetical protein
-LNFNCACK_03129	CDS	3405	recC	3.1.11.5	COG1330	RecBCD enzyme subunit RecC
-LNFNCACK_03130	CDS	3462	recB	3.1.11.5	COG1074	RecBCD enzyme subunit RecB
-LNFNCACK_03131	CDS	1887	recD	3.1.11.5	COG0507	RecBCD enzyme subunit RecD
-LNFNCACK_03132	CDS	486				hypothetical protein
-LNFNCACK_03133	CDS	579				hypothetical protein
-LNFNCACK_03134	CDS	795				hypothetical protein
-LNFNCACK_03135	CDS	807				hypothetical protein
-LNFNCACK_03136	CDS	996				hypothetical protein
-LNFNCACK_03137	CDS	678				hypothetical protein
-LNFNCACK_03138	CDS	276		1.-.-.-	COG0695	Putative glutaredoxin.1
-LNFNCACK_03139	CDS	795				hypothetical protein
-LNFNCACK_03140	CDS	1269		2.1.1.-	COG2230	putative fatty acid methyltransferase
-LNFNCACK_03141	CDS	1392				hypothetical protein
-LNFNCACK_03142	CDS	771			COG1073	putative protein
-LNFNCACK_03143	CDS	1257	glsA	3.5.1.2		Glutaminase
-LNFNCACK_03144	CDS	843				hypothetical protein
-LNFNCACK_03145	CDS	408				hypothetical protein
-LNFNCACK_03146	CDS	1179				hypothetical protein
-LNFNCACK_03147	CDS	1038	adhC2	1.1.1.2	COG1064	NADP-dependent alcohol dehydrogenase C 2
-LNFNCACK_03148	CDS	1374	gloB_2	3.1.2.6		Hydroxyacylglutathione hydrolase
-LNFNCACK_03149	CDS	609	ygaP		COG0607	Inner membrane protein YgaP
-LNFNCACK_03150	CDS	813			COG0730	putative membrane transporter protein
-LNFNCACK_03151	CDS	156				hypothetical protein
-LNFNCACK_03152	CDS	99				hypothetical protein
-LNFNCACK_03153	CDS	360				hypothetical protein
-LNFNCACK_03154	CDS	462				hypothetical protein
-LNFNCACK_03155	CDS	243				hypothetical protein
-LNFNCACK_03156	CDS	1371	gloB_3	3.1.2.6		Hydroxyacylglutathione hydrolase
-LNFNCACK_03157	CDS	402				hypothetical protein
-LNFNCACK_03158	CDS	267				hypothetical protein
-LNFNCACK_03159	CDS	495				hypothetical protein
-LNFNCACK_03160	CDS	987				hypothetical protein
-LNFNCACK_03161	CDS	960				hypothetical protein
-LNFNCACK_03162	CDS	510				hypothetical protein
-LNFNCACK_03163	CDS	672	ywaC	2.7.6.5	COG2357	GTP pyrophosphokinase YwaC
-LNFNCACK_03164	CDS	759				hypothetical protein
-LNFNCACK_03165	CDS	849				hypothetical protein
-LNFNCACK_03166	CDS	1740		6.2.1.3	COG1022	Long-chain-fatty-acid--CoA ligase FadD15
-LNFNCACK_03167	CDS	672	COQ5_3	2.1.1.163		2-methoxy-6-polyprenyl-1,4-benzoquinol methylase, mitochondrial
-LNFNCACK_03168	CDS	1191				hypothetical protein
-LNFNCACK_03169	CDS	1389				hypothetical protein
-LNFNCACK_03170	CDS	402				hypothetical protein
-LNFNCACK_03171	CDS	483				hypothetical protein
-LNFNCACK_03172	CDS	1899				hypothetical protein
-LNFNCACK_03173	CDS	777				hypothetical protein
-LNFNCACK_03174	CDS	1551	qacA		COG0477	Antiseptic resistance protein
-LNFNCACK_03175	CDS	627	rcdA		COG3226	HTH-type transcriptional regulator RcdA
-LNFNCACK_03176	CDS	1107				hypothetical protein
-LNFNCACK_03177	CDS	1515				hypothetical protein
-LNFNCACK_03178	CDS	345				hypothetical protein
-LNFNCACK_03179	CDS	3297				hypothetical protein
-LNFNCACK_03180	CDS	633				hypothetical protein
-LNFNCACK_03181	CDS	885	morA	1.1.1.218		Morphine 6-dehydrogenase
-LNFNCACK_03182	CDS	339	dksA_2			RNA polymerase-binding transcription factor DksA
-LNFNCACK_03183	CDS	126				hypothetical protein
-LNFNCACK_03184	CDS	768				hypothetical protein
-LNFNCACK_03185	CDS	705				hypothetical protein
-LNFNCACK_03186	CDS	567				hypothetical protein
-LNFNCACK_03187	CDS	618				hypothetical protein
-LNFNCACK_03188	CDS	2175	copB	7.2.2.8		Copper-exporting P-type ATPase B
-LNFNCACK_03189	CDS	312				hypothetical protein
-LNFNCACK_03190	CDS	942				hypothetical protein
-LNFNCACK_03191	CDS	396	yjgH		COG0251	RutC family protein YjgH
-LNFNCACK_03192	CDS	987				hypothetical protein
-LNFNCACK_03193	CDS	213				hypothetical protein
-LNFNCACK_03194	CDS	885	gltR		COG0583	HTH-type transcriptional regulator GltR
-LNFNCACK_03195	CDS	894	yddE	5.1.-.-	COG0384	putative isomerase YddE
-LNFNCACK_03196	CDS	819			COG0596	putative protein
-LNFNCACK_03197	CDS	1392	dnaB	3.6.4.12	COG0305	Replicative DNA helicase
-LNFNCACK_03198	CDS	276				hypothetical protein
-LNFNCACK_03199	CDS	1485	hsrA_2			putative transport protein HsrA
-LNFNCACK_03200	CDS	1218	ynfM			Inner membrane transport protein YnfM
-LNFNCACK_03201	CDS	1044				hypothetical protein
-LNFNCACK_03202	CDS	663				hypothetical protein
-LNFNCACK_03203	CDS	489	btuE	1.11.1.15	COG0386	Thioredoxin/glutathione peroxidase BtuE
-LNFNCACK_03204	CDS	288				hypothetical protein
-LNFNCACK_03205	CDS	1437				hypothetical protein
-LNFNCACK_03206	CDS	486				hypothetical protein
-LNFNCACK_03207	CDS	345				hypothetical protein
-LNFNCACK_03208	CDS	1323				hypothetical protein
-LNFNCACK_03209	CDS	393				hypothetical protein
-LNFNCACK_03210	CDS	636				hypothetical protein
-LNFNCACK_03211	CDS	786	tipA			HTH-type transcriptional activator TipA
-LNFNCACK_03212	CDS	432				hypothetical protein
-LNFNCACK_03213	CDS	1521	cotA		COG2132	Spore coat protein A
-LNFNCACK_03214	CDS	1167				hypothetical protein
-LNFNCACK_03215	CDS	771	fabG2	1.-.-.-		putative oxidoreductase
-LNFNCACK_03216	CDS	1032	iolG_2	1.1.1.18	COG0673	Myo-inositol 2-dehydrogenase
-LNFNCACK_03217	CDS	1020	rbsR		COG1609	Ribose operon repressor
-LNFNCACK_03218	CDS	1236	thcD_2	1.18.1.-		Rhodocoxin reductase
-LNFNCACK_03219	CDS	312	doxA			Naphthalene 1,2-dioxygenase system, ferredoxin component
-LNFNCACK_03220	CDS	1113				hypothetical protein
-LNFNCACK_03221	CDS	807		3.1.1.23	COG2267	Monoacylglycerol lipase
-LNFNCACK_03222	CDS	963				IS481 family transposase IS3514
-LNFNCACK_03223	CDS	1512	bauC	1.2.1.-	COG1012	Putative 3-oxopropanoate dehydrogenase
-LNFNCACK_03224	CDS	855	yfdE_2	2.8.3.19	COG1804	Acetyl-CoA:oxalate CoA-transferase
-LNFNCACK_03225	CDS	591				hypothetical protein
-LNFNCACK_03226	CDS	1821		6.2.1.3	COG1022	Long-chain-fatty-acid--CoA ligase FadD15
-LNFNCACK_03227	CDS	2178	fadJ_4		COG1024	Fatty acid oxidation complex subunit alpha
-LNFNCACK_03228	CDS	1215	fadA_3	2.3.1.-	COG0183	Putative acyltransferase
-LNFNCACK_03229	CDS	1161	mmgC_4	1.3.99.-	COG1960	Acyl-CoA dehydrogenase
-LNFNCACK_03230	CDS	1146	fadI_2	2.3.1.16		3-ketoacyl-CoA thiolase
-LNFNCACK_03231	CDS	408				hypothetical protein
-LNFNCACK_03232	CDS	1524		6.2.1.3	COG0318	Long-chain-fatty-acid--CoA ligase FadD13
-LNFNCACK_03233	CDS	741		4.2.1.17	COG1024	putative enoyl-CoA hydratase echA12
-LNFNCACK_03234	CDS	1161	acrC_2	1.3.1.95		Acryloyl-CoA reductase (NADH)
-LNFNCACK_03235	CDS	1668		6.2.1.3	COG0318	Long-chain-fatty-acid--CoA ligase
-LNFNCACK_03236	CDS	516				hypothetical protein
-LNFNCACK_03237	CDS	582				hypothetical protein
-LNFNCACK_03238	CDS	1272				putative inactive lipase
-LNFNCACK_03239	CDS	600	kstR2			HTH-type transcriptional repressor KstR2
-LNFNCACK_03240	CDS	1020	iolG_3	1.1.1.18	COG0673	Inositol 2-dehydrogenase/D-chiro-inositol 3-dehydrogenase
-LNFNCACK_03241	CDS	885	frcA	7.5.2.-	COG1129	Fructose import ATP-binding protein FrcA
-LNFNCACK_03242	CDS	1041				hypothetical protein
-LNFNCACK_03243	CDS	972				hypothetical protein
-LNFNCACK_03244	CDS	2097	iolD	3.7.1.22	COG3962	3D-(3,5/4)-trihydroxycyclohexane-1,2-dione hydrolase
-LNFNCACK_03245	CDS	936	iolB	5.3.1.30	COG3718	5-deoxy-glucuronate isomerase
-LNFNCACK_03246	CDS	921				hypothetical protein
-LNFNCACK_03247	CDS	966	iolC	2.7.1.92	COG0524	5-dehydro-2-deoxygluconokinase
-LNFNCACK_03248	CDS	978	iolE	4.2.1.44		Inosose dehydratase
-LNFNCACK_03249	CDS	1023	iolG_4	1.1.1.18	COG0673	Myo-inositol 2-dehydrogenase
-LNFNCACK_03250	CDS	777	nagR_3		COG2188	HTH-type transcriptional repressor NagR
-LNFNCACK_03251	CDS	741				hypothetical protein
-LNFNCACK_03252	CDS	984				hypothetical protein
-LNFNCACK_03253	CDS	984				hypothetical protein
-LNFNCACK_03254	CDS	474				hypothetical protein
-LNFNCACK_03255	CDS	882				hypothetical protein
-LNFNCACK_03256	CDS	993				hypothetical protein
-LNFNCACK_03257	CDS	2079				hypothetical protein
-LNFNCACK_03258	CDS	1347	yeeO		COG0534	putative FMN/FAD exporter YeeO
-LNFNCACK_03259	CDS	1635	alsT		COG1115	Amino-acid carrier protein AlsT
-LNFNCACK_03260	CDS	612				hypothetical protein
-LNFNCACK_03261	CDS	1623				hypothetical protein
-LNFNCACK_03262	CDS	591	ompA			Outer membrane protein A
-LNFNCACK_03263	CDS	561				hypothetical protein
-LNFNCACK_03264	CDS	447	rplI		COG0359	50S ribosomal protein L9
-LNFNCACK_03265	CDS	237	rpsR2		COG0238	30S ribosomal protein S18 2
-LNFNCACK_03266	CDS	630				Single-stranded DNA-binding protein
-LNFNCACK_03267	CDS	288	rpsF		COG0360	30S ribosomal protein S6
-LNFNCACK_03268	CDS	1341				hypothetical protein
-LNFNCACK_03269	CDS	2358	ponA1		COG0744	Penicillin-binding protein 1A
-LNFNCACK_03270	CDS	609				hypothetical protein
-LNFNCACK_03271	CDS	1095	ino1	5.5.1.4	COG1260	Inositol-3-phosphate synthase
-LNFNCACK_03272	CDS	1203	pksS	1.14.-.-	COG2124	Polyketide biosynthesis cytochrome P450 PksS
-LNFNCACK_03273	CDS	276				hypothetical protein
-LNFNCACK_03274	CDS	279				hypothetical protein
-LNFNCACK_03275	CDS	384				hypothetical protein
-LNFNCACK_03276	CDS	4413				hypothetical protein
-LNFNCACK_03277	CDS	2430				hypothetical protein
-LNFNCACK_03278	CDS	1419				hypothetical protein
-LNFNCACK_03279	CDS	969				hypothetical protein
-LNFNCACK_03280	CDS	1419				hypothetical protein
-LNFNCACK_03281	CDS	717				hypothetical protein
-LNFNCACK_03282	CDS	489				hypothetical protein
-LNFNCACK_03283	CDS	1716	pknD_3	2.7.11.1		Serine/threonine-protein kinase PknD
-LNFNCACK_03284	CDS	2328				hypothetical protein
-LNFNCACK_03285	CDS	840	prpC	3.1.3.16	COG0631	Protein phosphatase PrpC
-LNFNCACK_03286	CDS	474				hypothetical protein
-LNFNCACK_03287	CDS	477				hypothetical protein
-LNFNCACK_03288	CDS	1320				hypothetical protein
-LNFNCACK_03289	CDS	1467		2.7.7.-	COG0617	A-adding tRNA nucleotidyltransferase
-LNFNCACK_03290	CDS	954				hypothetical protein
-LNFNCACK_03291	CDS	483	mutT4	3.6.1.-	COG0494	Putative mutator protein MutT4
-LNFNCACK_03292	CDS	2040				hypothetical protein
-LNFNCACK_03293	CDS	1677	mviN_2		COG0728	putative peptidoglycan biosynthesis protein MviN
-LNFNCACK_03294	CDS	2037				hypothetical protein
-LNFNCACK_03295	CDS	627				hypothetical protein
-LNFNCACK_03296	CDS	762				hypothetical protein
-LNFNCACK_03297	CDS	1020	trxB	1.8.1.9	COG0492	Thioredoxin reductase
-LNFNCACK_03298	CDS	324	trxA			Thioredoxin 1
-LNFNCACK_03299	CDS	1164	noc			Nucleoid occlusion protein
-LNFNCACK_03300	CDS	1098	nifH	1.18.6.1		Nitrogenase iron protein
-LNFNCACK_03301	CDS	645	rsmG	2.1.1.-	COG0357	Ribosomal RNA small subunit methyltransferase G
-LNFNCACK_03302	CDS	645				hypothetical protein
-LNFNCACK_03303	CDS	1041	yidC		COG0706	Membrane protein insertase YidC
-LNFNCACK_03304	CDS	333	yidD			Putative membrane protein insertion efficiency factor
-LNFNCACK_03305	CDS	375	rnpA	3.1.26.5	COG0594	Ribonuclease P protein component
-LNFNCACK_03306	CDS	138	rpmH		COG0230	50S ribosomal protein L34
-"
+"2148","LNFNCACK_03073","CDS",576,"fas6","3.2.2.-","","Cytokinin riboside 5-monophosphate phosphoribohydrolase"
+"2149","LNFNCACK_03074","CDS","1344","lgoT","","","putative L-galactonate transporter"
+"2150","LNFNCACK_03075","CDS","600","betI_4","","","HTH-type transcriptional regulator BetI"
+"2151","LNFNCACK_03076","CDS","1182","","","","hypothetical protein"
+"2152","LNFNCACK_03077","CDS","756","fatE","7.2.2.-","COG4604","Petrobactin import ATP-binding protein FatE"
+"2153","LNFNCACK_03078","CDS","1068","fatC","","COG4605","Petrobactin import system permease protein FatC"
+"2154","LNFNCACK_03079","CDS","906","fatD","","COG4606","Petrobactin import system permease protein FatD"
+"2155","LNFNCACK_03080","CDS","975","yclQ","","COG4607","Petrobactin-binding protein YclQ"
+"2156","LNFNCACK_03081","CDS","801","","","","hypothetical protein"
+"2157","LNFNCACK_03082","CDS","804","mca_2","3.5.1.115","COG2120","Mycothiol S-conjugate amidase"
+"2158","LNFNCACK_03083","CDS","183","","","","hypothetical protein"
+"2159","LNFNCACK_03084","CDS","525","bfrB","1.16.3.1","COG1528","Ferritin BfrB"
+"2160","LNFNCACK_03085","CDS","654","hxpA","3.1.3.22","COG0637","Hexitol phosphatase A"
+"2161","LNFNCACK_03086","CDS","1611","","","","hypothetical protein"
+"2162","LNFNCACK_03087","CDS","573","napA","1.9.6.1","","Periplasmic nitrate reductase"
+"2163","LNFNCACK_03088","CDS","2691","fdnG-3","1.17.2.3","COG0243","Formate dehydrogenase 2 subunit alpha (cytochrome c-553)"
+"2164","LNFNCACK_03089","CDS","1137","rsxB","7.-.-.-","","Ion-translocating oxidoreductase complex subunit B"
+"2165","LNFNCACK_03090","CDS","1167","","","","hypothetical protein"
+"2166","LNFNCACK_03091","CDS","1290","","","","L-lactate transporter"
+"2167","LNFNCACK_03092","CDS","393","","","","hypothetical protein"
+"2168","LNFNCACK_03093","CDS","1002","selD","2.7.9.3","COG0709","Selenide, water dikinase"
+"2169","LNFNCACK_03094","CDS","348","mazF9","3.1.-.-","COG2337","Endoribonuclease MazF9"
+"2170","LNFNCACK_03095","CDS","231","mazE9","","","Antitoxin MazE9"
+"2171","LNFNCACK_03096","tRNA","96","","","","tRNA-SeC(tca)"
+"2172","LNFNCACK_03097","CDS","1353","selA","2.9.1.1","","L-seryl-tRNA(Sec) selenium transferase"
+"2173","LNFNCACK_03098","CDS","1863","tuf_2","","","Elongation factor Tu"
+"2174","LNFNCACK_03099","CDS","702","","","","hypothetical protein"
+"2175","LNFNCACK_03100","CDS","654","","","","putative HTH-type transcriptional regulator"
+"2176","LNFNCACK_03101","CDS","726","","","","hypothetical protein"
+"2177","LNFNCACK_03102","CDS","891","ppk2B","2.7.4.1","COG2326","Polyphosphate kinase PPK2B"
+"2178","LNFNCACK_03103","CDS","663","","","","hypothetical protein"
+"2179","LNFNCACK_03104","CDS","1461","selO","2.7.7.-","COG0397","Protein adenylyltransferase SelO"
+"2180","LNFNCACK_03105","CDS","510","ybaK","4.2.-.-","COG2606","Cys-tRNA(Pro)/Cys-tRNA(Cys) deacylase YbaK"
+"2181","LNFNCACK_03106","CDS","333","","","","hypothetical protein"
+"2182","LNFNCACK_03107","CDS","417","rhaS","","","HTH-type transcriptional activator RhaS"
+"2183","LNFNCACK_03108","CDS","450","","","","hypothetical protein"
+"2184","LNFNCACK_03109","CDS","1485","sad_2","1.2.1.16","","Succinate-semialdehyde dehydrogenase"
+"2185","LNFNCACK_03110","CDS","1242","davT_2","2.6.1.48","COG0160","5-aminovalerate aminotransferase DavT"
+"2186","LNFNCACK_03111","CDS","495","","","","hypothetical protein"
+"2187","LNFNCACK_03112","CDS","624","mhqD","3.1.-.-","COG0400","Putative hydrolase MhqD"
+"2188","LNFNCACK_03113","CDS","1371","aam","3.5.1.13","COG0154","Acylamidase"
+"2189","LNFNCACK_03114","CDS","990","ghrA_2","1.1.1.81","","Glyoxylate/hydroxypyruvate reductase A"
+"2190","LNFNCACK_03115","CDS","747","maiA_1","5.2.1.1","COG3473","Maleate isomerase"
+"2191","LNFNCACK_03116","CDS","765","maiA_2","5.2.1.1","","Maleate isomerase"
+"2192","LNFNCACK_03117","CDS","678","lutR_2","","COG2186","HTH-type transcriptional regulator LutR"
+"2193","LNFNCACK_03118","CDS","1206","gdhA","1.4.1.3","COG0334","Glutamate dehydrogenase"
+"2194","LNFNCACK_03119","CDS","942","benM","","","HTH-type transcriptional regulator BenM"
+"2195","LNFNCACK_03120","CDS","591","","","","hypothetical protein"
+"2196","LNFNCACK_03121","CDS","318","","","","hypothetical protein"
+"2197","LNFNCACK_03122","CDS","930","","3.1.1.23","COG2267","Monoacylglycerol lipase"
+"2198","LNFNCACK_03123","CDS","639","","","","hypothetical protein"
+"2199","LNFNCACK_03124","CDS","633","","","","hypothetical protein"
+"2200","LNFNCACK_03125","CDS","981","thadh","4.3.1.16","","L-threo-3-hydroxyaspartate ammonia-lyase"
+"2201","LNFNCACK_03126","CDS","216","","","","hypothetical protein"
+"2202","LNFNCACK_03127","CDS","531","","","","hypothetical protein"
+"2203","LNFNCACK_03128","CDS","552","","","","hypothetical protein"
+"2204","LNFNCACK_03129","CDS","3405","recC","3.1.11.5","COG1330","RecBCD enzyme subunit RecC"
+"2205","LNFNCACK_03130","CDS","3462","recB","3.1.11.5","COG1074","RecBCD enzyme subunit RecB"
+"2206","LNFNCACK_03131","CDS","1887","recD","3.1.11.5","COG0507","RecBCD enzyme subunit RecD"
+"2207","LNFNCACK_03132","CDS","486","","","","hypothetical protein"
+"2208","LNFNCACK_03133","CDS","579","","","","hypothetical protein"
+"2209","LNFNCACK_03134","CDS","795","","","","hypothetical protein"
+"2210","LNFNCACK_03135","CDS","807","","","","hypothetical protein"
+"2211","LNFNCACK_03136","CDS","996","","","","hypothetical protein"
+"2212","LNFNCACK_03137","CDS","678","","","","hypothetical protein"
+"2213","LNFNCACK_03138","CDS","276","","1.-.-.-","COG0695","Putative glutaredoxin.1"
+"2214","LNFNCACK_03139","CDS","795","","","","hypothetical protein"
+"2215","LNFNCACK_03140","CDS","1269","","2.1.1.-","COG2230","putative fatty acid methyltransferase"
+"2216","LNFNCACK_03141","CDS","1392","","","","hypothetical protein"
+"2217","LNFNCACK_03142","CDS","771","","","COG1073","putative protein"
+"2218","LNFNCACK_03143","CDS","1257","glsA","3.5.1.2","","Glutaminase"
+"2219","LNFNCACK_03144","CDS","843","","","","hypothetical protein"
+"2220","LNFNCACK_03145","CDS","408","","","","hypothetical protein"
+"2221","LNFNCACK_03146","CDS","1179","","","","hypothetical protein"
+"2222","LNFNCACK_03147","CDS","1038","adhC2","1.1.1.2","COG1064","NADP-dependent alcohol dehydrogenase C 2"
+"2223","LNFNCACK_03148","CDS","1374","gloB_2","3.1.2.6","","Hydroxyacylglutathione hydrolase"
+"2224","LNFNCACK_03149","CDS","609","ygaP","","COG0607","Inner membrane protein YgaP"
+"2225","LNFNCACK_03150","CDS","813","","","COG0730","putative membrane transporter protein"
+"2226","LNFNCACK_03151","CDS","156","","","","hypothetical protein"
+"2227","LNFNCACK_03152","CDS","99","","","","hypothetical protein"
+"2228","LNFNCACK_03153","CDS","360","","","","hypothetical protein"
+"2229","LNFNCACK_03154","CDS","462","","","","hypothetical protein"
+"2230","LNFNCACK_03155","CDS","243","","","","hypothetical protein"
+"2231","LNFNCACK_03156","CDS","1371","gloB_3","3.1.2.6","","Hydroxyacylglutathione hydrolase"
+"2232","LNFNCACK_03157","CDS","402","","","","hypothetical protein"
+"2233","LNFNCACK_03158","CDS","267","","","","hypothetical protein"
+"2234","LNFNCACK_03159","CDS","495","","","","hypothetical protein"
+"2235","LNFNCACK_03160","CDS","987","","","","hypothetical protein"
+"2236","LNFNCACK_03161","CDS","960","","","","hypothetical protein"
+"2237","LNFNCACK_03162","CDS","510","","","","hypothetical protein"
+"2238","LNFNCACK_03163","CDS","672","ywaC","2.7.6.5","COG2357","GTP pyrophosphokinase YwaC"
+"2239","LNFNCACK_03164","CDS","759","","","","hypothetical protein"
+"2240","LNFNCACK_03165","CDS","849","","","","hypothetical protein"
+"2241","LNFNCACK_03166","CDS","1740","","6.2.1.3","COG1022","Long-chain-fatty-acid--CoA ligase FadD15"
+"2242","LNFNCACK_03167","CDS","672","COQ5_3","2.1.1.163","","2-methoxy-6-polyprenyl-1,4-benzoquinol methylase, mitochondrial"
+"2243","LNFNCACK_03168","CDS","1191","","","","hypothetical protein"
+"2244","LNFNCACK_03169","CDS","1389","","","","hypothetical protein"
+"2245","LNFNCACK_03170","CDS","402","","","","hypothetical protein"
+"2246","LNFNCACK_03171","CDS","483","","","","hypothetical protein"
+"2247","LNFNCACK_03172","CDS","1899","","","","hypothetical protein"
+"2248","LNFNCACK_03173","CDS","777","","","","hypothetical protein"
+"2249","LNFNCACK_03174","CDS","1551","qacA","","COG0477","Antiseptic resistance protein"
+"2250","LNFNCACK_03175","CDS","627","rcdA","","COG3226","HTH-type transcriptional regulator RcdA"
+"2251","LNFNCACK_03176","CDS","1107","","","","hypothetical protein"
+"2252","LNFNCACK_03177","CDS","1515","","","","hypothetical protein"
+"2253","LNFNCACK_03178","CDS","345","","","","hypothetical protein"
+"2254","LNFNCACK_03179","CDS","3297","","","","hypothetical protein"
+"2255","LNFNCACK_03180","CDS","633","","","","hypothetical protein"
+"2256","LNFNCACK_03181","CDS","885","morA","1.1.1.218","","Morphine 6-dehydrogenase"
+"2257","LNFNCACK_03182","CDS","339","dksA_2","","","RNA polymerase-binding transcription factor DksA"
+"2258","LNFNCACK_03183","CDS","126","","","","hypothetical protein"
+"2259","LNFNCACK_03184","CDS","768","","","","hypothetical protein"
+"2260","LNFNCACK_03185","CDS","705","","","","hypothetical protein"
+"2186","LNFNCACK_03186","CDS",567,,,, "hypothetical protein"
+"2187","LNFNCACK_03187","CDS",618,,,, "hypothetical protein"
+"2188","LNFNCACK_03188","CDS",2175,"copB","7.2.2.8",,"Copper-exporting P-type ATPase B"
+"2189","LNFNCACK_03189","CDS",312,,,, "hypothetical protein"
+"2190","LNFNCACK_03190","CDS",942,,,, "hypothetical protein"
+"2191","LNFNCACK_03191","CDS",396,"yjgH",,"COG0251","RutC family protein YjgH"
+"2192","LNFNCACK_03192","CDS",987,,,, "hypothetical protein"
+"2193","LNFNCACK_03193","CDS",213,,,, "hypothetical protein"
+"2194","LNFNCACK_03194","CDS",885,"gltR",,"COG0583","HTH-type transcriptional regulator GltR"
+"2195","LNFNCACK_03195","CDS",894,"yddE","5.1.-.-","COG0384","putative isomerase YddE"
+"2196","LNFNCACK_03196","CDS",819,,,"COG0596","putative protein"
+"2197","LNFNCACK_03197","CDS",1392,"dnaB","3.6.4.12","COG0305","Replicative DNA helicase"
+"2198","LNFNCACK_03198","CDS",276,,,, "hypothetical protein"
+"2199","LNFNCACK_03199","CDS",1485,"hsrA_2",,,"putative transport protein HsrA"
+"2200","LNFNCACK_03200","CDS",1218,"ynfM",,,"Inner membrane transport protein YnfM"
+"2201","LNFNCACK_03201","CDS",1044,,,, "hypothetical protein"
+"2202","LNFNCACK_03202","CDS",663,,,, "hypothetical protein"
+"2203","LNFNCACK_03203","CDS",489,"btuE","1.11.1.15","COG0386","Thioredoxin/glutathione peroxidase BtuE"
+"2204","LNFNCACK_03204","CDS",288,,,, "hypothetical protein"
+"2205","LNFNCACK_03205","CDS",1437,,,, "hypothetical protein"
+"2206","LNFNCACK_03206","CDS",486,,,, "hypothetical protein"
+"2207","LNFNCACK_03207","CDS",345,,,, "hypothetical protein"
+"2208","LNFNCACK_03208","CDS",1323,,,, "hypothetical protein"
+"2209","LNFNCACK_03209","CDS",393,,,, "hypothetical protein"
+"2210","LNFNCACK_03210","CDS",636,,,, "hypothetical protein"
+"2211","LNFNCACK_03211","CDS",786,"tipA",,,"HTH-type transcriptional activator TipA"
+"2212","LNFNCACK_03212","CDS",432,,,, "hypothetical protein"
+"2213","LNFNCACK_03213","CDS",1521,"cotA",,"COG2132","Spore coat protein A"
+"2214","LNFNCACK_03214","CDS",1167,,,, "hypothetical protein"
+"2215","LNFNCACK_03215","CDS",771,"fabG2","1.-.-.-",,"putative oxidoreductase"
+"2216","LNFNCACK_03216","CDS",1032,"iolG_2","1.1.1.18","COG0673","Myo-inositol 2-dehydrogenase"
+"2217","LNFNCACK_03217","CDS",1020,"rbsR",,"COG1609","Ribose operon repressor"
+"2218","LNFNCACK_03218","CDS",1236,"thcD_2","1.18.1.-",,"Rhodocoxin reductase"
+"2219","LNFNCACK_03219","CDS",312,"doxA",,,"Naphthalene 1,2-dioxygenase system, ferredoxin component"
+"2220","LNFNCACK_03220","CDS",1113,,,, "hypothetical protein"
+"2221","LNFNCACK_03221","CDS",807,,"3.1.1.23","COG2267","Monoacylglycerol lipase"
+"2222","LNFNCACK_03222","CDS",963,,,, "IS481 family transposase IS3514"
+"2223","LNFNCACK_03223","CDS",1512,"bauC","1.2.1.-","COG1012","Putative 3-oxopropanoate dehydrogenase"
+"2224","LNFNCACK_03224","CDS",855,"yfdE_2","2.8.3.19","COG1804","Acetyl-CoA:oxalate CoA-transferase"
+"2225","LNFNCACK_03225","CDS",591,,,, "hypothetical protein"
+"2149","LNFNCACK_03226","CDS",1821,,"6.2.1.3","COG1022","Long-chain-fatty-acid--CoA ligase FadD15"
+"2150","LNFNCACK_03227","CDS",2178,"fadJ_4",,"COG1024","Fatty acid oxidation complex subunit alpha"
+"2151","LNFNCACK_03228","CDS",1215,"fadA_3","2.3.1.-","COG0183","Putative acyltransferase"
+"2152","LNFNCACK_03229","CDS",1161,"mmgC_4","1.3.99.-","COG1960","Acyl-CoA dehydrogenase"
+"2153","LNFNCACK_03230","CDS",1146,"fadI_2","2.3.1.16",,"3-ketoacyl-CoA thiolase"
+"2154","LNFNCACK_03231","CDS",408,,,, "hypothetical protein"
+"2155","LNFNCACK_03232","CDS",1524,,"6.2.1.3","COG0318","Long-chain-fatty-acid--CoA ligase FadD13"
+"2156","LNFNCACK_03233","CDS",741,,"4.2.1.17","COG1024","putative enoyl-CoA hydratase echA12"
+"2157","LNFNCACK_03234","CDS",1161,"acrC_2","1.3.1.95",,"Acryloyl-CoA reductase (NADH)"
+"2158","LNFNCACK_03235","CDS",1668,,"6.2.1.3","COG0318","Long-chain-fatty-acid--CoA ligase"
+"2159","LNFNCACK_03236","CDS",516,,,, "hypothetical protein"
+"2160","LNFNCACK_03237","CDS",582,,,, "hypothetical protein"
+"2161","LNFNCACK_03238","CDS",1272,,,, "putative inactive lipase"
+"2162","LNFNCACK_03239","CDS",600,"kstR2",,,"HTH-type transcriptional repressor KstR2"
+"2163","LNFNCACK_03240","CDS",1020,"iolG_3","1.1.1.18","COG0673","Inositol 2-dehydrogenase/D-chiro-inositol 3-dehydrogenase"
+"2164","LNFNCACK_03241","CDS",885,"frcA","7.5.2.-","COG1129","Fructose import ATP-binding protein FrcA"
+"2165","LNFNCACK_03242","CDS",1041,,,, "hypothetical protein"
+"2166","LNFNCACK_03243","CDS",972,,,, "hypothetical protein"
+"2167","LNFNCACK_03244","CDS",2097,"iolD","3.7.1.22","COG3962","3D-(3,5/4)-trihydroxycyclohexane-1,2-dione hydrolase"
+"2168","LNFNCACK_03245","CDS",936,"iolB","5.3.1.30","COG3718","5-deoxy-glucuronate isomerase"
+"2169","LNFNCACK_03246","CDS",921,,,, "hypothetical protein"
+"2170","LNFNCACK_03247","CDS",966,"iolC","2.7.1.92","COG0524","5-dehydro-2-deoxygluconokinase"
+"2171","LNFNCACK_03248","CDS",978,"iolE","4.2.1.44",,"Inosose dehydratase"
+"2172","LNFNCACK_03249","CDS",1023,"iolG_4","1.1.1.18","COG0673","Myo-inositol 2-dehydrogenase"
+"2173","LNFNCACK_03250","CDS",777,"nagR_3",,,"HTH-type transcriptional repressor NagR"
+"2174","LNFNCACK_03251","CDS",741,,,, "hypothetical protein"
+"2175","LNFNCACK_03252","CDS",984,,,, "hypothetical protein"
+"2176","LNFNCACK_03253","CDS",984,,,, "hypothetical protein"
+"2177","LNFNCACK_03254","CDS",474,,,, "hypothetical protein"
+"2178","LNFNCACK_03255","CDS",882,,,, "hypothetical protein"
+"2179","LNFNCACK_03256","CDS",993,,,, "hypothetical protein"
+"2180","LNFNCACK_03257","CDS",2079,,,, "hypothetical protein"
+"2181","LNFNCACK_03258","CDS",1347,"yeeO",,,"putative FMN/FAD exporter YeeO"
+"2182","LNFNCACK_03259","CDS",1635,"alsT",,,"Amino-acid carrier protein AlsT"
+"2183","LNFNCACK_03260","CDS",612,,,, "hypothetical protein"
+"2184","LNFNCACK_03261","CDS",1623,,,, "hypothetical protein"
+"2185","LNFNCACK_03262","CDS",591,"ompA",,,"Outer membrane protein A"
+"2186","LNFNCACK_03263","CDS",561,,,, "hypothetical protein"
+"2187","LNFNCACK_03264","CDS",447,"rplI",,,"50S ribosomal protein L9"
+"2188","LNFNCACK_03265","CDS",237,"rpsR2",,,"30S ribosomal protein S18 2"
+"2189","LNFNCACK_03266","CDS",630,,,, "Single-stranded DNA-binding protein"
+"2190","LNFNCACK_03267","CDS",288,"rpsF",,,"30S ribosomal protein S6"
+"2191","LNFNCACK_03268","CDS",1341,,,, "hypothetical protein"
+"2192","LNFNCACK_03269","CDS",2358,"ponA1",,,"Penicillin-binding protein 1A"
+"2193","LNFNCACK_03270","CDS",609,,,, "hypothetical protein"
+"2194","LNFNCACK_03271","CDS",1095,"ino1","5.5.1.4","COG1260","Inositol-3-phosphate synthase"
+"2195","LNFNCACK_03272","CDS",1203,"pksS","1.14.-.-","COG2124","Polyketide biosynthesis cytochrome P450 PksS"
+"2196","LNFNCACK_03273","CDS",276,,,, "hypothetical protein"
+"2197","LNFNCACK_03274","CDS",279,,,, "hypothetical protein"
+"2198","LNFNCACK_03275","CDS",384,,,, "hypothetical protein"
+"2199","LNFNCACK_03276","CDS",4413,,,, "hypothetical protein"
+"2200","LNFNCACK_03277","CDS",2430,,,, "hypothetical protein"
+"2201","LNFNCACK_03278","CDS",1419,,,, "hypothetical protein"
+"2202","LNFNCACK_03279","CDS",969,,,, "hypothetical protein"
+"2203","LNFNCACK_03280","CDS",1419,,,, "hypothetical protein"
+"2204","LNFNCACK_03281","CDS",717,,,, "hypothetical protein"
+"2205","LNFNCACK_03282","CDS",489,,,, "hypothetical protein"
+"2206","LNFNCACK_03283","CDS",1716,"pknD_3","2.7.11.1",,"Serine/threonine-protein kinase PknD"
+"2207","LNFNCACK_03284","CDS",2328,,,, "hypothetical protein"
+"2208","LNFNCACK_03285","CDS",840,"prpC","3.1.3.16","COG0631","Protein phosphatase PrpC"
+"2209","LNFNCACK_03286","CDS",474,,,, "hypothetical protein"
+"2210","LNFNCACK_03287","CDS",477,,,, "hypothetical protein"
+"2211","LNFNCACK_03288","CDS",1320,,,, "hypothetical protein"
+"2212","LNFNCACK_03289","CDS",1467,,"2.7.7.-","COG0617","A-adding tRNA nucleotidyltransferase"
+"2213","LNFNCACK_03290","CDS",954,,,, "hypothetical protein"
+"2214","LNFNCACK_03291","CDS",483,"mutT4","3.6.1.-","COG0494","Putative mutator protein MutT4"
+"2215","LNFNCACK_03292","CDS",2040,,,, "hypothetical protein"
+"2216","LNFNCACK_03293","CDS",1677,"mviN_2",,,"putative peptidoglycan biosynthesis protein MviN"
+"2217","LNFNCACK_03294","CDS",2037,,,, "hypothetical protein"
+"2218","LNFNCACK_03295","CDS",627,,,, "hypothetical protein"
+"2219","LNFNCACK_03296","CDS",762,,,, "hypothetical protein"
+"2220","LNFNCACK_03297","CDS",1020,"trxB","1.8.1.9","COG0492","Thioredoxin reductase"
+"2221","LNFNCACK_03298","CDS",324,"trxA",,,"Thioredoxin 1"
+"2222","LNFNCACK_03299","CDS",1164,"noc",,,"Nucleoid occlusion protein"
+"2223","LNFNCACK_03300","CDS",1098,"nifH","1.18.6.1",,"Nitrogenase iron protein"
+"2224","LNFNCACK_03301","CDS",645,"rsmG","2.1.1.-","COG0357","Ribosomal RNA small subunit methyltransferase G"
+"2225","LNFNCACK_03302","CDS",645,,,, "hypothetical protein"
+"2226","LNFNCACK_03303","CDS",1041,"yidC",,,"Membrane protein insertase YidC"
+"2227","LNFNCACK_03304","CDS",333,"yidD",,,"Putative membrane protein insertion efficiency factor"
+"2228","LNFNCACK_03305","CDS",375,"rnpA","3.1.26.5","COG0594","Ribonuclease P protein component"
+"2229","LNFNCACK_03306","CDS",138,"rpmH",,,"50S ribosomal protein L34"
