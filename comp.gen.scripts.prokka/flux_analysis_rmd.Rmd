@@ -21,17 +21,22 @@ library(tidyr)
 The files that are here (and uploaded in onedrive)
 ```{r pressure, echo=FALSE}
 #these files are from the prokka annotation
-fixed106.unique <- read.csv('unique_genes_mada106.csv')
+#dear god this took me all day to clean up these files
+fixed106.unique <- read.csv('unique_genes_mada106.csv', header = T)
 fixed85.unique <- read.csv('unique_genes_mada85.csv')
 
-any_in_df2 <- fixed106.unique$gene %in% fixed85.unique$gene
+any_in_df2 <- fixed106.unique$COG %in% fixed85.unique$COG
 
 # If any are TRUE, it means there are matches
 any_match <- any(any_in_df2)
 
+#I left off here because I am considering using the gapseq workflow rather than prokka to try and figure out what the actual shared genes are since prokka doesn't seem to be working too well.
+
+#I stopped here again because it's late and I want to smash my face in this keyboard. that is all.
+
 #getting the intersection of the lists of the fixed gene files.
 #this will give us which of the genes are shared. 
-int <- intersect(fixed106.unique$gene, fixed85.unique$gene) 
+int <- intersect(fixed106.unique$COG, fixed85.unique$COG) 
 #what I find unusual is the fact theat there is no shared genes whenever this is done using the 'gene' category, but when I use the 'COG' category it does work
 #I am going to use the workflow using gapseq to try and find out what exactly might be going on as these files were created using prokka
 

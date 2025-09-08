@@ -32,15 +32,15 @@ library(ggplot2)
 ```{r}
 #what this is doing is constraint based metabolic modeling or flux balance analysis
 #flux balance analysis is the 
-model <- sybilSBML::readSBMLmod("gapseq.mada85/Mada85.xml")
+model85 <- sybilSBML::readSBMLmod("gapseq.mada85/Mada85.xml")
 
 #check the model summary
-model
+model85
 
 #optimize the model for the entire components
-result <- optimizeProb(model)
+result <- optimizeProb(model85)
 
-sybil::react_name(model)
+sybil::react_name(model85)
 
 
 #check flux balance analysis
@@ -192,6 +192,8 @@ head(ko_df, 10)
 
 ```
 
+
+#find reaction level differences using gapseq files
 ```{r}
 # Load necessary libraries
 library(dplyr)
@@ -201,34 +203,72 @@ library(tidyr)
 setwd("~/Documents/Penn_State/Genomes/SynCom")
 
 # ------------------------------
-# Step 1: Read Prokka annotation files
+# Step 1: Read gapseq annotation files
 # ------------------------------
-mada85 <- read.csv("")
-mada106 <- read_csv("Janibacter_Mada106/prokka_annotations.csv")
+mada85 <- read.delim("gapseq.mada85/Pathways.edited.tsv")
+mada106 <- read.delim("gapseq106/Pathways106.edited.tsv")
 
-# Inspect first few rows
-head(mada85)
-head(mada106)
 
 # ------------------------------
-# Step 2: Standardize column names (optional, if needed)
+# Step 2: merge files
 # ------------------------------
-mada85 <- mada85 %>%
-  rename(Locus = locus_tag, Gene = gene, Product = product, COG = COG)
 
-mada106 <- mada106 %>%
-  rename(Locus = locus_tag, Gene = gene, Product = product, COG = COG)
+p.comp <- merge(mada85, mada106, by = "ID", suffixes =c(".g1", ".g2"))
+
+#subset to unique for both dataframes
+unique.85g1 <- subset(p.comp, Completeness.g1 > 0 & Completeness.g2 == 0)
+unique.106g2 <- subset(p.comp, Completeness.g1 == 0 & Completeness.g2 > 0)
+shared <- subset(p.comp, Completeness.g1 > 0 & Completeness.g2 > 0)
 
 # ------------------------------
 # Step 3: Identify unique and shared genes
 # ------------------------------
-# Unique to Mada85
-mada85_unique <- mada85 %>%
-  filter(!Gene %in% mada106$Gene)
+print(unique.85g1$Name.g1)
+print(unique.106g2$Name.g2)
 
-# Unique to Mada106
-mada106_unique <- mada106 %>%
-  filter(!Gene %in% mada85$Gene)
+
+
+#venn diagram
+library(VennDiagram)
+library(grid)
+
+set1 <- p.comp$Name.g1[p.comp$Completeness.g1 > 0]
+set2 <- p.comp$Name.g2[p.comp$Completeness.g2 > 0]
+
+only85 <- setdiff(set1, set2)
+only106 <- setdiff(set2, set1)
+both <- intersect(set1, set2)
+
+venn.plot <- venn.diagram(
+  x = list("Mada.85: NonInhibitory" = set1, "Mada.106: Inhibitory" = set2),
+  filename = NULL,
+  fill = c("skyblue", "lightgreen"),
+  alpha = 0.5,
+  scaled = FALSE,
+  cex = 0,        # text size for numbers (not used here, can keep small)
+  cat.cex = 1.5,  # title size
+  cat.pos = c(180, 180),  # angle of titles: first circle left, second circle right
+  cat.dist = c(0.05, 0.05), # distance of titles from circles
+  margin = 0.1
+)
+
+grid.newpage()
+grid.draw(venn.plot)
+
+grid.text(paste(only85, collapse = "\n"), x = 0.25, y = 0.55, gp = gpar(cex = 0.9))
+grid.text(paste(only106, collapse = "\n"), x = 0.75, y = 0.55, gp = gpar(cex = 0.9))
+
+
+install.packages("UpSetR")
+library(UpSetR)
+
+input <- list(
+  Genome85 = set1,
+  Genome106 = set2
+)
+
+upset(fromList(input), nsets = 2, order.by = "freq")
+
 
 # Shared genes
 shared_genes <- mada85 %>%
