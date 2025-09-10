@@ -32,47 +32,47 @@ library(ggplot2)
 ```{r}
 #what this is doing is constraint based metabolic modeling or flux balance analysis
 #flux balance analysis is the 
-model <- sybilSBML::readSBMLmod("")
+model106 <- sybilSBML::readSBMLmod("gapseq106/fluxanalysis/Mada106.xml")
 
 #check the model summary
-model
+model106
 
 #optimize the model for the entire components
-result <- optimizeProb(model)
+result106 <- optimizeProb(model106)
 
-sybil::react_name(model)
+sybil::react_name(model106)
 
 
 #check flux balance analysis
 # Objective value (e.g., growth rate)
 # the objective value is the value of the objective function (usually growth rate) at the optimal solution given all constraints.
-print(paste("Objective value:", result@lp_obj))
-
+print(paste("Objective value:", result106@lp_obj))
+#these are different between 106 and 85
 
 # Convert
-flux_vector <- fluxes(result)
+flux_vector106 <- fluxes(result106)
 
 # Convert sparse matrix to numeric vector
 # sparse vector just saves on space
-flux_vector_num <- as.numeric(flux_vector)
+flux_vector_num106 <- as.numeric(flux_vector106)
 
 # Now create data frame
-flux_df <- data.frame(
-  reaction = react_id(model),
-  flux = flux_vector_num
+flux_df106 <- data.frame(
+  reaction = react_id(model106),
+  flux = flux_vector_num106
 )
 
-head(flux_df)
+head(flux_df106)
 
 ```
 
 
 making a figure from it
 ```{r}
-ggplot(flux_df, aes(x = flux)) +
+ggplot(flux_df106, aes(x = flux)) +
   geom_histogram(bins = 50, fill = "steelblue", color = "black") +
   theme_minimal() +
-  labs(title = "Flux Distribution",
+  labs(title = "Flux Distribution 106",
        x = "Flux value",
        y = "Number of reactions")
 
