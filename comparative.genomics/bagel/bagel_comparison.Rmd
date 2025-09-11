@@ -1,0 +1,29 @@
+---
+title: "bagel_analysis"
+author: "Talon B Jost"
+date: "2025-09-11"
+output: pdf_document
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Load necessary libraries
+library(dplyr)
+library(readr)
+library(tidyr)
+
+setwd("~/Documents/Penn_State/Genomes/SynCom")
+
+# ------------------------------
+# Step 1: Read bagel assignment files
+# ------------------------------
+
+mada85.genetable <- read.delim("85Bagel/gnl_DSMZ_unitig_0_quiver_consensus.0.AOI_01.GeneTable")
+mada106.genetable <- read.delim("106bagel/gnl_DSMZ_unitig_0_quiver_consensus.0.AOI_01.GeneTable")
+```
+
