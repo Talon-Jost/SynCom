@@ -1,0 +1,442 @@
+---
+title: "Mada517_script"
+author: "Talon Jost"
+date: "2025-07-04"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## packages
+
+```{r cars}
+rm(list = ls())
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(ape)
+library(ggtree)
+library(ggthemes)
+library(ggtreeExtra)
+library(DT)
+library(magrittr)
+library(ggplot2)
+```
+
+## Madagascar Culture Metadata input
+```{r}
+
+## merging Madagascar database metadata (culture info, etc) with Vsearch 100% clusterIDs
+
+## sorted by seq plate, toxonomy string then isolate ID in excel before creation
+
+MadaDBdata = read_tsv("./MadaCultureDB_Metadata.txt")
+
+## This deals with the duplicate entries for the isolates; its not perfect, it just selects the first entry from the sorted file 
+
+MadaDBdata_filt = MadaDBdata %>%
+  group_by(Isolate.ID) %>% slice_head() %>% # filters to 1 sequence per group
+  ungroup() %>%
+  select(Isolate.ID,Frog.ID,`proportion growth 1`,`anti-Bd Class (80%)`,Taxnonomy,DirTax_Phylum,DirTax_Class,DirTax_Order,DirTax_Family,DirTax_Genus,DirTax_Species) # selecting only a subset of columns for now for easier viewing
+
+```
+
+## Vsearch data
+
+```{r}
+#(vsearch) mcbletz@Mollys-MacBook-Pro-2 ~ % vsearch --cluster_fast /Users/mcbletz/Library/CloudStorage/OneDrive-ThePennsylvaniaStateUniversity/Bletz_Lab/Computational_Resources/Datasets/CultureData/MadaCultureDB_seqs_dupsfilt.fasta --uc /Users/mcbletz/Library/CloudStorage/OneDrive-ThePennsylvaniaStateUniversity/Bletz_Lab/Computational_Resources/Datasets/CultureData/MadaCultureDB_seqs_clustered_per100_050725.txt --id 1 --strand both
+
+##*** MODIFIED HEADERS AND COLUMNS MANUALLY IN EXCEL
+
+## Vsearch done with fasta from MadaDB file filtered for duplicates; this has more isolates than AmphiBac; This is the vsearch output (code above); Dup filtering completed with MadaDB_VsearchClusterMergeCode.R file.
+
+MadaDB_VsearchClusters2 = read_tsv("./MadaCultureDB_seqs_clustered_per100_050725.txt") %>%
+  select(Record,Cluster,Isolate.ID,Id.Match) # selecting relevant columns
+
+
+```
+
+## Merging vsearch clusters with culture metadata
+
+Isolate ID is the common identifier and is used to merge the two files
+
+```{r}
+
+## merging clustering with Mada DB metadata that has had the dubs filtered
+## NOTE Vsearch was not done with the duplicate filtered fasta...I think that's OK for now.but it does mean that there could be isolates with same ID that are "different" clusters because there are some that didn't ID to the same taxonomy.
+MadaDB_VsearchClusters_wdata = left_join(MadaDB_VsearchClusters2,
+                                         MadaDBdata_filt,
+                                         by = "Isolate.ID") 
+#write_tsv(MadaDB_VsearchClusters_wdata,"./MadaCultureDB_Metadata_wVsearchClusters.txt")
+```
+
+## Nesting
+
+Nesting groups the Vsearch clusters for further summarizing
+
+IMPORTANT - THERE ARE actually 1387 unique clusters when including singletons!!
+There are 817 when we apply the "extreme" function filter
+
+```{r}
+
+MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata %>%
+  filter(!Record=="C") %>% # removing these records that are not important for the clustering its a duplicate of the S ids; only "S" and "H" retained
+  filter(`anti-Bd Class (80%)` == "Inhibitory" | `anti-Bd Class (80%)` == "NonInhibitory") %>%
+  filter(`proportion growth 1` > 0.75 | `proportion growth 1` < 0.25) %>% #added this to filter to extreme function
+  group_by(Cluster) %>%
+  nest()
+
+```
+
+## Summarizing
+
+This creates an initial summary of the functional categories for each cluster
+
+
+```{r}
+
+summary_fxn = function(x){
+  x %>% ## called x because thats what the position in the map function is called
+  group_by(`anti-Bd Class (80%)`) %>%
+  summarize(Count = n()) %>%
+    pivot_wider(.,names_from = `anti-Bd Class (80%)`,values_from = Count)
+
+} # this is a function that does the summarizing by function category and then organizes it for better viewing.
+
+
+MadaDB_VsearchClusters_wdata_nest517 = MadaDB_VsearchClusters_wdata %>%
+  filter(!Record=="C") %>% # removing these records that are not important for the clustering its a duplicate of the S ids; only "S" and "H" retained
+  #filter(`anti-Bd Class (80%)` == "Inhibitory" | `anti-Bd Class (80%)` == "NonInhibitory") %>%
+  group_by(Cluster) %>%
+  filter(!Id.Match == "*") %>%  ## Why? This actually gets rid of singletons
+  nest() 
+  
+  ## List of IDs for tree for all cluster dataset
+MadaDB_VsearchClusters_wdata_nestnosingles_IDs = MadaDB_VsearchClusters_wdata_nest517 %>%
+  unnest(data) %>%
+  select(Id.Match) %>%
+  filter(!Id.Match == "*") %>% ## This is needed to remove the creation of an "asterisk" group
+  unique()
+
+### STOPPED HERE DURING MEETING on 17 June 2025 ############## 
+
+
+
+#MadaDB_VsearchClusters_wdata_nest2 = MadaDB_VsearchClusters_wdata_nest %>%
+ # mutate(TotalIso = map(data,~ nrow(.x))) %>% # filter clusters with 1 isolate
+  #filter(TotalIso > 2) %>% 
+  #unnest(data) %>%
+  #group_by(DirTax_Phylum) %>%
+  #summarize(Count = n_distinct(Cluster))
+
+
+MadaDB_VsearchClusters_wdata_nest517_fxn = MadaDB_VsearchClusters_wdata_nest517 %>%
+  mutate(TotalIso = map(data,~ nrow(.x)))%>%
+  mutate(FunctionCount = map(data,summary_fxn)) %>% # this creates the function categories
+  unnest(FunctionCount) %>% # this allows the function categories to be viewed in the nested frame and "operated" on
+  rename(Null = `NA`)
+ 
+
+```
+
+
+
+
+# 517 Molly version
+```{r}
+
+## needs files from above meta.data and tree.original and nest517
+
+MadaDB_VsearchClusters_wdata_nest517 = MadaDB_VsearchClusters_wdata_nest517
+
+meta.data <- MadaDBdata
+
+
+tree.original <- ape::read.tree('Trees/tree/nwk/madaDB.rooted.tree.nwk')
+
+MadaDB_517_IDs <- MadaDB_VsearchClusters_wdata_nestnosingles_IDs
+
+## Molly addition 5/21/25 - using functions from above 
+MadaDB_VsearchClusters_wdata_nest517_fxn = MadaDB_VsearchClusters_wdata_nest517 %>%
+  mutate(TotalIso = map(data,~ nrow(.x)))%>%
+  mutate(FunctionCount = map(data,summary_fxn)) %>% # this creates the function categories
+  unnest(FunctionCount) %>% # this allows the function categories to be viewed in the nested frame and "operated" on
+  rename(Null = `NA`)
+
+
+mada517MB <- MadaDB_VsearchClusters_wdata_nest517_fxn %>% 
+  dplyr::mutate(
+    prop.inhib = as.numeric(Inhibitory) / as.numeric(TotalIso) * 100,
+    prop.noninhib = as.numeric(NonInhibitory) / as.numeric(TotalIso) * 100,
+    prop.na = as.numeric(Null) / as.numeric(TotalIso) * 100,
+    prop.contam = as.numeric(Contam) / as.numeric(TotalIso) * 100) %>%
+  left_join(MadaDB_517_IDs, by = "Cluster") %>% 
+  dplyr::rename(Isolate.IDb = "Id.Match")
+
+
+
+mada517.longMB <- mada517MB %>%
+  select(Isolate.IDb,prop.inhib, prop.noninhib, prop.na, prop.contam) %>%
+  pivot_longer(
+    cols = c(prop.inhib, prop.noninhib, prop.na, prop.contam),
+    names_to = "type",
+    values_to = "percentage"
+  )
+
+#bar.long$Isolate.ID <- factor(bar.long$Isolate.ID, levels = rev(tree.pruned$tip.label))
+
+
+
+full.tree2 <- ggtree(tree.original, 
+                    branch.length = "none",
+                    size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class))
+
+#full.tree2
+#ggsave("full_tree.pdf", full.tree, height = 10, width = 15, dpi = 1000)
+
+
+# updated
+keep.517MB <- intersect(mada517MB$Isolate.IDb, tree.original$tip.label)
+
+tree.pruned.517MB <- keep.tip(tree.original, keep.517MB)
+plot(tree.pruned.517MB)
+
+#tip_order <- tree.pruned.517MB$tip.label 
+
+#tip_order_df <- tree.pruned.517MB$tip.label %>% as.data.frame() %>%
+ # mutate(OrderNum = row_number())
+
+#colnames(tip_order_df) <- c("Isolate.IDb", "OrderNum")
+
+tree517MB <- ggtree(tree.pruned.517MB, 
+       branch.length = "none", 
+       size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  geom_tiplab(size = 5)
+
+tree517MB
+
+#ggsave("517_treeMB.pdf", tree517MB, height = 90, width = 30, dpi = 600, limitsize = FALSE)
+
+## check point for number of clusters/branches
+length(unique(mada517.longMB$Isolate.IDb))
+
+## this are the lists to make the bar chart data be the same order as the tree;  Note tree order when the plot is printer is NOT what is extracted from tip label functions....
+tree_order <- c("Mada.2840","Mada.3145","Mada.2715","Mada.1299","Mada.1116","Mada.2297","Mada.1808","Mada.3553","Mada.3378","Mada.3023","Mada.3407","Mada.4185","Mada.2377","Mada.2105","Mada.3559","Mada.2343","Mada.3625","Mada.3783","Mada.221","Mada.3759","Mada.1298","Mada.3615","Mada.2534","Mada.1844","Mada.3775","Mada.2846","Mada.3244","Mada.265","Mada.1518","Mada.4033","Mada.2370","Mada.2269","Mada.2340","Mada.3466","Mada.241","Mada.3902","Mada.1198","Mada.236","Mada.3294","Mada.3747","Mada.1837","Mada.4036","Mada.3539","Mada.2375","Mada.350","Mada.1564","Mada.3093","Mada.3579","Mada.3222","Mada.2350","Mada.3853","Mada.1263","Mada.834","Mada.4164","Mada.3289","Mada.2492","Mada.1712","Mada.918","Mada.2784","Mada.346","Mada.3346","Mada.1","Mada.2476","Mada.2525","Mada.2378","Mada.1296","Mada.3586","Mada.1816","Mada.3386","Mada.3265","Mada.3345","Mada.2439","Mada.2578","Mada.2853","Mada.2819","Mada.3735","Mada.3825","Mada.1926","Mada.2012","Mada.3419","Mada.2892","Mada.466","Mada.2307","Mada.3290","Mada.1752","Mada.4332","Mada.2969","Mada.3071","Mada.3821","Mada.3227","Mada.4190","Mada.1183","Mada.1301","Mada.3550","Mada.38","Mada.2895","Mada.2783","Mada.2951","Mada.2420","Mada.68","Mada.3777","Mada.3953","Mada.2181","Mada.2563","Mada.2353","Mada.2740","Mada.4132","Mada.1952","Mada.2364","Mada.3996","Mada.4180","Mada.3714","Mada.1342","Mada.216","Mada.2982","Mada.3597","Mada.2346","Mada.1084","Mada.2413","Mada.3091","Mada.1196","Mada.4334","Mada.2154","Mada.2816","Mada.2947","Mada.1127","Mada.349","Mada.3567","Mada.2824","Mada.2882","Mada.3676","Mada.3394","Mada.3465","Mada.2500","Mada.124","Mada.3712","Mada.4245","Mada.2402","Mada.4193","Mada.134","Mada.117","Mada.2579","Mada.3189","Mada.494","Mada.2768","Mada.229","Mada.434","Mada.1842","Mada.1119","Mada.4128","Mada.2851","Mada.2681","Mada.542","Mada.3321","Mada.1147","Mada.2667","Mada.4099","Mada.1359","Mada.4123","Mada.1954","Mada.3762","Mada.3024","Mada.180","Mada.740","Mada.3504","Mada.1793","Mada.2434","Mada.3224","Mada.451","Mada.1883","Mada.3501","Mada.3342","Mada.671")
+
+tree_order2 <- c("Mada.412","Mada.3223","Mada.2436","Mada.1907","Mada.1249","Mada.1739","Mada.1273","Mada.2827","Mada.3343","Mada.298","Mada.648","Mada.1649","Mada.2543","Mada.1516","Mada.2431","Mada.3372","Mada.2427","Mada.1283","Mada.3081","Mada.168","Mada.3218","Mada.1418","Mada.2573","Mada.3200","Mada.2417","Mada.3532","Mada.3254","Mada.3866","Mada.2599","Mada.403","Mada.2393","Mada.3144","Mada.2894","Mada.2871","Mada.3601","Mada.1187","Mada.4158","Mada.3760","Mada.255","Mada.3418","Mada.4154","Mada.2702","Mada.2709","Mada.553","Mada.1766","Mada.3352","Mada.3362","Mada.2507","Mada.729","Mada.2488","Mada.3274","Mada.2443","Mada.3541","Mada.4024","Mada.4236","Mada.4234","Mada.1235","Mada.2424","Mada.3958","Mada.1700","Mada.2204","Mada.2914","Mada.3964","Mada.3017","Mada.2435","Mada.2349","Mada.4171","Mada.3359","Mada.2173","Mada.1759","Mada.2423","Mada.2897","Mada.2397","Mada.3279","Mada.2891","Mada.2757","Mada.3705","Mada.4065","Mada.2848","Mada.4012","Mada.3788","Mada.2758","Mada.3646","Mada.2411","Mada.3738","Mada.3694","Mada.2267","Mada.2383","Mada.2408","Mada.3175","Mada.4233","Mada.454","Mada.2365","Mada.3382","Mada.2385","Mada.2805","Mada.4320","Mada.97","Mada.2643","Mada.731","Mada.930","Mada.1826","Mada.2916","Mada.2682","Mada.1849","Mada.2577","Mada.3652","Mada.3528","Mada.929","Mada.2425","Mada.2741","Mada.2832","Mada.758","Mada.2679","Mada.387","Mada.739","Mada.2905","Mada.811","Mada.2723","Mada.2442","Mada.3622","Mada.1002","Mada.1783","Mada.2176","Mada.235","Mada.3153","Mada.1853","Mada.3555","Mada.3456","Mada.2287","Mada.2482","Mada.239","Mada.2618","Mada.1194","Mada.3438","Mada.1216","Mada.250","Mada.2904","Mada.351","Mada.3232","Mada.4242","Mada.3583","Mada.4179","Mada.4189","Mada.3213","Mada.3190","Mada.3830","Mada.3534","Mada.2215","Mada.2733","Mada.3843","Mada.1228","Mada.3458","Mada.2902","Mada.449","Mada.3184","Mada.3835","Mada.2316","Mada.1189","Mada.136","Mada.1553","Mada.1343","Mada.212","Mada.4328","Mada.211","Mada.3416","Mada.195","Mada.3828","Mada.2909","Mada.452","Mada.2549","Mada.397","Mada.1537","Mada.2678","Mada.3428","Mada.1792","Mada.3443","Mada.3847","Mada.3054","Mada.292","Mada.4131","Mada.2765","Mada.4209","Mada.3399","Mada.3854","Mada.4237","Mada.2024","Mada.984","Mada.3076","Mada.122","Mada.2441","Mada.1193","Mada.3406","Mada.4015","Mada.2468","Mada.2669","Mada.3479","Mada.3058","Mada.3852","Mada.1166","Mada.2586","Mada.3130","Mada.1873","Mada.3078","Mada.32","Mada.3075","Mada.2187","Mada.53","Mada.126","Mada.723","Mada.4009","Mada.2673","Mada.65","Mada.1888","Mada.2710","Mada.3920","Mada.4050","Mada.2373","Mada.34","Mada.2133","Mada.2004","Mada.457","Mada.157","Mada.2652","Mada.3159","Mada.3464","Mada.4035","Mada.3354","Mada.2962","Mada.2529","Mada.2119","Mada.2243","Mada.2523","Mada.1495","Mada.2600","Mada.3933","Mada.2400","Mada.155","Mada.160","Mada.290","Mada.1858","Mada.66","Mada.2314","Mada.637","Mada.1559","Mada.2654","Mada.2644","Mada.2950","Mada.2557","Mada.2102","Mada.3917","Mada.3166","Mada.3117","Mada.1358","Mada.3932","Mada.3404","Mada.716","Mada.1561","Mada.2324","Mada.283","Mada.3063","Mada.2023","Mada.3473","Mada.3127","Mada.2540","Mada.3309","Mada.166","Mada.1523","Mada.3272","Mada.3476","Mada.581","Mada.2226","Mada.118","Mada.1515","Mada.3537","Mada.3707","Mada.4306","Mada.41","Mada.3112","Mada.2842","Mada.2866","Mada.1007","Mada.384","Mada.3162","Mada.2548","Mada.100","Mada.3485","Mada.3666","Mada.1497","Mada.3726","Mada.4301","Mada.4313","Mada.407","Mada.2362","Mada.2339","Mada.3684","Mada.4146","Mada.1865","Mada.2619","Mada.1817","Mada.2608","Mada.2394","Mada.3413","Mada.184","Mada.3674","Mada.2604","Mada.3851","Mada.3796","Mada.1327","Mada.423","Mada.392","Mada.1365","Mada.2605","Mada.2046","Mada.1986","Mada.1251","Mada.1254","Mada.1670","Mada.2437","Mada.3496","Mada.2814","Mada.1905","Mada.614","Mada.2325","Mada.2641","Mada.2401","Mada.3695","Mada.4007","Mada.1852","Mada.3209","Mada.2850","Mada.1132","Mada.2301","Mada.2367","Mada.2756","Mada.715","Mada.1965","Mada.3383","Mada.2387","Mada.3034","Mada.1716","Mada.3326","Mada.2591","Mada.2637")
+
+tree_order_all = c(tree_order, tree_order2)
+
+# reversing order because the text string was top to bottom and tree/ bar plot is made bottom to top.
+tree_order_all_rev = rev(tree_order_all)
+
+barchart.full.mada517MB <- mada517.longMB %>%
+  ggplot(aes(x = percentage, 
+             y = factor(Isolate.IDb, levels = tree_order_all_rev), fill = type)) + ## ** this line is key
+  #ggplot(aes(x = percentage, y = as.factor(OrderNum), fill = type)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.5) +
+  ggthemes::scale_fill_colorblind()+
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 10),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    legend.text = element_text(size = 25)
+  )
+
+
+barchart.full.mada517MB
+#ggsave("./517MB_barchart_factorlevels.pdf", barchart.full.mada517MB, height = 150, width = 30, dpi = 600, limitsize = FALSE)
+
+
+
+
+```
+
+
+#517 TBJ plus 77 version
+```{r}
+
+## needs files from above meta.data and tree.original and nest517
+
+MadaDB_VsearchClusters_wdata_nest517 = MadaDB_VsearchClusters_wdata_nest517
+
+meta.data = meta.data
+
+tree.original = tree.original
+
+MadaDB_517_IDs <- MadaDB_VsearchClusters_wdata_nestnosingles_IDs
+
+## Molly addition 5/21/25 - using functions from above 
+MadaDB_VsearchClusters_wdata_nest517_fxn = MadaDB_VsearchClusters_wdata_nest517 %>%
+  mutate(TotalIso = map(data,~ nrow(.x)))%>%
+  mutate(FunctionCount = map(data,summary_fxn)) %>% # this creates the function categories
+  unnest(FunctionCount) %>% # this allows the function categories to be viewed in the nested frame and "operated" on
+  rename(Null = `NA`)
+
+MadaDB_VsearchClusters_wdata_nest517_IDs = MadaDB_VsearchClusters_wdata_nest517 %>%
+  unnest(data) %>%
+  select(Id.Match) %>%
+  filter(!Id.Match == "*") %>% 
+  unique()
+
+mada517MB <- MadaDB_VsearchClusters_wdata_nest517_fxn %>% 
+  dplyr::mutate(
+    prop.inhib = as.numeric(Inhibitory) / as.numeric(TotalIso) * 100,
+    prop.noninhib = as.numeric(NonInhibitory) / as.numeric(TotalIso) * 100,
+    prop.na = as.numeric(Null) / as.numeric(TotalIso) * 100,
+    prop.contam = as.numeric(Contam) / as.numeric(TotalIso) * 100) %>%
+  left_join(MadaDB_VsearchClusters_wdata_nest517_IDs, by = "Cluster") %>% 
+  dplyr::rename(Isolate.IDb = "Id.Match")
+
+
+
+mada517.longMB <- mada517MB %>%
+  select(Isolate.IDb,prop.inhib, prop.noninhib, prop.na, prop.contam) %>%
+  pivot_longer(
+    cols = c(prop.inhib, prop.noninhib, prop.na, prop.contam),
+    names_to = "type",
+    values_to = "percentage"
+  )
+
+#bar.long$Isolate.ID <- factor(bar.long$Isolate.ID, levels = rev(tree.pruned$tip.label))
+
+
+
+
+#ggsave("full_tree.pdf", full.tree, height = 10, width = 15, dpi = 1000)
+
+
+full.tree2.1 <- ggtree(tree.original, 
+                     branch.length = "none",
+                     size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  scale_color_manual(values = c(
+    "Actinobacteria" = "#4E79A7",     
+    "Deinococci" = "#F28E2B",    
+    "Alphaproteobacteria" = "#E15759",         
+    "Gammaproteobacteria" = "#76B7B2",
+    "BetaproteoBacteri" = "#59A14F",
+    "Flavobacteriia" = "#EDC948",
+    "Sphingobacteriia" = "#B07AA1",
+    "Bacilli" = "#FF9DA7",
+    "NA" = "#BAB0AC"
+  ))
+
+full.tree2.1
+
+# updated
+keep.517MB <- intersect(mada517MB$Isolate.IDb, tree.original$tip.label)
+
+tree.pruned.517MB <- keep.tip(tree.original, keep.517MB)
+plot(tree.pruned.517MB)
+
+#tip_order <- tree.pruned.517MB$tip.label 
+
+#tip_order_df <- tree.pruned.517MB$tip.label %>% as.data.frame() %>%
+ # mutate(OrderNum = row_number())
+
+#colnames(tip_order_df) <- c("Isolate.IDb", "OrderNum")
+
+tree517MB <- ggtree(tree.pruned.517MB, 
+       branch.length = "none", 
+       size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  geom_tiplab(size = 5)
+
+tree517MB
+
+#ggsave("517_treeMB.pdf", tree517MB, height = 90, width = 30, dpi = 600, limitsize = FALSE)
+
+## check point for number of clusters/branches
+length(unique(mada517.longMB$Iso))
+
+## this are the lists to make the bar chart data be the same order as the tree;  Note tree order when the plot is printer is NOT what is extracted from tip label functions....
+tree_order <- c("Mada.2840","Mada.3145","Mada.2715","Mada.1299","Mada.1116","Mada.2297","Mada.1808","Mada.3553","Mada.3378","Mada.3023","Mada.3407","Mada.4185","Mada.2377","Mada.2105","Mada.3559","Mada.2343","Mada.3625","Mada.3783","Mada.221","Mada.3759","Mada.1298","Mada.3615","Mada.2534","Mada.1844","Mada.3775","Mada.2846","Mada.3244","Mada.265","Mada.1518","Mada.4033","Mada.2370","Mada.2269","Mada.2340","Mada.3466","Mada.241","Mada.3902","Mada.1198","Mada.236","Mada.3294","Mada.3747","Mada.1837","Mada.4036","Mada.3539","Mada.2375","Mada.350","Mada.1564","Mada.3093","Mada.3579","Mada.3222","Mada.2350","Mada.3853","Mada.1263","Mada.834","Mada.4164","Mada.3289","Mada.2492","Mada.1712","Mada.918","Mada.2784","Mada.346","Mada.3346","Mada.1","Mada.2476","Mada.2525","Mada.2378","Mada.1296","Mada.3586","Mada.1816","Mada.3386","Mada.3265","Mada.3345","Mada.2439","Mada.2578","Mada.2853","Mada.2819","Mada.3735","Mada.3825","Mada.1926","Mada.2012","Mada.3419","Mada.2892","Mada.466","Mada.2307","Mada.3290","Mada.1752","Mada.4332","Mada.2969","Mada.3071","Mada.3821","Mada.3227","Mada.4190","Mada.1183","Mada.1301","Mada.3550","Mada.38","Mada.2895","Mada.2783","Mada.2951","Mada.2420","Mada.68","Mada.3777","Mada.3953","Mada.2181","Mada.2563","Mada.2353","Mada.2740","Mada.4132","Mada.1952","Mada.2364","Mada.3996","Mada.4180","Mada.3714","Mada.1342","Mada.216","Mada.2982","Mada.3597","Mada.2346","Mada.1084","Mada.2413","Mada.3091","Mada.1196","Mada.4334","Mada.2154","Mada.2816","Mada.2947","Mada.1127","Mada.349","Mada.3567","Mada.2824","Mada.2882","Mada.3676","Mada.3394","Mada.3465","Mada.2500","Mada.124","Mada.3712","Mada.4245","Mada.2402","Mada.4193","Mada.134","Mada.117","Mada.2579","Mada.3189","Mada.494","Mada.2768","Mada.229","Mada.434","Mada.1842","Mada.1119","Mada.4128","Mada.2851","Mada.2681","Mada.542","Mada.3321","Mada.1147","Mada.2667","Mada.4099","Mada.1359","Mada.4123","Mada.1954","Mada.3762","Mada.3024","Mada.180","Mada.740","Mada.3504","Mada.1793","Mada.2434","Mada.3224","Mada.451","Mada.1883","Mada.3501","Mada.3342","Mada.671")
+
+tree_order2 <- c("Mada.412","Mada.3223","Mada.2436","Mada.1907","Mada.1249","Mada.1739","Mada.1273","Mada.2827","Mada.3343","Mada.298","Mada.648","Mada.1649","Mada.2543","Mada.1516","Mada.2431","Mada.3372","Mada.2427","Mada.1283","Mada.3081","Mada.168","Mada.3218","Mada.1418","Mada.2573","Mada.3200","Mada.2417","Mada.3532","Mada.3254","Mada.3866","Mada.2599","Mada.403","Mada.2393","Mada.3144","Mada.2894","Mada.2871","Mada.3601","Mada.1187","Mada.4158","Mada.3760","Mada.255","Mada.3418","Mada.4154","Mada.2702","Mada.2709","Mada.553","Mada.1766","Mada.3352","Mada.3362","Mada.2507","Mada.729","Mada.2488","Mada.3274","Mada.2443","Mada.3541","Mada.4024","Mada.4236","Mada.4234","Mada.1235","Mada.2424","Mada.3958","Mada.1700","Mada.2204","Mada.2914","Mada.3964","Mada.3017","Mada.2435","Mada.2349","Mada.4171","Mada.3359","Mada.2173","Mada.1759","Mada.2423","Mada.2897","Mada.2397","Mada.3279","Mada.2891","Mada.2757","Mada.3705","Mada.4065","Mada.2848","Mada.4012","Mada.3788","Mada.2758","Mada.3646","Mada.2411","Mada.3738","Mada.3694","Mada.2267","Mada.2383","Mada.2408","Mada.3175","Mada.4233","Mada.454","Mada.2365","Mada.3382","Mada.2385","Mada.2805","Mada.4320","Mada.97","Mada.2643","Mada.731","Mada.930","Mada.1826","Mada.2916","Mada.2682","Mada.1849","Mada.2577","Mada.3652","Mada.3528","Mada.929","Mada.2425","Mada.2741","Mada.2832","Mada.758","Mada.2679","Mada.387","Mada.739","Mada.2905","Mada.811","Mada.2723","Mada.2442","Mada.3622","Mada.1002","Mada.1783","Mada.2176","Mada.235","Mada.3153","Mada.1853","Mada.3555","Mada.3456","Mada.2287","Mada.2482","Mada.239","Mada.2618","Mada.1194","Mada.3438","Mada.1216","Mada.250","Mada.2904","Mada.351","Mada.3232","Mada.4242","Mada.3583","Mada.4179","Mada.4189","Mada.3213","Mada.3190","Mada.3830","Mada.3534","Mada.2215","Mada.2733","Mada.3843","Mada.1228","Mada.3458","Mada.2902","Mada.449","Mada.3184","Mada.3835","Mada.2316","Mada.1189","Mada.136","Mada.1553","Mada.1343","Mada.212","Mada.4328","Mada.211","Mada.3416","Mada.195","Mada.3828","Mada.2909","Mada.452","Mada.2549","Mada.397","Mada.1537","Mada.2678","Mada.3428","Mada.1792","Mada.3443","Mada.3847","Mada.3054","Mada.292","Mada.4131","Mada.2765","Mada.4209","Mada.3399","Mada.3854","Mada.4237","Mada.2024","Mada.984","Mada.3076","Mada.122","Mada.2441","Mada.1193","Mada.3406","Mada.4015","Mada.2468","Mada.2669","Mada.3479","Mada.3058","Mada.3852","Mada.1166","Mada.2586","Mada.3130","Mada.1873","Mada.3078","Mada.32","Mada.3075","Mada.2187","Mada.53","Mada.126","Mada.723","Mada.4009","Mada.2673","Mada.65","Mada.1888","Mada.2710","Mada.3920","Mada.4050","Mada.2373","Mada.34","Mada.2133","Mada.2004","Mada.457","Mada.157","Mada.2652","Mada.3159","Mada.3464","Mada.4035","Mada.3354","Mada.2962","Mada.2529","Mada.2119","Mada.2243","Mada.2523","Mada.1495","Mada.2600","Mada.3933","Mada.2400","Mada.155","Mada.160","Mada.290","Mada.1858","Mada.66","Mada.2314","Mada.637","Mada.1559","Mada.2654","Mada.2644","Mada.2950","Mada.2557","Mada.2102","Mada.3917","Mada.3166","Mada.3117","Mada.1358","Mada.3932","Mada.3404","Mada.716","Mada.1561","Mada.2324","Mada.283","Mada.3063","Mada.2023","Mada.3473","Mada.3127","Mada.2540","Mada.3309","Mada.166","Mada.1523","Mada.3272","Mada.3476","Mada.581","Mada.2226","Mada.118","Mada.1515","Mada.3537","Mada.3707","Mada.4306","Mada.41","Mada.3112","Mada.2842","Mada.2866","Mada.1007","Mada.384","Mada.3162","Mada.2548","Mada.100","Mada.3485","Mada.3666","Mada.1497","Mada.3726","Mada.4301","Mada.4313","Mada.407","Mada.2362","Mada.2339","Mada.3684","Mada.4146","Mada.1865","Mada.2619","Mada.1817","Mada.2608","Mada.2394","Mada.3413","Mada.184","Mada.3674","Mada.2604","Mada.3851","Mada.3796","Mada.1327","Mada.423","Mada.392","Mada.1365","Mada.2605","Mada.2046","Mada.1986","Mada.1251","Mada.1254","Mada.1670","Mada.2437","Mada.3496","Mada.2814","Mada.1905","Mada.614","Mada.2325","Mada.2641","Mada.2401","Mada.3695","Mada.4007","Mada.1852","Mada.3209","Mada.2850","Mada.1132","Mada.2301","Mada.2367","Mada.2756","Mada.715","Mada.1965","Mada.3383","Mada.2387","Mada.3034","Mada.1716","Mada.3326","Mada.2591","Mada.2637")
+
+tree_order_all = c(tree_order, tree_order2)
+
+# reversing order because the text string was top to bottom and tree/ bar plot is made bottom to top.
+tree_order_all_rev = rev(tree_order_all)
+
+barchart.full.mada517MB <- mada517.longMB %>%
+  ggplot(aes(x = percentage, 
+             y = factor(Isolate.IDb, levels = tree_order_all_rev), fill = type)) + ## ** this line is key
+  #ggplot(aes(x = percentage, y = as.factor(OrderNum), fill = type)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.5) +
+  ggthemes::scale_fill_colorblind()+
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 10),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    legend.text = element_text(size = 25)
+  )
+
+
+barchart.full.mada517MB
+#ggsave("./517MB_barchart_factorlevels.pdf", barchart.full.mada517MB, height = 150, width = 30, dpi = 600, limitsize = FALSE)
+
+MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata_nest %>%
+  mutate(TotalIso = map(data,~ nrow(.x))) %>% # filter clusters with 1 isolate
+  filter(TotalIso > 2)
+
+MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata_nest %>%
+  mutate(FunctionCount = map(data,summary_fxn)) %>% # this creates the function categories
+  unnest(FunctionCount) # this allows the function categories to be viewed in the nested frame and "operated" on
+ 
+## This is removing clusters that doesn't have mixed function, meaning inhibitory and not inhibitory
+MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata_nest %>%
+   drop_na(Inhibitory,NonInhibitory)
+
+tbj.77 = MadaDB_VsearchClusters_wdata_nest
+
+tbj.77labels <- tbj.77 %>% 
+  tidyr::unnest(data) %>% 
+  dplyr::filter(Id.Match != "*") %>% 
+  dplyr::group_by(Id.Match) %>% 
+  dplyr::slice_head(n = 1) %>% 
+  dplyr::ungroup()
+
+
+ft2.77.data <- full.tree2$data
+
+label.data.77 <- ft2.77.data %>% 
+  filter(isTip & label %in% tbj.77labels$Id.Match)
+
+
+
+#plotting with the tip labels created before
+fulltree2.wtiplabs <- full.tree2.1 +
+  ggnewscale::new_scale_color() +   # NEW color scale for tip labels
+  geom_tiplab(
+    data = label.data.77,
+    aes(label = "*", color = `anti-Bd Class (80%)`),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+fulltree2.wtiplabs
+
+
+ggsave("recolored_517_wtipstars.pdf", fulltree2.wtiplabs, height = 90, width = 30, dpi = 600, limitsize = FALSE)
+```
