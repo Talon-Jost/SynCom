@@ -1,0 +1,49 @@
+---
+title: "IsolateR"
+author: "Talon Jost"
+date: "2025-06-24"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+#Install the required Bioconductor dependencies
+#BiocManager::install(c("Biostrings", "msa", "sangeranalyseR", "sangerseqR"), update=FALSE)
+
+#devtools::install_github("bdaisley/isolateR")
+
+library(isolateR)
+library(Biostrings)
+library(msa)
+library(sangeranalyseR)
+library(sangerseqR)
+```
+
+
+
+```{r}
+#3154
+fasta <- seqinr::read.fasta("MadaCultureDB_seqs_dupsfilt.fasta")
+
+
+
+isoTAX.S4 <- isoTAX(input=fasta,
+                    export_html=TRUE,
+                    export_csv=TRUE,
+                    db="16S",
+                    quick_search=TRUE,
+                    phylum_threshold=75.0,
+                    class_threshold=78.5,
+                    order_threshold=82.0,
+                    family_threshold=86.5,
+                    genus_threshold=96.5,
+                    species_threshold=98.7)
+```
+

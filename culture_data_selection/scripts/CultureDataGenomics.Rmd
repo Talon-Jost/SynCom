@@ -1,0 +1,2974 @@
+---
+title: "MadaCulturePivot"
+output: html_document
+date: "2025-05-07"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE,message = FALSE)
+```
+
+## packages
+
+```{r cars}
+rm(list = ls())
+library(tidyverse)
+```
+
+## Madagascar Culture Metadata input
+
+```{r}
+
+## merging Madagascar database metadata (culture info, etc) with Vsearch 100% clusterIDs
+
+## sorted by seq plate, toxonomy string then isolate ID in excel before creation
+
+MadaDBdata = read_tsv("./MadaCultureDB_Metadata.txt")
+
+## This deals with the duplicate entries for the isolates; its not perfect, it just selects the first entry from the sorted file 
+
+MadaDBdata_filt = MadaDBdata %>%
+  group_by(Isolate.ID) %>% slice_head() %>% # filters to 1 sequence per group
+  ungroup() %>%
+  select(Isolate.ID,Frog.ID,`proportion growth 1`,`anti-Bd Class (80%)`,Taxnonomy,DirTax_Phylum,DirTax_Class,DirTax_Order,DirTax_Family,DirTax_Genus,DirTax_Species) # selecting only a subset of columns for now for easier viewing
+
+```
+
+## Vsearch data
+
+```{r}
+#(vsearch) mcbletz@Mollys-MacBook-Pro-2 ~ % vsearch --cluster_fast /Users/mcbletz/Library/CloudStorage/OneDrive-ThePennsylvaniaStateUniversity/Bletz_Lab/Computational_Resources/Datasets/CultureData/MadaCultureDB_seqs_dupsfilt.fasta --uc /Users/mcbletz/Library/CloudStorage/OneDrive-ThePennsylvaniaStateUniversity/Bletz_Lab/Computational_Resources/Datasets/CultureData/MadaCultureDB_seqs_clustered_per100_050725.txt --id 1 --strand both
+
+##*** MODIFIED HEADERS AND COLUMNS MANUALLY IN EXCEL
+
+## Vsearch done with fasta from MadaDB file filtered for duplicates; this has more isolates than AmphiBac; This is the vsearch output (code above); Dup filtering completed with MadaDB_VsearchClusterMergeCode.R file.
+
+MadaDB_VsearchClusters2 = read_tsv("./MadaCultureDB_seqs_clustered_per100_050725.txt") %>%
+  select(Record,Cluster,Isolate.ID,Id.Match) # selecting relevant columns
+
+
+```
+
+## Merging vsearch clusters with culture metadata
+
+Isolate ID is the common identifier and is used to merge the two files
+
+```{r}
+
+## merging clustering with Mada DB metadata that has had the dubs filtered
+## NOTE Vsearch was not done with the duplicate filtered fasta...I think that's OK for now.but it does mean that there could be isolates with same ID that are "different" clusters because there are some that didn't ID to the same taxonomy.
+MadaDB_VsearchClusters_wdata = left_join(MadaDB_VsearchClusters2,
+                                         MadaDBdata_filt,
+                                         by = "Isolate.ID") 
+#write_tsv(MadaDB_VsearchClusters_wdata,"./MadaCultureDB_Metadata_wVsearchClusters.txt")
+```
+
+## Nesting
+
+Nesting groups the Vsearch clusters for further summarizing
+
+IMPORTANT - THERE ARE actually 1387 unique clusters when including singletons!!
+
+```{r}
+
+MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata %>%
+  filter(!Record=="C") %>% # removing these records that are not important for the clustering its a duplicate of the S ids; only "S" and "H" retained
+  filter(`anti-Bd Class (80%)` == "Inhibitory" | `anti-Bd Class (80%)` == "NonInhibitory") %>%
+  filter(`proportion growth 1` > 0.75 | `proportion growth 1` < 0.25) %>% #added this to filter to extreme function
+  group_by(Cluster) %>%
+  nest()
+
+MadaDB_VsearchClusters_wdata_nest517 = MadaDB_VsearchClusters_wdata %>%
+  filter(!Record=="C") %>% # removing these records that are not important for the clustering its a duplicate of the S ids; only "S" and "H" retained
+  #filter(`anti-Bd Class (80%)` == "Inhibitory" | `anti-Bd Class (80%)` == "NonInhibitory") %>%
+  group_by(Cluster) %>%
+  filter(!Id.Match == "*") %>%  ## Why? This actually gets rid of singletons
+  nest() 
+
+## List of IDs for tree for all cluster dataset
+MadaDB_VsearchClusters_wdata_nest517_IDs = MadaDB_VsearchClusters_wdata_nest517 %>%
+  unnest(data) %>%
+  select(Id.Match) %>%
+  filter(!Id.Match == "*") %>% 
+  unique()
+
+```
+
+## Summarizing
+
+This creates an initial summary of the functional categories for each cluster
+
+*Note: this does NOT implement the strict function filtering to look at only strong and weak function*
+
+```{r}
+
+summary_fxn = function(x){
+  x %>% ## called x because thats what the position in the map function is called
+  group_by(`anti-Bd Class (80%)`) %>%
+  summarize(Count = n()) %>%
+    pivot_wider(.,names_from = `anti-Bd Class (80%)`,values_from = Count)
+
+} # this is a function that does the summarizing by function category and then organizes it for better viewing.
+
+MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata_nest %>%
+  mutate(TotalIso = map(data,~ nrow(.x))) %>% # filter clusters with 1 isolate
+  filter(TotalIso > 2)
+
+
+#MadaDB_VsearchClusters_wdata_nest2 = MadaDB_VsearchClusters_wdata_nest %>%
+ # mutate(TotalIso = map(data,~ nrow(.x))) %>% # filter clusters with 1 isolate
+  #filter(TotalIso > 2) %>% 
+  #unnest(data) %>%
+  #group_by(DirTax_Phylum) %>%
+  #summarize(Count = n_distinct(Cluster))
+
+MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata_nest %>%
+  mutate(FunctionCount = map(data,summary_fxn)) %>% # this creates the function categories
+  unnest(FunctionCount) # this allows the function categories to be viewed in the nested frame and "operated" on
+ 
+## This is removing clusters that doesn't have mixed function, meaning inhibitory and not inhibitory
+ MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata_nest %>%
+   drop_na(Inhibitory,NonInhibitory)
+ 
+
+ 
+
+```
+
+```{r}
+library(DT)
+
+MadaDB_VsearchClusters_wdata_nest_summary = MadaDB_VsearchClusters_wdata_nest %>%
+  select(-data)
+
+datatable(MadaDB_VsearchClusters_wdata_nest_summary)
+
+```
+
+
+#subset by taxonomy and match back up to the cluster ids
+
+```{r count.taxonomy}
+phylum.by.cluster <- MadaDB_VsearchClusters_wdata_nest %>%
+  dplyr::mutate(phylum.table = map(data, ~ count(.x, DirTax_Phylum))) %>%
+  dplyr::select(Cluster, phylum.table) %>%
+  tidyr::unnest(phylum.table)
+
+phylum.counts <- phylum.by.cluster %>%
+  dplyr::group_by(DirTax_Phylum) %>% 
+  count(DirTax_Phylum)
+
+print(phylum.counts)
+```
+
+
+```{r proteobacteria}
+proteo <- MadaDB_VsearchClusters_wdata_nest %>%
+  dplyr::mutate(proteo.phylum = purrr::map(data, ~filter(.x, DirTax_Phylum == 'Proteobacteria'))) %>%
+  dplyr::mutate(proteo.phylum_count = purrr::map_int(proteo.phylum, nrow)) %>%
+  dplyr::filter(proteo.phylum_count > 0) %>% 
+  dplyr::select(Cluster, proteo.phylum)
+
+#this subsets to 22 observations which agrees with the table.
+
+
+joined.proteo <- proteo %>%
+  dplyr::left_join(MadaDB_VsearchClusters_wdata_nest, by = 'Cluster')
+
+joined.proteo <- joined.proteo %>% 
+  dplyr::left_join(MadaDB_VsearchClusters_wdata, by = 'Cluster') %>% 
+  dplyr::slice_head()
+
+#### creating a phylogenetic tree to use for a phylogeny
+# library(msa)
+# library(phangorn)
+# fasta <- Biostrings::readDNAStringSet('MadaCultureDB_seqs_dupsfilt.fasta')
+# align <- msa::msa(fasta, method = 'Muscle')
+# aligned.phangorn <- phangorn::as.phyDat(msaConvert(align, type = 'seqinr'), 
+#                                         type = "DNA")
+
+library(ape)
+
+tree.original <- ape::read.tree('trees/tree/nwk/madaDB.rooted.tree.nwk')
+plot(tree.original)
+print(tree.original$tip.label)
+
+names <- joined.proteo$Isolate.ID
+keep <- intersect(names, tree.original$tip.label)
+
+joined.proteo$eighty <- as.factor(joined.proteo$Isolate.ID)
+
+tree.pruned <- keep.tip(tree.original, keep)
+plot(tree.pruned)
+# tree.pruned$tip.label <- gsub('^"|"$', '', tree.pruned$tip.label)  # Remove quotes
+# tree.pruned$tip.label <- trimws(tree.pruned$tip.label)
+
+rownames(joined.proteo) <- joined.proteo$Isolate.ID
+setdiff(tree.pruned$tip.label, rownames(joined.proteo))
+
+missing_tips <- setdiff(tree.pruned$tip.label, rownames(joined.proteo))
+if(length(missing_tips) == 0) {
+  message("All tip labels are found in joined.proteo.")
+} else {
+  message("Missing tip labels:", paste(missing_tips, collapse = ", "))
+}
+
+tip.groups <- joined.proteo[match(tree.pruned$tip.label, joined.proteo$Isolate.ID), "eighty"]
+
+
+head(tip.groups)
+
+group.colors <- c('Inhibitory' = 'red',
+                  'NonInhibitory' = 'green')
+
+
+tip.groups <- factor(tip.groups, levels = c('Inhibitory', 'NonInhibitory'))
+tip.colors <- group.colors[tip.groups]
+
+tree.plot <- ape::plot.phylo(tree.pruned,
+                cex = 0.5,
+                use.edge.length = FALSE)
+
+
+tree.plot
+library(ggtree)
+tree.plot <- ggtree(tree.pruned, branch.length = "none", size = 0.5) +
+  geom_tiplab(size = 5, color = 'black') +
+  theme_tree()
+
+tree.plot
+#ggsave('proteo_phylogeny.png', plot = tree.plot, width = 25, height = 10, dpi = 500)
+
+
+
+tip.order <- tree.plot$data %>% 
+  filter(isTip) %>% 
+  arrange(y) %>% 
+  pull(label)
+
+
+bar.df <- joined.proteo %>% 
+  select(Isolate.ID, TotalIso, Inhibitory, NonInhibitory, `anti-Bd Class (80%)`) %>% 
+  rename(inhibition.status = `anti-Bd Class (80%)`) %>%
+  mutate(
+    TotalIsolates = as.numeric(TotalIso),
+    bar.inhib = as.numeric(Inhibitory),
+    bar.noninhib = as.numeric(NonInhibitory),
+    prop.inhib = bar.inhib / TotalIsolates * 100,
+    prop.noninhib = bar.noninhib / TotalIsolates * 100
+  )
+
+# Add total isolates to be used for labeling later
+bar.df$total_label <- bar.df$bar.inhib + bar.df$bar.noninhib
+
+# Reshape to long format
+bar.long <- bar.df %>%
+  select(Isolate.ID, inhibition.status, prop.inhib, prop.noninhib, total_label) %>%
+  pivot_longer(cols = c(prop.inhib, prop.noninhib),
+               names_to = "type",
+               values_to = "percentage")
+
+# Ensure ordering for plotting
+bar.long$Isolate.ID <- factor(bar.long$Isolate.ID, levels = rev(tree.pruned$tip.label))
+bar.long$Isolate.ID <- factor(bar.long$Isolate.ID, levels = rev(tip.order))
+
+
+bar.label.df <- bar.long %>%
+  group_by(Isolate.ID) %>%
+  summarise(xpos = sum(percentage), label = unique(total_label))
+
+# Plot
+barchart1.proteo <- ggplot(bar.long, 
+                           aes(x = percentage, 
+                               y = Isolate.ID, 
+                               fill = type,
+                               width = 0.5,
+                               position_dodge(1.5))) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(data = bar.label.df, aes(x = xpos + 2, 
+                                     y = Isolate.ID, 
+                                     label = label), 
+            inherit.aes = FALSE,
+            hjust = 0, size = 10, color = "black") +
+  labs(title = "", 
+       x = "", 
+       y = "",
+       fill = "Inhibition Status") +
+  scale_fill_manual(values = c("prop.inhib" = "green", "prop.noninhib" = "red"),
+                    labels = c("Inhibitory", "Non-Inhibitory")) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    axis.text.y = element_blank(),#can remove this to confirm order is correct
+    legend.text = element_text(size = 25)
+  ) +
+  scale_y_discrete(limits = rev(levels(bar.long$Isolate.ID))) +
+  xlim(0, max(bar.label.df$xpos) + 10) +
+  guides(color = guide_legend(override.aes = list(size = 2)))
+
+barchart1.proteo
+#ggsave("proteo_barchart.png", barchart1.proteo, width = 10, height = 10, dpi = 600)
+
+
+#this didn't work but I saved the work in adobe illustrator within the proteobacteria file
+library(ggpubr)
+newplot <- ggarrange(tree.plot, barchart1.proteo,
+                     ncol = 2,
+                     widths = c(1, 0.75))
+newplot
+```
+
+
+
+```{r bacteriodetes}
+meta.data <- MadaDBdata
+
+
+meta.data <- meta.data %>% 
+  dplyr::select(Isolate.ID, 
+                `anti-Bd Class (80%)`, 
+                DirTax_Phylum, 
+                DirTax_Class) %>% 
+  dplyr::rename(Inhibition = 'anti-Bd Class (80%)') %>% 
+  dplyr::filter(!duplicated(Isolate.ID))
+
+isol.col <- MadaDB_VsearchClusters_wdata %>% 
+  dplyr::select(Cluster, Isolate.ID)
+
+meta.data <- meta.data %>% 
+  dplyr::left_join(isol.col, by = "Isolate.ID")
+
+meta.data <- meta.data %>% 
+  dplyr::left_join(MadaDB_VsearchClusters_wdata_nest_summary,
+                   by = "Cluster")
+
+meta.data <- as.data.frame(meta.data)
+meta.data$TotalIso <- as.numeric(meta.data$TotalIso)
+meta.data <- meta.data %>% 
+  dplyr::mutate(prop.inhib = Inhibitory / TotalIso * 100,
+    prop.noninhib = NonInhibitory / TotalIso * 100)
+
+bacteroidetes <- MadaDB_VsearchClusters_wdata_nest %>%
+  dplyr::mutate(bacteroidetes.phylum = purrr::map(data, ~filter(.x, DirTax_Phylum == c('Bacteroidetes', "Firmicutes")))) %>%
+  dplyr::mutate(bacteroidetes.phylum = purrr::map_int(bacteroidetes.phylum, nrow)) %>%
+  dplyr::filter(bacteroidetes.phylum > 0) %>% 
+  dplyr::select(Cluster, bacteroidetes.phylum)
+
+#one observation so it agrees
+
+joined.bacteroidetes <- bacteroidetes %>%
+  dplyr::left_join(MadaDB_VsearchClusters_wdata_nest, by = 'Cluster')
+
+joined.bacteroidetes <- joined.bacteroidetes %>% 
+  dplyr::left_join(MadaDB_VsearchClusters_wdata, by = 'Cluster') %>% 
+  dplyr::slice_head()
+
+
+#creating the phylogeny
+tree.original <- ape::read.tree('tree/nwk/madaDB.rooted.tree.nwk')
+plot(tree.original)
+print(tree.original$tip.label)
+
+bac.names <- joined.bacteroidetes$Isolate.ID
+bac.keep <- intersect(bac.names, tree.original$tip.label)
+
+joined.bacteroidetes$eighty <- as.factor(joined.bacteroidetes$Isolate.ID)
+
+tree.pruned.bac <- keep.tip(tree.original, bac.keep)
+plot(tree.pruned.bac)
+
+#### create ggtree for firmicutes
+library(ggtree)
+library(ggnewscale)
+bact.tree.plot <- ggtree(tree.pruned.bac, branch.length = "none", size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Phylum)) +
+  scale_color_manual(
+    values = c(
+      "Firmicutes" = "orange",
+      "Bacteroidetes" = "pink"
+    )
+  ) + 
+  new_scale_color() +   # reset color scale for next geom
+  geom_tiplab(aes(color = Inhibition), size = 5) +
+  scale_color_manual(values = c(
+    "Inhibitory" = "green",
+    "NonInhibitory" = "red",
+    "NA" = "blue"
+  )) +
+  theme_tree()
+
+bact.tree.plot
+
+#ggsave('bacteroidetes_firm_phylogeny.pdf', plot = bact.tree.plot, width = 25, height = 10, dpi = 500)
+
+
+###create barplot
+firm.tip.order <- bact.tree.plot$data %>% 
+  filter(isTip) %>% 
+  arrange(y) %>% 
+  pull(label)
+
+
+bac.bar.df <- joined.bacteroidetes %>% 
+  select(Isolate.ID, TotalIso, Inhibitory, NonInhibitory, `anti-Bd Class (80%)`) %>% 
+  rename(inhibition.status = `anti-Bd Class (80%)`) %>%
+  mutate(
+    TotalIsolates = as.numeric(TotalIso),
+    bar.inhib = as.numeric(Inhibitory),
+    bar.noninhib = as.numeric(NonInhibitory),
+    prop.inhib = bar.inhib / TotalIsolates * 100,
+    prop.noninhib = bar.noninhib / TotalIsolates * 100
+  )
+
+# Add total isolates to be used for labeling later
+bac.bar.df$total_label <- bac.bar.df$bar.inhib + bac.bar.df$bar.noninhib
+
+# Reshape to long format
+bac.bar.long <- bac.bar.df %>%
+  select(Isolate.ID, inhibition.status, prop.inhib, prop.noninhib, total_label) %>%
+  pivot_longer(cols = c(prop.inhib, prop.noninhib),
+               names_to = "type",
+               values_to = "percentage")
+
+# Ensure ordering for plotting
+bac.bar.long$Isolate.ID <- factor(bac.bar.long$Isolate.ID, levels = rev(tree.pruned.bac$tip.label))
+bac.bar.long$Isolate.ID <- factor(bac.bar.long$Isolate.ID, levels = rev(firm.tip.order))
+
+
+bac.bar.label.df <- bac.bar.long %>%
+  group_by(Isolate.ID) %>%
+  summarise(xpos = sum(percentage), label = unique(total_label))
+
+# Plot
+barchart.bac <- ggplot(bac.bar.long, 
+                           aes(x = percentage, 
+                               y = Isolate.ID, 
+                               fill = type,
+                               width = 0.5,
+                               position_dodge(1.5))) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(data = bac.bar.label.df, aes(x = xpos + 2, 
+                                     y = Isolate.ID, 
+                                     label = label), 
+            inherit.aes = FALSE,
+            hjust = 0, size = 10, color = "black") +
+  labs(title = "", 
+       x = "", 
+       y = "",
+       fill = "Inhibitory Status") +
+  scale_fill_manual(values = c("prop.inhib" = "green", "prop.noninhib" = "red"),
+                    labels = c("Inhibitory", "Non-Inhibitory")) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    #axis.text.y = element_blank(),#can remove this to confirm order is correct
+    legend.text = element_text(size = 25)
+  ) +
+  scale_y_discrete(limits = rev(levels(bac.bar.long$Isolate.ID))) +
+  xlim(0, max(bac.bar.label.df$xpos) + 10) +
+  guides(color = guide_legend(override.aes = list(size = 2)))
+
+barchart.bac
+#ggsave("bac_barchart.pdf", barchart.bac, width = 8, height = 10, dpi = 600)
+
+```
+
+
+```{r firmicutes}
+firmicutes <- MadaDB_VsearchClusters_wdata_nest %>%
+  dplyr::mutate(firmicutes.phylum = purrr::map(data, ~filter(.x, DirTax_Phylum == 'Firmicutes'))) %>%
+  dplyr::mutate(firmicutes.phylum = purrr::map_int(firmicutes.phylum, nrow)) %>%
+  dplyr::filter(firmicutes.phylum > 0) %>% 
+  dplyr::select(Cluster, firmicutes.phylum)
+
+#five observations so it agrees with the table
+
+joined.firmucutes <- firmicutes %>%
+  dplyr::left_join(MadaDB_VsearchClusters_wdata_nest, by = 'Cluster')
+
+joined.firmucutes <- joined.firmucutes %>% 
+  dplyr::left_join(MadaDB_VsearchClusters_wdata, by = 'Cluster') %>% 
+  dplyr::slice_head()
+
+
+#creating the phylogeny
+tree.original <- ape::read.tree('tree/nwk/madaDB.rooted.tree.nwk')
+plot(tree.original)
+print(tree.original$tip.label)
+
+firm.names <- joined.firmucutes$Isolate.ID
+firm.keep <- intersect(firm.names, tree.original$tip.label)
+
+joined.firmucutes$eighty <- as.factor(joined.firmucutes$Isolate.ID)
+
+tree.pruned.firm <- keep.tip(tree.original, firm.keep)
+plot(tree.pruned.firm)
+
+#### create ggtree for firmicutes
+library(ggtree)
+firm.tree.plot <- ggtree(tree.pruned.firm, branch.length = "none", size = 0.5) +
+  geom_tiplab(size = 5, color = 'black') +
+  theme_tree()
+
+firm.tree.plot
+#ggsave('firmicutes_phylogeny.png', plot = firm.tree.plot, width = 25, height = 10, dpi = 500)
+
+###create barplot
+firm.tip.order <- firm.tree.plot$data %>% 
+  filter(isTip) %>% 
+  arrange(y) %>% 
+  pull(label)
+
+
+firm.bar.df <- joined.firmucutes %>% 
+  select(Isolate.ID, TotalIso, Inhibitory, NonInhibitory, `anti-Bd Class (80%)`) %>% 
+  rename(inhibition.status = `anti-Bd Class (80%)`) %>%
+  mutate(
+    TotalIsolates = as.numeric(TotalIso),
+    bar.inhib = as.numeric(Inhibitory),
+    bar.noninhib = as.numeric(NonInhibitory),
+    prop.inhib = bar.inhib / TotalIsolates * 100,
+    prop.noninhib = bar.noninhib / TotalIsolates * 100
+  )
+
+# Add total isolates to be used for labeling later
+firm.bar.df$total_label <- firm.bar.df$bar.inhib + firm.bar.df$bar.noninhib
+
+# Reshape to long format
+firm.bar.long <- firm.bar.df %>%
+  select(Isolate.ID, inhibition.status, prop.inhib, prop.noninhib, total_label) %>%
+  pivot_longer(cols = c(prop.inhib, prop.noninhib),
+               names_to = "type",
+               values_to = "percentage")
+
+# Ensure ordering for plotting
+firm.bar.long$Isolate.ID <- factor(firm.bar.long$Isolate.ID, levels = rev(tree.pruned.firm$tip.label))
+firm.bar.long$Isolate.ID <- factor(firm.bar.long$Isolate.ID, levels = rev(firm.tip.order))
+
+
+firm.bar.label.df <- firm.bar.long %>%
+  group_by(Isolate.ID) %>%
+  summarise(xpos = sum(percentage), label = unique(total_label))
+
+# Plot
+barchart.firm <- ggplot(firm.bar.long, 
+                           aes(x = percentage, 
+                               y = Isolate.ID, 
+                               fill = type,
+                               width = 0.5,
+                               position_dodge(1.5))) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(data = firm.bar.label.df, aes(x = xpos + 2, 
+                                     y = Isolate.ID, 
+                                     label = label), 
+            inherit.aes = FALSE,
+            hjust = 0, size = 10, color = "black") +
+  labs(title = "", 
+       x = "", 
+       y = "",
+       fill = "Inhibitory Status") +
+  scale_fill_manual(values = c("prop.inhib" = "green", "prop.noninhib" = "red"),
+                    labels = c("Inhibitory", "Non-Inhibitory")) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    axis.text.y = element_blank(),#can remove this to confirm order is correct
+    legend.text = element_text(size = 25)
+  ) +
+  scale_y_discrete(limits = rev(levels(firm.bar.long$Isolate.ID))) +
+  xlim(0, max(firm.bar.label.df$xpos) + 10) +
+  guides(color = guide_legend(override.aes = list(size = 2)))
+
+barchart.firm
+#ggsave("firm_barchart.png", barchart.firm, width = 8, height = 10, dpi = 600)
+```
+
+
+
+```{r Actinobacteria}
+Actinobacteria <- MadaDB_VsearchClusters_wdata_nest %>%
+  dplyr::mutate(actinobacteria.phylum = purrr::map(data, ~filter(.x, DirTax_Phylum == 'Actinobacteria'))) %>%
+  dplyr::mutate(actinobacteria.phylum = purrr::map_int(actinobacteria.phylum, nrow)) %>%
+  dplyr::filter(actinobacteria.phylum > 0) %>% 
+  dplyr::select(Cluster, actinobacteria.phylum)
+
+#five observations so it agrees with the table
+
+joined.Actinobacteria <- Actinobacteria %>%
+  dplyr::left_join(MadaDB_VsearchClusters_wdata_nest, by = 'Cluster')
+
+joined.Actinobacteria <- joined.Actinobacteria %>% 
+  dplyr::left_join(MadaDB_VsearchClusters_wdata, by = 'Cluster') %>% 
+  dplyr::slice_head()
+
+
+#creating the phylogeny
+tree.original <- ape::read.tree('tree/nwk/madaDB.rooted.tree.nwk')
+plot(tree.original)
+print(tree.original$tip.label)
+
+actino.names <- joined.Actinobacteria$Isolate.ID
+actino.keep <- intersect(actino.names, tree.original$tip.label)
+
+joined.Actinobacteria$eighty <- as.factor(joined.Actinobacteria$Isolate.ID)
+
+tree.pruned.actino <- keep.tip(tree.original, actino.keep)
+plot(tree.pruned.actino)
+
+#### create ggtree for firmicutes
+library(ggtree)
+actino.tree.plot <- ggtree(tree.pruned.actino, branch.length = "none", size = 0.5) +
+  geom_tiplab(size = 5, color = 'black') +
+  theme_tree()
+
+actino.tree.plot
+#ggsave('actinobacteria_phylogeny.png', plot = actino.tree.plot, width = 25, height = 25, dpi = 500)
+
+
+
+###create barplot
+actino.tip.order <- actino.tree.plot$data %>% 
+  filter(isTip) %>% 
+  arrange(y) %>% 
+  pull(label)
+
+
+actino.bar.df <- joined.Actinobacteria %>% 
+  select(Isolate.ID, TotalIso, Inhibitory, NonInhibitory, `anti-Bd Class (80%)`) %>% 
+  rename(inhibition.status = `anti-Bd Class (80%)`) %>%
+  mutate(
+    TotalIsolates = as.numeric(TotalIso),
+    bar.inhib = as.numeric(Inhibitory),
+    bar.noninhib = as.numeric(NonInhibitory),
+    prop.inhib = bar.inhib / TotalIsolates * 100,
+    prop.noninhib = bar.noninhib / TotalIsolates * 100
+  )
+
+# Add total isolates to be used for labeling later
+actino.bar.df$total_label <- actino.bar.df$bar.inhib + actino.bar.df$bar.noninhib
+
+# Reshape to long format
+actino.bar.long <- actino.bar.df %>%
+  select(Isolate.ID, inhibition.status, prop.inhib, prop.noninhib, total_label) %>%
+  pivot_longer(cols = c(prop.inhib, prop.noninhib),
+               names_to = "type",
+               values_to = "percentage")
+
+# Ensure ordering for plotting
+actino.bar.long$Isolate.ID <- factor(actino.bar.long$Isolate.ID, levels = rev(tree.pruned.actino$tip.label))
+actino.bar.long$Isolate.ID <- factor(actino.bar.long$Isolate.ID, levels = rev(actino.tip.order))
+
+
+actino.bar.label.df <- actino.bar.long %>%
+  group_by(Isolate.ID) %>%
+  summarise(xpos = sum(percentage), label = unique(total_label))
+
+# Plot
+barchart.actino <- ggplot(actino.bar.long, 
+                           aes(x = percentage, 
+                               y = Isolate.ID, 
+                               fill = type,
+                               width = 0.5,
+                               position_dodge(1.5))) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(data = actino.bar.label.df, aes(x = xpos + 2, 
+                                     y = Isolate.ID, 
+                                     label = label), 
+            inherit.aes = FALSE,
+            hjust = 0, size = 10, color = "black") +
+  labs(title = "", 
+       x = "", 
+       y = "",
+       fill = "Inhibitory Status") +
+  scale_fill_manual(values = c("prop.inhib" = "green", "prop.noninhib" = "red"),
+                    labels = c("Inhibitory", "Non-Inhibitory")) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    axis.text.y = element_blank(), #can remove this to confirm order is correct
+    legend.text = element_text(size = 25)
+  ) +
+  scale_y_discrete(limits = rev(levels(actino.bar.long$Isolate.ID))) +
+  xlim(0, max(actino.bar.label.df$xpos) + 10) +
+  guides(color = guide_legend(override.aes = list(size = 2)))
+
+barchart.actino
+#ggsave("actino_barchart.png", barchart.actino, width = 12, height = 25, dpi = 600)
+
+```
+
+# tree work
+
+```{r}
+tree.original <- ape::read.tree('tree/nwk/madaDB.rooted.tree.nwk')
+plot(tree.original)
+print(tree.original$tip.label)
+
+full.names <- meta.data$Isolate.ID
+full.keep <- intersect(full.names, tree.original$tip.label)
+
+
+tree.pruned.full <- keep.tip(tree.original, full.keep)
+plot(tree.pruned.actino)
+
+
+#filter to clusters
+full.tip.order <- cluster.tree$data %>% 
+  filter(isTip) %>% 
+  arrange(y) %>% 
+  pull(label)
+
+ggtree(pruned.tree, layout = "fan", branch.length = "none", size = 0.5) +
+  geom_tiplab(size = 5) +
+  theme_tree()
+
+
+
+meta.data <- MadaDBdata
+meta.data <- meta.data %>% 
+  filter(meta.data$Isolate.ID %in% all.df2$Id.Match) %>% 
+  dplyr::select(Isolate.ID, `anti-Bd Class (80%)`, DirTax_Class) %>% 
+  dplyr::rename(Inhibition = 'anti-Bd Class (80%)') %>% 
+  dplyr::filter(!duplicated(Isolate.ID))
+
+isol.col <- MadaDB_VsearchClusters_wdata %>% 
+  dplyr::select(Cluster, Isolate.ID)
+
+meta.data <- meta.data %>% 
+  dplyr::left_join(isol.col, by = "Isolate.ID")
+
+meta.data <- meta.data %>% 
+  dplyr::left_join(MadaDB_VsearchClusters_wdata_nest_summary,
+                   by = "Cluster")
+
+meta.data <- as.data.frame(meta.data)
+meta.data$TotalIso <- as.numeric(meta.data$TotalIso)
+meta.data <- meta.data %>% 
+  dplyr::mutate(prop.inhib = Inhibitory / TotalIso * 100,
+    prop.noninhib = NonInhibitory / TotalIso * 100)
+
+
+library(ggnewscale)
+clust.tree <- plot(tree.pruned)
+
+cluster.tree <- ggtree(pruned.tree, 
+                    branch.length = "none",
+                    layout = "fan",
+                    size = 0.3,
+                    offset = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Phylum)) +
+  scale_color_manual(values = c(
+    "Actinobacteria" = "purple",
+    "Firmicutes" = "orange",
+    "Proteobacteria" = "brown",
+    "Bacteroidetes" = "pink"
+  )) +
+  new_scale_color() +   # reset color scale for next geom
+  geom_tiplab(aes(color = Inhibition), size = 5) +
+  scale_color_manual(values = c(
+    "Inhibitory" = "green",
+    "NonInhibitory" = "red",
+    "NA" = "blue"
+  )) +
+  theme_tree() +
+  theme(legend.position = c(0.25, 0.1),
+        legend.justification = c(5,0))
+
+cluster.tree
+
+#ggsave("cluster_phylogeny_stacked.png", cluster.tree, height = 20, width = 25, dpi = 500)
+
+
+#create stacked barchart for the whole thing
+full.tip.order <- cluster.tree$data %>% 
+  filter(isTip) %>% 
+  arrange(y) %>% 
+  pull(label)
+
+meta.data.long <- meta.data %>%
+  select(Isolate.ID, Inhibition, prop.inhib, prop.noninhib, TotalIso) %>%
+  pivot_longer(cols = c(prop.inhib, prop.noninhib),
+               names_to = "type",
+               values_to = "percentage") %>%
+  mutate(Isolate.ID = factor(Isolate.ID, levels = pruned.tree$tip.label))
+
+
+full.bar.label.df <- meta.data.long %>%
+  group_by(Isolate.ID) %>%
+  summarise(xpos = sum(percentage), label = unique(TotalIso), .groups = "drop")
+
+meta.data.long$Isolate.ID <- factor(meta.data.long$Isolate.ID, levels = full.tip.order)
+
+meta.data.long$Isolate.ID <- factor(meta.data.long$Isolate.ID, levels = rev(full.tip.order))
+
+barchart.full <- ggplot(meta.data.long, 
+                        aes(x = percentage, y = Isolate.ID, fill = type)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.5) +
+  geom_text(data = full.bar.label.df, aes(x = xpos + 2, y = Isolate.ID, label = label),
+            inherit.aes = FALSE, hjust = 0, size = 5, color = "black") +
+  scale_y_discrete(limits = pruned.tree$tip.label) +
+  scale_fill_manual(values = c("prop.inhib" = "green", "prop.noninhib" = "red"),
+                    labels = c("Inhibitory", "Non-Inhibitory")) +
+  theme_minimal() +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        legend.key.size = unit(2, "lines"),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12)) +
+  xlim(0, max(full.bar.label.df$xpos) + 10) +
+  labs(fill = "Inhibitory Status",
+       x = "",
+       y = "")
+
+barchart.full
+
+#ggsave("Barchart_full.pdf", barchart.full, height = 25, width = 20, dpi = 600)
+
+
+```
+
+
+```{r}
+class.by.cluster <- MadaDB_VsearchClusters_wdata_nest %>%
+  dplyr::mutate(class.table = map(data, ~ count(.x, DirTax_Class))) %>%
+  dplyr::select(Cluster, class.table) %>%
+  tidyr::unnest(class.table)
+
+class.counts <- class.by.cluster %>%
+  dplyr::group_by(DirTax_Class) %>% 
+  count(DirTax_Class)
+
+print(class.counts)
+
+meta.data2 <- MadaDBdata
+meta.data2 <- meta.data2 %>% 
+  filter(meta.data2$Isolate.ID %in% all.df2$Id.Match) %>% 
+  dplyr::select(Isolate.ID, `anti-Bd Class (80%)`, DirTax_Class) %>% 
+  dplyr::rename(Inhibition = 'anti-Bd Class (80%)') %>% 
+  dplyr::filter(!duplicated(Isolate.ID))
+
+
+class.df <- MadaDB_VsearchClusters_wdata_nest
+full.tip.labels <- tree.original$tip.label
+
+class.df.ids <- class.df %>%
+  pull(data) %>%            
+  map(~ pull(.x, Id.Match)) %>%   
+  unlist() %>%              
+  unique()
+
+class.filtered.tip.labels <- full.tip.labels[full.tip.labels %in% class.df.ids]
+
+pruned.tree <- drop.tip(tree.original, setdiff(full.tip.labels, class.filtered.tip.labels))
+
+ggtree(pruned.tree, layout = "fan", branch.length = "none", size = 0.5) +
+  geom_tiplab(size = 5) +
+  theme_tree()
+
+all.df2 <- all.df %>% 
+  select(Cluster, data) %>%
+  unnest(data)
+
+
+
+
+library(ggnewscale)
+
+class.tree <- ggtree(pruned.tree, 
+                    branch.length = "none",
+                    size = 0.5,
+                    layout = "fan") %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  scale_color_manual(
+    name = "Class",
+    values = c(
+    "Actinobacteria" = "purple",
+    "Bacilli" = "orange",
+    "Alphaproteobacteria" = "brown",
+    "Gammaproteobacteria" = "pink",
+    "Flavobacteriia" = "blue"
+  )) +
+  new_scale_color() +   # reset color scale for next geom
+  geom_tiplab(aes(color = Inhibition), size = 25) +
+  scale_color_manual(values = c(
+    "Inhibitory" = "#006400",
+    "NonInhibitory" = "red",
+    "NA" = "blue"
+  )) +
+  theme_tree() +
+  theme(legend.justification = c(5,0)) +
+  geom_point2(aes(subset = isTip, 
+                  size = TotalIso, 
+                  fill = prop.inhib,
+                  x = x + 5.5), shape = 21, color = "black") +
+  scale_size_continuous(name = "Cluster Size",
+                        limits = c(2, 40),
+                        breaks = c(2, 10, 20, 30, 40),
+                        labels = c("2", "10", "20", "30", "40"),
+                        guide = guide_legend(override.aes = list(shape = 21, fill = "black"))) +
+  scale_fill_gradient(name = "Proportion Inhibitory",
+                      low = "green",
+                      mid = "white",
+                      high = "blue",
+                      midpoint = 0.5) +
+  labs(
+    fill = "Inhibitory Status",
+    color = "Inhibitory Status of Cluster Reference"
+  ) +
+  guides(
+    color = guide_legend(override.aes = list(shape = 15, size = 15)),
+    fill = guide_colorbar(override.aes = list(size = 10))
+  )
+
+class.tree
+
+
+#ggsave("class_phylogeny.pdf", class.tree, height = 10, width = 10, dpi = 1000)
+
+
+library(ggforce)  # for pie charts
+library(grid)     # for grobs
+
+tree.data <- tree.plot$data %>%
+  filter(isTip) %>%
+  left_join(meta.data, by = c("label" = "Isolate.ID"))
+
+class.tree
+
+```
+
+# full tree
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(magrittr)
+library(ggtree)
+library(ape)
+library(ggtreeExtra)
+plot(tree.original)
+
+full.tree <- ggtree(tree.original, 
+                    branch.length = "none",
+                    size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class))
+
+full.tree
+#ggsave("full_tree.pdf", full.tree, height = 10, width = 15, dpi = 1000)
+
+full.tree.fan <- ggtree(tree.original, 
+                    branch.length = "none",
+                    size = 0.5,
+                    layout = "fan") %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class))
+
+full.tree.fan
+
+#getting the tip labels out of the dataframe
+full.tree.subset.labels.df <- MadaDB_VsearchClusters_wdata_nest %>% 
+  tidyr::unnest(data) %>% 
+  dplyr::filter(Id.Match != "*") %>% 
+  dplyr::group_by(Id.Match) %>% 
+  dplyr::slice_head(n = 1) %>% 
+  dplyr::ungroup()
+
+full.tree.subset.labels.df$Inhibitory <- as.numeric(full.tree.subset.labels.df$Inhibitory)
+
+full.tree.subset.labels.df$NonInhibitory <- as.numeric(full.tree.subset.labels.df$NonInhibitory)
+
+full.tree.subset.labels.df$TotalIso <- as.numeric(full.tree.subset.labels.df$TotalIso)
+
+full.tree.subset.labels.df <- full.tree.subset.labels.df %>% 
+  dplyr::mutate(prop.inhib = Inhibitory / TotalIso * 100,
+    prop.noninhib = NonInhibitory / TotalIso * 100)
+
+full.tree.long <- full.tree.subset.labels.df %>%
+  select(Isolate.ID, `anti-Bd Class (80%)`, prop.inhib, prop.noninhib) %>%
+  pivot_longer(cols = c(prop.inhib, prop.noninhib),
+               names_to = "type",
+               values_to = "percentage")
+
+
+
+full.tree.subset.labels <- full.tree.subset.labels.df$Isolate.ID
+
+
+# full.tree.data <- fortify(full.tree)
+# 
+# tree_data <- fortify(tree)
+
+# Filter only the tips you want to label
+ft.data <- full.tree$data
+
+label.data <- ft.data %>% 
+  filter(isTip & label %in% full.tree.subset.labels)
+
+
+
+#plotting with the tip labels created before
+tree.wtiplabs <- full.tree +
+  ggnewscale::new_scale_color() +   # NEW color scale for tip labels
+  geom_tiplab(
+    data = label.data,
+    aes(label = "*", color = Inhibition),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+
+tree.wtiplabs
+#ggsave("full_treewlabels.pdf", tree.wtiplabs, height = 20, width = 20, dpi = 1000)
+
+
+tree.wtiplabs.fan <- full.tree.fan +
+  ggnewscale::new_scale_color() +   # NEW color scale for tip labels
+  geom_tiplab(
+    data = label.data,
+    aes(label = "*", color = Inhibition),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+
+tree.wtiplabs.fan
+ggsave("full_tree_fan.pdf", tree.wtiplabs.fan, height = 20, width = 15, dpi = 1000)
+
+
+fan.tree.with.bars <- tree.wtiplabs +
+  geom_fruit(
+    data = full.tree.long,
+    geom = geom_bar,
+    mapping = aes(y = Isolate.ID, x = percentage, fill = type),
+    orientation = "y",        # y orientation = bars radiating outward
+    stat = "identity",
+    position = "stack",       # or "dodge" for side-by-side bars
+    pwidth = 5,             # proportion of ring width
+    offset = 10              # distance from the tip
+  ) +
+  scale_fill_manual(
+    values = c(
+      "prop.inhib" = "green",
+      "prop.noninhib" = "red"
+    ),
+    name = "Isolate Composition"
+  ) +
+  theme(legend.position = "right")
+
+fan.tree.with.bars
+
+
+#null tree with labels for confirmation
+tree.wtiplabs.null <- full.tree +
+  ggnewscale::new_scale_color() +   # NEW color scale for tip labels
+  geom_tiplab(
+    data = label.data,
+    aes(color = Inhibition),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+tree.wtiplabs.null
+ggsave("full_tree_null.pdf", tree.wtiplabs.null, height = 60, width = 30, dpi = 1000, limitsize = FALSE)
+
+
+full.tree.long <- full.tree.long %>%
+  mutate(label = ifelse(type == "prop.inhib", "Inhibitory", "Non-Inhibitory"))
+
+# Set y-axis order to match the tree tip label order
+tip_order <- full.tree$data %>% 
+  filter(isTip) %>% 
+  arrange(y) %>% 
+  pull(label)
+
+# Bar chart work
+full.tree.subset.labels.df <- full.tree.subset.labels.df %>%
+  mutate(
+    TotalIso = as.numeric(TotalIso),
+    Inhibitory = as.numeric(Inhibitory),
+    NonInhibitory = as.numeric(NonInhibitory)
+  )
+
+grouped.class.df <- full.tree.subset.labels.df %>% 
+  group_by(DirTax_Class) %>% 
+  summarise(
+    sum.TotalIso = sum(TotalIso, na.rm = TRUE),
+    sum.Inhibitory = sum(Inhibitory, na.rm = TRUE),
+    sum.NonInhibitory = sum(NonInhibitory, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+grouped.class.df <- grouped.class.df %>% 
+  dplyr::mutate(
+    prop.inhib = sum.Inhibitory / sum.TotalIso * 100,
+    prop.noninhib = sum.NonInhibitory / sum.TotalIso * 100
+  )
+
+grouped.class.long <- grouped.class.df %>%
+  select(DirTax_Class, prop.inhib, prop.noninhib) %>%
+  pivot_longer(
+    cols = c(prop.inhib, prop.noninhib),
+    names_to = "type",
+    values_to = "percentage"
+  )
+
+
+totals <- grouped.class.df %>%
+  select(DirTax_Class, sum.TotalIso)
+
+barchart.full <- ggplot(grouped.class.long, 
+                        aes(x = percentage, y = DirTax_Class, fill = type)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.4) +
+  geom_text(aes(label = round(percentage, 1)),
+            position = position_stack(vjust = 0.5),
+            size = 3, color = "black") +
+  geom_text(data = totals,
+            aes(x = 105, y = DirTax_Class, label = paste0("n=", sum.TotalIso)),
+            inherit.aes = FALSE,
+            hjust = 0,
+            size = 3.5) +
+  scale_fill_manual(
+    values = c("prop.inhib" = "green", "prop.noninhib" = "red"),
+    labels = c("Inhibitory", "Non-Inhibitory"),
+    name = "Inhibition Type"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 8),
+    legend.key.size = unit(1.5, "lines"),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10)
+  ) +
+  labs(
+    y = "Taxonomic Class",
+    x = "Proportion (%)"
+  ) +
+  xlim(0, 120)
+
+barchart.full
+#ggsave("full_barchart.pdf", barchart.full, height = 10, width = 15, dpi = 500, limitsize = FALSE)
+```
+
+
+
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(magrittr)
+library(ggtree)
+library(ape)
+library(ggtreeExtra)
+plot(tree.original)
+
+full.tree2 <- ggtree(tree.original, 
+                    branch.length = "none",
+                    size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class))
+
+full.tree2
+#ggsave("full_tree.pdf", full.tree, height = 10, width = 15, dpi = 1000)
+
+
+#getting the tip labels out of the dataframe
+full.tree.subset.labels.df2 <- MadaDB_VsearchClusters_wdata_nest %>% 
+  tidyr::unnest(data) %>% 
+  dplyr::filter(!Id.Match == "*") %>% 
+  dplyr::rename(InhibitoryStatus = `anti-Bd Class (80%)`)
+
+full.tree.subset.labels.df2 <- full.tree.subset.labels.df2 %>%
+  mutate(InhibitoryStatus = factor(InhibitoryStatus, levels = c("Inhibitory", "NonInhibitory")))
+
+
+tip_order <- tree.original$tip.label
+
+factor(full.tree.subset.labels.df2$Isolate.ID, levels = rev(tip_order))  # rev() if y-axis is flipped in ggtree
+
+
+stacked.plot <- ggplot(full.tree.subset.labels.df2, aes(x = 1, y = Isolate.ID, fill = InhibitoryStatus)) +
+  geom_tile(width = 0.3, height = 0.8) +
+  scale_fill_manual(values = c("Inhibitory" = "green", "NonInhibitory" = "red")) +
+  theme_minimal() +
+  theme(axis.title = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid = element_blank())
+
+stacked.plot
+
+ggsave("stacked_plot.pdf", stacked.plot, height = 40, width = 20, dpi = 600)
+
+full.tree.subset.labels.df$Inhibitory <- as.numeric(full.tree.subset.labels.df$Inhibitory)
+
+full.tree.subset.labels.df$NonInhibitory <- as.numeric(full.tree.subset.labels.df$NonInhibitory)
+
+full.tree.subset.labels.df$TotalIso <- as.numeric(full.tree.subset.labels.df$TotalIso)
+
+full.tree.subset.labels.df <- full.tree.subset.labels.df %>% 
+  dplyr::mutate(prop.inhib = Inhibitory / TotalIso * 100,
+    prop.noninhib = NonInhibitory / TotalIso * 100)
+
+full.tree.long <- full.tree.subset.labels.df %>%
+  select(Isolate.ID, `anti-Bd Class (80%)`, prop.inhib, prop.noninhib) %>%
+  pivot_longer(cols = c(prop.inhib, prop.noninhib),
+               names_to = "type",
+               values_to = "percentage")
+
+
+
+full.tree.subset.labels <- full.tree.subset.labels.df$Isolate.ID
+
+
+# full.tree.data <- fortify(full.tree)
+# 
+# tree_data <- fortify(tree)
+
+# Filter only the tips you want to label
+ft.data <- full.tree$data
+
+label.data <- ft.data %>% 
+  filter(isTip & label %in% full.tree.subset.labels)
+
+
+
+#plotting with the tip labels created before
+tree.wtiplabs <- full.tree +
+  ggnewscale::new_scale_color() +   # NEW color scale for tip labels
+  geom_tiplab(
+    data = label.data,
+    aes(label = "*", color = Inhibition),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+
+tree.wtiplabs
+#ggsave("full_treewlabels.pdf", tree.wtiplabs, height = 20, width = 20, dpi = 1000)
+
+
+tree.wtiplabs.fan <- full.tree.fan +
+  ggnewscale::new_scale_color() +   # NEW color scale for tip labels
+  geom_tiplab(
+    data = label.data,
+    aes(label = "*", color = Inhibition),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+
+tree.wtiplabs.fan
+ggsave("full_tree_fan.pdf", tree.wtiplabs.fan, height = 20, width = 15, dpi = 1000)
+
+
+fan.tree.with.bars <- tree.wtiplabs +
+  geom_fruit(
+    data = full.tree.long,
+    geom = geom_bar,
+    mapping = aes(y = Isolate.ID, x = percentage, fill = type),
+    orientation = "y",        # y orientation = bars radiating outward
+    stat = "identity",
+    position = "stack",       # or "dodge" for side-by-side bars
+    pwidth = 5,             # proportion of ring width
+    offset = 10              # distance from the tip
+  ) +
+  scale_fill_manual(
+    values = c(
+      "prop.inhib" = "green",
+      "prop.noninhib" = "red"
+    ),
+    name = "Isolate Composition"
+  ) +
+  theme(legend.position = "right")
+
+fan.tree.with.bars
+
+
+#null tree with labels for confirmation
+tree.wtiplabs.null <- full.tree +
+  ggnewscale::new_scale_color() +   # NEW color scale for tip labels
+  geom_tiplab(
+    data = label.data,
+    aes(color = Inhibition),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+tree.wtiplabs.null
+ggsave("full_tree_null.pdf", tree.wtiplabs.null, height = 60, width = 30, dpi = 1000, limitsize = FALSE)
+
+
+full.tree.long <- full.tree.long %>%
+  mutate(label = ifelse(type == "prop.inhib", "Inhibitory", "Non-Inhibitory"))
+
+tip_order <- full.tree$data %>% 
+  filter(isTip) %>% 
+  arrange(y) %>% 
+  pull(label)
+
+# Bar chart work
+full.tree.subset.labels.df <- full.tree.subset.labels.df %>%
+  mutate(
+    TotalIso = as.numeric(TotalIso),
+    Inhibitory = as.numeric(Inhibitory),
+    NonInhibitory = as.numeric(NonInhibitory)
+  )
+
+grouped.class.df <- full.tree.subset.labels.df %>% 
+  group_by(DirTax_Class) %>% 
+  summarise(
+    sum.TotalIso = sum(TotalIso, na.rm = TRUE),
+    sum.Inhibitory = sum(Inhibitory, na.rm = TRUE),
+    sum.NonInhibitory = sum(NonInhibitory, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+grouped.class.df <- grouped.class.df %>% 
+  dplyr::mutate(
+    prop.inhib = sum.Inhibitory / sum.TotalIso * 100,
+    prop.noninhib = sum.NonInhibitory / sum.TotalIso * 100
+  )
+
+grouped.class.long <- grouped.class.df %>%
+  select(DirTax_Class, prop.inhib, prop.noninhib) %>%
+  pivot_longer(
+    cols = c(prop.inhib, prop.noninhib),
+    names_to = "type",
+    values_to = "percentage"
+  )
+
+
+totals <- grouped.class.df %>%
+  select(DirTax_Class, sum.TotalIso)
+
+barchart.full <- ggplot(grouped.class.long, 
+                        aes(x = percentage, y = DirTax_Class, fill = type)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.4) +
+  geom_text(aes(label = round(percentage, 1)),
+            position = position_stack(vjust = 0.5),
+            size = 3, color = "black") +
+  geom_text(data = totals,
+            aes(x = 105, y = DirTax_Class, label = paste0("n=", sum.TotalIso)),
+            inherit.aes = FALSE,
+            hjust = 0,
+            size = 3.5) +
+  scale_fill_manual(
+    values = c("prop.inhib" = "green", "prop.noninhib" = "red"),
+    labels = c("Inhibitory", "Non-Inhibitory"),
+    name = "Inhibition Type"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 8),
+    legend.key.size = unit(1.5, "lines"),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10)
+  ) +
+  labs(
+    y = "Taxonomic Class",
+    x = "Proportion (%)"
+  ) +
+  xlim(0, 120)
+
+barchart.full
+#ggsave("full_barchart.pdf", barchart.full, height = 10, width = 15, dpi = 500, limitsize = FALSE)
+```
+
+
+```{r}
+#example from phyloseq
+library("phyloseq")
+data("esophagus")
+data("GlobalPatterns")
+head(phy_tree(GlobalPatterns)$node.label, 10)
+physeq = prune_taxa(taxa_names(GlobalPatterns)[1:50], GlobalPatterns)
+plot_tree(physeq)
+plot_tree(physeq, "treeonly", nodeplotblank)
+
+phytree <- read.tree("tree/nwk/madaDB.rooted.tree.nwk")
+
+
+sample_names <- meta.data$Isolate.ID
+
+# Create a dummy OTU table: 1 row (fake OTU), 1 column per sample
+otu_dummy <- matrix(1, 
+                    nrow = 1, 
+                    ncol = length(sample_names),
+                    dimnames = list("OTU1", sample_names))
+
+# Turn into a phyloseq OTU table
+otu <- otu_table(otu_dummy, taxa_are_rows = TRUE)
+otu <- as.data.frame(t(otu))
+phytree.2 <- phyloseq(phy_tree(phytree), 
+                      otu, 
+                      sample_data(meta.data))
+
+```
+
+# 517 Clusters
+
+```{r}
+library(ggplot2)
+library(tidyr)
+library(tidyverse)
+
+MadaDB_517_IDs <- MadaDB_VsearchClusters_wdata_nest517_IDs
+#view(MadaDB_VsearchClusters_wdata_nest517_IDs)
+
+## **Note could use functions above in the "Summarizing" section would simplify the following lines (MB)
+
+mada517 <- MadaDB_VsearchClusters_wdata_nest517 %>%
+  mutate(
+    TotalIso = map_int(data, nrow),
+    Inhibitory = map_int(data, ~ sum(.x$`anti-Bd Class (80%)` == "Inhibitory", na.rm = TRUE)),
+    NonInhibitory = map_int(data, ~ sum(.x$`anti-Bd Class (80%)` == "NonInhibitory", na.rm = TRUE)),
+    Null = map_int(data, ~ sum(is.na(.x$`anti-Bd Class (80%)`))),
+    Contam = map_int(data, ~ sum(.x$`anti-Bd Class (80%)` == "Contam", na.rm = TRUE))
+  )
+
+mada517 <- mada517 %>% 
+  dplyr::mutate(
+    prop.inhib = Inhibitory / TotalIso * 100,
+    prop.noninhib = NonInhibitory / TotalIso * 100,
+    prop.na = Null / TotalIso * 100,
+    prop.contam = Contam / TotalIso * 100
+  )
+
+
+MadaDB_VsearchClusters_wdata_nest517_IDs <- MadaDB_VsearchClusters_wdata_nest517_IDs %>% 
+  dplyr::rename(Isolate.ID = "Id.Match")
+
+isolates.517 <- MadaDB_VsearchClusters_wdata_nest517_IDs %>% 
+  dplyr::left_join(meta.data, by = "Isolate.ID") %>% 
+  dplyr::slice_head(by = Isolate.ID)
+
+
+mada517 <- mada517 %>% 
+  dplyr::left_join(MadaDB_VsearchClusters_wdata_nest517_IDs, by = "Cluster")
+
+
+mada517.long <- mada517 %>%
+  select(Isolate.ID,prop.inhib, prop.noninhib, prop.na, prop.contam) %>%
+  pivot_longer(
+    cols = c(prop.inhib, prop.noninhib, prop.na, prop.contam),
+    names_to = "type",
+    values_to = "percentage"
+  )
+
+
+full.tree2 <- ggtree(tree.original, 
+                    branch.length = "none",
+                    size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class))
+
+full.tree2
+#ggsave("full_tree.pdf", full.tree, height = 10, width = 15, dpi = 1000)
+
+
+#getting the tip labels out of the dataframe
+labels.517 <- isolates.517$Isolate.ID
+
+ft.data <- full.tree2$data
+
+label.data <- ft.data %>% 
+  filter(isTip & label %in% labels.517)
+
+label.data <- label.data %>%
+  mutate(xpos = max(mada517.long$percentage, na.rm = TRUE) + 5)
+
+label.data <- label.data %>%
+  left_join(mada517.long %>% select(Isolate.ID), by = c("label" = "Isolate.ID")) %>%
+  mutate(xpos = max(mada517.long$percentage, na.rm = TRUE) + 5)
+
+#mada517.long <- mada517.long %>%
+ # mutate(Isolate.ID = factor(Isolate.ID, levels = tree.pruned.517$tip.label))
+
+
+keep.517 <- intersect(labels.517, tree.original$tip.label)
+
+
+tree.pruned.517 <- keep.tip(tree.original, keep.517)
+plot(tree.pruned.517)
+
+tip_order <- tree.pruned.517$tip.label
+
+
+# Clean whitespace and convert to character
+tip_order_clean <- trimws(as.character(tip_order))
+id_match_clean <- trimws(as.character(mada517.long$Isolate.ID))
+
+# Match and reorder
+matched_indices <- match(tip_order_clean, id_match_clean)
+sum_na <- sum(is.na(matched_indices))  # Check for unmatched IDs
+
+# Report if any unmatched
+if (sum_na > 0) {
+  cat("Unmatched IDs:\n")
+  print(tip_order_clean[is.na(matched_indices)])
+}
+
+# Reorder the dataframe
+mada517.long.ordered <- mada517.long[matched_indices, ]
+
+# Final check
+is_aligned <- all(tip_order_clean == trimws(as.character(mada517.long.ordered$Isolate.ID)))
+cat("Order aligned:", is_aligned, "\n")
+
+
+# Get unique IDs from long dataframe, assuming 1 per isolate
+id_match_unique <- unique(id_match_clean)
+
+# Try matching again
+matched_indices <- match(tip_order_clean, id_match_unique)
+sum(is.na(matched_indices))
+
+tree517 <- ggtree(tree.pruned.517, 
+       branch.length = "none", 
+       size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  geom_tiplab(size = 5)
+
+tree517
+
+tree.grouped <- groupOTU(tree.pruned.517, split(meta.data$Isolate.ID, meta.data$DirTax_Class))
+
+tips <- meta.data$Isolate.ID[meta.data$DirTax_Class == "Actinobacteria"]
+missing_tips <- setdiff(tips, tree.pruned.517$tip.label)
+print(missing_tips)
+
+tips <- intersect(tips, tree.pruned.517$tip.label)
+clade_node <- MRCA(tree.pruned.517, tips)
+print(clade_node)
+
+tree517 <- ggtree(tree.pruned.517, branch.length = "none") %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  geom_tiplab(size = 5) +
+  geom_hilight(node = 728, fill = "#f8766d", alpha = 0.3)
+
+tree517
+
+tree.pruned.517$tip.label
+
+#ggsave("469_tree.pdf", tree517, height = 90, width = 30, dpi = 600, limitsize = FALSE)
+
+
+totals <- grouped.class.df %>%
+  select(DirTax_Class, sum.TotalIso)
+
+#mada517.long$Isolate.ID <- factor(mada517.long$Isolate.ID, levels = tip_order)
+
+barchart.full.mada517 <- mada517.long %>%
+  #ggplot(aes(x = percentage, 
+            # y = factor(Isolate.ID, levels = tree.pruned.517$tip.label ), fill = type)) + ## **Added by molly,This line is the Key
+  ggplot(.,aes(x = percentage, y = Isolate.ID, fill = type)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.5) +
+  scale_fill_manual( ## ** something funny is happening here
+    values = c("prop.inhib" = "green", 
+               "prop.noninhib" = "red", 
+               "prop.na" = "blue", 
+               "prop.contam" = "black"),
+    labels = c("Inhibitory", "Non-Inhibitory", "NA", "Contam")
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 10),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    legend.text = element_text(size = 25)
+  )
+
+barchart.full.mada517
+ggsave("517_barchartTJtest.pdf", barchart.full.mada517, height = 150, width = 30, dpi = 600, limitsize = FALSE)
+
+
+#########TBJ work 22/5
+order.levels <- c("Actinobacteria", "Deinococci", "Alphaproteobacteria",
+                  "Gammaproteobacteria", "Betaproteobacteria", "Flavobacteriia",
+                  "Sphingobacteriia", "Bacilli")
+
+meta.data$DirTax_Class <- as.factor(meta.data$DirTax_Class)
+meta.data$DirTax_Class <- factor(meta.data$DirTax_Class, levels = order.levels)
+
+mada517class <- meta.data %>% 
+  dplyr::select(Isolate.ID,DirTax_Class) %>% 
+  dplyr::slice_head(by = Isolate.ID)
+
+mada517TBJ.matched.class <- mada517 %>% 
+  dplyr::left_join(mada517class, by = "Isolate.ID")
+
+mada517TBJ.matched.long <- mada517TBJ.matched.class %>%
+  select(Isolate.ID,prop.inhib, prop.noninhib, prop.na, prop.contam, DirTax_Class) %>%
+  pivot_longer(
+    cols = c(prop.inhib, prop.noninhib, prop.na, prop.contam),
+    names_to = "type",
+    values_to = "percentage"
+  )
+
+mada517TBJ.matched.long <- mada517TBJ.matched.long %>%
+  arrange(DirTax_Class, Isolate.ID) %>%
+  mutate(Isolate.ID = factor(Isolate.ID, levels = unique(Isolate.ID)))
+
+
+
+barchart.ordered <- ggplot(mada517TBJ.matched.long, aes(x = percentage, y = Isolate.ID, fill = type)) +
+  geom_bar(stat = "identity") +
+  facet_grid(DirTax_Class ~ ., scales = "free_y", space = "free_y") +
+  theme_minimal()
+
+
+ggsave("517_barchartTBJ.pdf", barchart.ordered, height = 150, width = 30, dpi = 600, limitsize = FALSE)
+
+```
+
+# 517 Molly version
+```{r}
+library(ggplot2)
+library(tidyr)
+library(tidyverse)
+
+## needs files from above meta.data and tree.original and nest517
+
+MadaDB_VsearchClusters_wdata_nest517 = MadaDB_VsearchClusters_wdata_nest517
+
+meta.data = meta.data
+
+tree.original = tree.original
+
+MadaDB_517_IDs <- MadaDB_VsearchClusters_wdata_nest517_IDs
+
+## Molly addition 5/21/25 - using functions from above 
+MadaDB_VsearchClusters_wdata_nest517_fxn = MadaDB_VsearchClusters_wdata_nest517 %>%
+  mutate(TotalIso = map(data,~ nrow(.x)))%>%
+  mutate(FunctionCount = map(data,summary_fxn)) %>% # this creates the function categories
+  unnest(FunctionCount) %>% # this allows the function categories to be viewed in the nested frame and "operated" on
+  rename(Null = `NA`)
+
+
+mada517MB <- MadaDB_VsearchClusters_wdata_nest517_fxn %>% 
+  dplyr::mutate(
+    prop.inhib = as.numeric(Inhibitory) / as.numeric(TotalIso) * 100,
+    prop.noninhib = as.numeric(NonInhibitory) / as.numeric(TotalIso) * 100,
+    prop.na = as.numeric(Null) / as.numeric(TotalIso) * 100,
+    prop.contam = as.numeric(Contam) / as.numeric(TotalIso) * 100) %>%
+  left_join(MadaDB_VsearchClusters_wdata_nest517_IDs, by = "Cluster") %>% 
+  dplyr::rename(Isolate.IDb = "Id.Match")
+
+
+
+mada517.longMB <- mada517MB %>%
+  select(Isolate.IDb,prop.inhib, prop.noninhib, prop.na, prop.contam) %>%
+  pivot_longer(
+    cols = c(prop.inhib, prop.noninhib, prop.na, prop.contam),
+    names_to = "type",
+    values_to = "percentage"
+  )
+
+#bar.long$Isolate.ID <- factor(bar.long$Isolate.ID, levels = rev(tree.pruned$tip.label))
+
+library(tidyverse)
+library(dplyr)
+library(magrittr)
+library(ggtree)
+library(ape)
+library(ggtreeExtra)
+
+full.tree2 <- ggtree(tree.original, 
+                    branch.length = "none",
+                    size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class))
+
+#full.tree2
+#ggsave("full_tree.pdf", full.tree, height = 10, width = 15, dpi = 1000)
+
+
+# updated
+keep.517MB <- intersect(mada517MB$Isolate.IDb, tree.original$tip.label)
+
+tree.pruned.517MB <- keep.tip(tree.original, keep.517MB)
+plot(tree.pruned.517MB)
+
+#tip_order <- tree.pruned.517MB$tip.label 
+
+#tip_order_df <- tree.pruned.517MB$tip.label %>% as.data.frame() %>%
+ # mutate(OrderNum = row_number())
+
+#colnames(tip_order_df) <- c("Isolate.IDb", "OrderNum")
+
+tree517MB <- ggtree(tree.pruned.517MB, 
+       branch.length = "none", 
+       size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  geom_tiplab(size = 5)
+
+tree517MB
+
+ggsave("517_treeMB.pdf", tree517MB, height = 90, width = 30, dpi = 600, limitsize = FALSE)
+
+## check point for number of clusters/branches
+length(unique(mada517.longMB$Iso))
+
+## this are the lists to make the bar chart data be the same order as the tree;  Note tree order when the plot is printer is NOT what is extracted from tip label functions....
+tree_order <- c("Mada.2840","Mada.3145","Mada.2715","Mada.1299","Mada.1116","Mada.2297","Mada.1808","Mada.3553","Mada.3378","Mada.3023","Mada.3407","Mada.4185","Mada.2377","Mada.2105","Mada.3559","Mada.2343","Mada.3625","Mada.3783","Mada.221","Mada.3759","Mada.1298","Mada.3615","Mada.2534","Mada.1844","Mada.3775","Mada.2846","Mada.3244","Mada.265","Mada.1518","Mada.4033","Mada.2370","Mada.2269","Mada.2340","Mada.3466","Mada.241","Mada.3902","Mada.1198","Mada.236","Mada.3294","Mada.3747","Mada.1837","Mada.4036","Mada.3539","Mada.2375","Mada.350","Mada.1564","Mada.3093","Mada.3579","Mada.3222","Mada.2350","Mada.3853","Mada.1263","Mada.834","Mada.4164","Mada.3289","Mada.2492","Mada.1712","Mada.918","Mada.2784","Mada.346","Mada.3346","Mada.1","Mada.2476","Mada.2525","Mada.2378","Mada.1296","Mada.3586","Mada.1816","Mada.3386","Mada.3265","Mada.3345","Mada.2439","Mada.2578","Mada.2853","Mada.2819","Mada.3735","Mada.3825","Mada.1926","Mada.2012","Mada.3419","Mada.2892","Mada.466","Mada.2307","Mada.3290","Mada.1752","Mada.4332","Mada.2969","Mada.3071","Mada.3821","Mada.3227","Mada.4190","Mada.1183","Mada.1301","Mada.3550","Mada.38","Mada.2895","Mada.2783","Mada.2951","Mada.2420","Mada.68","Mada.3777","Mada.3953","Mada.2181","Mada.2563","Mada.2353","Mada.2740","Mada.4132","Mada.1952","Mada.2364","Mada.3996","Mada.4180","Mada.3714","Mada.1342","Mada.216","Mada.2982","Mada.3597","Mada.2346","Mada.1084","Mada.2413","Mada.3091","Mada.1196","Mada.4334","Mada.2154","Mada.2816","Mada.2947","Mada.1127","Mada.349","Mada.3567","Mada.2824","Mada.2882","Mada.3676","Mada.3394","Mada.3465","Mada.2500","Mada.124","Mada.3712","Mada.4245","Mada.2402","Mada.4193","Mada.134","Mada.117","Mada.2579","Mada.3189","Mada.494","Mada.2768","Mada.229","Mada.434","Mada.1842","Mada.1119","Mada.4128","Mada.2851","Mada.2681","Mada.542","Mada.3321","Mada.1147","Mada.2667","Mada.4099","Mada.1359","Mada.4123","Mada.1954","Mada.3762","Mada.3024","Mada.180","Mada.740","Mada.3504","Mada.1793","Mada.2434","Mada.3224","Mada.451","Mada.1883","Mada.3501","Mada.3342","Mada.671")
+
+tree_order2 <- c("Mada.412","Mada.3223","Mada.2436","Mada.1907","Mada.1249","Mada.1739","Mada.1273","Mada.2827","Mada.3343","Mada.298","Mada.648","Mada.1649","Mada.2543","Mada.1516","Mada.2431","Mada.3372","Mada.2427","Mada.1283","Mada.3081","Mada.168","Mada.3218","Mada.1418","Mada.2573","Mada.3200","Mada.2417","Mada.3532","Mada.3254","Mada.3866","Mada.2599","Mada.403","Mada.2393","Mada.3144","Mada.2894","Mada.2871","Mada.3601","Mada.1187","Mada.4158","Mada.3760","Mada.255","Mada.3418","Mada.4154","Mada.2702","Mada.2709","Mada.553","Mada.1766","Mada.3352","Mada.3362","Mada.2507","Mada.729","Mada.2488","Mada.3274","Mada.2443","Mada.3541","Mada.4024","Mada.4236","Mada.4234","Mada.1235","Mada.2424","Mada.3958","Mada.1700","Mada.2204","Mada.2914","Mada.3964","Mada.3017","Mada.2435","Mada.2349","Mada.4171","Mada.3359","Mada.2173","Mada.1759","Mada.2423","Mada.2897","Mada.2397","Mada.3279","Mada.2891","Mada.2757","Mada.3705","Mada.4065","Mada.2848","Mada.4012","Mada.3788","Mada.2758","Mada.3646","Mada.2411","Mada.3738","Mada.3694","Mada.2267","Mada.2383","Mada.2408","Mada.3175","Mada.4233","Mada.454","Mada.2365","Mada.3382","Mada.2385","Mada.2805","Mada.4320","Mada.97","Mada.2643","Mada.731","Mada.930","Mada.1826","Mada.2916","Mada.2682","Mada.1849","Mada.2577","Mada.3652","Mada.3528","Mada.929","Mada.2425","Mada.2741","Mada.2832","Mada.758","Mada.2679","Mada.387","Mada.739","Mada.2905","Mada.811","Mada.2723","Mada.2442","Mada.3622","Mada.1002","Mada.1783","Mada.2176","Mada.235","Mada.3153","Mada.1853","Mada.3555","Mada.3456","Mada.2287","Mada.2482","Mada.239","Mada.2618","Mada.1194","Mada.3438","Mada.1216","Mada.250","Mada.2904","Mada.351","Mada.3232","Mada.4242","Mada.3583","Mada.4179","Mada.4189","Mada.3213","Mada.3190","Mada.3830","Mada.3534","Mada.2215","Mada.2733","Mada.3843","Mada.1228","Mada.3458","Mada.2902","Mada.449","Mada.3184","Mada.3835","Mada.2316","Mada.1189","Mada.136","Mada.1553","Mada.1343","Mada.212","Mada.4328","Mada.211","Mada.3416","Mada.195","Mada.3828","Mada.2909","Mada.452","Mada.2549","Mada.397","Mada.1537","Mada.2678","Mada.3428","Mada.1792","Mada.3443","Mada.3847","Mada.3054","Mada.292","Mada.4131","Mada.2765","Mada.4209","Mada.3399","Mada.3854","Mada.4237","Mada.2024","Mada.984","Mada.3076","Mada.122","Mada.2441","Mada.1193","Mada.3406","Mada.4015","Mada.2468","Mada.2669","Mada.3479","Mada.3058","Mada.3852","Mada.1166","Mada.2586","Mada.3130","Mada.1873","Mada.3078","Mada.32","Mada.3075","Mada.2187","Mada.53","Mada.126","Mada.723","Mada.4009","Mada.2673","Mada.65","Mada.1888","Mada.2710","Mada.3920","Mada.4050","Mada.2373","Mada.34","Mada.2133","Mada.2004","Mada.457","Mada.157","Mada.2652","Mada.3159","Mada.3464","Mada.4035","Mada.3354","Mada.2962","Mada.2529","Mada.2119","Mada.2243","Mada.2523","Mada.1495","Mada.2600","Mada.3933","Mada.2400","Mada.155","Mada.160","Mada.290","Mada.1858","Mada.66","Mada.2314","Mada.637","Mada.1559","Mada.2654","Mada.2644","Mada.2950","Mada.2557","Mada.2102","Mada.3917","Mada.3166","Mada.3117","Mada.1358","Mada.3932","Mada.3404","Mada.716","Mada.1561","Mada.2324","Mada.283","Mada.3063","Mada.2023","Mada.3473","Mada.3127","Mada.2540","Mada.3309","Mada.166","Mada.1523","Mada.3272","Mada.3476","Mada.581","Mada.2226","Mada.118","Mada.1515","Mada.3537","Mada.3707","Mada.4306","Mada.41","Mada.3112","Mada.2842","Mada.2866","Mada.1007","Mada.384","Mada.3162","Mada.2548","Mada.100","Mada.3485","Mada.3666","Mada.1497","Mada.3726","Mada.4301","Mada.4313","Mada.407","Mada.2362","Mada.2339","Mada.3684","Mada.4146","Mada.1865","Mada.2619","Mada.1817","Mada.2608","Mada.2394","Mada.3413","Mada.184","Mada.3674","Mada.2604","Mada.3851","Mada.3796","Mada.1327","Mada.423","Mada.392","Mada.1365","Mada.2605","Mada.2046","Mada.1986","Mada.1251","Mada.1254","Mada.1670","Mada.2437","Mada.3496","Mada.2814","Mada.1905","Mada.614","Mada.2325","Mada.2641","Mada.2401","Mada.3695","Mada.4007","Mada.1852","Mada.3209","Mada.2850","Mada.1132","Mada.2301","Mada.2367","Mada.2756","Mada.715","Mada.1965","Mada.3383","Mada.2387","Mada.3034","Mada.1716","Mada.3326","Mada.2591","Mada.2637")
+
+tree_order_all = c(tree_order, tree_order2)
+
+# reversing order because the text string was top to bottom and tree/ bar plot is made bottom to top.
+tree_order_all_rev = rev(tree_order_all)
+
+barchart.full.mada517MB <- mada517.longMB %>%
+  ggplot(aes(x = percentage, 
+             y = factor(Isolate.IDb, levels = tree_order_all_rev), fill = type)) + ## ** this line is key
+  #ggplot(aes(x = percentage, y = as.factor(OrderNum), fill = type)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.5) +
+  ggthemes::scale_fill_colorblind()+
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 10),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    legend.text = element_text(size = 25)
+  )
+
+
+barchart.full.mada517MB
+ggsave("./517MB_barchart_factorlevels.pdf", barchart.full.mada517MB, height = 150, width = 30, dpi = 600, limitsize = FALSE)
+
+
+
+
+```
+
+
+#517 TBJ plus 77 version
+```{r}
+library(ggplot2)
+library(tidyr)
+library(tidyverse)
+
+## needs files from above meta.data and tree.original and nest517
+
+MadaDB_VsearchClusters_wdata_nest517 = MadaDB_VsearchClusters_wdata_nest517
+
+meta.data = meta.data
+
+tree.original = tree.original
+
+MadaDB_517_IDs <- MadaDB_VsearchClusters_wdata_nest517_IDs
+
+## Molly addition 5/21/25 - using functions from above 
+MadaDB_VsearchClusters_wdata_nest517_fxn = MadaDB_VsearchClusters_wdata_nest517 %>%
+  mutate(TotalIso = map(data,~ nrow(.x)))%>%
+  mutate(FunctionCount = map(data,summary_fxn)) %>% # this creates the function categories
+  unnest(FunctionCount) %>% # this allows the function categories to be viewed in the nested frame and "operated" on
+  rename(Null = `NA`)
+
+
+mada517MB <- MadaDB_VsearchClusters_wdata_nest517_fxn %>% 
+  dplyr::mutate(
+    prop.inhib = as.numeric(Inhibitory) / as.numeric(TotalIso) * 100,
+    prop.noninhib = as.numeric(NonInhibitory) / as.numeric(TotalIso) * 100,
+    prop.na = as.numeric(Null) / as.numeric(TotalIso) * 100,
+    prop.contam = as.numeric(Contam) / as.numeric(TotalIso) * 100) %>%
+  left_join(MadaDB_VsearchClusters_wdata_nest517_IDs, by = "Cluster") %>% 
+  dplyr::rename(Isolate.IDb = "Id.Match")
+
+
+
+mada517.longMB <- mada517MB %>%
+  select(Isolate.IDb,prop.inhib, prop.noninhib, prop.na, prop.contam) %>%
+  pivot_longer(
+    cols = c(prop.inhib, prop.noninhib, prop.na, prop.contam),
+    names_to = "type",
+    values_to = "percentage"
+  )
+
+#bar.long$Isolate.ID <- factor(bar.long$Isolate.ID, levels = rev(tree.pruned$tip.label))
+
+library(tidyverse)
+library(dplyr)
+library(magrittr)
+library(ggtree)
+library(ape)
+library(ggtreeExtra)
+library(scales)
+
+
+#ggsave("full_tree.pdf", full.tree, height = 10, width = 15, dpi = 1000)
+
+
+full.tree2.1 <- ggtree(tree.original, 
+                     branch.length = "none",
+                     size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  scale_color_manual(values = c(
+    "Actinobacteria" = "#4E79A7",     
+    "Deinococci" = "#F28E2B",    
+    "Alphaproteobacteria" = "#E15759",         
+    "Gammaproteobacteria" = "#76B7B2",
+    "BetaproteoBacteri" = "#59A14F",
+    "Flavobacteriia" = "#EDC948",
+    "Sphingobacteriia" = "#B07AA1",
+    "Bacilli" = "#FF9DA7",
+    "NA" = "#BAB0AC"
+  ))
+
+full.tree2.1
+
+# updated
+keep.517MB <- intersect(mada517MB$Isolate.IDb, tree.original$tip.label)
+
+tree.pruned.517MB <- keep.tip(tree.original, keep.517MB)
+plot(tree.pruned.517MB)
+
+#tip_order <- tree.pruned.517MB$tip.label 
+
+#tip_order_df <- tree.pruned.517MB$tip.label %>% as.data.frame() %>%
+ # mutate(OrderNum = row_number())
+
+#colnames(tip_order_df) <- c("Isolate.IDb", "OrderNum")
+
+tree517MB <- ggtree(tree.pruned.517MB, 
+       branch.length = "none", 
+       size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  geom_tiplab(size = 5)
+
+tree517MB
+
+#ggsave("517_treeMB.pdf", tree517MB, height = 90, width = 30, dpi = 600, limitsize = FALSE)
+
+## check point for number of clusters/branches
+length(unique(mada517.longMB$Iso))
+
+## this are the lists to make the bar chart data be the same order as the tree;  Note tree order when the plot is printer is NOT what is extracted from tip label functions....
+tree_order <- c("Mada.2840","Mada.3145","Mada.2715","Mada.1299","Mada.1116","Mada.2297","Mada.1808","Mada.3553","Mada.3378","Mada.3023","Mada.3407","Mada.4185","Mada.2377","Mada.2105","Mada.3559","Mada.2343","Mada.3625","Mada.3783","Mada.221","Mada.3759","Mada.1298","Mada.3615","Mada.2534","Mada.1844","Mada.3775","Mada.2846","Mada.3244","Mada.265","Mada.1518","Mada.4033","Mada.2370","Mada.2269","Mada.2340","Mada.3466","Mada.241","Mada.3902","Mada.1198","Mada.236","Mada.3294","Mada.3747","Mada.1837","Mada.4036","Mada.3539","Mada.2375","Mada.350","Mada.1564","Mada.3093","Mada.3579","Mada.3222","Mada.2350","Mada.3853","Mada.1263","Mada.834","Mada.4164","Mada.3289","Mada.2492","Mada.1712","Mada.918","Mada.2784","Mada.346","Mada.3346","Mada.1","Mada.2476","Mada.2525","Mada.2378","Mada.1296","Mada.3586","Mada.1816","Mada.3386","Mada.3265","Mada.3345","Mada.2439","Mada.2578","Mada.2853","Mada.2819","Mada.3735","Mada.3825","Mada.1926","Mada.2012","Mada.3419","Mada.2892","Mada.466","Mada.2307","Mada.3290","Mada.1752","Mada.4332","Mada.2969","Mada.3071","Mada.3821","Mada.3227","Mada.4190","Mada.1183","Mada.1301","Mada.3550","Mada.38","Mada.2895","Mada.2783","Mada.2951","Mada.2420","Mada.68","Mada.3777","Mada.3953","Mada.2181","Mada.2563","Mada.2353","Mada.2740","Mada.4132","Mada.1952","Mada.2364","Mada.3996","Mada.4180","Mada.3714","Mada.1342","Mada.216","Mada.2982","Mada.3597","Mada.2346","Mada.1084","Mada.2413","Mada.3091","Mada.1196","Mada.4334","Mada.2154","Mada.2816","Mada.2947","Mada.1127","Mada.349","Mada.3567","Mada.2824","Mada.2882","Mada.3676","Mada.3394","Mada.3465","Mada.2500","Mada.124","Mada.3712","Mada.4245","Mada.2402","Mada.4193","Mada.134","Mada.117","Mada.2579","Mada.3189","Mada.494","Mada.2768","Mada.229","Mada.434","Mada.1842","Mada.1119","Mada.4128","Mada.2851","Mada.2681","Mada.542","Mada.3321","Mada.1147","Mada.2667","Mada.4099","Mada.1359","Mada.4123","Mada.1954","Mada.3762","Mada.3024","Mada.180","Mada.740","Mada.3504","Mada.1793","Mada.2434","Mada.3224","Mada.451","Mada.1883","Mada.3501","Mada.3342","Mada.671")
+
+tree_order2 <- c("Mada.412","Mada.3223","Mada.2436","Mada.1907","Mada.1249","Mada.1739","Mada.1273","Mada.2827","Mada.3343","Mada.298","Mada.648","Mada.1649","Mada.2543","Mada.1516","Mada.2431","Mada.3372","Mada.2427","Mada.1283","Mada.3081","Mada.168","Mada.3218","Mada.1418","Mada.2573","Mada.3200","Mada.2417","Mada.3532","Mada.3254","Mada.3866","Mada.2599","Mada.403","Mada.2393","Mada.3144","Mada.2894","Mada.2871","Mada.3601","Mada.1187","Mada.4158","Mada.3760","Mada.255","Mada.3418","Mada.4154","Mada.2702","Mada.2709","Mada.553","Mada.1766","Mada.3352","Mada.3362","Mada.2507","Mada.729","Mada.2488","Mada.3274","Mada.2443","Mada.3541","Mada.4024","Mada.4236","Mada.4234","Mada.1235","Mada.2424","Mada.3958","Mada.1700","Mada.2204","Mada.2914","Mada.3964","Mada.3017","Mada.2435","Mada.2349","Mada.4171","Mada.3359","Mada.2173","Mada.1759","Mada.2423","Mada.2897","Mada.2397","Mada.3279","Mada.2891","Mada.2757","Mada.3705","Mada.4065","Mada.2848","Mada.4012","Mada.3788","Mada.2758","Mada.3646","Mada.2411","Mada.3738","Mada.3694","Mada.2267","Mada.2383","Mada.2408","Mada.3175","Mada.4233","Mada.454","Mada.2365","Mada.3382","Mada.2385","Mada.2805","Mada.4320","Mada.97","Mada.2643","Mada.731","Mada.930","Mada.1826","Mada.2916","Mada.2682","Mada.1849","Mada.2577","Mada.3652","Mada.3528","Mada.929","Mada.2425","Mada.2741","Mada.2832","Mada.758","Mada.2679","Mada.387","Mada.739","Mada.2905","Mada.811","Mada.2723","Mada.2442","Mada.3622","Mada.1002","Mada.1783","Mada.2176","Mada.235","Mada.3153","Mada.1853","Mada.3555","Mada.3456","Mada.2287","Mada.2482","Mada.239","Mada.2618","Mada.1194","Mada.3438","Mada.1216","Mada.250","Mada.2904","Mada.351","Mada.3232","Mada.4242","Mada.3583","Mada.4179","Mada.4189","Mada.3213","Mada.3190","Mada.3830","Mada.3534","Mada.2215","Mada.2733","Mada.3843","Mada.1228","Mada.3458","Mada.2902","Mada.449","Mada.3184","Mada.3835","Mada.2316","Mada.1189","Mada.136","Mada.1553","Mada.1343","Mada.212","Mada.4328","Mada.211","Mada.3416","Mada.195","Mada.3828","Mada.2909","Mada.452","Mada.2549","Mada.397","Mada.1537","Mada.2678","Mada.3428","Mada.1792","Mada.3443","Mada.3847","Mada.3054","Mada.292","Mada.4131","Mada.2765","Mada.4209","Mada.3399","Mada.3854","Mada.4237","Mada.2024","Mada.984","Mada.3076","Mada.122","Mada.2441","Mada.1193","Mada.3406","Mada.4015","Mada.2468","Mada.2669","Mada.3479","Mada.3058","Mada.3852","Mada.1166","Mada.2586","Mada.3130","Mada.1873","Mada.3078","Mada.32","Mada.3075","Mada.2187","Mada.53","Mada.126","Mada.723","Mada.4009","Mada.2673","Mada.65","Mada.1888","Mada.2710","Mada.3920","Mada.4050","Mada.2373","Mada.34","Mada.2133","Mada.2004","Mada.457","Mada.157","Mada.2652","Mada.3159","Mada.3464","Mada.4035","Mada.3354","Mada.2962","Mada.2529","Mada.2119","Mada.2243","Mada.2523","Mada.1495","Mada.2600","Mada.3933","Mada.2400","Mada.155","Mada.160","Mada.290","Mada.1858","Mada.66","Mada.2314","Mada.637","Mada.1559","Mada.2654","Mada.2644","Mada.2950","Mada.2557","Mada.2102","Mada.3917","Mada.3166","Mada.3117","Mada.1358","Mada.3932","Mada.3404","Mada.716","Mada.1561","Mada.2324","Mada.283","Mada.3063","Mada.2023","Mada.3473","Mada.3127","Mada.2540","Mada.3309","Mada.166","Mada.1523","Mada.3272","Mada.3476","Mada.581","Mada.2226","Mada.118","Mada.1515","Mada.3537","Mada.3707","Mada.4306","Mada.41","Mada.3112","Mada.2842","Mada.2866","Mada.1007","Mada.384","Mada.3162","Mada.2548","Mada.100","Mada.3485","Mada.3666","Mada.1497","Mada.3726","Mada.4301","Mada.4313","Mada.407","Mada.2362","Mada.2339","Mada.3684","Mada.4146","Mada.1865","Mada.2619","Mada.1817","Mada.2608","Mada.2394","Mada.3413","Mada.184","Mada.3674","Mada.2604","Mada.3851","Mada.3796","Mada.1327","Mada.423","Mada.392","Mada.1365","Mada.2605","Mada.2046","Mada.1986","Mada.1251","Mada.1254","Mada.1670","Mada.2437","Mada.3496","Mada.2814","Mada.1905","Mada.614","Mada.2325","Mada.2641","Mada.2401","Mada.3695","Mada.4007","Mada.1852","Mada.3209","Mada.2850","Mada.1132","Mada.2301","Mada.2367","Mada.2756","Mada.715","Mada.1965","Mada.3383","Mada.2387","Mada.3034","Mada.1716","Mada.3326","Mada.2591","Mada.2637")
+
+tree_order_all = c(tree_order, tree_order2)
+
+# reversing order because the text string was top to bottom and tree/ bar plot is made bottom to top.
+tree_order_all_rev = rev(tree_order_all)
+
+barchart.full.mada517MB <- mada517.longMB %>%
+  ggplot(aes(x = percentage, 
+             y = factor(Isolate.IDb, levels = tree_order_all_rev), fill = type)) + ## ** this line is key
+  #ggplot(aes(x = percentage, y = as.factor(OrderNum), fill = type)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.5) +
+  ggthemes::scale_fill_colorblind()+
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 10),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    legend.text = element_text(size = 25)
+  )
+
+
+barchart.full.mada517MB
+#ggsave("./517MB_barchart_factorlevels.pdf", barchart.full.mada517MB, height = 150, width = 30, dpi = 600, limitsize = FALSE)
+
+
+tbj.77 = MadaDB_VsearchClusters_wdata_nest
+
+tbj.77labels <- tbj.77 %>% 
+  tidyr::unnest(data) %>% 
+  dplyr::filter(Id.Match != "*") %>% 
+  dplyr::group_by(Id.Match) %>% 
+  dplyr::slice_head(n = 1) %>% 
+  dplyr::ungroup()
+
+
+ft2.77.data <- full.tree2$data
+
+label.data.77 <- ft2.77.data %>% 
+  filter(isTip & label %in% tbj.77labels$Id.Match)
+
+
+
+#plotting with the tip labels created before
+fulltree2.wtiplabs <- full.tree2.1 +
+  ggnewscale::new_scale_color() +   # NEW color scale for tip labels
+  geom_tiplab(
+    data = label.data.77,
+    aes(label = "*", color = Inhibition),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+fulltree2.wtiplabs
+
+
+ggsave("recolored_517_wtipstars.pdf", fulltree2.wtiplabs, height = 90, width = 30, dpi = 600, limitsize = FALSE)
+```
+
+#full.tree
+```{r}
+library(ggplot2)
+library(tidyr)
+library(tidyverse)
+
+## needs files from above meta.data and tree.original and nest517
+
+MadaDB_VsearchClusters_wdata_nest517 = MadaDB_VsearchClusters_wdata_nest517
+
+meta.data = meta.data
+
+tree.original = tree.original
+
+
+MadaDB_517_IDs <- MadaDB_VsearchClusters_wdata_nest517_IDs
+
+#original tree work. trying to plot the whole thing in an actual informative way. this is the full tree? 
+tree.original <- tree.original
+#plot(tree.original)
+
+# Filter only the tips you want to label
+ft.ggtree.data <- MadaDB_517_IDs$Id.Match
+
+tree.original.tips <- tree.original$tip.label
+
+label.data <- tree.original.tips[tree.original.tips %in% MadaDB_517_IDs$Id.Match]
+
+tree.pruned.517TBJ.updated <- keep.tip(tree.original, label.data)
+
+tbj.512 = MadaDB_VsearchClusters_wdata_nest
+
+tbj.512labels <- mada517MB %>% 
+  tidyr::unnest(data)  %>%
+  # dplyr::filter(Id.Match != "*") %>% 
+  dplyr::group_by(Id.Match)  %>%
+  dplyr::slice_head(n = 1)  %>%
+  dplyr::ungroup()
+
+tbj517.inhib.df <- tbj.512labels %>% 
+  left_join(meta.data, by = "Isolate.ID")
+
+tbj517.inhib.df <- tbj517.inhib.df %>%
+  rename(AntiBdClass = `anti-Bd Class (80%)`)
+
+tree.original.ggtree <- ggtree(tree.original, 
+                     branch.length = "none",
+                     size = 0.5) %<+% tbj517.annotated +
+  geom_tree(aes(color = DirTax_Class)) +
+  scale_color_manual(values = c(
+    "Actinobacteria" = "#4E79A7",     
+    "Deinococci" = "#F28E2B",    
+    "Alphaproteobacteria" = "#E15759",         
+    "Gammaproteobacteria" = "#76B7B2",
+    "BetaproteoBacteri" = "#59A14F",
+    "Flavobacteriia" = "#EDC948",
+    "Sphingobacteriia" = "#B07AA1",
+    "Bacilli" = "#FF9DA7",
+    "NA" = "#BAB0AC"
+  )) +
+  ggnewscale::new_scale_color() +   
+  geom_tiplab(
+    data = tbj517.annotated,
+    aes(color = AntiBdClass.x),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+
+tree.original.ggtree
+ggsave("tree.3000.pdf",tree.original.ggtree, height = 800, width =50, dpi = 600, limitsize = FALSE)
+
+ft2.517.data <- tree.original.ggtree$data
+
+label.data.517 <- ft2.517.data %>% 
+  filter(isTip & label %in% tbj.512labels$Isolate.ID)
+
+tbj517.inhib.df <- tbj517.inhib.df %>%
+  mutate(label = Id.Match)
+
+tbj517.inhib.df <- tbj517.inhib.df %>%
+  mutate(label = Isolate.ID)  # ensure label column exists
+
+tree.df <- ggtree(tree.original, branch.length = "none", size = 0.5)$data
+
+anti_join(tree.df, tbj517.inhib.df, by = "label")  # see what didn't match
+
+intersect(tree.original.ggtree$data$label, tbj517.inhib.df$Isolate.ID)
+
+tbj517.inhib.df <- tbj517.inhib.df %>%
+  mutate(label = Isolate.ID)
+
+tbj517.inhib.df <- tbj517.inhib.df %>%
+  filter(label %in% tree.original.ggtree$data$label)
+
+tree.df <- tree.original.ggtree$data
+
+tbj517.annotated <- left_join(tree.df, tbj517.inhib.df, by = "label")
+
+cluster.data.wsingleton <- MadaDB_VsearchClusters_wdata
+
+cluster.data.wsingleton2 <- cluster.data.wsingleton %>% 
+  dplyr::filter(!Record=="C") %>% # removing these records that are not important for the clustering its a duplicate of the S ids; only "S" and "H" retained
+  #filter(`anti-Bd Class (80%)` == "Inhibitory" | `anti-Bd Class (80%)` == "NonInhibitory") %>%
+  dplyr::group_by(Cluster) %>% 
+  tidyr::nest()
+
+
+tree.origianl.data <- tree.original.ggtree$data
+
+tbj517.counted.for.singletons <- MadaDB_VsearchClusters_wdata_nest517_fxn
+
+tbj517.counted.for.singletons$IsSingleton <- tbj517.counted.for.singletons$TotalIso == 1
+
+tbj517.counted.for.singletons <- tbj517.counted.for.singletons %>% 
+  dplyr::left_join(mada517MB, by = "Cluster")
+
+tbj517.counted.for.singletons <- tbj517.counted.for.singletons %>%  
+  dplyr::rename(Isolate.ID = "Isolate.IDb")
+
+meta.data3.517 <- meta.data %>% 
+  dplyr::left_join(tbj517.counted.for.singletons, by = "Isolate.ID")
+
+tree.original.ggtree.517 <- ggtree(tree.pruned.517TBJ.updated, 
+                                   branch.length = "none",
+                                   size = 0.5) %<+% meta.data3.517 +
+  geom_tree(aes(color = DirTax_Class)) +
+  scale_color_manual(name = "Class", values = c(
+    "Actinobacteria" = "#4E79A7",     
+    "Deinococci" = "#F28E2B",    
+    "Alphaproteobacteria" = "#E15759",         
+    "Gammaproteobacteria" = "#76B7B2",
+    "BetaproteoBacteri" = "#59A14F",
+    "Flavobacteriia" = "#EDC948",
+    "Sphingobacteriia" = "#B07AA1",
+    "Bacilli" = "#FF9DA7",
+    "NA" = "#BAB0AC"
+  )) +
+  ggnewscale::new_scale_color() +
+  geom_tiplab(aes(color = as.factor(IsSingleton)), size = 8) +
+  scale_color_manual(values = c(
+    "TRUE" = "black",
+    "FALSE" = "darkred"
+  ), name = "Is Singleton") +
+  ggnewscale::new_scale_color() +
+  geom_tippoint(aes(color = Inhibition), shape = 16, size = 8) +
+  scale_color_manual(values = c(
+    "Inhibitory" = "green",
+    "NonInhibitory" = "red",
+    "NA" = "grey"
+  ), name = "Inhibition Status") +
+  theme_tree()
+
+
+tree.original.ggtree.517
+
+#ggsave("singleton_517_tree.pdf", tree.original.ggtree.517, height = 200, width = 50, dpi = 800, limitsize = FALSE)
+
+
+## Molly addition 5/21/25 - using functions from above 
+MadaDB_VsearchClusters_wdata_nest517_fxn = MadaDB_VsearchClusters_wdata_nest517 %>%
+  mutate(TotalIso = map(data,~ nrow(.x)))%>%
+  mutate(FunctionCount = map(data,summary_fxn)) %>% # this creates the function categories
+  unnest(FunctionCount) %>% # this allows the function categories to be viewed in the nested frame and "operated" on
+  rename(Null = `NA`)
+
+
+mada517MB <- MadaDB_VsearchClusters_wdata_nest517_fxn %>% 
+  dplyr::mutate(
+    prop.inhib = as.numeric(Inhibitory) / as.numeric(TotalIso) * 100,
+    prop.noninhib = as.numeric(NonInhibitory) / as.numeric(TotalIso) * 100,
+    prop.na = as.numeric(Null) / as.numeric(TotalIso) * 100,
+    prop.contam = as.numeric(Contam) / as.numeric(TotalIso) * 100) %>%
+  left_join(MadaDB_VsearchClusters_wdata_nest517_IDs, by = "Cluster") %>% 
+  dplyr::rename(Isolate.IDb = "Id.Match")
+
+
+
+mada517.longMB <- mada517MB %>%
+  select(Isolate.IDb,prop.inhib, prop.noninhib, prop.na, prop.contam) %>%
+  pivot_longer(
+    cols = c(prop.inhib, prop.noninhib, prop.na, prop.contam),
+    names_to = "type",
+    values_to = "percentage"
+  )
+
+#bar.long$Isolate.ID <- factor(bar.long$Isolate.ID, levels = rev(tree.pruned$tip.label))
+
+library(tidyverse)
+library(dplyr)
+library(magrittr)
+library(ggtree)
+library(ape)
+library(ggtreeExtra)
+library(scales)
+
+
+#ggsave("full_tree.pdf", full.tree, height = 10, width = 15, dpi = 1000)
+
+
+full.tree2.1 <- ggtree(tree.original, 
+                     branch.length = "none",
+                     size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  scale_color_manual(values = c(
+    "Actinobacteria" = "#4E79A7",     
+    "Deinococci" = "#F28E2B",    
+    "Alphaproteobacteria" = "#E15759",         
+    "Gammaproteobacteria" = "#76B7B2",
+    "BetaproteoBacteri" = "#59A14F",
+    "Flavobacteriia" = "#EDC948",
+    "Sphingobacteriia" = "#B07AA1",
+    "Bacilli" = "#FF9DA7",
+    "NA" = "#BAB0AC"
+  ))
+
+full.tree2.1
+
+# updated
+keep.517MB <- intersect(mada517MB$Isolate.IDb, tree.original$tip.label)
+
+tree.pruned.517MB <- keep.tip(tree.original, keep.517MB)
+plot(tree.pruned.517MB)
+
+#tip_order <- tree.pruned.517MB$tip.label 
+
+#tip_order_df <- tree.pruned.517MB$tip.label %>% as.data.frame() %>%
+ # mutate(OrderNum = row_number())
+
+#colnames(tip_order_df) <- c("Isolate.IDb", "OrderNum")
+
+tree517MB <- ggtree(tree.pruned.517MB, 
+       branch.length = "none", 
+       size = 0.5) %<+% meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  geom_tiplab(size = 5)
+
+tree517MB
+
+#ggsave("517_treeMB.pdf", tree517MB, height = 90, width = 30, dpi = 600, limitsize = FALSE)
+
+## check point for number of clusters/branches
+length(unique(mada517.longMB$Iso))
+
+## this are the lists to make the bar chart data be the same order as the tree;  Note tree order when the plot is printer is NOT what is extracted from tip label functions....
+tree_order <- c("Mada.2840","Mada.3145","Mada.2715","Mada.1299","Mada.1116","Mada.2297","Mada.1808","Mada.3553","Mada.3378","Mada.3023","Mada.3407","Mada.4185","Mada.2377","Mada.2105","Mada.3559","Mada.2343","Mada.3625","Mada.3783","Mada.221","Mada.3759","Mada.1298","Mada.3615","Mada.2534","Mada.1844","Mada.3775","Mada.2846","Mada.3244","Mada.265","Mada.1518","Mada.4033","Mada.2370","Mada.2269","Mada.2340","Mada.3466","Mada.241","Mada.3902","Mada.1198","Mada.236","Mada.3294","Mada.3747","Mada.1837","Mada.4036","Mada.3539","Mada.2375","Mada.350","Mada.1564","Mada.3093","Mada.3579","Mada.3222","Mada.2350","Mada.3853","Mada.1263","Mada.834","Mada.4164","Mada.3289","Mada.2492","Mada.1712","Mada.918","Mada.2784","Mada.346","Mada.3346","Mada.1","Mada.2476","Mada.2525","Mada.2378","Mada.1296","Mada.3586","Mada.1816","Mada.3386","Mada.3265","Mada.3345","Mada.2439","Mada.2578","Mada.2853","Mada.2819","Mada.3735","Mada.3825","Mada.1926","Mada.2012","Mada.3419","Mada.2892","Mada.466","Mada.2307","Mada.3290","Mada.1752","Mada.4332","Mada.2969","Mada.3071","Mada.3821","Mada.3227","Mada.4190","Mada.1183","Mada.1301","Mada.3550","Mada.38","Mada.2895","Mada.2783","Mada.2951","Mada.2420","Mada.68","Mada.3777","Mada.3953","Mada.2181","Mada.2563","Mada.2353","Mada.2740","Mada.4132","Mada.1952","Mada.2364","Mada.3996","Mada.4180","Mada.3714","Mada.1342","Mada.216","Mada.2982","Mada.3597","Mada.2346","Mada.1084","Mada.2413","Mada.3091","Mada.1196","Mada.4334","Mada.2154","Mada.2816","Mada.2947","Mada.1127","Mada.349","Mada.3567","Mada.2824","Mada.2882","Mada.3676","Mada.3394","Mada.3465","Mada.2500","Mada.124","Mada.3712","Mada.4245","Mada.2402","Mada.4193","Mada.134","Mada.117","Mada.2579","Mada.3189","Mada.494","Mada.2768","Mada.229","Mada.434","Mada.1842","Mada.1119","Mada.4128","Mada.2851","Mada.2681","Mada.542","Mada.3321","Mada.1147","Mada.2667","Mada.4099","Mada.1359","Mada.4123","Mada.1954","Mada.3762","Mada.3024","Mada.180","Mada.740","Mada.3504","Mada.1793","Mada.2434","Mada.3224","Mada.451","Mada.1883","Mada.3501","Mada.3342","Mada.671")
+
+tree_order2 <- c("Mada.412","Mada.3223","Mada.2436","Mada.1907","Mada.1249","Mada.1739","Mada.1273","Mada.2827","Mada.3343","Mada.298","Mada.648","Mada.1649","Mada.2543","Mada.1516","Mada.2431","Mada.3372","Mada.2427","Mada.1283","Mada.3081","Mada.168","Mada.3218","Mada.1418","Mada.2573","Mada.3200","Mada.2417","Mada.3532","Mada.3254","Mada.3866","Mada.2599","Mada.403","Mada.2393","Mada.3144","Mada.2894","Mada.2871","Mada.3601","Mada.1187","Mada.4158","Mada.3760","Mada.255","Mada.3418","Mada.4154","Mada.2702","Mada.2709","Mada.553","Mada.1766","Mada.3352","Mada.3362","Mada.2507","Mada.729","Mada.2488","Mada.3274","Mada.2443","Mada.3541","Mada.4024","Mada.4236","Mada.4234","Mada.1235","Mada.2424","Mada.3958","Mada.1700","Mada.2204","Mada.2914","Mada.3964","Mada.3017","Mada.2435","Mada.2349","Mada.4171","Mada.3359","Mada.2173","Mada.1759","Mada.2423","Mada.2897","Mada.2397","Mada.3279","Mada.2891","Mada.2757","Mada.3705","Mada.4065","Mada.2848","Mada.4012","Mada.3788","Mada.2758","Mada.3646","Mada.2411","Mada.3738","Mada.3694","Mada.2267","Mada.2383","Mada.2408","Mada.3175","Mada.4233","Mada.454","Mada.2365","Mada.3382","Mada.2385","Mada.2805","Mada.4320","Mada.97","Mada.2643","Mada.731","Mada.930","Mada.1826","Mada.2916","Mada.2682","Mada.1849","Mada.2577","Mada.3652","Mada.3528","Mada.929","Mada.2425","Mada.2741","Mada.2832","Mada.758","Mada.2679","Mada.387","Mada.739","Mada.2905","Mada.811","Mada.2723","Mada.2442","Mada.3622","Mada.1002","Mada.1783","Mada.2176","Mada.235","Mada.3153","Mada.1853","Mada.3555","Mada.3456","Mada.2287","Mada.2482","Mada.239","Mada.2618","Mada.1194","Mada.3438","Mada.1216","Mada.250","Mada.2904","Mada.351","Mada.3232","Mada.4242","Mada.3583","Mada.4179","Mada.4189","Mada.3213","Mada.3190","Mada.3830","Mada.3534","Mada.2215","Mada.2733","Mada.3843","Mada.1228","Mada.3458","Mada.2902","Mada.449","Mada.3184","Mada.3835","Mada.2316","Mada.1189","Mada.136","Mada.1553","Mada.1343","Mada.212","Mada.4328","Mada.211","Mada.3416","Mada.195","Mada.3828","Mada.2909","Mada.452","Mada.2549","Mada.397","Mada.1537","Mada.2678","Mada.3428","Mada.1792","Mada.3443","Mada.3847","Mada.3054","Mada.292","Mada.4131","Mada.2765","Mada.4209","Mada.3399","Mada.3854","Mada.4237","Mada.2024","Mada.984","Mada.3076","Mada.122","Mada.2441","Mada.1193","Mada.3406","Mada.4015","Mada.2468","Mada.2669","Mada.3479","Mada.3058","Mada.3852","Mada.1166","Mada.2586","Mada.3130","Mada.1873","Mada.3078","Mada.32","Mada.3075","Mada.2187","Mada.53","Mada.126","Mada.723","Mada.4009","Mada.2673","Mada.65","Mada.1888","Mada.2710","Mada.3920","Mada.4050","Mada.2373","Mada.34","Mada.2133","Mada.2004","Mada.457","Mada.157","Mada.2652","Mada.3159","Mada.3464","Mada.4035","Mada.3354","Mada.2962","Mada.2529","Mada.2119","Mada.2243","Mada.2523","Mada.1495","Mada.2600","Mada.3933","Mada.2400","Mada.155","Mada.160","Mada.290","Mada.1858","Mada.66","Mada.2314","Mada.637","Mada.1559","Mada.2654","Mada.2644","Mada.2950","Mada.2557","Mada.2102","Mada.3917","Mada.3166","Mada.3117","Mada.1358","Mada.3932","Mada.3404","Mada.716","Mada.1561","Mada.2324","Mada.283","Mada.3063","Mada.2023","Mada.3473","Mada.3127","Mada.2540","Mada.3309","Mada.166","Mada.1523","Mada.3272","Mada.3476","Mada.581","Mada.2226","Mada.118","Mada.1515","Mada.3537","Mada.3707","Mada.4306","Mada.41","Mada.3112","Mada.2842","Mada.2866","Mada.1007","Mada.384","Mada.3162","Mada.2548","Mada.100","Mada.3485","Mada.3666","Mada.1497","Mada.3726","Mada.4301","Mada.4313","Mada.407","Mada.2362","Mada.2339","Mada.3684","Mada.4146","Mada.1865","Mada.2619","Mada.1817","Mada.2608","Mada.2394","Mada.3413","Mada.184","Mada.3674","Mada.2604","Mada.3851","Mada.3796","Mada.1327","Mada.423","Mada.392","Mada.1365","Mada.2605","Mada.2046","Mada.1986","Mada.1251","Mada.1254","Mada.1670","Mada.2437","Mada.3496","Mada.2814","Mada.1905","Mada.614","Mada.2325","Mada.2641","Mada.2401","Mada.3695","Mada.4007","Mada.1852","Mada.3209","Mada.2850","Mada.1132","Mada.2301","Mada.2367","Mada.2756","Mada.715","Mada.1965","Mada.3383","Mada.2387","Mada.3034","Mada.1716","Mada.3326","Mada.2591","Mada.2637")
+
+tree_order_all = c(tree_order, tree_order2)
+
+# reversing order because the text string was top to bottom and tree/ bar plot is made bottom to top.
+tree_order_all_rev = rev(tree_order_all)
+
+barchart.full.mada517MB <- mada517.longMB %>%
+  ggplot(aes(x = percentage, 
+             y = factor(Isolate.IDb, levels = tree_order_all_rev), fill = type)) + ## ** this line is key
+  #ggplot(aes(x = percentage, y = as.factor(OrderNum), fill = type)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.5) +
+  ggthemes::scale_fill_colorblind()+
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 10),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    legend.text = element_text(size = 25)
+  )
+
+
+barchart.full.mada517MB
+#ggsave("./517MB_barchart_factorlevels.pdf", barchart.full.mada517MB, height = 150, width = 30, dpi = 600, limitsize = FALSE)
+
+
+tbj.77 = MadaDB_VsearchClusters_wdata_nest
+
+tbj.77labels <- tbj.77 %>% 
+  tidyr::unnest(data) %>% 
+  dplyr::filter(Id.Match != "*") %>% 
+  dplyr::group_by(Id.Match) %>% 
+  dplyr::slice_head(n = 1) %>% 
+  dplyr::ungroup()
+
+
+ft2.77.data <- full.tree2$data
+
+label.data.77 <- ft2.77.data %>% 
+  filter(isTip & label %in% tbj.77labels$Id.Match)
+
+
+
+#plotting with the tip labels created before
+fulltree2.wtiplabs <- full.tree2.1 +
+  ggnewscale::new_scale_color() +   # NEW color scale for tip labels
+  geom_tiplab(
+    data = label.data.77,
+    aes(label = "*", color = Inhibition),
+    offset = 0.5,
+    size = 6
+  ) +
+  scale_color_manual(
+    values = c(
+      "Inhibitory" = "green",
+      "NonInhibitory" = "red"
+    ),
+    name = "Inhibition Status"
+  )
+
+fulltree2.wtiplabs
+
+
+#ggsave("recolored_517_wtipstars.pdf", fulltree2.wtiplabs, height = 90, width = 30, dpi = 600, limitsize = FALSE)
+
+
+####full isolates matrix
+library(Biostrings)
+library(DECIPHER)
+library(Biostrings)
+
+all.matrix.df <- readr::read_csv("MadaCultureDB_joined_culture_with_metadata_2025.csv") %>% 
+  dplyr::select(Isolate.ID, Sequence.x, DirTax_Class) %>%
+  dplyr::rename(label = Isolate.ID)
+
+full.matrix.sequence <- all.matrix.df %>% 
+  dplyr::select(label, Sequence.x)
+
+all.seqs3381 <- DNAStringSet(full.matrix.sequence$Sequence.x)
+
+names(all.seqs3381) <- full.matrix.sequence$label
+writeXStringSet(all.seqs3381, "allseqs3381_fasta.fasta")
+
+
+align.fasta3381 <- Biostrings::readDNAStringSet("allseqs3381_fasta.fasta")
+
+all3381.aligned.sequences <- DECIPHER::AlignSeqs(align.fasta3381) 
+writeXStringSet(all3381.aligned.sequences, filepath = "aligned3381_allseqs.fasta")
+
+
+all.seqs.3381 <- ape::read.dna("aligned3381_allseqs.fasta",
+                            format = "fasta")
+
+
+#choosing TN93 in this case to look across the tree for divergent sequences. it distinguished between A<->G and C<->T substitution rates. it has one shared rate for all transversions (purines to pyrimidines), and adjusts expectations for A/T/C/G content. It also accounts for more than one substitution happening at one site. 
+
+#this didn't work for some reason
+all3381.dist.matrix <- ape::dist.dna(all.seqs.3381, model = "TN93")
+
+all.mat3381 <- as.matrix(all3381.dist.matrix)
+all.mat3381.upper <- all.mat3381[upper.tri(all.mat3381)] <- NA
+
+#pulling in megaX matrix
+matrix.3154 <- read.csv("3154_allseqs_dubFilt", sep = ",")
+
+dup.rows <- duplicated(matrix.3154$X)
+
+matrix.3154 <- matrix.3154[!dup.rows, , drop = FALSE]
+
+matrix.3154 <- as.data.frame(matrix.3154, stringsAsFactors = FALSE)
+
+rownames(matrix.3154) <- matrix.3154$X
+matrix.3154$X <- NULL
+
+matrix.3154.2 <- as.matrix(matrix.3154)
+
+matrix.3154["Mada.350", "Mada.3539"]
+
+### sub-matrix
+all.matrix.517 <- all.matrix.df %>% 
+  dplyr::filter(label %in% all.class$Id.Match) %>% 
+  dplyr::group_by(label) %>% 
+  dplyr::slice_head(n = 1) %>% 
+  dplyr::select(label, Sequence.x)
+
+all.seqs <- DNAStringSet(all.matrix.517$Sequence.x)
+names(all.seqs) <- all.matrix.517$label
+
+writeXStringSet(all.seqs, "allseqs_fasta.fasta")
+
+library(DECIPHER)
+library(Biostrings)
+align.fasta <- Biostrings::readDNAStringSet("allseqs_fasta.fasta")
+
+all.aligned.sequences <- DECIPHER::AlignSeqs(align.fasta) 
+writeXStringSet(all.aligned.sequences, filepath = "aligned_allseqs.fasta")
+
+
+all.seqs.509 <- ape::read.dna("aligned_allseqs.fasta",
+                            format = "fasta")
+
+
+#choosing TN93 in this case to look across the tree for divergent sequences. it distinguished between A<->G and C<->T substitution rates. it has one shared rate for all transversions (purines to pyrimidines), and adjusts expectations for A/T/C/G content. It also accounts for more than one substitution happening at one site. 
+all.dist.matrix <- ape::dist.dna(all.seqs.509, model = "TN93")
+
+all.mat <- as.matrix(all.dist.matrix)
+all.mat.upper <- all.mat[upper.tri(all.mat)] <- NA
+
+mat_cleaned <- flavo.mat[keep_rows, keep_cols]
+
+# write.csv(all.mat, "all.distance.matrix509.TN93.csv",
+#           row.names = T)
+
+
+
+
+all.class <- MadaDB_VsearchClusters_wdata_nest517 %>% 
+  tidyr::unnest(data) %>% 
+  dplyr::group_by(Id.Match) %>% 
+  dplyr::slice_head(n = 1)
+
+all.keep <- intersect(all.class$Id.Match, tree.original$tip.label)
+
+all.names.df <- data.frame(
+  label = all.keep,
+  InMatrix = TRUE
+)
+
+all.meta.data <- all.matrix.df %>%
+  left_join(all.names.df, by = "label") %>%
+  mutate(InMatrix = ifelse(is.na(InMatrix), FALSE, InMatrix))
+
+meta.data3 <- meta.data %>% 
+  dplyr::group_by(Isolate.ID) %>% 
+  dplyr::slice_head(n = 1)
+
+all.meta.data2 <- all.meta.data %>% 
+  dplyr::rename(Isolate.ID = "label") %>% 
+  dplyr::left_join(meta.data3, by = "Isolate.ID")  %>% 
+  dplyr::select(Isolate.ID, Sequence.x, DirTax_Class.x, InMatrix, Inhibition)
+
+all.tree <- ggtree(tree.original, branch.length = "none", size = 0.5) %<+% all.meta.data2 +
+  geom_tree(aes(color = DirTax_Class.x)) +
+  scale_color_manual(values = c(
+    "Actinobacteria" = "#4E79A7",     
+    "Deinococci" = "#F28E2B",    
+    "Alphaproteobacteria" = "#E15759",         
+    "Gammaproteobacteria" = "#76B7B2",
+    "Betaproteobacteria" = "#59A14F",
+    "Flavobacteriia" = "#EDC948",
+    "Sphingobacteriia" = "#B07AA1",
+    "Bacilli" = "#FF9DA7",
+    "Saprospirae" = "#9C755F",
+    "Deinococci" = "#D7B5A6",
+    "NA" = "#BAB0AC"
+  )) +
+  ggnewscale::new_scale_color() +
+  geom_tiplab(aes(color = InMatrix), size = 5) +
+  scale_color_manual(
+    values = c("TRUE" = "green", "FALSE" = "black"),
+    name = "In Matrix"
+  ) +
+  ggnewscale::new_scale_color() +
+  geom_tippoint(aes(color = Inhibition), shape = 8, size = 3) +
+  scale_color_manual(values = c(
+    "Inhibitory" = "green",
+    "NonInhibitory" = "red",
+    "NA" = "grey"
+  ),
+  name = "Inhibition Status") +
+  theme_tree()
+
+all.tree
+#ggsave("alltree_labeled_wstars.pdf", all.tree, height = 800, width = 30, dpi = 600, limitsize = FALSE)
+
+```
+
+
+#flavobacteria sequences
+```{r}
+flavo.df <- readr::read_csv("MadaCultureDB_joined_culture_with_metadata_2025.csv") %>% 
+  dplyr::select(Isolate.ID, Sequence.x, DirTax_Class) %>% 
+  dplyr::filter(DirTax_Class == "Flavobacteriia")
+
+flavo.class <- MadaDB_VsearchClusters_wdata %>% 
+  dplyr::filter(DirTax_Class == "Flavobacteriia")
+
+flavo.class.sequences.77 <- df %>% 
+  dplyr::filter(Isolate.ID %in% flavo.class$Id.Match) %>% 
+  dplyr::select(Isolate.ID, Sequence.x) %>% 
+  dplyr::group_by(Isolate.ID) %>% 
+  dplyr::slice_head(n =1 )
+
+#this might not be necessary anymore
+flavo.class.cleaned <- flavo.class %>% 
+  filter(Isolate.ID %in% flavo.class.sequences.77$Isolate.ID) %>% 
+  dplyr::group_by(Isolate.ID) %>% 
+  dplyr::slice_head(n = 1)
+
+library(Biostrings)
+
+
+flavo.class.sequences.77$Isolate.ID <- as.character(flavo.class.sequences.77$Isolate.ID)
+flavo.class.sequences.77$Sequence.x <- as.character(flavo.class.sequences.77$Sequence.x)
+
+# Create a named DNAStringSet object
+fasta_seqs <- DNAStringSet(flavo.class.sequences.77$Sequence.x)
+names(fasta_seqs) <- flavo.class.sequences.77$Isolate.ID
+
+
+
+
+# Write to a FASTA file
+writeXStringSet(fasta_seqs, filepath = "flavobacteriia_sequences19.fasta")
+
+
+library(DECIPHER)
+library(Biostrings)
+align.fasta <- Biostrings::readDNAStringSet("flavobacteriia_sequences19.fasta")
+
+aligned.sequences <- DECIPHER::AlignSeqs(align.fasta) 
+writeXStringSet(aligned.sequences, filepath = "aligned_flavosequences_sequences19.fasta")
+
+
+flavo.seqs <- ape::read.dna("aligned_flavosequences_sequences19.fasta",
+                            format = "fasta")
+
+dist.matrix <- ape::dist.dna(flavo.seqs, model = "raw")
+
+flavo.mat <- as.matrix(dist.matrix)
+flavo.mat.upper <- flavo.mat[upper.tri(flavo.mat)] <- NA
+
+keep_cols <- !grepl("\\.1$", colnames(flavo.mat))
+keep_rows <- !grepl("\\.1$", rownames(flavo.mat))
+
+# Subset the matrix
+mat_cleaned <- flavo.mat[keep_rows, keep_cols]
+
+
+
+
+
+write.csv(mat_cleaned, "flavo.distance.matrix19.csv",
+          row.names = T)
+write.table(flavo.mat, "flavo.distance.matrix.csv", sep = "\t", row.names = TRUE, col.names = T)
+
+
+
+
+
+tree.original <- tree.original
+#plot(tree.original)
+
+library(janitor)
+library(dplyr)
+library(ggtree)
+library(ggnewscale)
+
+# Load metadata and clean
+meta.data <- read.csv("MadaCultureDB_Metadata.txt", sep = "\t") %>% 
+  janitor::clean_names() %>% 
+  dplyr::rename(Isolate.ID = isolate_id)
+
+# Filter metadata for Flavobacteriia
+flavo.meta.data <- meta.data %>% 
+  dplyr::filter(dir_tax_class == "Flavobacteriia") %>%
+  dplyr::select(Isolate.ID, anti_bd_class_80, dir_tax_class) %>% 
+  dplyr::distinct()
+
+# Match tree tips
+flavo.keep <- intersect(flavo.meta.data$Isolate.ID, tree.original$tip.label)
+
+# Prune tree
+tree.pruned.flavo <- ape::keep.tip(tree.original, flavo.keep)
+
+# Fix column names for plotting
+colnames(flavo.meta.data) <- c("label", "Inhibition", "DirTax_Class")
+
+#all of mat_cleaned are within the dataframe. can use this for coloring
+BiocGenerics::intersect(flavo.keep, rownames(mat_cleaned))
+
+mat.names <- rownames(mat_cleaned)
+
+mat.names.df <- data.frame(
+  label = mat.names,
+  InMatrix = TRUE
+)
+
+flavo.meta.data <- flavo.meta.data %>%
+  left_join(mat.names.df, by = "label") %>%
+  mutate(InMatrix = ifelse(is.na(InMatrix), FALSE, InMatrix))
+
+meta.flavo <- MadaDB_VsearchClusters_wdata_nest517 %>%
+  mutate(TotalIso = map_int(data, nrow))
+meta.flavo <- meta.flavo %>% 
+  left_join(MadaDB_VsearchClusters2, by = "Cluster")
+
+meta.flavo2 <- meta.flavo %>% 
+  dplyr::group_by(Isolate.ID) %>% 
+  dplyr::slice_head(n = 1) %>% 
+  dplyr::select(Isolate.ID, TotalIso) %>% 
+  dplyr::rename(label = "Isolate.ID")
+
+flavo.meta.data <- flavo.meta.data %>% 
+  left_join(meta.flavo2, by = "label")
+
+flavo.meta.data <- flavo.meta.data %>% 
+  dplyr::select(label, Inhibition, DirTax_Class, InMatrix, TotalIso)
+
+bar.data.flavo <- flavo.meta.data %>% 
+  dplyr::filter(!is.na(TotalIso)) %>% 
+  dplyr::select(label, TotalIso) %>% 
+  dplyr::filter(label %in% tree.pruned.flavo$tip.label) %>% 
+  dplyr::rename(id = "label")
+
+bar.data.flavo$TotalIso <- as.numeric(bar.data.flavo$TotalIso)
+
+bar.data.flavo$id <- factor(bar.data.flavo$id, levels = tree.pruned.flavo$tip.label)
+
+all(tree.pruned.flavo2$tip.label %in% bar.data.flavo$id)   # Should be TRUE
+all(bar.data.flavo$id %in% tree.pruned.flavo2$tip.label)   
+
+missing_df <- data.frame(id = missing_in_bar, TotalIso = 0)
+bar.data.flavo2 <- dplyr::bind_rows(bar.data.flavo, missing_df)
+bar.data.flavo2$id <- factor(bar.data.flavo2$id, levels = tree.pruned.flavo$tip.label)
+
+
+tree.pruned.flavo2 <- keep.tip(tree.pruned.flavo, intersect(tree.pruned.flavo$tip.label, bar.data.flavo$id))
+
+flavo.tree.plot <- ggtree(tree.pruned.flavo2, 
+                          branch.length = "none", 
+                          size = 0.5) %<+% flavo.meta.data +
+  geom_tree(aes(color = DirTax_Class)) +
+  new_scale_color() +
+  geom_tiplab(aes(color = InMatrix), size = 5) +
+  scale_color_manual(values = c(
+    "TRUE" = "green",
+    "FALSE" = "black",
+    name = "Isolate of Interest"
+    )) + 
+  ggnewscale::new_scale_color() +
+  geom_tippoint(aes(color = Inhibition), shape = 8, size = 3) +
+  scale_color_manual(values = c(
+    "Inhibitory" = "green",
+    "NonInhibitory" = "red",
+    "NA" = "grey"
+  ),
+  name = "Inhibition Status") +
+  theme_tree()
+
+# Display
+flavo.tree.plot
+
+
+flavo.order <- c("Mada.22",
+"Mada.13",
+"Mada.15",
+"Mada.56",
+"Mada.59",
+"Mada.404",
+"Mada.1470",
+"Mada.2653",
+"Mada.3838",
+"Mada.43",
+"Mada.91",
+"Mada.11",
+"Mada.1360",
+"Mada.1588",
+"Mada.3708",
+"Mada.1502",
+"Mada.1471",
+"Mada.4308",
+"Mada.936",
+"Mada.945",
+"Mada.4309",
+"Mada.2555",
+"Mada.738",
+"Mada.4102",
+"Mada.3133",
+"Mada.3107",
+"Mada.3940",
+"Mada.3942",
+"Mada.4096",
+"Mada.2050",
+"Mada.1637",
+"Mada.3149",
+"Mada.3001",
+"Mada.3008",
+"Mada.1813",
+"Mada.850",
+"Mada.233",
+"Mada.149",
+"Mada.809",
+"Mada.4113",
+"Mada.3900",
+"Mada.3906",
+"Mada.385",
+"Mada.386",
+"Mada.631",
+"Mada.728",
+"Mada.1681",
+"Mada.3100",
+"Mada.1489",
+"Mada.2466",
+"Mada.3098",
+"Mada.3390",
+"Mada.2665",
+"Mada.2120",
+"Mada.3928",
+"Mada.3636",
+"Mada.1165",
+"Mada.4300",
+"Mada.1535",
+"Mada.1531",
+"Mada.208",
+"Mada.405",
+"Mada.406",
+"Mada.2885",
+"Mada.1534",
+"Mada.1447",
+"Mada.2627",
+"Mada.1445",
+"Mada.4095",
+"Mada.1840",
+"Mada.4068",
+"Mada.2612",
+"Mada.3726",
+"Mada.3727",
+"Mada.4321",
+"Mada.4312",
+"Mada.686",
+"Mada.4311",
+"Mada.734",
+"Mada.2135",
+"Mada.407",
+"Mada.41",
+"Mada.4306",
+"Mada.3707",
+"Mada.3537",
+"Mada.1515",
+"Mada.3112",
+"Mada.3162",
+"Mada.2866",
+"Mada.2842",
+"Mada.1007",
+"Mada.384",
+"Mada.100",
+"Mada.2548",
+"Mada.3485",
+"Mada.1497",
+"Mada.3666",
+"Mada.4313",
+"Mada.4301")
+
+barchart.full.mada517MB <- mada517.longMB %>%
+  ggplot(aes(x = percentage, 
+             y = factor(Isolate.IDb, levels = tree_order_all_rev), fill = type)) + ## ** 
+
+ggplot(bar.data.flavo2, aes(x = id, y = factor(TotalIso, levels = flavo.order))) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +  # horizontal bars
+  theme_minimal() +
+  xlab("Isolate ID") +
+  ylab("Total Isolates") +
+  theme(
+    axis.text.y = element_text(size = 8)
+  )
+
+
+
+tree.plot.bars
+
+ggsave("flavo.tree.plot.pdf", flavo.tree.plot, height = 50, width = 30, dpi = 600, limitsize = F)
+
+
+
+```
+
+
+
+
+## Isolate Selection 
+```{r}
+
+class.by.cluster <- MadaDB_VsearchClusters_wdata_nest517 %>%
+  dplyr::mutate(class.table = map(data, ~ count(.x, DirTax_Class))) %>%
+  dplyr::select(Cluster, class.table) %>%
+  tidyr::unnest(class.table)
+
+class.counts <- class.by.cluster %>%
+  dplyr::group_by(DirTax_Class) %>% 
+  count(DirTax_Class)
+
+print(class.counts)
+
+
+
+
+
+isolate.nest1 <- MadaDB_VsearchClusters_wdata_nest517
+isolate.nest2 <- mada517 %>% 
+  dplyr::select(Isolate.ID, everything())
+
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.350"))
+# 
+# #these two are good
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.1166"))
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.2586"))
+# 
+# #one inhibitory, one non-inhibitory
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.4050"))
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.2373"))
+
+#about half and half
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.2652"))
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.3159"))
+# 
+# #about half and half
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.2652"))
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.3159"))
+# 
+# #cluster isolate is different function from the rest of the isolates. interesting and perhaps useful.
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.3127"))
+# View(isolate.nest2 %>% filter(Isolate.ID == "Mada.2540"))
+
+
+##betaproteobacteria
+#1523 and 166 are good candidates
+isolate.nest2.betaprot <- isolate.nest2 %>% 
+  dplyr::mutate(prot.table = map(data, ~ dplyr::filter(.x, DirTax_Class == "Betaproteobacteria"))) %>% 
+  dplyr::filter(purrr::map_int(prot.table, nrow) > 0)
+
+
+#Bacilli
+isolate.nest2.bacilli <- isolate.nest2 %>% 
+  dplyr::mutate(bac.table = map(data, ~ dplyr::filter(.x, DirTax_Class == "Bacilli"))) %>% 
+  dplyr::filter(purrr::map_int(bac.table, nrow) > 0,
+                NonInhibitory > 0,
+                Inhibitory > 0)
+
+
+#actinobacteria
+isolate.nest2.actino <- isolate.nest2 %>% 
+  dplyr::mutate(actino.table = map(data, ~ dplyr::filter(.x, DirTax_Class == "Bacilli"))) %>% 
+  dplyr::filter(purrr::map_int(actino.table, nrow) > 0,
+                NonInhibitory > 0,
+                Inhibitory > 0)
+
+#full
+isolate.nest2.full <- isolate.nest2 %>% 
+  # dplyr::mutate(actino.table = map(data, ~ dplyr::filter(.x, DirTax_Class == "Bacilli"))) %>% 
+  dplyr::filter(NonInhibitory > 0,
+                Inhibitory > 0)
+
+#517
+full.meta.data <- readr::read_csv("MadaCultureDB_joined_culture_with_metadata_2025.csv")
+
+isolate.nest.517 <- isolate.nest2 %>% 
+  dplyr::select(Isolate.ID)
+
+isolate.nest.517.fasta.df <- isolate.nest.517 %>% 
+  dplyr::left_join(full.meta.data, by = "Isolate.ID") %>% 
+  dplyr::select(Isolate.ID, Sequence.x) %>% 
+  dplyr::group_by(Isolate.ID) %>% 
+  dplyr::slice_head(n = 1)
+
+#remove NAs
+isolate.nest.517.fasta.df <- isolate.nest.517.fasta.df %>% 
+  dplyr::filter(!Sequence.x == "NA")
+
+library(Biostrings)
+
+fasta_seqs.517 <- DNAStringSet(isolate.nest.517.fasta.df$Sequence.x)
+names(fasta_seqs.517) <- isolate.nest.517.fasta.df$Isolate.ID
+
+# Write to a FASTA file
+#Biostrings::writeXStringSet(fasta_seqs.517, filepath = "cluster_sequences517.fasta")
+
+align.fasta517 <- Biostrings::readDNAStringSet("cluster_sequences517.fasta")
+
+#all.aligned.sequences517 <- DECIPHER::AlignSeqs(align.fasta517) 
+#writeXStringSet(all.aligned.sequences517, filepath = "aligned_allseqs517.fasta")
+
+all517.seqs <- ape::read.dna("aligned_allseqs517.fasta",
+                            format = "fasta")
+
+
+
+dist.matrix.517 <- ape::dist.dna(all517.seqs, model = "TN93")
+
+mat.517 <- as.matrix(dist.matrix.517)
+
+
+mat.517.upper <- mat.517[upper.tri(mat.517)] <- NA
+
+
+# write.csv(mat_cleaned, "flavo.distance.matrix19.csv",
+#           row.names = T)
+
+min_nonzero_df <- apply(mat.517, 1, function(row) {
+  min_val <- min(row[row > 0], na.rm = TRUE)
+  if (is.infinite(min_val)) NA else min_val
+}) %>%
+  data.frame(Closest_Cluster = .) %>%
+  tibble::rownames_to_column("Isolate.ID")
+
+distance.isolate.517 <- isolate.nest2 %>% 
+  dplyr::left_join(min_nonzero_df, by = "Isolate.ID") %>% 
+  dplyr::filter(NonInhibitory > 0,
+                Inhibitory > 0)
+
+distance.isolate.517 <- distance.isolate.517 %>% 
+  dplyr::left_join(meta.data, by = "Isolate.ID")
+
+distance.isolate.517 <- distance.isolate.517  %>% 
+  dplyr::select(Isolate.ID, DirTax_Class, everything()) %>% 
+  dplyr::group_by(Isolate.ID) %>% 
+  dplyr::slice_head()
+
+
+
+
+class.by.cluster.517 <- distance.isolate.517 %>%
+  dplyr::mutate(class.table = map(data, ~ count(.x, DirTax_Class))) %>%
+  dplyr::select(Cluster, class.table) %>%
+  tidyr::unnest(class.table)
+
+class.counts.517 <- class.by.cluster.517 %>%
+  dplyr::group_by(DirTax_Class) %>% 
+  count(DirTax_Class)
+
+class.counts.122 <- distance.isolate.517 %>%
+  dplyr::group_by(DirTax_Class) %>% 
+  count(DirTax_Class)
+
+print(class.counts.517)
+print(class.counts.122)
+
+###exporting
+distance.122 <- distance.isolate.517 %>% 
+  dplyr::select(-data)
+
+#readr::write_csv(distance.122, "distance_122.csv")
+
+
+distance.isolate.517.122 <- isolate.nest2 %>% 
+  dplyr::left_join(min_nonzero_df, by = "Isolate.ID")
+
+distance.isolate.517.122 <- distance.isolate.517.122 %>% 
+  dplyr::left_join(meta.data, by = "Isolate.ID")
+
+distance.isolate.517.122 <- distance.isolate.517.122  %>% 
+  dplyr::select(Isolate.ID, DirTax_Class, everything()) %>% 
+  dplyr::group_by(Isolate.ID) %>% 
+  dplyr::slice_head()
+readr::write_csv(distance.isolate.517.122, "distance_517.122.csv")
+
+```
+
+
+####snp work
+```{r}
+dist <- read.csv("C:/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/snp_matrix.csv") %>% 
+  janitor::clean_names()
+
+colnames(dist) <- gsub("^X\\_", "", colnames(dist), ignore.case = TRUE)
+
+ggplot(dist, aes(x = dist)) +
+  geom_dotplot(binwidth = 1000, fill = "blue", dotsize = 0.5) +
+  theme_minimal() +
+  labs(title = "Dot Plot of SNP Positions",
+       x = "Genomic Position",
+       y = "Count (binned)")
+
+
+ggplot(dist, aes(x = p1, y = p2)) +
+  geom_point(alpha = 0.6) +
+  labs(x = "Position in Genome 1", y = "Position in Genome 2", title = "SNP Position Dot Plot") +
+  theme_minimal()
+
+
+dist$diff <- abs(dist$p1 - dist$p2)
+threshold <- 100000
+dist$outlier <- dist$diff > threshold
+
+ggplot(dist, aes(x = p1, y = p2, color = outlier)) +
+  geom_point(size = 0.7, alpha = 0.8) +
+  scale_color_manual(values = c("FALSE" = "black", "TRUE" = "red")) +
+  labs(
+    title = "SNP Position Dot Plot (Outliers Highlighted)",
+    x = "Position in Genome 1",
+    y = "Position in Genome 2",
+    color = "Outlier"
+  ) +
+  theme_minimal()
+
+
+
+```
+
