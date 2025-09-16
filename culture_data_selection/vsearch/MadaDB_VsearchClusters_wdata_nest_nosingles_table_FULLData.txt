@@ -1,0 +1,2 @@
+"Isolate.ID" "Cluster" "Id.Match" "DirTax_Phylum" "DirTax_Order" "DirTax_Class" "DirTax_Family" "TotalIso" "Inhibitory" "NonInhibitory" "InhibitoryRatio"
+"1" "Mada.2586" 1 "*" "Proteobacteria" "Caulobacterales" "Alphaproteobacteria" "Caulobacteraceae" 
