@@ -1,0 +1,464 @@
+---
+title: "Mada1206_script"
+author: "Talon Jost"
+date: "2025-07-04"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## packages
+
+```{r cars}
+rm(list = ls())
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(ape)
+library(ggtree)
+library(ggthemes)
+library(ggtreeExtra)
+library(DT)
+library(magrittr)
+library(ggplot2)
+```
+
+## Madagascar Culture Metadata input
+
+```{r}
+
+## merging Madagascar database metadata (culture info, etc) with Vsearch 100% clusterIDs
+
+## sorted by seq plate, toxonomy string then isolate ID in excel before creation
+
+MadaDBdata = read_tsv("./MadaCultureDB_Metadata.txt")
+
+## This deals with the duplicate entries for the isolates; its not perfect, it just selects the first entry from the sorted file 
+
+MadaDBdata_filt = MadaDBdata %>%
+  group_by(Isolate.ID) %>% slice_head() %>% # filters to 1 sequence per group
+  ungroup() %>%
+  select(Isolate.ID,Frog.ID,`proportion growth 1`,`anti-Bd Class (80%)`,Taxnonomy,DirTax_Phylum,DirTax_Class,DirTax_Order,DirTax_Family,DirTax_Genus,DirTax_Species) # selecting only a subset of columns for now for easier viewing
+
+```
+
+## Vsearch data
+
+```{r}
+#(vsearch) mcbletz@Mollys-MacBook-Pro-2 ~ % vsearch --cluster_fast /Users/mcbletz/Library/CloudStorage/OneDrive-ThePennsylvaniaStateUniversity/Bletz_Lab/Computational_Resources/Datasets/CultureData/MadaCultureDB_seqs_dupsfilt.fasta --uc /Users/mcbletz/Library/CloudStorage/OneDrive-ThePennsylvaniaStateUniversity/Bletz_Lab/Computational_Resources/Datasets/CultureData/MadaCultureDB_seqs_clustered_per100_050725.txt --id 1 --strand both
+
+##*** MODIFIED HEADERS AND COLUMNS MANUALLY IN EXCEL
+
+## Vsearch done with fasta from MadaDB file filtered for duplicates; this has more isolates than AmphiBac; This is the vsearch output (code above); Dup filtering completed with MadaDB_VsearchClusterMergeCode.R file.
+
+MadaDB_VsearchClusters2 = read_tsv("./MadaCultureDB_seqs_clustered_per100_050725.txt") %>%
+  select(Record,Cluster,Isolate.ID,Id.Match) # selecting relevant columns
+
+
+```
+
+## Merging vsearch clusters with culture metadata
+
+Isolate ID is the common identifier and is used to merge the two files
+
+```{r}
+
+## merging clustering with Mada DB metadata that has had the dubs filtered
+## NOTE Vsearch was not done with the duplicate filtered fasta...I think that's OK for now.but it does mean that there could be isolates with same ID that are "different" clusters because there are some that didn't ID to the same taxonomy.
+MadaDB_VsearchClusters_wdata = left_join(MadaDB_VsearchClusters2,
+                                         MadaDBdata_filt,
+                                         by = "Isolate.ID") 
+#write_tsv(MadaDB_VsearchClusters_wdata,"./MadaCultureDB_Metadata_wVsearchClusters.txt")
+```
+
+## Nesting
+
+Nesting groups the Vsearch clusters for further summarizing
+
+IMPORTANT - THERE ARE actually 1387 unique clusters when including singletons!!
+There are 817 when we apply the "extreme" function filter
+
+```{r}
+
+MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata %>%
+  filter(!Record=="C") %>% # removing these records that are not important for the clustering its a duplicate of the S ids; only "S" and "H" retained
+  filter(`anti-Bd Class (80%)` == "Inhibitory" | `anti-Bd Class (80%)` == "NonInhibitory") %>%
+  filter(`proportion growth 1` > 0.75 | `proportion growth 1` < 0.25) %>% #added this to filter to extreme function
+  group_by(Cluster) %>%
+  nest()
+
+
+MadaDB_VsearchClusters_wdata_nest517 = MadaDB_VsearchClusters_wdata %>%
+  filter(!Record=="C") %>% # removing these records that are not important for the clustering its a duplicate of the S ids; only "S" and "H" retained
+  #filter(`anti-Bd Class (80%)` == "Inhibitory" | `anti-Bd Class (80%)` == "NonInhibitory") %>%
+  group_by(Cluster) %>%
+  filter(!Id.Match == "*") %>%  ## Why? This actually gets rid of singletons
+  nest() 
+
+#need this to have the full list of ids to make the tree
+MadaDB_VsearchClusters_wdata_nest.singleton = MadaDB_VsearchClusters_wdata %>%
+  filter(!Record=="C") %>% # removing these records that are not important for the clustering its a duplicate of the S ids; only "S" and "H" retained
+  filter(`anti-Bd Class (80%)` == "Inhibitory" | `anti-Bd Class (80%)` == "NonInhibitory") %>%
+  #filter(`proportion growth 1` > 0.75 | `proportion growth 1` < 0.25) %>% #added this to filter to extreme function
+  group_by(Cluster) %>%
+  nest()
+
+
+##matching this to where I can actually get the isolate IDs to match the cluster.
+singelton.ids <- MadaDB_VsearchClusters_wdata_nest.singleton$Cluster
+singleton.df <- MadaDB_VsearchClusters2 %>% 
+  dplyr::filter(Cluster %in% singelton.ids) %>% 
+  dplyr::group_by(Cluster) %>% 
+  dplyr::slice_head(n = 1)
+
+
+singleton.df2 <- MadaDB_VsearchClusters_wdata_nest.singleton %>% 
+  dplyr::mutate(IsSingleton = purrr::map_int(data, nrow) == 1)
+
+singleton.df2 <- singleton.df2 %>% 
+  dplyr::left_join(MadaDB_VsearchClusters2, by = "Cluster") %>% 
+  dplyr::filter(!Record=="C") %>% 
+  dplyr::group_by(Cluster) %>% 
+  dplyr::slice_head(n = 1)
+
+singleton.df3 <- singleton.df2 %>% 
+  dplyr::left_join(MadaDBdata_filt, by = "Isolate.ID") %>% 
+  dplyr::rename(Inhibition = `anti-Bd Class (80%)`)
+
+singleton.df3b <- singleton.df3 %>% 
+  dplyr::rename(tip.label = Isolate.ID) %>% 
+  dplyr::select(Cluster, IsSingleton, tip.label) 
+
+
+
+MadaDBdata_filt <- MadaDBdata_filt %>% 
+  dplyr::left_join(singleton.df3, by = "Isolate.ID")
+```
+
+## Summarizing
+
+This creates an initial summary of the functional categories for each cluster
+
+
+```{r}
+
+summary_fxn = function(x){
+  x %>% ## called x because thats what the position in the map function is called
+  group_by(`anti-Bd Class (80%)`) %>%
+  summarize(Count = n()) %>%
+    pivot_wider(.,names_from = `anti-Bd Class (80%)`,values_from = Count)
+
+} # this is a function that does the summarizing by function category and then organizes it for better viewing.
+
+#MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata_nest %>%
+ # mutate(TotalIso = map(data,~ nrow(.x)))
+
+MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata_nest %>%
+  mutate(TotalIso = map(data,~ nrow(.x)))%>%
+  mutate(FunctionCount = map(data,summary_fxn)) %>% # this creates the function categories
+  unnest(FunctionCount) # this allows the function categories to be viewed in the nested frame and "operated" on
+
+
+MadaDB_VsearchClusters_wdata_nest_nosingles = MadaDB_VsearchClusters_wdata_nest %>%
+  filter(TotalIso > 1) %>% # filter clusters with 1 isolate
+  drop_na(Inhibitory,NonInhibitory) %>%
+  mutate(InhibitoryRatio = paste(Inhibitory,".",NonInhibitory))
+  
+  
+#   ## List of IDs for tree for all cluster dataset
+MadaDB_VsearchClusters_wdata_nestnosingles_IDs = MadaDB_VsearchClusters_wdata_nest517 %>%
+  unnest(data) %>%
+  select(Id.Match) %>%
+  filter(!Id.Match == "*") %>% ## This is needed to remove the creation of an "asterisk" group
+  unique()
+
+### STOPPED HERE DURING MEETING on 17 June 2025 ############## 
+
+
+
+#MadaDB_VsearchClusters_wdata_nest2 = MadaDB_VsearchClusters_wdata_nest %>%
+ # mutate(TotalIso = map(data,~ nrow(.x))) %>% # filter clusters with 1 isolate
+  #filter(TotalIso > 2) %>% 
+  #unnest(data) %>%
+  #group_by(DirTax_Phylum) %>%
+  #summarize(Count = n_distinct(Cluster))
+
+
+## This is removing clusters that doesn't have mixed function, meaning inhibitory and not inhibitory
+ MadaDB_VsearchClusters_wdata_nest = MadaDB_VsearchClusters_wdata_nest %>%
+   drop_na(Inhibitory,NonInhibitory)
+ 
+
+ 
+
+```
+
+
+
+####plot the tree
+```{r plot, echo = TRUE}
+library(ape)
+tree.original <- ape::read.tree('trees/tree/nwk/madaDB.rooted.tree.nwk')
+#plot(tree.original)
+
+names.to.keep <- singleton.df3b$tip.label
+keep <- intersect(names.to.keep, tree.original$tip.label)
+
+tree.pruned <- keep.tip(tree.original, keep)
+tree.pruned$tip.label
+plot(tree.pruned)
+
+library(ggtree)
+library(ggtreeExtra)
+library(treeio)
+
+
+tree.original.ggtree.517 <- ggtree(tree.pruned, branch.length = "none", size = 0.5) %<+% MadaDBdata_filt +
+  geom_tree(aes(color = DirTax_Class.x)) +
+    scale_color_manual(name = "Class", values = c(
+  "Actinobacteria" = "#4E79A7",
+  "Deinococci" = "#F28E2B",
+  "Alphaproteobacteria" = "#E15759",
+  "Gammaproteobacteria" = "#76B7B2",
+  "Betaproteobacteria" = "#59A14F",
+  "Flavobacteriia" = "#EDC948",
+  "Sphingobacteriia" = "#B07AA1",
+  "Bacilli" = "#FF9DA7",
+  "[Saprospirae]" = "#ff833a",
+  "Cytophagia" = "#a3b"
+), na.value = "grey") +
+  ggnewscale::new_scale_color() +
+  geom_tippoint(aes(color = IsSingleton), shape = 16, size = 8) +
+  scale_color_manual(values = c(
+    "TRUE" = "green",
+    "FALSE" = "black",
+    "NA" = "grey"
+  ), name = "Inhibition Status") +
+  geom_tiplab() +
+  theme_tree()
+tree.original.ggtree.517
+
+ggsave("singleton_517_tree2.pdf", tree.original.ggtree.517, height = 400, width = 50, dpi = 800, limitsize = FALSE)
+```
+
+
+
+#barchart
+```{r}
+#id list copied directly from the plot above
+ids <- readLines("list_names.txt")
+ids <- unique(ids)
+#formatted <- paste0('"', ids, '",')
+#writeLines(formatted, "list_names_quoted.txt")
+
+
+# 
+# ordering <- match(ids, names.to.keep)
+# sorted_lines <- ids[ordering]
+# 
+# writeLines(sorted_lines, "file_sorted.txt")
+
+tip.labels.order <- tree.pruned$tip.label
+identical(tip.labels.order, ids)
+
+bar.data <- MadaDB_VsearchClusters_wdata_nest.singleton %>% 
+  mutate(
+    TotalIso = map_int(data, nrow),
+    Inhibitory = map_int(data, ~ sum(.x$`anti-Bd Class (80%)` == "Inhibitory", na.rm = TRUE)),
+    NonInhibitory = map_int(data, ~ sum(.x$`anti-Bd Class (80%)` == "NonInhibitory", na.rm = TRUE)),
+    Null = map_int(data, ~ sum(is.na(.x$`anti-Bd Class (80%)`))),
+    Contam = map_int(data, ~ sum(.x$`anti-Bd Class (80%)` == "Contam", na.rm = TRUE))
+  )
+
+bar.data2 <- bar.data %>% 
+  dplyr::left_join(MadaDB_VsearchClusters_wdata, by = "Cluster") %>% 
+  dplyr::select(Cluster, data, Isolate.ID, 
+                TotalIso, NonInhibitory, Inhibitory, 
+                Null, Contam) %>% 
+  dplyr::group_by(Cluster) %>% 
+  dplyr::slice_head(n = 1)
+
+
+bar.data3 <- bar.data2 %>% 
+  dplyr::mutate(
+    prop.inhib = Inhibitory / TotalIso * 100,
+    prop.noninhib = NonInhibitory / TotalIso * 100,
+    prop.na = Null / TotalIso * 100,
+    prop.contam = Contam / TotalIso * 100
+  )
+
+bar.long <- bar.data3 %>%
+  select(Isolate.ID, Inhibitory, NonInhibitory, prop.inhib, prop.noninhib, TotalIso) %>%
+  pivot_longer(cols = c(prop.inhib, prop.noninhib),
+               names_to = "type",
+               values_to = "percentage")
+
+# Recode type labels
+bar.long$type <- dplyr::recode(bar.long$type,
+                               prop.inhib = "Inhibitory",
+                               prop.noninhib = "Non-Inhibitory")
+
+
+levels(bar.long$Isolate.ID)
+
+# Build bar.label.df if needed
+bar.label.df <- bar.data3 %>%
+  mutate(label = paste0("n=", TotalIso),
+         xpos = prop.inhib + prop.noninhib) %>%
+  select(Isolate.ID, xpos, label)
+
+barchart.108 <- bar.long %>%
+  ggplot(aes(x = percentage, 
+             y = factor(Isolate.ID, levels = ids), 
+             fill = type)) + ## ** this line is key
+  geom_bar(stat = "identity", 
+           position = "stack", 
+           width = 0.5) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 10),
+    legend.key.size = unit(2, "lines"),
+    legend.title = element_text(size = 25),
+    legend.text = element_text(size = 25)
+  )
+
+barchart.108
+
+#ggsave("barchart108.pdf", barchart.108, height = 400, width = 50, limitsize = FALSE)
+```
+
+no singles
+```{r}
+MadaDB_VsearchClusters_wdata_nest_nosingles = MadaDB_VsearchClusters_wdata_nest %>%
+  filter(TotalIso > 1) %>% # filter clusters with 1 isolate
+  drop_na(Inhibitory,NonInhibitory) %>%
+  mutate(InhibitoryRatio = paste(Inhibitory,".",NonInhibitory))
+
+MadaDB_VsearchClusters_wdata_nestnosingles_ids2 <- MadaDB_VsearchClusters_wdata_nest_nosingles %>% dplyr::select(Cluster)
+
+nest108 <- MadaDB_VsearchClusters_wdata_nest_nosingles
+
+nest108.1 <- nest108 %>% 
+  tidyr::unnest(data) %>% 
+  dplyr::group_by(Id.Match) %>% 
+  dplyr::slice_head(n = 1) %>% 
+  dplyr::filter(Id.Match != "*") #filter this as not having it will result in one more observation that already exists within the dataframe
+
+nest108.1.Ids <- nest108.1$Id.Match
+
+madafilt108 <- MadaDBdata_filt %>% 
+  dplyr::mutate(IsCluster = Isolate.ID %in% nest108.1.Ids)
+
+join108 <- nest108.1 %>% 
+  dplyr::select(Isolate.ID, InhibitoryRatio)
+
+madafilt108.1 <- madafilt108 %>% 
+  dplyr::left_join(join108, by = "Isolate.ID")
+
+highlight_nodes <- data.frame(
+  node = c(2405, 2392, 2387, 2349,
+           2324, 2193, 2163, 2136,
+           2098, 1891, 1903, 1810,
+           1794, 1824, 1854, 1969,
+           1947, 2020, 2012, 2059,
+           1753, 1748, 1648, 1579,
+           1685, 1670, 1465, 1457,
+           1487, 1511, 1533, 1547,
+           1540, 1382, 1405, 1341,
+           1307, 1265, 1232, 1208),
+  group = paste0("Cluster_", make.unique(rep(LETTERS, length.out = 40)))
+)
+tree.data <- ggtree::fortify(tree.pruned)
+
+node_plot_data <- dplyr::inner_join(tree.data, highlight_nodes, by = "node")
+
+tree.original.ggtree.108 <- ggtree(tree.pruned, branch.length = "none", size = 0.5) %<+% madafilt108.1 +
+  geom_tree(aes(color = DirTax_Class.x)) +
+    scale_color_manual(name = "Class", values = c(
+  "Actinobacteria" = "#4E79A7",
+  "Deinococci" = "#F28E2B",
+  "Alphaproteobacteria" = "#E15759",
+  "Gammaproteobacteria" = "#76B7B2",
+  "Betaproteobacteria" = "#59A14F",
+  "Flavobacteriia" = "#EDC948",
+  "Sphingobacteriia" = "#B07AA1",
+  "Bacilli" = "#FF9DA7",
+  "[Saprospirae]" = "#ff833a",
+  "Cytophagia" = "#a3b"
+), na.value = "grey") +
+  ggnewscale::new_scale_color() +
+  geom_tippoint(aes(color = IsCluster), shape = 16, size = 8) +
+  scale_color_manual(values = c(
+    "TRUE" = "green",
+    "FALSE" = "black",
+    "NA" = "grey"
+  ), name = "Is 108") +
+  geom_tiplab() +
+  ggnewscale::new_scale_color() +
+  geom_tiplab(aes(color = IsSingleton)) +
+  scale_color_manual(values = c(
+    "TRUE" = "cyan3",
+    "FALSE" = "black",
+    "NA" = "grey"
+  ), name = "Is Singleton") +
+  theme_tree() #+
+  #geom_text2(aes(label = node), hjust = -0.3, size = 3)
+tree.original.ggtree.108
+
+ggsave("singleton_108_tree.pdf", tree.original.ggtree.108, height = 400, width = 50, dpi = 800, limitsize = FALSE)
+
+
+
+tree.original.ggtree.108 <- tree.original.ggtree.108 +
+  ggtree::geom_hilight(
+    data = highlight_nodes,
+    mapping = aes(node = node, fill = group),
+    type = "roundrect",
+    alpha = 0.3,
+    extend = 0.5
+  ) +
+  scale_fill_manual(values = setNames(rep("red", length(unique(highlight_nodes$group))), unique(highlight_nodes$group)),
+                    name = "Highlighted Nodes")
+
+tree.original.ggtree.108
+
+ggsave("singleton_108_tree.pdf", tree.original.ggtree.108, height = 400, width = 50, dpi = 800, limitsize = FALSE) 
+```
+
+```{r}
+# tree.original.ggtree.108.rev <- ggtree(tree.pruned, branch.length = "none", size = 0.5) %<+% madafilt108 +
+#   geom_tree(aes(color = DirTax_Class.x)) +
+#     scale_color_manual(name = "Class", values = c(
+#   "Actinobacteria" = "#4E79A7",
+#   "Deinococci" = "#F28E2B",
+#   "Alphaproteobacteria" = "#E15759",
+#   "Gammaproteobacteria" = "#76B7B2",
+#   "Betaproteobacteria" = "#59A14F",
+#   "Flavobacteriia" = "#EDC948",
+#   "Sphingobacteriia" = "#B07AA1",
+#   "Bacilli" = "#FF9DA7",
+#   "[Saprospirae]" = "#ff833a",
+#   "Cytophagia" = "#a3b"
+# ), na.value = "grey") +
+#   ggnewscale::new_scale_color() +
+#   geom_tippoint(aes(color = IsCluster), shape = 16, size = 8) +
+#   scale_color_manual(values = c(
+#     "TRUE" = "blue",
+#     "FALSE" = "black",
+#     "NA" = "grey"
+#   ), name = "Is 108") +
+#   theme_tree()
+# tree.original.ggtree.108.rev
+# 
+# ggsave("singleton_108_tree.rev.pdf", tree.original.ggtree.108.rev, height = 400, width = 50, dpi = 800, limitsize = FALSE)
+```
+
+
+
+
