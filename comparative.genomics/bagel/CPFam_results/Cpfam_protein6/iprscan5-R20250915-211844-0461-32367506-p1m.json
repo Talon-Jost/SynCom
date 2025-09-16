@@ -1,0 +1,366 @@
+{
+ "interproscan-version": "5.75-106.0",
+"results": [ {
+  "id" : 1,
+  "sequence" : "ttgctcgagaccgtcgtgctgctcgtctgccatggtgttgtccttccgacgtcgctgtctggttcggcccaagttagtgacgtgagaggacggccgtaa",
+  "md5" : "7675681a8d02dfcf0633a84f4f2c8632",
+  "crossReferences" : [ {
+    "name" : "Sequence6",
+    "nucleotideSequence" : 1,
+    "id" : "Sequence6"
+  } ],
+  "openReadingFrames" : [ {
+    "id" : 1,
+    "start" : 1,
+    "end" : 96,
+    "strand" : "SENSE",
+    "protein" : {
+      "sequence" : "LLETVVLLVCHGVVLPTSLSGSAQVSDVRGRP",
+      "md5" : "2e5fcc4815f2562ce7fbbf8a15b438ae",
+      "matches" : [ {
+        "signature" : {
+          "accession" : "NON_CYTOPLASMIC_DOMAIN",
+          "name" : "Non cytoplasmic domain",
+          "description" : "Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.",
+          "type" : "REGION",
+          "signatureLibraryRelease" : {
+            "library" : "PHOBIUS",
+            "version" : "1.01"
+          },
+          "entry" : null
+        },
+        "locations" : [ {
+          "start" : 24,
+          "end" : 32,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 24,
+            "end" : 32,
+            "dc-status" : "CONTINUOUS"
+          } ]
+        } ],
+        "model-ac" : "NON_CYTOPLASMIC_DOMAIN"
+      }, {
+        "signature" : {
+          "accession" : "SignalP-noTM",
+          "name" : "SignalP-noTM",
+          "description" : null,
+          "type" : "REGION",
+          "signatureLibraryRelease" : {
+            "library" : "SIGNALP_EUK",
+            "version" : "4.1"
+          },
+          "entry" : null
+        },
+        "locations" : [ {
+          "start" : 1,
+          "end" : 16,
+          "representative" : false,
+          "score" : 0.464,
+          "location-fragments" : [ {
+            "start" : 1,
+            "end" : 16,
+            "dc-status" : "CONTINUOUS"
+          } ]
+        } ],
+        "orgType" : "EUK",
+        "model-ac" : "SignalP-noTM"
+      }, {
+        "signature" : {
+          "accession" : "SIGNAL_PEPTIDE_N_REGION",
+          "name" : "Signal peptide N-region",
+          "description" : "N-terminal region of a signal peptide.",
+          "type" : "REGION",
+          "signatureLibraryRelease" : {
+            "library" : "PHOBIUS",
+            "version" : "1.01"
+          },
+          "entry" : null
+        },
+        "locations" : [ {
+          "start" : 1,
+          "end" : 3,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 1,
+            "end" : 3,
+            "dc-status" : "CONTINUOUS"
+          } ]
+        } ],
+        "model-ac" : "SIGNAL_PEPTIDE_N_REGION"
+      }, {
+        "signature" : {
+          "accession" : "SIGNAL_PEPTIDE_H_REGION",
+          "name" : "Signal peptide H-region",
+          "description" : "Hydrophobic region of a signal peptide.",
+          "type" : "REGION",
+          "signatureLibraryRelease" : {
+            "library" : "PHOBIUS",
+            "version" : "1.01"
+          },
+          "entry" : null
+        },
+        "locations" : [ {
+          "start" : 4,
+          "end" : 15,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 4,
+            "end" : 15,
+            "dc-status" : "CONTINUOUS"
+          } ]
+        } ],
+        "model-ac" : "SIGNAL_PEPTIDE_H_REGION"
+      }, {
+        "signature" : {
+          "accession" : "SIGNAL_PEPTIDE_C_REGION",
+          "name" : "Signal peptide C-region",
+          "description" : "C-terminal region of a signal peptide.",
+          "type" : "REGION",
+          "signatureLibraryRelease" : {
+            "library" : "PHOBIUS",
+            "version" : "1.01"
+          },
+          "entry" : null
+        },
+        "locations" : [ {
+          "start" : 16,
+          "end" : 23,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 16,
+            "end" : 23,
+            "dc-status" : "CONTINUOUS"
+          } ]
+        } ],
+        "model-ac" : "SIGNAL_PEPTIDE_C_REGION"
+      }, {
+        "signature" : {
+          "accession" : "SIGNAL_PEPTIDE",
+          "name" : "Signal Peptide",
+          "description" : "Signal peptide region",
+          "type" : "REGION",
+          "signatureLibraryRelease" : {
+            "library" : "PHOBIUS",
+            "version" : "1.01"
+          },
+          "entry" : null
+        },
+        "locations" : [ {
+          "start" : 1,
+          "end" : 23,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 1,
+            "end" : 23,
+            "dc-status" : "CONTINUOUS"
+          } ]
+        } ],
+        "model-ac" : "SIGNAL_PEPTIDE"
+      } ],
+      "xref" : [ {
+        "name" : "orf3 source=Sequence6 coords=1..96 length=32 frame=1 desc=",
+        "id" : "orf3"
+      } ]
+    },
+    "nucleotideSequence" : 1
+  }, {
+    "id" : 6,
+    "start" : 1,
+    "end" : 99,
+    "strand" : "ANTISENSE",
+    "protein" : {
+      "sequence" : "LRPSSHVTNLGRTRQRRRKDNTMADEQHDGLEQ",
+      "md5" : "df6e68b5c485fd3c8618016c7382b278",
+      "matches" : [ {
+        "signature" : {
+          "accession" : "mobidb-lite",
+          "name" : "disorder_prediction",
+          "description" : "consensus disorder prediction",
+          "type" : "REGION",
+          "signatureLibraryRelease" : {
+            "library" : "MOBIDB_LITE",
+            "version" : "4.0"
+          },
+          "entry" : null
+        },
+        "locations" : [ {
+          "start" : 1,
+          "end" : 33,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 1,
+            "end" : 33,
+            "dc-status" : "CONTINUOUS"
+          } ],
+          "sequence-feature" : ""
+        }, {
+          "start" : 20,
+          "end" : 33,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 20,
+            "end" : 33,
+            "dc-status" : "CONTINUOUS"
+          } ],
+          "sequence-feature" : "Polyampholyte"
+        }, {
+          "start" : 1,
+          "end" : 12,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 1,
+            "end" : 12,
+            "dc-status" : "CONTINUOUS"
+          } ],
+          "sequence-feature" : "Polar"
+        } ],
+        "model-ac" : "mobidb-lite"
+      } ],
+      "xref" : [ {
+        "name" : "orf6 source=Sequence6 coords=99..1 length=33 frame=4 desc=",
+        "id" : "orf6"
+      } ]
+    },
+    "nucleotideSequence" : 1
+  }, {
+    "id" : 5,
+    "start" : 3,
+    "end" : 98,
+    "strand" : "ANTISENSE",
+    "protein" : {
+      "sequence" : "YGRPLTSLTWAEPDSDVGRTTPWQTSSTTVSS",
+      "md5" : "f1d4379a57097f16d403cc021995c919",
+      "matches" : [ {
+        "signature" : {
+          "accession" : "mobidb-lite",
+          "name" : "disorder_prediction",
+          "description" : "consensus disorder prediction",
+          "type" : "REGION",
+          "signatureLibraryRelease" : {
+            "library" : "MOBIDB_LITE",
+            "version" : "4.0"
+          },
+          "entry" : null
+        },
+        "locations" : [ {
+          "start" : 21,
+          "end" : 32,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 21,
+            "end" : 32,
+            "dc-status" : "CONTINUOUS"
+          } ],
+          "sequence-feature" : "Polar"
+        }, {
+          "start" : 1,
+          "end" : 32,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 1,
+            "end" : 32,
+            "dc-status" : "CONTINUOUS"
+          } ],
+          "sequence-feature" : ""
+        } ],
+        "model-ac" : "mobidb-lite"
+      } ],
+      "xref" : [ {
+        "name" : "orf4 source=Sequence6 coords=98..3 length=32 frame=5 desc=",
+        "id" : "orf4"
+      } ]
+    },
+    "nucleotideSequence" : 1
+  }, {
+    "id" : 4,
+    "start" : 2,
+    "end" : 82,
+    "strand" : "SENSE",
+    "protein" : {
+      "sequence" : "CSRPSCCSSAMVLSFRRRCLVRPKLVT",
+      "md5" : "2761b3c4d101df4a206e9de38fd56e00",
+      "matches" : [ ],
+      "xref" : [ {
+        "name" : "orf2 source=Sequence6 coords=2..82 length=27 frame=2 desc=",
+        "id" : "orf2"
+      } ]
+    },
+    "nucleotideSequence" : 1
+  }, {
+    "id" : 3,
+    "start" : 2,
+    "end" : 73,
+    "strand" : "ANTISENSE",
+    "protein" : {
+      "sequence" : "LGPNQTATSEGQHHGRRAARRSRA",
+      "md5" : "7fe40b08c34109c2e1c8a8df3fb8e52d",
+      "matches" : [ {
+        "signature" : {
+          "accession" : "mobidb-lite",
+          "name" : "disorder_prediction",
+          "description" : "consensus disorder prediction",
+          "type" : "REGION",
+          "signatureLibraryRelease" : {
+            "library" : "MOBIDB_LITE",
+            "version" : "4.0"
+          },
+          "entry" : null
+        },
+        "locations" : [ {
+          "start" : 14,
+          "end" : 24,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 14,
+            "end" : 24,
+            "dc-status" : "CONTINUOUS"
+          } ],
+          "sequence-feature" : "Positive Polyelectrolyte"
+        }, {
+          "start" : 1,
+          "end" : 24,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 1,
+            "end" : 24,
+            "dc-status" : "CONTINUOUS"
+          } ],
+          "sequence-feature" : ""
+        }, {
+          "start" : 1,
+          "end" : 10,
+          "representative" : false,
+          "location-fragments" : [ {
+            "start" : 1,
+            "end" : 10,
+            "dc-status" : "CONTINUOUS"
+          } ],
+          "sequence-feature" : "Polar"
+        } ],
+        "model-ac" : "mobidb-lite"
+      } ],
+      "xref" : [ {
+        "name" : "orf5 source=Sequence6 coords=73..2 length=24 frame=6 desc=",
+        "id" : "orf5"
+      } ]
+    },
+    "nucleotideSequence" : 1
+  }, {
+    "id" : 2,
+    "start" : 3,
+    "end" : 74,
+    "strand" : "SENSE",
+    "protein" : {
+      "sequence" : "ARDRRAARLPWCCPSDVAVWFGPS",
+      "md5" : "bac2c19062667d20750d97a3b2db9c85",
+      "matches" : [ ],
+      "xref" : [ {
+        "name" : "orf1 source=Sequence6 coords=3..74 length=24 frame=3 desc=",
+        "id" : "orf1"
+      } ]
+    },
+    "nucleotideSequence" : 1
+  } ]
+} ]
+}

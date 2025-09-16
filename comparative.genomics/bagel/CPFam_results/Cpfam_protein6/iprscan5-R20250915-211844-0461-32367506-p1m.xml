@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><nucleotide-sequence-matches xmlns="https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas" interproscan-version="5.75-106.0">
+  <nucleotide-sequence>
+    <sequence md5="7675681a8d02dfcf0633a84f4f2c8632">ttgctcgagaccgtcgtgctgctcgtctgccatggtgttgtccttccgacgtcgctgtctggttcggcccaagttagtgacgtgagaggacggccgtaa</sequence>
+    <xref id="Sequence6" name="Sequence6"/>
+    <orf end="96" start="1" strand="SENSE">
+      <protein>
+        <sequence md5="2e5fcc4815f2562ce7fbbf8a15b438ae">LLETVVLLVCHGVVLPTSLSGSAQVSDVRGRP</sequence>
+        <xref id="orf3" name="orf3 source=Sequence6 coords=1..96 length=32 frame=1 desc="/>
+        <matches>
+          <phobius-match>
+            <signature ac="NON_CYTOPLASMIC_DOMAIN" desc="Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region." name="Non cytoplasmic domain" type="REGION">
+              <signature-library-release library="PHOBIUS" version="1.01"/>
+            </signature>
+            <model-ac>NON_CYTOPLASMIC_DOMAIN</model-ac>
+            <locations>
+              <phobius-location start="24" end="32" representative="false">
+                <location-fragments>
+                  <phobius-location-fragment start="24" end="32" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </phobius-location>
+            </locations>
+          </phobius-match>
+          <phobius-match>
+            <signature ac="SIGNAL_PEPTIDE_N_REGION" desc="N-terminal region of a signal peptide." name="Signal peptide N-region" type="REGION">
+              <signature-library-release library="PHOBIUS" version="1.01"/>
+            </signature>
+            <model-ac>SIGNAL_PEPTIDE_N_REGION</model-ac>
+            <locations>
+              <phobius-location start="1" end="3" representative="false">
+                <location-fragments>
+                  <phobius-location-fragment start="1" end="3" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </phobius-location>
+            </locations>
+          </phobius-match>
+          <phobius-match>
+            <signature ac="SIGNAL_PEPTIDE_H_REGION" desc="Hydrophobic region of a signal peptide." name="Signal peptide H-region" type="REGION">
+              <signature-library-release library="PHOBIUS" version="1.01"/>
+            </signature>
+            <model-ac>SIGNAL_PEPTIDE_H_REGION</model-ac>
+            <locations>
+              <phobius-location start="4" end="15" representative="false">
+                <location-fragments>
+                  <phobius-location-fragment start="4" end="15" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </phobius-location>
+            </locations>
+          </phobius-match>
+          <phobius-match>
+            <signature ac="SIGNAL_PEPTIDE_C_REGION" desc="C-terminal region of a signal peptide." name="Signal peptide C-region" type="REGION">
+              <signature-library-release library="PHOBIUS" version="1.01"/>
+            </signature>
+            <model-ac>SIGNAL_PEPTIDE_C_REGION</model-ac>
+            <locations>
+              <phobius-location start="16" end="23" representative="false">
+                <location-fragments>
+                  <phobius-location-fragment start="16" end="23" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </phobius-location>
+            </locations>
+          </phobius-match>
+          <phobius-match>
+            <signature ac="SIGNAL_PEPTIDE" desc="Signal peptide region" name="Signal Peptide" type="REGION">
+              <signature-library-release library="PHOBIUS" version="1.01"/>
+            </signature>
+            <model-ac>SIGNAL_PEPTIDE</model-ac>
+            <locations>
+              <phobius-location start="1" end="23" representative="false">
+                <location-fragments>
+                  <phobius-location-fragment start="1" end="23" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </phobius-location>
+            </locations>
+          </phobius-match>
+          <signalp-match>
+            <signature ac="SignalP-noTM" name="SignalP-noTM" type="REGION">
+              <signature-library-release library="SIGNALP_EUK" version="4.1"/>
+            </signature>
+            <model-ac>SignalP-noTM</model-ac>
+            <locations>
+              <signalp-location score="0.464" start="1" end="16" representative="false">
+                <location-fragments>
+                  <signalp-location-fragment start="1" end="16" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </signalp-location>
+            </locations>
+          </signalp-match>
+        </matches>
+      </protein>
+    </orf>
+    <orf end="99" start="1" strand="ANTISENSE">
+      <protein>
+        <sequence md5="df6e68b5c485fd3c8618016c7382b278">LRPSSHVTNLGRTRQRRRKDNTMADEQHDGLEQ</sequence>
+        <xref id="orf6" name="orf6 source=Sequence6 coords=99..1 length=33 frame=4 desc="/>
+        <matches>
+          <mobidblite-match>
+            <signature ac="mobidb-lite" desc="consensus disorder prediction" name="disorder_prediction" type="REGION">
+              <signature-library-release library="MOBIDB_LITE" version="4.0"/>
+            </signature>
+            <model-ac>mobidb-lite</model-ac>
+            <locations>
+              <mobidblite-location sequence-feature="" start="1" end="33" representative="false">
+                <location-fragments>
+                  <mobidblite-location-fragment start="1" end="33" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </mobidblite-location>
+              <mobidblite-location sequence-feature="Polyampholyte" start="20" end="33" representative="false">
+                <location-fragments>
+                  <mobidblite-location-fragment start="20" end="33" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </mobidblite-location>
+              <mobidblite-location sequence-feature="Polar" start="1" end="12" representative="false">
+                <location-fragments>
+                  <mobidblite-location-fragment start="1" end="12" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </mobidblite-location>
+            </locations>
+          </mobidblite-match>
+        </matches>
+      </protein>
+    </orf>
+    <orf end="98" start="3" strand="ANTISENSE">
+      <protein>
+        <sequence md5="f1d4379a57097f16d403cc021995c919">YGRPLTSLTWAEPDSDVGRTTPWQTSSTTVSS</sequence>
+        <xref id="orf4" name="orf4 source=Sequence6 coords=98..3 length=32 frame=5 desc="/>
+        <matches>
+          <mobidblite-match>
+            <signature ac="mobidb-lite" desc="consensus disorder prediction" name="disorder_prediction" type="REGION">
+              <signature-library-release library="MOBIDB_LITE" version="4.0"/>
+            </signature>
+            <model-ac>mobidb-lite</model-ac>
+            <locations>
+              <mobidblite-location sequence-feature="Polar" start="21" end="32" representative="false">
+                <location-fragments>
+                  <mobidblite-location-fragment start="21" end="32" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </mobidblite-location>
+              <mobidblite-location sequence-feature="" start="1" end="32" representative="false">
+                <location-fragments>
+                  <mobidblite-location-fragment start="1" end="32" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </mobidblite-location>
+            </locations>
+          </mobidblite-match>
+        </matches>
+      </protein>
+    </orf>
+    <orf end="82" start="2" strand="SENSE">
+      <protein>
+        <sequence md5="2761b3c4d101df4a206e9de38fd56e00">CSRPSCCSSAMVLSFRRRCLVRPKLVT</sequence>
+        <xref id="orf2" name="orf2 source=Sequence6 coords=2..82 length=27 frame=2 desc="/>
+        <matches/>
+      </protein>
+    </orf>
+    <orf end="73" start="2" strand="ANTISENSE">
+      <protein>
+        <sequence md5="7fe40b08c34109c2e1c8a8df3fb8e52d">LGPNQTATSEGQHHGRRAARRSRA</sequence>
+        <xref id="orf5" name="orf5 source=Sequence6 coords=73..2 length=24 frame=6 desc="/>
+        <matches>
+          <mobidblite-match>
+            <signature ac="mobidb-lite" desc="consensus disorder prediction" name="disorder_prediction" type="REGION">
+              <signature-library-release library="MOBIDB_LITE" version="4.0"/>
+            </signature>
+            <model-ac>mobidb-lite</model-ac>
+            <locations>
+              <mobidblite-location sequence-feature="Positive Polyelectrolyte" start="14" end="24" representative="false">
+                <location-fragments>
+                  <mobidblite-location-fragment start="14" end="24" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </mobidblite-location>
+              <mobidblite-location sequence-feature="" start="1" end="24" representative="false">
+                <location-fragments>
+                  <mobidblite-location-fragment start="1" end="24" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </mobidblite-location>
+              <mobidblite-location sequence-feature="Polar" start="1" end="10" representative="false">
+                <location-fragments>
+                  <mobidblite-location-fragment start="1" end="10" dc-status="CONTINUOUS"/>
+                </location-fragments>
+              </mobidblite-location>
+            </locations>
+          </mobidblite-match>
+        </matches>
+      </protein>
+    </orf>
+    <orf end="74" start="3" strand="SENSE">
+      <protein>
+        <sequence md5="bac2c19062667d20750d97a3b2db9c85">ARDRRAARLPWCCPSDVAVWFGPS</sequence>
+        <xref id="orf1" name="orf1 source=Sequence6 coords=3..74 length=24 frame=3 desc="/>
+        <matches/>
+      </protein>
+    </orf>
+  </nucleotide-sequence>
+</nucleotide-sequence-matches>

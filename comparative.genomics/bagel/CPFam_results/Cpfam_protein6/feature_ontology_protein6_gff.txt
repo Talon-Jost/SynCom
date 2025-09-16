@@ -1,0 +1,70 @@
+##gff-version 3
+##feature-ontology http://song.cvs.sourceforge.net/viewvc/song/ontology/sofa.obo?revision=1.269
+##interproscan-version 5.75-106.0
+##sequence-region Sequence6 1 99
+Sequence6	provided_by_user	nucleic_acid	1	99	.	+	.	ID=Sequence6;Name=Sequence6;md5=7675681a8d02dfcf0633a84f4f2c8632
+Sequence6_orf3	getorf	ORF	1	96	.	+	.	Target=pep_Sequence6_1_96 1 32;ID=orf_Sequence6_1_96;Name=Sequence6_orf3;md5=7675681a8d02dfcf0633a84f4f2c8632
+Sequence6_orf3	getorf	polypeptide	1	32	.	+	.	ID=pep_Sequence6_1_96;md5=2e5fcc4815f2562ce7fbbf8a15b438ae
+Sequence6_orf3	Phobius	protein_match	24	32	.	+	.	date=15-09-2025;Target=null 24 32;ID=match$1_24_32;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+Sequence6_orf3	SignalP_EUK	protein_match	1	16	.	+	.	date=15-09-2025;Target=null 1 16;ID=match$2_1_16;Name=SignalP-noTM;status=T
+Sequence6_orf3	Phobius	protein_match	1	3	.	+	.	date=15-09-2025;Target=null 1 3;ID=match$3_1_3;signature_desc=N-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_N_REGION;status=T
+Sequence6_orf3	Phobius	protein_match	4	15	.	+	.	date=15-09-2025;Target=null 4 15;ID=match$4_4_15;signature_desc=Hydrophobic region of a signal peptide.;Name=SIGNAL_PEPTIDE_H_REGION;status=T
+Sequence6_orf3	Phobius	protein_match	16	23	.	+	.	date=15-09-2025;Target=null 16 23;ID=match$5_16_23;signature_desc=C-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_C_REGION;status=T
+Sequence6_orf3	Phobius	protein_match	1	23	.	+	.	date=15-09-2025;Target=null 1 23;ID=match$6_1_23;signature_desc=Signal peptide region;Name=SIGNAL_PEPTIDE;status=T
+##sequence-region Sequence6 1 99
+Sequence6	provided_by_user	nucleic_acid	1	99	.	+	.	ID=Sequence6;Name=Sequence6;md5=7675681a8d02dfcf0633a84f4f2c8632
+Sequence6_orf5	getorf	ORF	2	73	.	-	.	Target=pep_Sequence6_2_73_r 1 24;ID=orf_Sequence6_2_73_r;Name=Sequence6_orf5;md5=7675681a8d02dfcf0633a84f4f2c8632
+Sequence6_orf5	getorf	polypeptide	1	24	.	+	.	ID=pep_Sequence6_2_73_r;md5=7fe40b08c34109c2e1c8a8df3fb8e52d
+Sequence6_orf5	MobiDBLite	protein_match	14	24	.	+	.	date=15-09-2025;Target=null 14 24;ID=match$7_14_24;signature_desc=consensus disorder prediction;Name=mobidb-lite;status=T
+Sequence6_orf5	MobiDBLite	protein_match	1	24	.	+	.	date=15-09-2025;Target=null 1 24;ID=match$7_1_24;signature_desc=consensus disorder prediction;Name=mobidb-lite;status=T
+Sequence6_orf5	MobiDBLite	protein_match	1	10	.	+	.	date=15-09-2025;Target=null 1 10;ID=match$7_1_10;signature_desc=consensus disorder prediction;Name=mobidb-lite;status=T
+##sequence-region Sequence6 1 99
+Sequence6	provided_by_user	nucleic_acid	1	99	.	+	.	ID=Sequence6;Name=Sequence6;md5=7675681a8d02dfcf0633a84f4f2c8632
+Sequence6_orf4	getorf	ORF	3	98	.	-	.	Target=pep_Sequence6_3_98_r 1 32;ID=orf_Sequence6_3_98_r;Name=Sequence6_orf4;md5=7675681a8d02dfcf0633a84f4f2c8632
+Sequence6_orf4	getorf	polypeptide	1	32	.	+	.	ID=pep_Sequence6_3_98_r;md5=f1d4379a57097f16d403cc021995c919
+Sequence6_orf4	MobiDBLite	protein_match	21	32	.	+	.	date=15-09-2025;Target=null 21 32;ID=match$8_21_32;signature_desc=consensus disorder prediction;Name=mobidb-lite;status=T
+Sequence6_orf4	MobiDBLite	protein_match	1	32	.	+	.	date=15-09-2025;Target=null 1 32;ID=match$8_1_32;signature_desc=consensus disorder prediction;Name=mobidb-lite;status=T
+##sequence-region Sequence6 1 99
+Sequence6	provided_by_user	nucleic_acid	1	99	.	+	.	ID=Sequence6;Name=Sequence6;md5=7675681a8d02dfcf0633a84f4f2c8632
+Sequence6_orf6	getorf	ORF	1	99	.	-	.	Target=pep_Sequence6_1_99_r 1 33;ID=orf_Sequence6_1_99_r;Name=Sequence6_orf6;md5=7675681a8d02dfcf0633a84f4f2c8632
+Sequence6_orf6	getorf	polypeptide	1	33	.	+	.	ID=pep_Sequence6_1_99_r;md5=df6e68b5c485fd3c8618016c7382b278
+Sequence6_orf6	MobiDBLite	protein_match	1	33	.	+	.	date=15-09-2025;Target=null 1 33;ID=match$9_1_33;signature_desc=consensus disorder prediction;Name=mobidb-lite;status=T
+Sequence6_orf6	MobiDBLite	protein_match	20	33	.	+	.	date=15-09-2025;Target=null 20 33;ID=match$9_20_33;signature_desc=consensus disorder prediction;Name=mobidb-lite;status=T
+Sequence6_orf6	MobiDBLite	protein_match	1	12	.	+	.	date=15-09-2025;Target=null 1 12;ID=match$9_1_12;signature_desc=consensus disorder prediction;Name=mobidb-lite;status=T
+##FASTA
+>pep_Sequence6_1_96
+LLETVVLLVCHGVVLPTSLSGSAQVSDVRGRP
+>pep_Sequence6_1_99_r
+LRPSSHVTNLGRTRQRRRKDNTMADEQHDGLEQ
+>pep_Sequence6_2_73_r
+LGPNQTATSEGQHHGRRAARRSRA
+>pep_Sequence6_3_98_r
+YGRPLTSLTWAEPDSDVGRTTPWQTSSTTVSS
+>match$1_24_32
+QVSDVRGRP
+>match$2_1_16
+LLETVVLLVCHGVVLP
+>match$3_1_3
+LLE
+>match$4_4_15
+TVVLLVCHGVVL
+>match$5_16_23
+PTSLSGSA
+>match$6_1_23
+LLETVVLLVCHGVVLPTSLSGSA
+>match$7_1_10
+LGPNQTATSE
+>match$7_1_24
+LGPNQTATSEGQHHGRRAARRSRA
+>match$7_14_24
+HGRRAARRSRA
+>match$8_1_32
+YGRPLTSLTWAEPDSDVGRTTPWQTSSTTVSS
+>match$8_21_32
+TPWQTSSTTVSS
+>match$9_1_12
+LRPSSHVTNLGR
+>match$9_1_33
+LRPSSHVTNLGRTRQRRRKDNTMADEQHDGLEQ
+>match$9_20_33
+DNTMADEQHDGLEQ

@@ -16,14 +16,64 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(readr)
 library(tidyr)
+library(stringdist)
 
-setwd("~/Documents/Penn_State/Genomes/SynCom")
+
+#setwd("~/Documents/Penn_State/Genomes/SynCom")
+
+#DESCRIPTION FROM BAGELS WEBSITE
+#BAGEL enables researchers to mine bacterial (meta-)genomic DNA for bacteriocins and RiPPs. Additionally we provide databases and a BLAST against the core peptide databases. Check out the help page for additional (background) information.
 
 # ------------------------------
 # Step 1: Read bagel assignment files
 # ------------------------------
 
-mada85.genetable <- read.delim("85Bagel/gnl_DSMZ_unitig_0_quiver_consensus.0.AOI_01.GeneTable")
-mada106.genetable <- read.delim("106bagel/gnl_DSMZ_unitig_0_quiver_consensus.0.AOI_01.GeneTable")
+mada85.genetable <- read.delim("bagel/85Bagel/gnl_DSMZ_unitig_0_quiver_consensus.0.AOI_01.GeneTable")
+
+mada106.genetable <- read.delim("bagel/106bagel/gnl_DSMZ_unitig_0_quiver_consensus.0.AOI_01.GeneTable")
+```
+
+Matching
+```{r}
+#one thing of note here is the NULL values for some of the functions.
+#i'm not entirely sure there's a better way to combine these, but I will try in the future
+bagel.comp.protein <- Reduce(function(x, y) merge(x, y, by = "protein", all = TRUE, suffixes = c("", "")),
+                 list(mada85.genetable, mada106.genetable))
+#bagel.comp.protein has all but one as different protein sequences. not necessarily different function
+
+#based on function there is more similarity in the output, but what does that really mean in the context of looking at these in a comparative genomics sense?
+bagel.comp.function <- Reduce(
+  function(x, y) merge(x, y, by = "function.", all = TRUE, suffixes = c(".85", ".106")),
+  list(mada85.genetable, mada106.genetable)
+)
+
+
+
+
+bagel.comp.mutant <- bagel.comp %>%
+  mutate(
+    similarity = pmax(
+      0,
+      100 * (1 - stringdist(protein.85, protein.106, method = "lv") /
+                   pmax(nchar(protein.85), nchar(protein.106)))
+    )
+  )
+
+bagel.comp.mutant.AA <- bagel.comp.mutant %>%
+  mutate(
+    dna.similarity = pmax(
+      0,
+      100 * (1 - stringdist(dna.85, dna.106, method = "lv") /
+                   pmax(nchar(dna.85), nchar(dna.106)))
+    )
+  )
+
+#dropping the rows where protein similarity is 100% as they shouldn't have any functional difference in my mind
+drop_100.bagel.comp.AA <- bagel.comp.mutant.AA %>% 
+  dplyr::filter(similarity < 100)
+
+
+#going to switch to a different program to visualize the hypothetical proteins.
+write.csv(drop_100.bagel.comp.AA, file = "bagel_combined_results.csv")
 ```
 

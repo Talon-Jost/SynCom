@@ -1,0 +1,14 @@
+Sequence6_orf3	2e5fcc4815f2562ce7fbbf8a15b438ae	32	Phobius	NON_CYTOPLASMIC_DOMAIN	Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.	24	32	-	T	15-09-2025	-	-	-	-
+Sequence6_orf3	2e5fcc4815f2562ce7fbbf8a15b438ae	32	SignalP_EUK	SignalP-noTM	SignalP-noTM	1	16	-	T	15-09-2025	-	-	-	-
+Sequence6_orf3	2e5fcc4815f2562ce7fbbf8a15b438ae	32	Phobius	SIGNAL_PEPTIDE_N_REGION	N-terminal region of a signal peptide.	1	3	-	T	15-09-2025	-	-	-	-
+Sequence6_orf3	2e5fcc4815f2562ce7fbbf8a15b438ae	32	Phobius	SIGNAL_PEPTIDE_H_REGION	Hydrophobic region of a signal peptide.	4	15	-	T	15-09-2025	-	-	-	-
+Sequence6_orf3	2e5fcc4815f2562ce7fbbf8a15b438ae	32	Phobius	SIGNAL_PEPTIDE_C_REGION	C-terminal region of a signal peptide.	16	23	-	T	15-09-2025	-	-	-	-
+Sequence6_orf3	2e5fcc4815f2562ce7fbbf8a15b438ae	32	Phobius	SIGNAL_PEPTIDE	Signal peptide region	1	23	-	T	15-09-2025	-	-	-	-
+Sequence6_orf5	7fe40b08c34109c2e1c8a8df3fb8e52d	24	MobiDBLite	mobidb-lite	consensus disorder prediction	14	24	-	T	15-09-2025	-	-	-	-
+Sequence6_orf5	7fe40b08c34109c2e1c8a8df3fb8e52d	24	MobiDBLite	mobidb-lite	consensus disorder prediction	1	24	-	T	15-09-2025	-	-	-	-
+Sequence6_orf5	7fe40b08c34109c2e1c8a8df3fb8e52d	24	MobiDBLite	mobidb-lite	consensus disorder prediction	1	10	-	T	15-09-2025	-	-	-	-
+Sequence6_orf4	f1d4379a57097f16d403cc021995c919	32	MobiDBLite	mobidb-lite	consensus disorder prediction	21	32	-	T	15-09-2025	-	-	-	-
+Sequence6_orf4	f1d4379a57097f16d403cc021995c919	32	MobiDBLite	mobidb-lite	consensus disorder prediction	1	32	-	T	15-09-2025	-	-	-	-
+Sequence6_orf6	df6e68b5c485fd3c8618016c7382b278	33	MobiDBLite	mobidb-lite	consensus disorder prediction	1	33	-	T	15-09-2025	-	-	-	-
+Sequence6_orf6	df6e68b5c485fd3c8618016c7382b278	33	MobiDBLite	mobidb-lite	consensus disorder prediction	20	33	-	T	15-09-2025	-	-	-	-
+Sequence6_orf6	df6e68b5c485fd3c8618016c7382b278	33	MobiDBLite	mobidb-lite	consensus disorder prediction	1	12	-	T	15-09-2025	-	-	-	-
