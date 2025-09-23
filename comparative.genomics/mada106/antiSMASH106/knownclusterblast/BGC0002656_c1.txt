@@ -1,0 +1,383 @@
+ClusterBlast scores for BGC0002656
+
+Table of genes, locations, strands and annotations of query cluster:
+BS73_RS00215	1710	4583	+	aminomethyl-transferring glycine dehydrogenase	
+BS73_RS00220	4685	4877	-	DUF5999 family protein	
+BS73_RS00225	5110	5716	-	hypothetical protein	
+BS73_RS00230	6328	7885	+	glutamate--cysteine ligase	
+BS73_RS00235	7892	8681	+	CPBP family intramembrane metalloprotease	
+BS73_RS00240	8743	9289	+	hypothetical protein	
+BS73_RS00245	9418	10231	-	PhzF family phenazine biosynthesis protein	
+BS73_RS35685	10452	11127	+	PadR family transcriptional regulator	
+BS73_RS00255	11131	11689	-	hypothetical protein	
+BS73_RS40225	12198	12735	+	Clp protease N-terminal domain-containing protein	
+BS73_RS00265	13122	13449	-	hypothetical protein	
+BS73_RS00270	13562	14825	-	PP2C family protein-serine/threonine phosphatase	
+BS73_RS38570	14889	15342	-	hypothetical protein	
+BS73_RS00280	15709	17326	+	ABC transporter substrate-binding protein	
+BS73_RS00285	17322	18276	+	ABC transporter permease	
+BS73_RS00290	18272	19172	+	ABC transporter permease	
+BS73_RS00295	19171	20320	+	ABC transporter ATP-binding protein	
+BS73_RS00300	20316	21336	+	ATP-binding cassette domain-containing protein	
+BS73_RS00305	21500	21779	+	GlsB/YeaQ/YmgE family stress response membrane protein	
+BS73_RS00310	21917	22415	+	hypothetical protein	
+BS73_RS00315	22907	23516	+	CAP domain-containing protein	
+BS73_RS00320	23772	24975	+	amino acid ABC transporter substrate-binding protein	
+BS73_RS00325	24988	25885	+	branched-chain amino acid ABC transporter permease	
+BS73_RS00330	25881	26952	+	branched-chain amino acid ABC transporter permease	
+BS73_RS00335	26957	27746	+	ABC transporter ATP-binding protein	
+BS73_RS00340	27742	28492	+	ABC transporter ATP-binding protein	
+BS73_RS00345	28493	29765	-	LacI family DNA-binding transcriptional regulator	
+BS73_RS00350	29794	31087	-	Xaa-Pro peptidase family protein	
+BS73_RS00355	31083	32172	-	NAD(P)-dependent oxidoreductase	
+
+
+Significant hits: 
+1. BGC0002656.2	oryzanaphthopyran A/oryzanaphthopyran B/oryzanaphthopyran C/oryzanthrone A/oryzanthrone B/chlororyzanthrone A/chlororyzanthrone B
+2. BGC0001543.3	chejuenolide A/chejuenolide B
+3. BGC0000093.5	meilingmycin/Meilingmycin A/Meilingmycin B/Meilingmycin E/Meilingmycin D/Meilingmycin C
+4. BGC0001846.4	valinomycin/montanastatin
+5. BGC0002977.1	amicoumacins D/amicoumacins E/lipoamides D/lipoamides E/lipoamides F
+
+
+Details:
+
+>>
+1. BGC0002656.2
+Source: oryzanaphthopyran A/oryzanaphthopyran B/oryzanaphthopyran C/oryzanthrone A/oryzanthrone B/chlororyzanthrone A/chlororyzanthrone B
+Type: PKS
+Number of proteins with BLAST hits to this cluster: 29
+Cumulative BLAST score: 15547.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+BS73_RS00215	BS73_RS00215	1711	4583	+	aminomethyl-transferring_glycine_dehydrogenase
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+BS73_RS00215	BS73_RS00215	100	888	100.0	0.0
+BS73_RS00220	BS73_RS00220	100	135	100.0	1.15e-43
+BS73_RS00225	BS73_RS00225	100	403	100.0	1.52e-145
+BS73_RS00230	BS73_RS00230	100	1045	100.0	0.0
+BS73_RS00235	BS73_RS00235	100	508	100.0	7.99e-185
+BS73_RS00240	BS73_RS00240	100	334	100.0	9.26e-119
+BS73_RS00245	BS73_RS00245	100	530	100.0	2.13e-193
+BS73_RS35685	BS73_RS35685	100	373	100.0	6.79e-133
+BS73_RS00255	BS73_RS00255	100	365	100.0	3.94e-131
+BS73_RS40225	BS73_RS40225	100	309	100.0	5.99e-109
+BS73_RS00265	BS73_RS00265	100	190	100.0	3.04e-64
+BS73_RS00270	BS73_RS00270	100	830	100.0	3.2e-307
+BS73_RS38570	BS73_RS38570	100	262	100.0	2.92e-91
+BS73_RS00280	BS73_RS00280	100	1025	100.0	0.0
+BS73_RS00285	BS73_RS00285	100	578	100.0	7.13e-211
+BS73_RS00290	BS73_RS00290	100	553	100.0	1.43e-201
+BS73_RS00295	BS73_RS00295	100	674	100.0	8.7e-247
+BS73_RS00300	BS73_RS00300	100	659	100.0	3.87e-242
+BS73_RS00305	BS73_RS00305	100	189	100.0	1.91e-64
+BS73_RS00310	BS73_RS00310	100	148	74.54545454545455	6.39e-46
+BS73_RS00315	BS73_RS00315	100	390	100.0	3.57e-140
+BS73_RS00320	BS73_RS00320	100	786	100.0	1.59e-290
+BS73_RS00325	BS73_RS00325	100	549	100.0	4.43e-200
+BS73_RS00330	BS73_RS00330	100	655	100.0	4.84e-240
+BS73_RS00335	BS73_RS00335	100	512	100.0	1.68e-186
+BS73_RS00340	BS73_RS00340	100	465	100.0	1.72e-168
+BS73_RS00345	BS73_RS00345	100	728	100.0	9.7e-267
+BS73_RS00350	BS73_RS00350	100	857	100.0	2.13e-317
+BS73_RS00355	BS73_RS00355	100	607	89.22651933701657	5.99e-221
+
+
+
+>>
+2. BGC0001543.3
+Source: chejuenolide A/chejuenolide B
+Type: PKS
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 513.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+CCG06104.1	CCG06104.1	307	1071	-	putative_amino_acid_ABC_transporter,_periplasmic_protein
+CCG06105.1	CCG06105.1	1327	2082	-	putative_amino_acid_ABC_transporter,_periplasmic_protein
+CCG06106.1	CCG06106.1	2431	6300	-	putative_transmembrane_protein
+CCG06107.1	CCG06107.1	7212	8507	-	putative_major_facilitator_superfamily_permease
+CCG06108.1	CCG06108.1	8576	11776	-	type_I_polyketide_synthase
+CCG06109.1	CCG06109.1	11766	18803	-	type_I_polyketide_synthase
+CCG06110.1	CCG06110.1	18915	19469	-	putative_isochorismatase
+CCG06111.1	CCG06111.1	19482	20900	-	amine_oxidase
+CCG06112.1	CCG06112.1	20919	21800	-	type_I_polyketide_synthase
+CCG06113.1	CCG06113.1	21863	27598	-	type_I_polyketide_synthase
+CCG06114.1	CCG06114.1	27605	28462	-	type_I_polyketide_synthase
+CCG06115.1	CCG06115.1	28431	33473	-	hybrid_NRPS/PKS
+CCG06116.1	CCG06116.1	34641	35405	+	putative_transcriptional_regulator
+CCG06117.1	CCG06117.1	35576	36205	-	putative_haloacid_dehalogenase
+CCG06118.1	CCG06118.1	36787	37230	-	hypothetical_protein
+CCG06119.1	CCG06119.1	38020	38496	-	hypothetical_protein
+CCG06120.1	CCG06120.1	38583	38963	-	hypothetical_protein
+CCG06121.1	CCG06121.1	39788	41404	+	putative_oligopeptide_ABC_transporter,_periplasmic_protein
+CCG06122.1	CCG06122.1	41488	42408	+	putative_dipeptide/oligopeptide/nickel_ABC_transporter,_permease
+CCG06123.1	CCG06123.1	42517	43350	+	putative_dipeptide/oligopeptide/nickel_ABC_transporter,_permease
+CCG06124.1	CCG06124.1	43445	44410	+	putative_dipeptide/oligopeptide/nickel_ABC_transporter,_ATPase
+CCG06125.1	CCG06125.1	44435	45430	+	putative_oligopeptide_ABC_transporter,_ATPase
+CCG06126.1	CCG06126.1	45557	47344	+	putative_aminopeptidase
+CCG06127.1	CCG06127.1	47682	48233	-	putative_NADPH-quinone_reductase
+CCG06128.1	CCG06128.1	48357	49250	+	putative_transcriptional_regulater
+CCG06129.1	CCG06129.1	49530	50609	+	hypothetical_protein
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+BS73_RS00295	CCG06124.1	49	254	78.27225130890052	5.65e-82
+BS73_RS00300	CCG06125.1	46	259	89.67551622418878	2.08e-84
+
+
+
+>>
+3. BGC0000093.5
+Source: meilingmycin/Meilingmycin A/Meilingmycin B/Meilingmycin E/Meilingmycin D/Meilingmycin C
+Type: PKS:Type I
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 460.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+ADC45511.1	ADC45511.1	1	1337	-	Na+/H+_antiporter
+ADC45512.1	ADC45512.1	1603	2280	-	intracellular_protease/amidase
+ADC45513.1	ADC45513.1	2432	3331	+	LysR-family_transcriptional_regulator
+ADC45514.1	ADC45514.1	3487	4683	+	cytochrome_P450
+ADC45515.1	ADC45515.1	4699	10563	-	modular_polyketide_synthase
+ADC45516.1	ADC45516.1	10556	17425	-	modular_polyketide_synthase
+ADC45517.1	ADC45517.1	17671	19389	+	AMP-dependent_synthetase_and_ligase
+ADC45518.1	ADC45518.1	19386	20252	+	hypothetical_protein
+ADC45519.1	ADC45519.1	20249	20779	+	thioesterase
+ADC45520.1	ADC45520.1	20776	21066	+	acyl_carrier_protein
+ADC45521.1	ADC45521.1	21063	21932	+	cyclopropane-fatty-acyl-phospholipid_synthase
+ADC45522.1	ADC45522.1	21929	22801	+	acyl-[acyl-carrier_protein]_desaturase
+ADC45523.1	ADC45523.1	22816	24429	-	secreted_amidase
+ADC45524.1	ADC45524.1	24504	25007	-	hypothetical_protein
+ADC45525.1	ADC45525.1	25161	27209	+	alpha-glucuronidase
+ADC45526.1	ADC45526.1	27238	31071	-	hypothetical_protein
+ADC45527.1	ADC45527.1	31153	32580	-	gluconate_transporter
+ADC45528.1	ADC45528.1	32668	33654	-	hypothetical_protein
+ADC45529.1	ADC45529.1	33753	35426	+	two-component_system_histidine_kinase
+ADC45530.1	ADC45530.1	35423	36115	+	two-component_system_response_regulator
+ADC45531.1	ADC45531.1	36139	37263	-	hypothetical_protein
+ADC45532.1	ADC45532.1	37274	37849	-	heavy_metal_translocating_P-type_ATPase
+ADC45533.1	ADC45533.1	38044	39195	+	hypothetical_protein
+ADC45534.1	ADC45534.1	39452	57415	+	modular_polyketide_synthase
+AAM97313.1	AAM97313.1	57429	58421	+	post-polyketide_modification_protein
+AAM97314.1	AAM97314.1	58480	59859	-	cytochrome_P450_hydroxylase
+ADC45535.1	ADC45535.1	59936	75769	-	modular_polyketide_synthase
+ADC45536.1	ADC45536.1	76029	76829	+	reductase
+AAP13848.2	AAP13848.2	76867	77679	-	C5-ketoreductase
+ADC45537.1	ADC45537.1	77846	78601	-	hypothetical_protein
+ADC45538.1	ADC45538.1	78606	96074	-	modular_polyketide_synthase
+ADC45539.1	ADC45539.1	96121	99015	-	LuxR-family_transcriptional_regulator
+ADC45540.1	ADC45540.1	99318	100469	+	hypothetical_protein
+ADC45541.1	ADC45541.1	100671	102113	+	beta-lactamase-like_protein
+ADC45542.1	ADC45542.1	102173	103669	-	Na+/solute_symporter
+ADC45543.1	ADC45543.1	103666	103896	-	hypothetical_protein
+ADC45544.1	ADC45544.1	104276	104656	+	hypothetical_protein
+ADC45545.1	ADC45545.1	104656	105486	+	hydroxypyruvate_isomerase
+ADC45546.1	ADC45546.1	105556	106452	+	2-hydroxy-3-oxopropionate_reductase
+ADC45547.1	ADC45547.1	106518	108287	+	glyoxylate_carboligase
+ADC45548.1	ADC45548.1	108318	109508	-	mandelate_racemase
+ADC45549.1	ADC45549.1	109505	110284	-	5-carboxymethyl-2-hydroxymuconate_delta-isomerase
+ADC45550.1	ADC45550.1	110464	111825	-	anion/cation_symporter
+ADC45551.1	ADC45551.1	112100	112885	+	dimethylmenaquinone_methyltransferase
+ADC45552.1	ADC45552.1	112882	113391	+	hypothetical_protein
+ADC45553.1	ADC45553.1	113420	114931	+	aldehyde_dehydrogenase
+ADC45554.1	ADC45554.1	114915	115772	-	aldose_1-epimerase
+ADC45555.1	ADC45555.1	115938	117386	+	sugar_transporter
+ADC45556.1	ADC45556.1	117383	118279	+	2-hydroxycyclohexanecarboxyl-CoA_dehyrogenase
+ADC45557.1	ADC45557.1	118276	119445	+	isomerase
+ADC45558.1	ADC45558.1	119490	120278	-	transcriptional_regulator
+ADC45559.1	ADC45559.1	120722	121447	-	acetyl-xylan_esterase
+ADC45560.1	ADC45560.1	121600	122463	-	citrate_lyase_beta_subunit
+ADC45561.1	ADC45561.1	122516	123400	-	hypothetical_protein
+ADC45562.1	ADC45562.1	123478	124077	-	sulfopyruvate_decarboxylase_beta_subunit
+ADC45563.1	ADC45563.1	124077	124613	-	sulfopyruvate_decarboxylase_alpha_subunit
+ADC45564.1	ADC45564.1	124725	125549	-	hydrolase
+ADC45565.1	ADC45565.1	125629	126582	-	LysR-family_transcriptional_regulator
+ADC45566.1	ADC45566.1	126703	127887	+	L-carnitine_dehydratase
+ADC45567.1	ADC45567.1	127932	129095	+	acyl-CoA_dehydrogenase
+ADC45568.1	ADC45568.1	129165	132380	-	rhamnosidase
+ADC45569.1	ADC45569.1	132620	132940	-	hypothetical_protein
+ADC45570.1	ADC45570.1	133101	133751	-	transcriptional_regulator
+ADC45571.1	ADC45571.1	133941	134603	+	hypothetical_protein
+ADC45572.1	ADC45572.1	134605	135198	-	TetR-family_transcriptional_regulator
+ADC45573.1	ADC45573.1	135388	136407	+	aldoketoreductase
+ADC45574.1	ADC45574.1	136478	137323	+	flavin-dependent_oxidoreductase
+ADC45575.1	ADC45575.1	137355	138866	-	hydrolase
+ADC45576.1	ADC45576.1	139224	140276	+	hypothetical_protein
+ADC45577.1	ADC45577.1	140258	141583	+	hypothetical_protein
+ADC45578.1	ADC45578.1	141628	142818	+	lysine/ornithine_decarboxylase
+ADC45579.1	ADC45579.1	142827	143357	+	hypothetical_protein
+ADC45580.1	ADC45580.1	143354	144553	+	transmembrane_transport_protein
+ADC45581.1	ADC45581.1	144519	145820	-	glycoside_hydrolase
+ADC45582.1	ADC45582.1	145963	148932	-	hypothetical_protein
+ADC45583.1	ADC45583.1	149148	150152	+	sugar-binding_transcriptional_regulator
+ADC45584.1	ADC45584.1	150307	152142	+	monooxygenase
+ADC45585.1	ADC45585.1	152139	153836	+	hypothetical_protein
+ADC45586.1	ADC45586.1	154052	167044	+	modular_polyketide_synthase
+ADC45587.1	ADC45587.1	167087	167947	+	C5-O-methyltransferase
+ADC45588.1	ADC45588.1	167960	171655	-	hydrolase
+ADC45589.1	ADC45589.1	171713	172498	-	short-chain_dehydrogenase/reductase_SDR
+ADC45590.1	ADC45590.1	172569	174362	-	beta-glucuronidase_precursor
+ADC45591.1	ADC45591.1	174404	175621	-	beta-glucosidase
+ADC45592.1	ADC45592.1	175618	176493	-	ABC_transporter
+ADC45593.1	ADC45593.1	176490	178325	-	ABC_transporter
+ADC45594.1	ADC45594.1	178322	179278	-	transporter
+ADC45595.1	ADC45595.1	179275	180837	-	extracellular_solute-binding_protein
+ADC45596.1	ADC45596.1	181085	181693	+	TetR-family_transcriptional_regulator
+ADC45597.1	ADC45597.1	181698	182726	-	LacI-family_transcriptional_regulator
+ADC45598.1	ADC45598.1	182934	183905	+	carbohydrate_kinase
+ADC45599.1	ADC45599.1	183922	184824	+	hypothetical_protein
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+BS73_RS00295	ADC45593.1	52	235	71.72774869109948	1.47e-71
+BS73_RS00300	ADC45592.1	50	225	69.6165191740413	7.46e-72
+
+
+
+>>
+4. BGC0001846.4
+Source: valinomycin/montanastatin
+Type: saccharide:hybrid/tailoring+NRPS:Type I
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 414.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+BS73_RS00295	STAN_6710	49	218	68.32460732984293	1.86e-68
+BS73_RS00300	STAN_6711	46	196	75.81120943952803	1.23e-60
+
+
+
+>>
+5. BGC0002977.1
+Source: amicoumacins D/amicoumacins E/lipoamides D/lipoamides E/lipoamides F
+Type: NRPS:Type I+PKS:Type I
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 1626.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+BG616_00100	BG616_00100	9891	10990	+	hypothetical_protein
+BG616_00900	BG616_00900	150053	150933	+	transcriptional_regulator
+BG616_00950	BG616_00950	161235	161319	+	homocysteine_methyltransferase
+BG616_01050	BG616_01050	181676	182366	+	hypothetical_protein
+BG616_01420	BG616_01420	261309	262513	+	MFS_transporter
+BG616_01430	BG616_01430	263541	264120	+	L,D-transpeptidase
+BG616_01455	BG616_01455	267607	267946	+	hypothetical_protein
+BG616_01760	BG616_01760	347604	349039	+	PTS_mannitol_transporter_subunit_IIBC
+BG616_01955	BG616_01955	388442	388639	-	hypothetical_protein
+BG616_02170	BG616_02170	423666	423851	+	hypothetical_protein
+BG616_02240	BG616_02240	428899	429460	-	GNAT_family_N-acetyltransferase
+BG616_02270	BG616_02270	435790	436079	+	hypothetical_protein
+BG616_02285	BG616_02285	438827	439217	+	glutamine_amidotransferase
+BG616_02420	BG616_02420	468202	468509	+	transcriptional_regulator
+BG616_02750	BG616_02750	530351	530681	-	catalase
+BG616_02895	BG616_02895	557735	558501	+	hypothetical_protein
+BG616_02930	BG616_02930	565606	565760	-	hypothetical_protein
+BG616_02955	BG616_02955	570653	570939	-	hypothetical_protein
+BG616_03200	BG616_03200	639544	647096	+	polyketide_synthase
+BG616_03275	BG616_03275	670497	670802	-	hypothetical_protein
+BG616_03280	BG616_03280	670791	671041	-	hypothetical_protein
+BG616_03465	BG616_03465	708158	709113	+	protein_lplB
+BG616_03515	BG616_03515	715835	716114	+	hypothetical_protein
+BG616_03680	BG616_03680	754522	754652	+	hypothetical_protein
+BG616_03785	BG616_03785	777246	778435	-	MFS_transporter
+BG616_03805	BG616_03805	779850	780676	+	ribonuclease
+BG616_04135	BG616_04135	842853	845437	+	hypothetical_protein
+BG616_04705	BG616_04705	991945	992366	+	CBS_domain-containing_protein
+BG616_04805	BG616_04805	1014806	1015680	-	LysR_family_transcriptional_regulator
+BG616_05430	BG616_05430	1139624	1139749	+	hypothetical_protein
+BG616_05810	BG616_05810	1211758	1212825	+	peptide_ABC_transporter_ATP-binding_protein
+BG616_05850	BG616_05850	1219589	1221600	+	oligoendopeptidase_F
+BG616_06080	BG616_06080	1255773	1256654	-	aspartate_phosphatase
+BG616_06675	BG616_06675	1360256	1360483	-	hypothetical_protein
+BG616_07055	BG616_07055	1429098	1430521	-	lipase
+BG616_07065	BG616_07065	1431704	1431913	+	NADPH-dependent_7-cyano-7-deazaguanine_reductase_QueF
+BG616_07185	BG616_07185	1454277	1456396	+	penicillin-binding_protein
+BG616_08320	BG616_08320	1675851	1677445	+	flagellar_M-ring_protein_FliF
+BG616_08755	BG616_08755	1764823	1765499	+	hypothetical_protein
+BG616_08770	BG616_08770	1766817	1766944	-	hypothetical_protein
+BG616_08885	BG616_08885	1782573	1783540	+	stage_V_sporulation_protein_K
+BG616_08895	BG616_08895	1783673	1784934	+	GTPase_HflX
+BG616_08950	BG616_08950	1793262	1793849	+	UV_damage_repair_protein_UvrX
+BG616_08965	BG616_08965	1796541	1796618	-	hypothetical_protein
+BG616_09035	BG616_09035	1813159	1813621	+	hypothetical_protein
+BG616_09045	BG616_09045	1814177	1814721	-	hypothetical_protein
+BG616_09105	BG616_09105	1822463	1822864	+	hypothetical_protein
+BG616_09135	BG616_09135	1827273	1827483	+	hypothetical_protein
+BG616_09365	BG616_09365	1867582	1867788	-	hypothetical_protein
+BG616_09370	BG616_09370	1867865	1867969	-	alanine_acetyltransferase
+BG616_09400	BG616_09400	1892649	1900327	-	non-ribosomal_peptide_synthetase
+BG616_09645	BG616_09645	1957861	1958090	-	hypothetical_protein
+BG616_09710	BG616_09710	1974417	1974878	-	hypothetical_protein
+BG616_09760	BG616_09760	1982141	1982409	+	hypothetical_protein
+BG616_09780	BG616_09780	1984708	1985282	-	transcriptional_regulator
+BG616_09830	BG616_09830	1991791	1992769	+	peptidase_S66
+BG616_09865	BG616_09865	1999588	1999779	-	hypothetical_protein
+BG616_09970	BG616_09970	2020506	2021725	-	glycosyl_transferase_family_1
+BG616_10155	BG616_10155	2048053	2048207	-	hypothetical_protein
+BG616_10240	BG616_10240	2060304	2060413	-	hypothetical_protein
+BG616_10410	BG616_10410	2089209	2090200	-	2-keto-3-deoxygluconate_transporter
+BG616_11265	BG616_11265	2235931	2236303	-	hypothetical_protein
+BG616_11275	BG616_11275	2237339	2238687	-	D-serine_ammonia-lyase
+BG616_11630	BG616_11630	2303985	2304499	-	stage_III_sporulation_protein_SpoAB
+BG616_11790	BG616_11790	2327857	2328020	-	hypothetical_protein
+BG616_12095	BG616_12095	2379299	2381430	-	hypothetical_protein
+BG616_12300	BG616_12300	2416101	2416726	+	hypothetical_protein
+BG616_12410	BG616_12410	2440826	2441655	-	N-acetylmuramoyl-L-alanine_amidase
+BG616_12415	BG616_12415	2442049	2442767	-	hypothetical_protein
+BG616_12430	BG616_12430	2444583	2445037	-	hypothetical_protein
+BG616_12445	BG616_12445	2446335	2446753	-	hypothetical_protein
+BG616_12450	BG616_12450	2446760	2446853	-	hypothetical_protein
+BG616_12480	BG616_12480	2450539	2450840	+	ImmA/IrrE_family_metallo-endopeptidase
+BG616_12505	BG616_12505	2455088	2455656	-	hypothetical_protein
+BG616_12530	BG616_12530	2458304	2458460	-	NTP_pyrophosphohydrolase
+BG616_12710	BG616_12710	2497782	2498024	-	RNA_polymerase_subunit_sigma-70
+BG616_12850	BG616_12850	2525782	2526035	+	hypothetical_protein
+BG616_13170	BG616_13170	2587819	2588540	-	transcriptional_regulator
+BG616_13435	BG616_13435	2643427	2643588	+	hypothetical_protein
+BG616_13815	BG616_13815	2717577	2717697	+	hypothetical_protein
+BG616_14240	BG616_14240	2802806	2804505	-	NAD-dependent_malic_enzyme
+BG616_14305	BG616_14305	2817354	2818062	-	ABC_transporter_ATP-binding_protein
+BG616_14415	BG616_14415	2841596	2842087	-	hypothetical_protein
+BG616_14915	BG616_14915	2925147	2925248	-	hypothetical_protein
+BG616_15375	BG616_15375	2991409	2993477	-	short-chain_dehydrogenase
+BG616_16005	BG616_16005	3122872	3124355	+	uricase
+BG616_16075	BG616_16075	3138005	3138756	+	ABC_transporter
+BG616_16120	BG616_16120	3147554	3147631	+	hypothetical_protein
+BG616_16630	BG616_16630	3242507	3244323	-	sulfite_reductase_[NADPH]_flavoprotein,_alpha-component
+BG616_16855	BG616_16855	3288016	3288199	+	hypothetical_protein
+BG616_17100	BG616_17100	3340050	3340690	-	amino-acid_racemase
+BG616_17345	BG616_17345	3392422	3393158	-	1-(5-phosphoribosyl)-5-[(5-_phosphoribosylamino)methylideneamino]imidazole-4-_carboxamide_isomerase
+BG616_17360	BG616_17360	3394375	3395657	-	histidinol_dehydrogenase
+BG616_17365	BG616_17365	3395654	3396294	-	ATP_phosphoribosyltransferase
+BG616_17630	BG616_17630	3448564	3449252	-	DNA-binding_response_regulator
+BG616_17740	BG616_17740	3475640	3477630	-	CDP-glycerol_glycerophosphotransferase
+BG616_17755	BG616_17755	3480920	3481281	-	glycerol-3-phosphate_cytidylyltransferase
+BG616_17760	BG616_17760	3481692	3482039	+	UTP--glucose-1-phosphate_uridylyltransferase
+BG616_17815	BG616_17815	3497068	3497184	-	hypothetical_protein
+BG616_18025	BG616_18025	3535613	3536182	-	transposase
+BG616_18635	BG616_18635	3650302	3651764	-	nitrate_reductase_subunit_beta
+BG616_18640	BG616_18640	3651754	3655439	-	nitrate_reductase_subunit_alpha
+BG616_18750	BG616_18750	3674413	3675086	+	hypothetical_protein
+BG616_18760	BG616_18760	3675896	3676542	+	multidrug_ABC_transporter_ATP-binding_protein
+BG616_19245	BG616_19245	3773093	3774279	-	50S_rRNA_methyltransferase
+BG616_19680	BG616_19680	3860749	3861046	-	hypothetical_protein
+BG616_19690	BG616_19690	3861403	3861884	-	hypothetical_protein
+BG616_19775	BG616_19775	3882279	3883130	-	DNA-binding_protein
+BG616_19795	BG616_19795	3885654	3885782	-	hypothetical_protein
+BG616_19850	BG616_19850	3898053	3898880	-	hypothetical_protein
+BG616_20240	BG616_20240	3978811	3979188	+	hypothetical_protein
+BG616_20270	BG616_20270	3983106	3983575	-	GNAT_family_N-acetyltransferase
+BG616_20325	BG616_20325	3994452	3994581	-	hypothetical_protein
+BG616_20415	BG616_20415	4006788	4008029	+	transporter
+BG616_20550	BG616_20550	4029886	4030113	+	hypothetical_protein
+BG616_21095	BG616_21095	4130079	4131094	+	serine/threonine_protein_kinase
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+BS73_RS00295	BG616_05760	50	276	79.31937172774869	1.87e-90
+BS73_RS00295	BG616_06625	49	273	85.86387434554975	3.73e-89
+BS73_RS00295	BG616_05810	53	189	53.403141361256544	2.05e-58
+BS73_RS00300	BG616_06650	51	306	93.21533923303835	5.24e-103
+BS73_RS00300	BG616_05765	49	305	96.7551622418879	1.05e-102
+BS73_RS00300	BG616_05815	53	277	77.5811209439528	5.22e-92
+

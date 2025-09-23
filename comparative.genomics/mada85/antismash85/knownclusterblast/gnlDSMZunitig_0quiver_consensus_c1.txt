@@ -1,0 +1,186 @@
+ClusterBlast scores for gnlDSMZunitig_0quiver_consensus
+
+Table of genes, locations, strands and annotations of query cluster:
+ctg1_116	110291	111776	+		
+ctg1_117	111807	112449	-		
+ctg1_118	112445	113609	-		
+ctg1_119	113778	114795	-		
+ctg1_120	114819	115578	+		
+ctg1_121	115894	116362	+		
+ctg1_122	116478	116985	+		
+ctg1_123	117072	117822	-		
+ctg1_124	117821	119000	-		
+ctg1_125	119134	119449	+		
+ctg1_126	119577	120438	+		
+ctg1_127	120525	121035	-		
+ctg1_128	121031	121244	-		
+ctg1_129	121260	121773	-		
+ctg1_130	121792	123862	-		
+ctg1_131	123858	126306	-		
+ctg1_132	126302	127757	-		
+ctg1_133	127753	129274	-		
+ctg1_134	129438	130677	+		
+ctg1_135	130802	131948	-		
+ctg1_136	131952	132420	-		
+ctg1_137	132616	133933	+		
+ctg1_138	134029	135004	+		
+ctg1_139	135102	135729	+		
+ctg1_140	135763	137428	-		
+ctg1_141	137569	137935	+		
+ctg1_142	137957	138194	-		
+ctg1_143	138295	139135	-		
+
+
+Significant hits: 
+1. BGC0002690.2	FW0622
+2. BGC0001478.5	desferrioxamine E
+3. BGC0002305.2	legonoxamine A/desferrioxamine B/legonoxamine B
+4. BGC0000941.3	desferrioxamin B
+5. BGC0001453.5	desferrioxamine
+6. BGC0000940.5	desferrioxamin B/desferrioxamine E
+7. BGC0001572.3	desferrioxamine E
+8. BGC0002620.2	fulvivirgamide A2/fulvivirgamide B2/fulvivirgamide B3/fulvivirgamide B4
+9. BGC0001870.3	putrebactin/avaroferrin
+
+
+Details:
+
+>>
+1. BGC0002690.2
+Source: FW0622
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 3
+Cumulative BLAST score: 1523.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_131	EG812_24960	50	535	72.39263803680981	5.59e-182
+ctg1_132	EG812_24970	58	488	87.60330578512396	7.41e-171
+ctg1_133	EG812_24975	57	500	92.68774703557312	5.38e-174
+
+
+
+>>
+2. BGC0001478.5
+Source: desferrioxamine E
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 3
+Cumulative BLAST score: 1508.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_131	AVV61969.1	48	512	71.41104294478528	6.29e-173
+ctg1_132	AVV61971.1	57	479	87.39669421487604	2.51e-167
+ctg1_133	AVV61972.1	59	517	95.8498023715415	1.25e-180
+
+
+
+>>
+3. BGC0002305.2
+Source: legonoxamine A/desferrioxamine B/legonoxamine B
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 3
+Cumulative BLAST score: 1500.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_131	QKS42880.1	47	493	71.90184049079754	9.43e-166
+ctg1_132	QKS42878.1	59	504	87.60330578512396	3.91e-177
+ctg1_133	QKS42877.1	55	503	98.41897233201581	2.18e-175
+
+
+
+>>
+4. BGC0000941.3
+Source: desferrioxamin B
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 3
+Cumulative BLAST score: 1492.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_131	SGR_4747	49	521	71.53374233128834	2.05e-176
+ctg1_132	SGR_4749	57	481	87.39669421487604	3.83e-168
+ctg1_133	SGR_4750	55	490	95.25691699604744	1.4e-170
+
+
+
+>>
+5. BGC0001453.5
+Source: desferrioxamine
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 3
+Cumulative BLAST score: 1492.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_131	desaD	47	507	72.63803680981596	6.5e-171
+ctg1_132	desaB	56	472	89.6694214876033	1.39e-164
+ctg1_133	desaA	57	513	94.46640316205533	2.14e-179
+
+
+
+>>
+6. BGC0000940.5
+Source: desferrioxamin B/desferrioxamine E
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 3
+Cumulative BLAST score: 1460.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_131	CAB87222.1	47	493	72.14723926380368	2.01e-165
+ctg1_132	CAB87220.1	57	469	86.98347107438018	8.88e-164
+ctg1_133	CAB87219.1	56	498	95.25691699604744	1.22e-173
+
+
+
+>>
+7. BGC0001572.3
+Source: desferrioxamine E
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 845.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_132	AWD37886.1	50	413	87.39669421487604	1.99e-141
+ctg1_133	AWD37887.1	53	432	88.53754940711462	4.24e-147
+
+
+
+>>
+8. BGC0002620.2
+Source: fulvivirgamide A2/fulvivirgamide B2/fulvivirgamide B3/fulvivirgamide B4
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 841.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_132	QHG11727.1	53	452	89.0495867768595	1.28e-156
+ctg1_133	QHG11726.1	46	389	93.47826086956522	1.91e-130
+
+
+
+>>
+9. BGC0001870.3
+Source: putrebactin/avaroferrin
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 834.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_132	Xbud_00369	47	397	89.25619834710744	4.18e-135
+ctg1_133	Xbud_00368	49	437	96.83794466403161	4.56e-149
+

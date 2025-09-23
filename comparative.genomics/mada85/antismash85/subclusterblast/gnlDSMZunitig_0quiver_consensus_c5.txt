@@ -1,0 +1,21 @@
+ClusterBlast scores for gnlDSMZunitig_0quiver_consensus
+
+Table of genes, locations, strands and annotations of query cluster:
+ctg1_1496	1569310	1569991	+		
+ctg1_1497	1570006	1571287	-		
+ctg1_1498	1571592	1572552	-		
+ctg1_1499	1572609	1572867	+		
+ctg1_1500	1573220	1573775	+		
+ctg1_1501	1573776	1574046	+		
+ctg1_1502	1574109	1574499	-		
+ctg1_1503	1574545	1575826	-		
+ctg1_1504	1575877	1576393	-		
+ctg1_1505	1576544	1577672	-		
+ctg1_1506	1577713	1578319	+		
+ctg1_1507	1578308	1579310	+		
+
+
+Significant hits: 
+
+
+Details:

@@ -1,0 +1,47 @@
+ClusterBlast scores for gnlDSMZunitig_0quiver_consensus
+
+Table of genes, locations, strands and annotations of query cluster:
+ctg1_2852	2948744	2949245	+		
+ctg1_2853	2949255	2950326	-		
+ctg1_2854	2950473	2951328	-		
+ctg1_2855	2951410	2951776	-		
+ctg1_2856	2951858	2952698	+		
+ctg1_2857	2952694	2953777	+		
+ctg1_2858	2953773	2954175	+		
+ctg1_2859	2954247	2954784	-		
+ctg1_2860	2954842	2956051	+		
+ctg1_2861	2956068	2957724	+		
+ctg1_2862	2957839	2957947	+		
+ctg1_2863	2957969	2958266	+		
+ctg1_2864	2958275	2959538	+		
+ctg1_2865	2959551	2960802	+		
+ctg1_2866	2960807	2961521	+		
+ctg1_2867	2961517	2962303	+		
+ctg1_2868	2962299	2963685	+		
+ctg1_2869	2963885	2965178	+		
+ctg1_2870	2965277	2966468	+		
+ctg1_2871	2966481	2968011	+		
+ctg1_2872	2968007	2968925	+		
+ctg1_2873	2968935	2969604	-		
+
+
+Significant hits: 
+1. BGC0001283.3	Bisenarsan
+
+
+Details:
+
+>>
+1. BGC0001283.3
+Source: Bisenarsan
+Type: PKS:Type I
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 362.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_2855	SLI_RS05035	51	91	85.12396694214877	1.5e-24
+ctg1_2855	SLI_RS05125	49	89	84.29752066115702	6.36e-24
+ctg1_2858	SLI_RS05010	72	182	95.48872180451127	4.24e-60
+

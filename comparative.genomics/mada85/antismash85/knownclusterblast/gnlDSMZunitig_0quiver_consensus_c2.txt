@@ -1,0 +1,102 @@
+ClusterBlast scores for gnlDSMZunitig_0quiver_consensus
+
+Table of genes, locations, strands and annotations of query cluster:
+ctg1_667	659570	660575	+		
+ctg1_668	660594	661602	+		
+ctg1_669	661594	662731	+		
+ctg1_670	662804	663959	-		
+ctg1_671	663955	665011	-		
+ctg1_672	665016	666006	-		
+ctg1_673	666002	667007	-		
+ctg1_674	667096	668746	-		
+ctg1_675	669021	670917	+		
+ctg1_676	670930	672682	+		
+ctg1_677	672678	673590	+		
+ctg1_678	673586	674075	+		
+ctg1_679	674079	675825	+		
+ctg1_680	675831	676878	-		
+ctg1_681	676874	678377	-		
+ctg1_682	678387	679410	-		
+ctg1_683	679406	681974	-		
+ctg1_684	682035	682611	+		
+ctg1_685	682580	683597	-		
+ctg1_686	683619	683946	+		
+ctg1_687	683962	685126	+		
+ctg1_688	685211	686504	+		
+ctg1_689	686602	687478	-		
+ctg1_690	687479	688412	-		
+ctg1_691	688530	689607	+		
+ctg1_692	689617	690400	+		
+ctg1_693	690402	690702	+		
+ctg1_694	690661	691999	+		
+ctg1_695	692113	692290	+		
+ctg1_696	692441	692798	+		
+ctg1_697	692819	693452	-		
+ctg1_698	693521	694148	+		
+ctg1_699	694184	695549	+		
+ctg1_700	695551	695944	+		
+ctg1_701	696019	697165	-		
+ctg1_702	697225	697786	-		
+ctg1_703	697778	699053	-		
+ctg1_704	699132	699645	-		
+ctg1_705	699759	700830	+		
+ctg1_706	700833	701703	+		
+
+
+Significant hits: 
+1. BGC0002656.2	oryzanaphthopyran A/oryzanaphthopyran B/oryzanaphthopyran C/oryzanthrone A/oryzanthrone B/chlororyzanthrone A/chlororyzanthrone B
+2. BGC0001543.3	chejuenolide A/chejuenolide B
+3. BGC0000093.5	meilingmycin/Meilingmycin A/Meilingmycin B/Meilingmycin E/Meilingmycin D/Meilingmycin C
+
+
+Details:
+
+>>
+1. BGC0002656.2
+Source: oryzanaphthopyran A/oryzanaphthopyran B/oryzanaphthopyran C/oryzanthrone A/oryzanthrone B/chlororyzanthrone A/chlororyzanthrone B
+Type: PKS
+Number of proteins with BLAST hits to this cluster: 4
+Cumulative BLAST score: 1225.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_668	BS73_RS00295	48	279	96.11940298507463	8.06e-92
+ctg1_669	BS73_RS00300	50	310	79.8941798941799	7.81e-104
+ctg1_670	BS73_RS00300	52	316	86.71875	3.67e-106
+ctg1_671	BS73_RS00295	52	320	97.72079772079772	2.04e-107
+
+
+
+>>
+2. BGC0001543.3
+Source: chejuenolide A/chejuenolide B
+Type: PKS
+Number of proteins with BLAST hits to this cluster: 4
+Cumulative BLAST score: 1180.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_668	CCG06124.1	46	279	91.64179104477613	1.69e-92
+ctg1_669	CCG06125.1	54	338	80.95238095238095	7.78e-115
+ctg1_670	CCG06125.1	49	293	84.89583333333334	4.58e-97
+ctg1_671	CCG06124.1	50	270	85.18518518518519	6.11e-89
+
+
+
+>>
+3. BGC0000093.5
+Source: meilingmycin/Meilingmycin A/Meilingmycin B/Meilingmycin E/Meilingmycin D/Meilingmycin C
+Type: PKS:Type I
+Number of proteins with BLAST hits to this cluster: 4
+Cumulative BLAST score: 899.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_668	ADC45593.1	47	221	80.29850746268656	1.08e-66
+ctg1_669	ADC45592.1	47	233	71.6931216931217	1.6e-74
+ctg1_670	ADC45592.1	47	221	70.57291666666666	1.7e-69
+ctg1_671	ADC45593.1	47	224	72.93447293447294	1.22e-67
+

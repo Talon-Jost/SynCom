@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery.tablesorter.min.js"></script>
+
+<script type="text/javascript" >
+var counter = 1;
+function addInput(divName){
+     var newdiv = document.createElement('div');
+     newdiv.innerHTML = "<b>Locus " + (counter + 1) + "</b><br> GenBank accession: <input type='text' required name='myInputs[]'> Start nt: <input type='number' name='myStartCoords[]' placeholder='N/A'> End nt: <input type='number' name='myEndCoords[]' placeholder='N/A'> <br><br>";
+     document.getElementById(divName).appendChild(newdiv);
+     counter++;
+}
+</script>
+
+<script>
+$(document).ready(function()
+    {
+        $("#myTable").tablesorter();
+    }
+);
+
+</script>
+<style>
+table {
+    border-width: thin;
+    border-spacing: 2px;
+    border-style: none;
+    border-color: black;
+}
+</style>
+</head>
+<body>
+    <table id="myTable" class="tablesorter" border=1>
+    <thead>
+    <tr>
+        <th>MIBiG Protein</th>
+        <th>Description</th>
+        <th>MIBiG Cluster</th>
+        <th>MiBiG Product</th>
+        <th>% ID</th>
+        <th>% Coverage</th>
+        <th>BLAST Score</th>
+        <th>E-value</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+          <tr>
+              <td>WP_051938933.1</td>
+              <td>PP2C_family_protein-serine/threonine_phosphatase</td>
+              <td><a href="https://mibig.secondarymetabolites.org/go/BGC0002656.2/1">BGC0002656.2</a></td>
+              <td>PKS</td>
+              <td>100.0</td>
+              <td>100.0</td>
+              <td>830.0</td>
+              <td>3.2e-307</td>
+          </tr>
+    
+          <tr>
+              <td>AKA59455.1</td>
+              <td>serine_phosphatase</td>
+              <td><a href="https://mibig.secondarymetabolites.org/go/BGC0001203.4/1">BGC0001203.4</a></td>
+              <td>NRPS:Type I+PKS</td>
+              <td>37.0</td>
+              <td>91.7</td>
+              <td>214.0</td>
+              <td>3.04e-64</td>
+          </tr>
+    
+          <tr>
+              <td>ABY83186.1</td>
+              <td>Azi0</td>
+              <td><a href="https://mibig.secondarymetabolites.org/go/BGC0000960.5/1">BGC0000960.5</a></td>
+              <td>NRPS:Type I+PKS</td>
+              <td>41.0</td>
+              <td>31.2</td>
+              <td>96.0</td>
+              <td>3.22e-23</td>
+          </tr>
+    
+          <tr>
+              <td>QLG04852.1</td>
+              <td>Serine/threonine-protein_phosphatase</td>
+              <td><a href="https://mibig.secondarymetabolites.org/go/BGC0002374.2/1">BGC0002374.2</a></td>
+              <td>PKS</td>
+              <td>24.0</td>
+              <td>58.6</td>
+              <td>68.0</td>
+              <td>4.34e-12</td>
+          </tr>
+    
+    </tbody>
+  </table>
+</body>

@@ -1,0 +1,43 @@
+ClusterBlast scores for gnlDSMZunitig_0quiver_consensus
+
+Table of genes, locations, strands and annotations of query cluster:
+ctg1_1330	1390935	1391640	+		
+ctg1_1331	1391676	1392246	-		
+ctg1_1332	1392355	1393165	+		
+ctg1_1333	1393168	1394374	+		
+ctg1_1334	1394370	1395057	+		
+ctg1_1335	1395145	1396471	+		
+ctg1_1336	1396600	1398562	-		
+ctg1_1337	1398597	1399743	-		
+ctg1_1338	1399919	1400273	+		
+ctg1_1339	1400276	1401362	-		
+ctg1_1340	1401509	1401827	+		
+ctg1_1341	1401837	1402320	+		
+ctg1_1342	1402316	1406069	+		
+ctg1_1343	1406235	1406595	+		
+ctg1_1344	1406699	1407479	+		
+ctg1_1345	1407486	1408740	+		
+ctg1_1346	1408836	1409283	+		
+ctg1_1347	1409332	1409848	-		
+ctg1_1348	1409861	1410086	-		
+
+
+Significant hits: 
+1. BGC0001666.3	microansamycin A/microansamycin B/microansamycin C/microansamycin D/microansamycin E/microansamycin F/microansamycin G/microansamycin H/microansamycin I
+
+
+Details:
+
+>>
+1. BGC0001666.3
+Source: microansamycin A/microansamycin B/microansamycin C/microansamycin D/microansamycin E/microansamycin F/microansamycin G/microansamycin H/microansamycin I
+Type: PKS
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 650.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_1332	ATY46607.1	52	202	74.72118959107806	1.57e-64
+ctg1_1335	ATY46605.1	54	448	97.50566893424036	1.85e-155
+

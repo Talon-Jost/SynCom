@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery.tablesorter.min.js"></script>
+
+<script type="text/javascript" >
+var counter = 1;
+function addInput(divName){
+     var newdiv = document.createElement('div');
+     newdiv.innerHTML = "<b>Locus " + (counter + 1) + "</b><br> GenBank accession: <input type='text' required name='myInputs[]'> Start nt: <input type='number' name='myStartCoords[]' placeholder='N/A'> End nt: <input type='number' name='myEndCoords[]' placeholder='N/A'> <br><br>";
+     document.getElementById(divName).appendChild(newdiv);
+     counter++;
+}
+</script>
+
+<script>
+$(document).ready(function()
+    {
+        $("#myTable").tablesorter();
+    }
+);
+
+</script>
+<style>
+table {
+    border-width: thin;
+    border-spacing: 2px;
+    border-style: none;
+    border-color: black;
+}
+</style>
+</head>
+<body>
+    <table id="myTable" class="tablesorter" border=1>
+    <thead>
+    <tr>
+        <th>MIBiG Protein</th>
+        <th>Description</th>
+        <th>MIBiG Cluster</th>
+        <th>MiBiG Product</th>
+        <th>% ID</th>
+        <th>% Coverage</th>
+        <th>BLAST Score</th>
+        <th>E-value</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+          <tr>
+              <td>CAC20926.1</td>
+              <td>PimE_protein</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000125.5">BGC0000125.5</a></td>
+              <td>PKS</td>
+              <td>36.0</td>
+              <td>96.0</td>
+              <td>272.0</td>
+              <td>5.12e-84</td>
+          </tr>
+    
+          <tr>
+              <td>AQT01388.1</td>
+              <td>SgnE</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001690.5">BGC0001690.5</a></td>
+              <td>PKS</td>
+              <td>36.0</td>
+              <td>96.0</td>
+              <td>272.0</td>
+              <td>5.12e-84</td>
+          </tr>
+    
+          <tr>
+              <td>TGZ15157.1</td>
+              <td>cholesterol_oxidase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0002032.4">BGC0002032.4</a></td>
+              <td>PKS</td>
+              <td>35.0</td>
+              <td>91.7</td>
+              <td>267.0</td>
+              <td>2.83e-82</td>
+          </tr>
+    
+          <tr>
+              <td>ATW51261.1</td>
+              <td>cholesterol_oxidase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0002788.2">BGC0002788.2</a></td>
+              <td>PKS:Modular type I</td>
+              <td>35.0</td>
+              <td>92.1</td>
+              <td>267.0</td>
+              <td>4.28e-82</td>
+          </tr>
+    
+          <tr>
+              <td>QIZ24109.1</td>
+              <td>cholesterol_oxidase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0002540.3">BGC0002540.3</a></td>
+              <td>PKS</td>
+              <td>36.0</td>
+              <td>92.1</td>
+              <td>265.0</td>
+              <td>1.78e-81</td>
+          </tr>
+    
+          <tr>
+              <td>WP_078575849.1</td>
+              <td>GMC_oxidoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0002106.3">BGC0002106.3</a></td>
+              <td>PKS:Modular type I</td>
+              <td>36.0</td>
+              <td>91.2</td>
+              <td>264.0</td>
+              <td>3.32e-81</td>
+          </tr>
+    
+          <tr>
+              <td>AAR16516.1</td>
+              <td>RimD</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000138.5">BGC0000138.5</a></td>
+              <td>PKS</td>
+              <td>36.0</td>
+              <td>91.2</td>
+              <td>264.0</td>
+              <td>6.24e-81</td>
+          </tr>
+    
+          <tr>
+              <td>QSE03597.1</td>
+              <td>Lcm11</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0002333.3">BGC0002333.3</a></td>
+              <td>PKS</td>
+              <td>35.0</td>
+              <td>94.4</td>
+              <td>264.0</td>
+              <td>6.4e-81</td>
+          </tr>
+    
+          <tr>
+              <td>BAC68118.1</td>
+              <td>putative_cholesterol_oxidase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000059.5">BGC0000059.5</a></td>
+              <td>PKS</td>
+              <td>37.0</td>
+              <td>91.5</td>
+              <td>261.0</td>
+              <td>4.51e-80</td>
+          </tr>
+    
+          <tr>
+              <td>QED90616.1</td>
+              <td>cholesterol_oxidase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0002081.3">BGC0002081.3</a></td>
+              <td>PKS</td>
+              <td>35.0</td>
+              <td>88.3</td>
+              <td>255.0</td>
+              <td>4.85e-78</td>
+          </tr>
+    
+          <tr>
+              <td>QFS19042.1</td>
+              <td>oxidoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0002506.3">BGC0002506.3</a></td>
+              <td>PKS</td>
+              <td>34.0</td>
+              <td>89.2</td>
+              <td>241.0</td>
+              <td>4.52e-73</td>
+          </tr>
+    
+          <tr>
+              <td>AQW35067.1</td>
+              <td>oxidase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001675.5">BGC0001675.5</a></td>
+              <td>PKS</td>
+              <td>34.0</td>
+              <td>86.5</td>
+              <td>239.0</td>
+              <td>4.66e-72</td>
+          </tr>
+    
+          <tr>
+              <td>AFV52135.1</td>
+              <td>putative_ketoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000081.5">BGC0000081.5</a></td>
+              <td>NRPS:Type I+PKS:Iterative type I</td>
+              <td>26.0</td>
+              <td>100.7</td>
+              <td>106.0</td>
+              <td>6.47e-24</td>
+          </tr>
+    
+          <tr>
+              <td>ABY65999.1</td>
+              <td>oxidoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001008.5">BGC0001008.5</a></td>
+              <td>PKS:Iterative type I</td>
+              <td>27.0</td>
+              <td>101.3</td>
+              <td>106.0</td>
+              <td>6.69e-24</td>
+          </tr>
+    
+          <tr>
+              <td>ABX24481.1</td>
+              <td>putative_cholesterol_oxidase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000877.5">BGC0000877.5</a></td>
+              <td>other:other</td>
+              <td>27.0</td>
+              <td>98.9</td>
+              <td>105.0</td>
+              <td>9.66e-24</td>
+          </tr>
+    
+          <tr>
+              <td>ABP55148.1</td>
+              <td>glucose-methanol-choline_oxidoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000150.4">BGC0000150.4</a></td>
+              <td>NRPS:Type I+PKS:Enediyne type I</td>
+              <td>27.0</td>
+              <td>101.3</td>
+              <td>104.0</td>
+              <td>2.11e-23</td>
+          </tr>
+    
+          <tr>
+              <td>AAM78005.1</td>
+              <td>oxidoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000112.5">BGC0000112.5</a></td>
+              <td>PKS:Iterative type I</td>
+              <td>26.0</td>
+              <td>103.4</td>
+              <td>104.0</td>
+              <td>2.84e-23</td>
+          </tr>
+    
+          <tr>
+              <td>ATV95643.1</td>
+              <td>Oxidoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001503.4">BGC0001503.4</a></td>
+              <td>PKS</td>
+              <td>26.0</td>
+              <td>101.4</td>
+              <td>95.0</td>
+              <td>2.77e-20</td>
+          </tr>
+    
+          <tr>
+              <td>AAL06693.1</td>
+              <td>oxidoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000965.5">BGC0000965.5</a></td>
+              <td>PKS:Iterative type I</td>
+              <td>27.0</td>
+              <td>101.4</td>
+              <td>94.0</td>
+              <td>8.69e-20</td>
+          </tr>
+    
+          <tr>
+              <td>ALU98455.1</td>
+              <td>glucose-methanol-choline_oxidoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001397.5">BGC0001397.5</a></td>
+              <td>NRPS:Type I+PKS</td>
+              <td>27.0</td>
+              <td>101.4</td>
+              <td>94.0</td>
+              <td>8.69e-20</td>
+          </tr>
+    
+          <tr>
+              <td>ANY94464.1</td>
+              <td>oxidoreductase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001584.5">BGC0001584.5</a></td>
+              <td>PKS</td>
+              <td>26.0</td>
+              <td>101.4</td>
+              <td>93.0</td>
+              <td>1.16e-19</td>
+          </tr>
+    
+    </tbody>
+  </table>
+</body>

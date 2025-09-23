@@ -1,0 +1,70 @@
+ClusterBlast scores for gnlDSMZunitig_0quiver_consensus
+
+Table of genes, locations, strands and annotations of query cluster:
+ctg1_1496	1569310	1569991	+		
+ctg1_1497	1570006	1571287	-		
+ctg1_1498	1571592	1572552	-		
+ctg1_1499	1572609	1572867	+		
+ctg1_1500	1573220	1573775	+		
+ctg1_1501	1573776	1574046	+		
+ctg1_1502	1574109	1574499	-		
+ctg1_1503	1574545	1575826	-		
+ctg1_1504	1575877	1576393	-		
+ctg1_1505	1576544	1577672	-		
+ctg1_1506	1577713	1578319	+		
+ctg1_1507	1578308	1579310	+		
+
+
+Significant hits: 
+1. BGC0002052.3	ectoine
+2. BGC0000853.3	ectoine
+3. BGC0000860.3	ectoine
+
+
+Details:
+
+>>
+1. BGC0002052.3
+Source: ectoine
+Type: other:ectoine
+Number of proteins with BLAST hits to this cluster: 3
+Cumulative BLAST score: 841.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_1502	NAI38-5749	55	160	100.7751937984496	1.25e-51
+ctg1_1503	NAI38-5750	61	508	98.12206572769952	9.76e-180
+ctg1_1504	NAI38-5751	56	173	92.98245614035088	2.96e-55
+
+
+
+>>
+2. BGC0000853.3
+Source: ectoine
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 3
+Cumulative BLAST score: 841.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_1502	AAS02096.1	53	152	101.55038759689923	1.14e-48
+ctg1_1503	AAS02095.1	62	520	97.65258215962442	2.53e-184
+ctg1_1504	AAS02094.1	56	169	95.32163742690058	4.59e-54
+
+
+
+>>
+3. BGC0000860.3
+Source: ectoine
+Type: other:other
+Number of proteins with BLAST hits to this cluster: 2
+Cumulative BLAST score: 546.0
+
+Table of genes, locations, strands and annotations of subject cluster:
+
+Table of Blast hits (query gene, subject gene, %identity, blast score, %coverage, e-value):
+ctg1_1502	ADA71976.1	50	131	99.2248062015504	2.54e-40
+ctg1_1503	ADA71975.1	50	415	96.47887323943662	6.37e-143
+

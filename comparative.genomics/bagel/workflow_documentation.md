@@ -36,12 +36,12 @@ https://doi.org/10.1093/nar/gky383]
 
 
 
-this resulted in several outputs which are located in the respective files of 85Bagel and 106Bagel. 
+this resulted in several outputs which are located in the respective files of 85Bagel and 106Bagel.
 
 1. An FAA file - Containing the protein and amino acid sequences for each of their classifications.
-2. An FNA file - The nucleotide sequence provided from the original FASTA input. 
+2. An FNA file - The nucleotide sequence provided from the original FASTA input.
 3. A GBK file - A GenBank file which provides more detail on the classification on the actual classifications themselves including the descriptions
-4. A Genes file - containing the different sequence length and their assignment the orf number. 
+4. A Genes file - containing the different sequence length and their assignment the orf number.
 5. A genetable file - containing a more tabular format which combines this information listed above.
 6. A transterm file - Transterm facilitates studies of messenger RNAs and translational control signals. Each messenger RNA (mRNA) from GenBank is extracted and broken into its functional components, its coding sequence, initiation context, termination context, flanking sequence representing its 5′ UTR (untranslated region), 3′ UTR and translational signals. In addition, numerical parameters characterising each coding region in Transterm, including codon and GC bias, are available.
 
@@ -61,7 +61,7 @@ The R workflow has its own documentation in the actual file itself named: bagel\
 
 
 
-However, briefly - my intention was to pull the information provided by bagel into a singular dataframe to work with and to also compare the outputs of the RiPPs and the bacteriocins that the strains may be producing. This resulted in the csv file named: bagel\_combined\_results.csv 
+However, briefly - my intention was to pull the information provided by bagel into a singular dataframe to work with and to also compare the outputs of the RiPPs and the bacteriocins that the strains may be producing. This resulted in the csv file named: bagel\_combined\_results.csv
 
 
 
@@ -95,7 +95,7 @@ Using the Nucleotide sequence found in the bagel\_combined\_results.csv file, I 
 
 
 
-Description			                               | Scientific Name        |Max Sc. |Tot Sc. |Cover  |E value      |Per.ident   |Acc. Len  |Accession  
+Description			                               | Scientific Name        |Max Sc. |Tot Sc. |Cover  |E value      |Per.ident   |Acc. Len  |Accession
 
 Janibacter sp. YB324 chromosome, complete genome	       | Janibacter sp. YB324	|183	 |183	  |100%	  |3.00E-42     |100	     |3369845   |0
 
@@ -139,7 +139,7 @@ Nucleic Acids Research. 2024, doi: 10.1093/nar/gkae1082
 
 
 
-DESCRIPTION: InterPro provides functional analysis of proteins by classifying them into families and predicting domains and important sites. To classify proteins in this way, InterPro uses predictive models, known as signatures, provided by several different databases (referred to as member databases) that make up the InterPro consortium. We combine protein signatures from these member databases into a single searchable resource, capitalising on their individual strengths to produce a powerful integrated database and diagnostic tool.
+#### DESCRIPTION: InterPro provides functional analysis of proteins by classifying them into families and predicting domains and important sites. To classify proteins in this way, InterPro uses predictive models, known as signatures, provided by several different databases (referred to as member databases) that make up the InterPro consortium. We combine protein signatures from these member databases into a single searchable resource, capitalising on their individual strengths to produce a powerful integrated database and diagnostic tool.
 
 
 
@@ -167,41 +167,11 @@ What was produced from this program:
 
 
 
+#### Results:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The results of this are curious, as there is 21 and 22 results for Mada.85 and Mada.106 respectively. Now what becomes curious about this is that there isn't any that are not inherently not shared between the two. I think the most unusual thing about this is how similar both the DNA and protein sequences are between the two strains if they match up. There are two unclassified proteins within the results and one of them has a 100% match between the two strains while another has very little similarity in the DNA or protein sequences - indicating that they aren't the same protein or sequence. These can be investigated independently, although I don't know how or what the next step might be in this case. They may remain a curiosity for now and might come back to them later. 
 
 
 

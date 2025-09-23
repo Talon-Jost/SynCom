@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery.tablesorter.min.js"></script>
+
+<script type="text/javascript" >
+var counter = 1;
+function addInput(divName){
+     var newdiv = document.createElement('div');
+     newdiv.innerHTML = "<b>Locus " + (counter + 1) + "</b><br> GenBank accession: <input type='text' required name='myInputs[]'> Start nt: <input type='number' name='myStartCoords[]' placeholder='N/A'> End nt: <input type='number' name='myEndCoords[]' placeholder='N/A'> <br><br>";
+     document.getElementById(divName).appendChild(newdiv);
+     counter++;
+}
+</script>
+
+<script>
+$(document).ready(function()
+    {
+        $("#myTable").tablesorter();
+    }
+);
+
+</script>
+<style>
+table {
+    border-width: thin;
+    border-spacing: 2px;
+    border-style: none;
+    border-color: black;
+}
+</style>
+</head>
+<body>
+    <table id="myTable" class="tablesorter" border=1>
+    <thead>
+    <tr>
+        <th>MIBiG Protein</th>
+        <th>Description</th>
+        <th>MIBiG Cluster</th>
+        <th>MiBiG Product</th>
+        <th>% ID</th>
+        <th>% Coverage</th>
+        <th>BLAST Score</th>
+        <th>E-value</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+          <tr>
+              <td>WP_020275080.1</td>
+              <td>histidinol-phosphatase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0002012.4">BGC0002012.4</a></td>
+              <td>PKS</td>
+              <td>68.0</td>
+              <td>97.7</td>
+              <td>345.0</td>
+              <td>1.72e-120</td>
+          </tr>
+    
+          <tr>
+              <td>AET51869.1</td>
+              <td>inositol-phosphate_phosphatase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001138.5">BGC0001138.5</a></td>
+              <td>other:nucleoside</td>
+              <td>48.0</td>
+              <td>95.8</td>
+              <td>230.0</td>
+              <td>2.29e-75</td>
+          </tr>
+    
+          <tr>
+              <td>CAD27649.1</td>
+              <td>AtaP3_protein</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000873.3">BGC0000873.3</a></td>
+              <td>other:other</td>
+              <td>47.0</td>
+              <td>96.6</td>
+              <td>209.0</td>
+              <td>5.93e-67</td>
+          </tr>
+    
+          <tr>
+              <td>CAA63164.1</td>
+              <td>Mono-phosphatase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000878.5">BGC0000878.5</a></td>
+              <td>other:other</td>
+              <td>47.0</td>
+              <td>98.9</td>
+              <td>209.0</td>
+              <td>6.91e-67</td>
+          </tr>
+    
+          <tr>
+              <td>AKJ29414.1</td>
+              <td>histidinol-phosphatase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001608.4">BGC0001608.4</a></td>
+              <td>NRPS:Type I</td>
+              <td>35.0</td>
+              <td>84.9</td>
+              <td>113.0</td>
+              <td>9.15e-30</td>
+          </tr>
+    
+          <tr>
+              <td>ARU08094.1</td>
+              <td>hypothetical_protein</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001448.5">BGC0001448.5</a></td>
+              <td>NRPS:Type I</td>
+              <td>30.0</td>
+              <td>102.3</td>
+              <td>84.0</td>
+              <td>8.47e-19</td>
+          </tr>
+    
+          <tr>
+              <td>BAC55130.1</td>
+              <td>ORF4</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000761.5">BGC0000761.5</a></td>
+              <td>saccharide</td>
+              <td>30.0</td>
+              <td>94.3</td>
+              <td>72.0</td>
+              <td>1.83e-14</td>
+          </tr>
+    
+          <tr>
+              <td>NAO96304.1</td>
+              <td>inositol_monophosphatase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0002117.3">BGC0002117.3</a></td>
+              <td>NRPS:Type I</td>
+              <td>29.0</td>
+              <td>80.4</td>
+              <td>64.0</td>
+              <td>9.07e-12</td>
+          </tr>
+    
+          <tr>
+              <td>AWR88435.1</td>
+              <td>putative_inositol_monophosphatase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001522.5">BGC0001522.5</a></td>
+              <td>PKS</td>
+              <td>40.0</td>
+              <td>35.5</td>
+              <td>64.0</td>
+              <td>9.15e-12</td>
+          </tr>
+    
+          <tr>
+              <td>AAF81230.1</td>
+              <td>inositol_monophosphatase-like_protein</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000243.4">BGC0000243.4</a></td>
+              <td>PKS</td>
+              <td>28.0</td>
+              <td>83.4</td>
+              <td>63.0</td>
+              <td>2.62e-11</td>
+          </tr>
+    
+          <tr>
+              <td>ABW87799.1</td>
+              <td>SpcA</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000715.5">BGC0000715.5</a></td>
+              <td>saccharide</td>
+              <td>31.0</td>
+              <td>89.1</td>
+              <td>62.0</td>
+              <td>7.77e-11</td>
+          </tr>
+    
+          <tr>
+              <td>AAG42851.1</td>
+              <td>putative_inositol_monophosphatase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000249.5">BGC0000249.5</a></td>
+              <td>PKS</td>
+              <td>29.0</td>
+              <td>95.8</td>
+              <td>61.0</td>
+              <td>2.21e-10</td>
+          </tr>
+    
+          <tr>
+              <td>AAD45544.1</td>
+              <td>SpcA</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0000716.5">BGC0000716.5</a></td>
+              <td>saccharide</td>
+              <td>34.0</td>
+              <td>79.6</td>
+              <td>60.0</td>
+              <td>3.64e-10</td>
+          </tr>
+    
+          <tr>
+              <td>ADC96653.1</td>
+              <td>PAPS_3&#39;-phosphatase</td>
+              <td><a target="_new" href="https://mibig.secondarymetabolites.org/go/BGC0001076.5">BGC0001076.5</a></td>
+              <td>other:nucleoside</td>
+              <td>37.0</td>
+              <td>45.3</td>
+              <td>55.0</td>
+              <td>1.79e-08</td>
+          </tr>
+    
+    </tbody>
+  </table>
+</body>
