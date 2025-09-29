@@ -1,0 +1,51 @@
+2025-09-26 16:02:52,103 INFO    /home/toast/miniconda3/envs/bigscape/bin/bigscape cluster -i gbk_files/ -o bigscape_output/ -p /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/BiG-SCAPE/Pfam-A.hmm
+2025-09-26 16:02:52,103 INFO    Using config file /home/toast/miniconda3/envs/bigscape/lib/python3.11/site-packages/big_scape/config.yml
+2025-09-26 16:02:52,115 INFO    Starting BiG-SCAPE 2.0.0b8 cluster run on region level with glocal alignment and mix weights
+2025-09-26 16:02:52,121 INFO    Creating in memory database
+2025-09-26 16:02:52,157 INFO    Loading 7 query GBKs
+2025-09-26 16:02:52,257 INFO    Adding new data to the database...
+2025-09-26 16:02:52,258 INFO    Found 7 new GBKs to process
+2025-09-26 16:02:52,372 INFO    Continuing with 7 BGC records
+2025-09-26 16:02:52,373 INFO    First task: TASK.HMM_SCAN
+2025-09-26 16:02:52,373 INFO    Reading HMM Profiles
+2025-09-26 16:08:03,511 INFO    Found 24736 HMM profiles
+2025-09-26 16:08:03,557 INFO    Scanning 172 CDS
+2025-09-26 16:08:07,267 INFO    scan done at 315.165729 seconds
+2025-09-26 16:08:07,311 INFO    DB: HSP save done at 315.209999 seconds
+2025-09-26 16:08:07,312 INFO    Unloading profiles
+2025-09-26 16:08:07,498 INFO    217 hsps found in this run
+2025-09-26 16:08:07,503 INFO    Next task: TASK.HMM_ALIGN
+2025-09-26 16:08:07,503 INFO    Reading HMM Profiles
+2025-09-26 16:11:51,182 INFO    Found 24736 HMM profiles
+2025-09-26 16:11:51,366 INFO    217 alignments
+2025-09-26 16:11:51,367 INFO    align done at 539.265577 seconds
+2025-09-26 16:11:51,367 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output/bigscape_output.db
+2025-09-26 16:11:51,406 INFO    DB: HSP alignment save done at 539.305079 seconds
+2025-09-26 16:11:51,407 INFO    Unloading profiles
+2025-09-26 16:11:51,450 INFO    Next task: TASK.COMPARISON
+2025-09-26 16:11:51,451 INFO    Generating antismash class bins
+2025-09-26 16:11:51,453 INFO    Bin 'other': 1 pairs from 2 BGC records
+2025-09-26 16:11:51,457 INFO    Calculating distances for 1 pairs
+2025-09-26 16:11:51,621 INFO    Bin 'NRPS': 1 pairs from 2 BGC records
+2025-09-26 16:11:51,627 INFO    Calculating distances for 1 pairs
+2025-09-26 16:11:51,755 INFO    Bin 'terpene': 1 pairs from 2 BGC records
+2025-09-26 16:11:51,763 INFO    Calculating distances for 1 pairs
+2025-09-26 16:11:51,899 INFO    Bin 'RiPP': 0 pairs from 1 BGC records
+2025-09-26 16:11:51,905 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output/bigscape_output.db
+2025-09-26 16:11:51,999 INFO    Generating families
+2025-09-26 16:11:52,000 INFO    Generating connected components for Bin 'other': cutoff 0.3
+2025-09-26 16:11:52,010 INFO    Found 0 connected components
+2025-09-26 16:11:52,011 INFO    Generating connected components for Bin 'NRPS': cutoff 0.3
+2025-09-26 16:11:52,020 INFO    Found 0 connected components
+2025-09-26 16:11:52,021 INFO    Generating connected components for Bin 'terpene': cutoff 0.3
+2025-09-26 16:11:52,031 INFO    Found 0 connected components
+2025-09-26 16:11:52,032 INFO    Generating connected components for Bin 'RiPP': cutoff 0.3
+2025-09-26 16:11:52,040 INFO    Found 0 connected components
+2025-09-26 16:11:52,041 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output/bigscape_output.db
+2025-09-26 16:11:52,132 INFO    Generating GCF trees and output files
+2025-09-26 16:11:53,876 INFO    Network 'other' with cutoff 0.3 is empty after culling singletons
+2025-09-26 16:11:53,877 INFO    Network 'NRPS' with cutoff 0.3 is empty after culling singletons
+2025-09-26 16:11:53,878 INFO    Network 'terpene' with cutoff 0.3 is empty after culling singletons
+2025-09-26 16:11:53,879 INFO    Network 'RiPP' with cutoff 0.3 is empty after culling singletons
+2025-09-26 16:11:53,880 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output/bigscape_output.db
+2025-09-26 16:11:54,052 INFO    All tasks done at 541.778094 seconds

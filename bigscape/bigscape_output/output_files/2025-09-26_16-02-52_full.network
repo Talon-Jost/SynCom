@@ -1,0 +1,4 @@
+Record_a	GBK_a	Record_Type_a	Record_Number_a	ORF_coords_a	Record_b	GBK_b	Record_Type_b	Record_Number_b	ORF_coords_b	distance	jaccard	adjacency	dss	weights	alignment_mode	extend_strategy
+gnlDSMZunitig_0quiver_consensus.region005.gbk_region_5	gnlDSMZunitig_0quiver_consensus.region005	region	5	0:12	gnlDSMZunitig_0quiver_consensus.region001.gbk_region_1	gnlDSMZunitig_0quiver_consensus.region001	region	1	1:28	0.98	0.05	0.00	0.01	mix	GLOCAL	LEGACY
+gnlDSMZunitig_0quiver_consensus.region003.gbk_region_3	gnlDSMZunitig_0quiver_consensus.region003	region	3	0:27	gnlDSMZunitig_0quiver_consensus.region002.gbk_region_2	gnlDSMZunitig_0quiver_consensus.region002	region	2	22:23	0.97	0.07	0.03	0.01	mix	GLOCAL	LEGACY
+gnlDSMZunitig_0quiver_consensus.region006.gbk_region_6	gnlDSMZunitig_0quiver_consensus.region006	region	6	0:25	gnlDSMZunitig_0quiver_consensus.region004.gbk_region_4	gnlDSMZunitig_0quiver_consensus.region004	region	4	9:10	0.98	0.04	0.00	0.01	mix	GLOCAL	LEGACY

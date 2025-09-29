@@ -1,0 +1,25 @@
+MERGED_CAND_CLUSTER_TYPE: ['chemical_hybrid', 'interleaved']
+MIN_BGC_LENGTH: 0
+MAX_BGC_LENGTH: 500000
+CDS_OVERLAP_CUTOFF: 0.1
+DOMAIN_OVERLAP_CUTOFF: 0.1
+REGION_MIN_LCS_LEN: 0.1
+PROTO_MIN_LCS_LEN: 0
+REGION_MIN_EXTEND_LEN: 0.3
+REGION_MIN_EXTEND_LEN_BIO: 0.2
+PROTO_MIN_EXTEND_LEN: 0.2
+NO_MIN_CLASSES: ['terpene']
+EXTEND_MATCH_SCORE: 5
+EXTEND_MISMATCH_SCORE: -3
+EXTEND_GAP_SCORE: -2
+EXTEND_MAX_MATCH_PERC: 0.1
+PREFERENCE: 0.0
+DENSITY: 0.85
+DENSE_PREFERENCE: -5.0
+TOP_FREQS: 3
+ANCHOR_DOMAINS: ['PF02801', 'PF02624', 'PF00109', 'PF00501', 'PF02797', 'PF01397', 'PF03936', 'PF00432', 'PF00195', 'PF00494', 'PF00668', 'PF05147']
+LEGACY_ANTISMASH_CLASSES: {'pks1_products': {'t1pks', 'T1PKS'}, 'pksother_products': {'t2pks', 'T3PKS', 'transAT-PKS-like', 'T2PKS', 'transAT-PKS', 't3pks', 'transatpks', 'hglks', 'hglE-KS', 'PKS-like', 'otherks'}, 'nrps_products': {'NAPAA', 'thioamide-NRP', 'NRPS-like', 'NRPS', 'nrps'}, 'ripps_products': {'thiopeptide', 'bacteriocin', 'thioamitides', 'cyclic-lactone-autoinducer', 'sactipeptide', 'head_to_tail', 'epipeptide', 'linaridin', 'fungal-RiPP', 'cyanobactin', 'lanthipeptide-class-ii', 'lanthipeptide-class-iv', 'redox-cofactor', 'microviridin', 'RaS-RiPP', 'RiPP-like', 'lantipeptide', 'LAP', 'RRE-containing', 'proteusin', 'lanthipeptide-class-iii', 'bottromycin', 'lanthipeptide-class-v', 'ranthipeptide', 'lanthipeptide', 'lassopeptide', 'lanthipeptide-class-i', 'guanidinotides', 'TfuA-related', 'spliceotide', 'glycocin', 'lipolanthine', 'microcin'}, 'saccharide_products': {'oligosaccharide', 'saccharide', 'amglyccycl', 'cf_saccharide'}, 'others_products': {'nucleoside', 'siderophore', 'CDPS', 'halogenated', 'phosphonate', 'betalactone', 'hserlactone', 'acyl_amino_acids', 'cf_fatty_acid', 'resorcinol', 'PUFA', 'aminocoumarin', 'ectoine', 'PBDE', 'tropodithietic-acid', 'NAGGN', 'pyrrolidine', 'phosphoglycolipid', 'other', 'butyrolactone', 'blactam', 'cf_putative', 'fatty_acid', 'fused', 'arylpolyene', 'PpyS-KS', 'ladderane', 'melanin', 'furan', 'indole', 'phenazine'}}
+PROFILER_UPDATE_INTERVAL: 0.5
+CONSERVE_MEMORY: False
+KMER_SIZE: 10
+SCALED: 100
