@@ -1,0 +1,1 @@
+bigscape cluster -i gbk_files/ -o bigscape_output_85106Pseudo/  -p /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/BiG-SCAPE/Pfam-A.hmm
