@@ -1,0 +1,25 @@
+MERGED_CAND_CLUSTER_TYPE: ['chemical_hybrid', 'interleaved']
+MIN_BGC_LENGTH: 0
+MAX_BGC_LENGTH: 500000
+CDS_OVERLAP_CUTOFF: 0.1
+DOMAIN_OVERLAP_CUTOFF: 0.1
+REGION_MIN_LCS_LEN: 0.1
+PROTO_MIN_LCS_LEN: 0
+REGION_MIN_EXTEND_LEN: 0.3
+REGION_MIN_EXTEND_LEN_BIO: 0.2
+PROTO_MIN_EXTEND_LEN: 0.2
+NO_MIN_CLASSES: ['terpene']
+EXTEND_MATCH_SCORE: 5
+EXTEND_MISMATCH_SCORE: -3
+EXTEND_GAP_SCORE: -2
+EXTEND_MAX_MATCH_PERC: 0.1
+PREFERENCE: 0.0
+DENSITY: 0.85
+DENSE_PREFERENCE: -5.0
+TOP_FREQS: 3
+ANCHOR_DOMAINS: ['PF02801', 'PF02624', 'PF00109', 'PF00501', 'PF02797', 'PF01397', 'PF03936', 'PF00432', 'PF00195', 'PF00494', 'PF00668', 'PF05147']
+LEGACY_ANTISMASH_CLASSES: {'pks1_products': {'t1pks', 'T1PKS'}, 'pksother_products': {'T2PKS', 'PKS-like', 'T3PKS', 'hglks', 'otherks', 'transAT-PKS', 't2pks', 'transAT-PKS-like', 'hglE-KS', 't3pks', 'transatpks'}, 'nrps_products': {'NRPS-like', 'NAPAA', 'nrps', 'NRPS', 'thioamide-NRP'}, 'ripps_products': {'lanthipeptide-class-v', 'RaS-RiPP', 'lanthipeptide-class-iii', 'TfuA-related', 'thiopeptide', 'fungal-RiPP', 'RRE-containing', 'cyclic-lactone-autoinducer', 'lanthipeptide', 'lanthipeptide-class-ii', 'LAP', 'cyanobactin', 'microviridin', 'sactipeptide', 'proteusin', 'ranthipeptide', 'spliceotide', 'lantipeptide', 'bottromycin', 'epipeptide', 'guanidinotides', 'head_to_tail', 'RiPP-like', 'lassopeptide', 'redox-cofactor', 'lanthipeptide-class-i', 'thioamitides', 'bacteriocin', 'microcin', 'lipolanthine', 'linaridin', 'glycocin', 'lanthipeptide-class-iv'}, 'saccharide_products': {'amglyccycl', 'oligosaccharide', 'saccharide', 'cf_saccharide'}, 'others_products': {'phosphonate', 'indole', 'pyrrolidine', 'cf_putative', 'PpyS-KS', 'ladderane', 'butyrolactone', 'cf_fatty_acid', 'fused', 'CDPS', 'acyl_amino_acids', 'NAGGN', 'arylpolyene', 'siderophore', 'PUFA', 'tropodithietic-acid', 'melanin', 'nucleoside', 'PBDE', 'fatty_acid', 'halogenated', 'aminocoumarin', 'other', 'furan', 'phenazine', 'ectoine', 'phosphoglycolipid', 'resorcinol', 'blactam', 'betalactone', 'hserlactone'}}
+PROFILER_UPDATE_INTERVAL: 0.5
+CONSERVE_MEMORY: False
+KMER_SIZE: 10
+SCALED: 100

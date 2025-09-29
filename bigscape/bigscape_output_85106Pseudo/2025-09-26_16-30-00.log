@@ -1,0 +1,61 @@
+2025-09-26 16:30:00,121 INFO    /home/toast/miniconda3/envs/bigscape/bin/bigscape cluster -i gbk_files/ -o bigscape_output_85106Pseudo/ -p /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/BiG-SCAPE/Pfam-A.hmm
+2025-09-26 16:30:00,121 INFO    Using config file /home/toast/miniconda3/envs/bigscape/lib/python3.11/site-packages/big_scape/config.yml
+2025-09-26 16:30:00,135 INFO    Starting BiG-SCAPE 2.0.0b8 cluster run on region level with glocal alignment and mix weights
+2025-09-26 16:30:00,141 INFO    Creating in memory database
+2025-09-26 16:30:00,185 INFO    Loading 35 query GBKs
+2025-09-26 16:30:00,598 INFO    Adding new data to the database...
+2025-09-26 16:30:00,600 INFO    Found 35 new GBKs to process
+2025-09-26 16:30:01,232 INFO    Continuing with 35 BGC records
+2025-09-26 16:30:01,233 INFO    First task: TASK.HMM_SCAN
+2025-09-26 16:30:01,234 INFO    Reading HMM Profiles
+2025-09-26 16:36:00,213 INFO    Found 24736 HMM profiles
+2025-09-26 16:36:00,255 INFO    Scanning 913 CDS
+2025-09-26 16:36:14,410 INFO    scan done at 374.290720 seconds
+2025-09-26 16:36:14,649 INFO    DB: HSP save done at 374.530534 seconds
+2025-09-26 16:36:14,650 INFO    Unloading profiles
+2025-09-26 16:36:14,831 INFO    1311 hsps found in this run
+2025-09-26 16:36:14,834 INFO    Next task: TASK.HMM_ALIGN
+2025-09-26 16:36:14,834 INFO    Reading HMM Profiles
+2025-09-26 16:40:20,263 INFO    Found 24736 HMM profiles
+2025-09-26 16:40:20,989 INFO    1311 alignments
+2025-09-26 16:40:20,990 INFO    align done at 620.871077 seconds
+2025-09-26 16:40:20,990 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output_85106Pseudo/bigscape_output_85106Pseudo.db
+2025-09-26 16:40:21,094 INFO    DB: HSP alignment save done at 620.975361 seconds
+2025-09-26 16:40:21,094 INFO    Unloading profiles
+2025-09-26 16:40:21,138 INFO    Next task: TASK.COMPARISON
+2025-09-26 16:40:21,138 INFO    Generating antismash class bins
+2025-09-26 16:40:21,140 INFO    Bin 'other': 45 pairs from 10 BGC records
+2025-09-26 16:40:21,144 INFO    Calculating distances for 45 pairs
+2025-09-26 16:40:21,276 INFO    Bin 'RiPP': 15 pairs from 6 BGC records
+2025-09-26 16:40:21,280 INFO    Calculating distances for 15 pairs
+2025-09-26 16:40:21,408 INFO    Bin 'NRPS': 55 pairs from 11 BGC records
+2025-09-26 16:40:21,413 INFO    Calculating distances for 55 pairs
+2025-09-26 16:40:21,595 INFO    Bin 'terpene': 10 pairs from 5 BGC records
+2025-09-26 16:40:21,600 INFO    Calculating distances for 10 pairs
+2025-09-26 16:40:21,713 INFO    Bin 'NRPS.PKS.RiPP': 0 pairs from 1 BGC records
+2025-09-26 16:40:21,718 INFO    Bin 'PKS': 1 pairs from 2 BGC records
+2025-09-26 16:40:21,722 INFO    Calculating distances for 1 pairs
+2025-09-26 16:40:21,832 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output_85106Pseudo/bigscape_output_85106Pseudo.db
+2025-09-26 16:40:22,292 INFO    Generating families
+2025-09-26 16:40:22,294 INFO    Generating connected components for Bin 'other': cutoff 0.3
+2025-09-26 16:40:22,313 INFO    Found 2 connected components
+2025-09-26 16:40:22,321 INFO    Generating connected components for Bin 'RiPP': cutoff 0.3
+2025-09-26 16:40:22,331 INFO    Found 1 connected components
+2025-09-26 16:40:22,335 INFO    Generating connected components for Bin 'NRPS': cutoff 0.3
+2025-09-26 16:40:22,348 INFO    Found 2 connected components
+2025-09-26 16:40:22,355 INFO    Generating connected components for Bin 'terpene': cutoff 0.3
+2025-09-26 16:40:22,364 INFO    Found 2 connected components
+2025-09-26 16:40:22,371 INFO    Generating connected components for Bin 'NRPS.PKS.RiPP': cutoff 0.3
+2025-09-26 16:40:22,378 INFO    Found 0 connected components
+2025-09-26 16:40:22,379 INFO    Generating connected components for Bin 'PKS': cutoff 0.3
+2025-09-26 16:40:22,387 INFO    Found 0 connected components
+2025-09-26 16:40:22,387 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output_85106Pseudo/bigscape_output_85106Pseudo.db
+2025-09-26 16:40:22,809 INFO    Generating GCF trees and output files
+2025-09-26 16:40:23,789 INFO    Generating output for other at cutoff 0.3
+2025-09-26 16:40:24,032 INFO    Generating output for RiPP at cutoff 0.3
+2025-09-26 16:40:24,190 INFO    Generating output for NRPS at cutoff 0.3
+2025-09-26 16:40:24,332 INFO    Generating output for terpene at cutoff 0.3
+2025-09-26 16:40:24,474 INFO    Network 'NRPS.PKS.RiPP' with cutoff 0.3 is empty after culling singletons
+2025-09-26 16:40:24,475 INFO    Network 'PKS' with cutoff 0.3 is empty after culling singletons
+2025-09-26 16:40:24,476 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output_85106Pseudo/bigscape_output_85106Pseudo.db
+2025-09-26 16:40:24,898 INFO    All tasks done at 624.356645 seconds

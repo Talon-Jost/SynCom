@@ -1,0 +1,3 @@
+Record_a	GBK_a	Record_Type_a	Record_Number_a	ORF_coords_a	Record_b	GBK_b	Record_Type_b	Record_Number_b	ORF_coords_b	distance	jaccard	adjacency	dss	weights	alignment_mode	extend_strategy
+Mada106_gnlDSMZunitig_0quiver_consensus.region005.gbk_region_5	Mada106_gnlDSMZunitig_0quiver_consensus.region005	region	5	0:12	Mada_85_gnlDSMZunitig_0quiver_consensus.region005.gbk_region_5	Mada_85_gnlDSMZunitig_0quiver_consensus.region005	region	5	0:12	0.00	1.00	1.00	0.99	mix	GLOCAL	LEGACY
+Mada106_gnlDSMZunitig_0quiver_consensus.region001.gbk_region_1	Mada106_gnlDSMZunitig_0quiver_consensus.region001	region	1	1:28	Mada_85_gnlDSMZunitig_0quiver_consensus.region001.gbk_region_1	Mada_85_gnlDSMZunitig_0quiver_consensus.region001	region	1	1:28	0.02	1.00	1.00	0.97	mix	GLOCAL	LEGACY
