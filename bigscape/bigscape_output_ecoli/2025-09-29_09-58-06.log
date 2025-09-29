@@ -1,0 +1,44 @@
+2025-09-29 09:58:06,051 INFO    /home/toast/miniconda3/envs/bigscape/bin/bigscape cluster -i ecolibgk_files/ -o bigscape_output_ecoli/ -p /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/BiG-SCAPE/Pfam-A.hmm
+2025-09-29 09:58:06,052 INFO    Using config file /home/toast/miniconda3/envs/bigscape/lib/python3.11/site-packages/big_scape/config.yml
+2025-09-29 09:58:06,065 INFO    Starting BiG-SCAPE 2.0.0b8 cluster run on region level with glocal alignment and mix weights
+2025-09-29 09:58:06,076 INFO    Creating in memory database
+2025-09-29 09:58:06,122 INFO    Loading 3 query GBKs
+2025-09-29 09:58:06,348 INFO    Adding new data to the database...
+2025-09-29 09:58:06,349 INFO    Found 3 new GBKs to process
+2025-09-29 09:58:06,411 INFO    Continuing with 3 BGC records
+2025-09-29 09:58:06,413 INFO    First task: TASK.HMM_SCAN
+2025-09-29 09:58:06,413 INFO    Reading HMM Profiles
+2025-09-29 10:04:26,177 INFO    Found 24736 HMM profiles
+2025-09-29 10:04:26,226 INFO    Scanning 90 CDS
+2025-09-29 10:04:28,127 INFO    scan done at 382.076958 seconds
+2025-09-29 10:04:28,153 INFO    DB: HSP save done at 382.103216 seconds
+2025-09-29 10:04:28,154 INFO    Unloading profiles
+2025-09-29 10:04:28,338 INFO    128 hsps found in this run
+2025-09-29 10:04:28,341 INFO    Next task: TASK.HMM_ALIGN
+2025-09-29 10:04:28,341 INFO    Reading HMM Profiles
+2025-09-29 10:08:36,755 INFO    Found 24736 HMM profiles
+2025-09-29 10:08:36,958 INFO    128 alignments
+2025-09-29 10:08:36,958 INFO    align done at 630.908362 seconds
+2025-09-29 10:08:36,959 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output_ecoli/bigscape_output_ecoli.db
+2025-09-29 10:08:36,998 INFO    DB: HSP alignment save done at 630.948510 seconds
+2025-09-29 10:08:36,999 INFO    Unloading profiles
+2025-09-29 10:08:37,042 INFO    Next task: TASK.COMPARISON
+2025-09-29 10:08:37,043 INFO    Generating antismash class bins
+2025-09-29 10:08:37,045 INFO    Bin 'RiPP': 0 pairs from 1 BGC records
+2025-09-29 10:08:37,051 INFO    Bin 'terpene': 0 pairs from 1 BGC records
+2025-09-29 10:08:37,054 INFO    Bin 'NRPS': 0 pairs from 1 BGC records
+2025-09-29 10:08:37,058 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output_ecoli/bigscape_output_ecoli.db
+2025-09-29 10:08:37,138 INFO    Generating families
+2025-09-29 10:08:37,139 INFO    Generating connected components for Bin 'RiPP': cutoff 0.3
+2025-09-29 10:08:37,147 INFO    Found 0 connected components
+2025-09-29 10:08:37,148 INFO    Generating connected components for Bin 'terpene': cutoff 0.3
+2025-09-29 10:08:37,155 INFO    Found 0 connected components
+2025-09-29 10:08:37,156 INFO    Generating connected components for Bin 'NRPS': cutoff 0.3
+2025-09-29 10:08:37,161 INFO    Found 0 connected components
+2025-09-29 10:08:37,162 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output_ecoli/bigscape_output_ecoli.db
+2025-09-29 10:08:37,236 INFO    Generating GCF trees and output files
+2025-09-29 10:08:37,966 INFO    Network 'RiPP' with cutoff 0.3 is empty after culling singletons
+2025-09-29 10:08:37,970 INFO    Network 'terpene' with cutoff 0.3 is empty after culling singletons
+2025-09-29 10:08:37,974 INFO    Network 'NRPS' with cutoff 0.3 is empty after culling singletons
+2025-09-29 10:08:37,981 INFO    Saving database to /mnt/c/Users/tpj5244/Desktop/Genomes/Genomes/Vences_Genomes/SynCom/comparative.genomics/bigscape/bigscape_output_ecoli/bigscape_output_ecoli.db
+2025-09-29 10:08:38,065 INFO    All tasks done at 631.930684 seconds
